@@ -1,93 +1,77 @@
-import argparse
-import numpy as np
-import networkx as nx
-import node2vec
-from gensim.models import Word2Vec
+import pandas as pd
+import os
+from features import get_feature, read_data
+from model import evaluate_disease
+# from model_assemble import evaluate_disease
 
-def parse_args():
-	'''
-	Parses the node2vec arguments.
-	'''
-	parser = argparse.ArgumentParser(description="Run node2vec.")
+# # Set up argument parser
+# parser = argparse.ArgumentParser(description='Process some integers.')
+# parser.add_argument('--pseudo_select_function', type=int, default=1,
+#                     help='an integer to select the pseudo function')
+# # Parse the arguments
+# args = parser.parse_args()
+# # Assign the argument to the variable
+# pseudo_select_function = args.pseudo_select_function
+pseudo_select_function = [1]
 
-	parser.add_argument('--input', nargs='?', default='data/edge_list_indexed.txt',
-	                    help='Input graph path')
+root = '/itf-fi-ml/shared/users/ziyuzh/svm'
+feature = 'go_exp'
+# feature = 'ppi'
+# feature = 'txt'
+# feature = 'ppi_700'
+# feature = 'biograd'
 
-	parser.add_argument('--output', nargs='?', default='data/ppi.emb',
-	                    help='Embeddings path')
 
-	parser.add_argument('--dimensions', type=int, default=128,
-	                    help='Number of dimensions. Default is 128.')
+out_path = os.path.join(root,'results',feature)
+# out_path = os.path.join(root,'results','ppi_time_filtered')
+# out_path = os.path.join(root,'ppi_10_neg')
 
-	parser.add_argument('--walk-length', type=int, default=80,
-	                    help='Length of walk per source. Default is 80.')
+if not os.path.exists(out_path):
+    os.mkdir(out_path)
 
-	parser.add_argument('--num-walks', type=int, default=10,
-	                    help='Number of walks per source. Default is 10.')
+feature_df = get_feature(root,feature)
 
-	parser.add_argument('--window-size', type=int, default=10,
-                    	help='Context size for optimization. Default is 10.')
+all_df = pd.read_csv(os.path.join(root,'data','disgent_2020','disgenet_string.csv'))
+# all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
+# all_df = pd.read_csv(os.path.join(root,'data/gmb/gmb_string.csv'))
 
-	parser.add_argument('--iter', default=1, type=int,
-                      help='Number of epochs in SGD')
 
-	parser.add_argument('--workers', type=int, default=8,
-	                    help='Number of parallel workers. Default is 8.')
+selected_diseases = (
+    all_df.groupby('disease_id')
+    .filter(lambda x: len(x) > 15)
+    ['disease_id']
+    .unique()
+    .tolist()
+)[36:]
 
-	parser.add_argument('--p', type=float, default=1,
-	                    help='Return hyperparameter. Default is 1.')
+# selected_diseases = ['ICD10_N80']
+# methods = ['ooc','random_negative']
+# methods = ['ooc','random_negative','pseudo_labeling','pseudo_on_vector']
 
-	parser.add_argument('--q', type=float, default=1,
-	                    help='Inout hyperparameter. Default is 1.')
+# methods = ['pseudo_on_vector']
+methods = ['random_negative']
+# methods = ['random_negative','pseudo_labeling']
+all_results = []
 
-	parser.add_argument('--weighted', dest='weighted', action='store_true',
-	                    help='Boolean specifying (un)weighted. Default is unweighted.')
-	parser.add_argument('--unweighted', dest='unweighted', action='store_false')
-	parser.set_defaults(weighted=False)
 
-	parser.add_argument('--directed', dest='directed', action='store_true',
-	                    help='Graph is (un)directed. Default is undirected.')
-	parser.add_argument('--undirected', dest='undirected', action='store_false')
-	parser.set_defaults(directed=False)
 
-	return parser.parse_args()
 
-def read_graph():
-	'''
-	Reads the input network in networkx.
-	'''
-	if args.weighted:
-		G = nx.read_edgelist(args.input, nodetype=int, data=(('weight',float),), create_using=nx.DiGraph())
-	else:
-		G = nx.read_edgelist(args.input, nodetype=int, create_using=nx.DiGraph())
-		for edge in G.edges():
-			G[edge[0]][edge[1]]['weight'] = 1
+for disease in selected_diseases:
+    param_fix = False
+    # if disease in ['ICD10_E66','ICD10_E11','ICD10_C50','ICD10_F31','ICD10_C61','ICD10_F20']:
+    #         param_fix = True
+    df, X, y = read_data(disease, all_df, feature_df)
+    result_df = evaluate_disease(X, y, methods,functions=pseudo_select_function, param_fix = param_fix)
+    result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
+    # Calculate mean metrics
+    mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()
 
-	if not args.directed:
-		G = G.to_undirected()
+    # Add disease information
+    mean_df['disease'] = disease
 
-	return G
+    # Append to all_results list
+    all_results.append(mean_df)
 
-def learn_embeddings(walks):
-	'''
-	Learn embeddings by optimizing the Skipgram objective using SGD.
-	'''
-	walks = [map(str, walk) for walk in walks]
-	model = Word2Vec(walks, size=args.dimensions, window=args.window_size, min_count=0, sg=1, workers=args.workers, iter=args.iter)
-	model.save_word2vec_format(args.output)
-	
-	return
-
-def main(args):
-	'''
-	Pipeline for representational learning for all nodes in a graph.
-	'''
-	nx_G = read_graph()
-	G = node2vec.Graph(nx_G, args.directed, args.p, args.q)
-	G.preprocess_transition_probs()
-	walks = G.simulate_walks(args.num_walks, args.walk_length)
-	learn_embeddings(walks)
-
-if __name__ == "__main__":
-	args = parse_args()
-	main(args)
+# Concatenate all results into a single DataFrame
+final_result = pd.concat(all_results, ignore_index=True)
+final_result.to_csv(os.path.join(out_path,'all_disease.csv'),index=False)
