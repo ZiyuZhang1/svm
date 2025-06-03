@@ -3,3 +3,10 @@
 *.csv
 *.fa
 *.txt
+data/prose/
+*.pkl
+*.bin
+*.json
+*.obo
+*.pt
+*.pptx
