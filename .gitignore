@@ -10,3 +10,5 @@ data/prose/
 *.obo
 *.pt
 *.pptx
+*.gaf
+data/disgent_2020/gene_info
