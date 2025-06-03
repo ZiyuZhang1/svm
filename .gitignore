@@ -12,3 +12,4 @@ data/prose/
 *.pptx
 *.gaf
 data/disgent_2020/gene_info
+codes/OMIM_process.ipynb
