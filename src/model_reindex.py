@@ -11,9 +11,18 @@ import os
 import pickle
 import gseapy as gp
 from scipy.cluster.hierarchy import fcluster
+# from concurrent.futures import ProcessPoolExecutor
+# import functools
+from multiprocessing import Pool
+from functools import partial
+from collections import defaultdict
 
-from concurrent.futures import ProcessPoolExecutor
-import functools
+def merge_results(results_list):
+    merged = defaultdict(list)
+    for res_dict in results_list:
+        for key, val_list in res_dict.items():
+            merged[key].extend(val_list)  # add all scores to the list
+    return dict(merged)
 
 
 # Define the custom scoring function
@@ -328,6 +337,43 @@ def get_top_n_predictions(ranked_predict_index,test_indices,n):
         genes.append(stringId2name[value])
     return genes
 
+def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
+    result_dict_temp = dict()
+    # Randomly select 'neg_num' samples from negative class
+    train_neg_df = neg_df.sample(n=neg_num)
+    
+    # Get the remaining negative samples
+    test_neg_df = neg_df
+    
+    # Combine positive and negative samples for training
+    train_df = pd.concat([train_pos_df, train_neg_df])
+    X_train = train_df.values
+    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+    
+    # Store original indices for training set
+    # train_indices = train_df.index.values
+    
+    # Combine positive and negative samples for testing
+    test_df = pd.concat([test_pos_df, test_neg_df])
+    X_test = test_df.values
+    # y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+
+    # Store original indices for test set
+    test_indices = test_df.index.values  
+    metric = 'auroc'
+    # Select parameters and train the model
+    parameters = select_parameter(X_train, y_train, metric)
+    best_svm = svm.SVC(**parameters)
+    best_svm.fit(X_train, y_train)
+    y_scores = best_svm.decision_function(X_test)
+
+    for arrayindex, gene in enumerate(test_indices):
+        if gene in result_dict_temp:
+            result_dict_temp[gene].append(y_scores[arrayindex])
+        else:
+            result_dict_temp[gene] = [y_scores[arrayindex]]
+    return result_dict_temp
+
 def process_neg_bagging_iteration(iter_num, neg_df, neg_num, train_pos_df, test_pos_df, select_parameter, metric='auroc'):
     """Process a single iteration of the random negative bagging"""
     # Randomly select 'neg_num' samples from negative class
@@ -491,42 +537,12 @@ def one_fold_evaluate(df,y,train_idx,test_idx,methods,result_df,fold):
     if 'random_negative_bagging' in methods:
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
-        result_dict = dict()
-        for iters in range(20):
-            # Randomly select 'neg_num' samples from negative class
-            train_neg_df = neg_df.sample(n=neg_num)
-            
-            # Get the remaining negative samples
-            test_neg_df = neg_df
-            
-            # Combine positive and negative samples for training
-            train_df = pd.concat([train_pos_df, train_neg_df])
-            X_train = train_df.values
-            y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-            
-            # Store original indices for training set
-            train_indices = train_df.index.values
-            
-            # Combine positive and negative samples for testing
-            test_df = pd.concat([test_pos_df, test_neg_df])
-            X_test = test_df.values
-            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-        
-            # Store original indices for test set
-            test_indices = test_df.index.values  
-            metric = 'auroc'
-            # Select parameters and train the model
-            parameters = select_parameter(X_train, y_train, metric)
-            best_svm = svm.SVC(**parameters)
-            best_svm.fit(X_train, y_train)
-            y_scores = best_svm.decision_function(X_test)
 
-            for arrayindex, gene in enumerate(test_indices):
-                if gene in result_dict:
-                    result_dict[gene].append(y_scores[arrayindex])
-                else:
-                    result_dict[gene] = [y_scores[arrayindex]]
+        with Pool() as pool:
+            partial_func = partial(single_bagging_neg, neg_df, neg_num, train_pos_df, test_pos_df)
+            result_dict_lists = pool.map(partial_func, range(20))
 
+        result_dict = merge_results(result_dict_lists)
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}
         # print('neg_ran_bagging',len(result_averages))
         ranked_predict_index, results = eval_bagging(np.array(list(result_averages.values())), y[df.index.get_indexer(list(result_averages.keys()))])

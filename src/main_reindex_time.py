@@ -3,6 +3,7 @@ import os
 from features_reindex import get_feature, read_data, read_data_timecut
 from model_reindex import evaluate_disease
 import sys
+import multiprocessing as mp
 
 root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 
@@ -12,15 +13,16 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-# feature = 'prose'
-feature = sys.argv[1]
+test_bug = True
 
-# out_path = os.path.join(root,'results',feature)
-# out_path = os.path.join(root,'results/prose_2019_full')
-out_path = os.path.join(root,sys.argv[2])
-
-time = int(sys.argv[3])
-# time = 2019
+if test_bug:
+    feature = 'ppi'
+    out_path = os.path.join(root,'results/temp')
+    time = 2016
+else:
+    feature = sys.argv[1]
+    out_path = os.path.join(root,sys.argv[2])
+    time = int(sys.argv[3])
 
 if not os.path.exists(out_path):
     os.mkdir(out_path)
@@ -59,7 +61,32 @@ else:
         .tolist())
 print(feature, len(selected_diseases),len(feature_df))
 all_results = []
-for disease in selected_diseases[22:]:
+
+def process_disease(disease):
+    print(disease, len(all_df[all_df['disease_id'] == disease]))
+
+    if time_spilt:
+        df, y = read_data_timecut(disease, all_df, feature_df, time)
+    else:
+        df, y = read_data(disease, all_df, feature_df)
+
+    result_df = evaluate_disease(df, y, methods, time_spilt)
+
+    # Save result_df to CSV
+    result_df.to_csv(os.path.join(out_path, f"{disease}.csv"), index=False)
+
+    # Calculate mean metrics
+    mean_df = result_df.groupby(['method'])[
+        ['top_recall_25', 'top_recall_300', 'top_recall_10%', 'top_precision_10%', 'max_precision_10%',
+         'top_recall_30%', 'top_precision_30%', 'max_precision_30%', 'pm_0.5%', 'pm_1%', 'pm_5%', 'pm_10%',
+         'pm_15%', 'pm_20%', 'pm_25%', 'pm_30%', 'auroc', "rank_ratio", 'bedroc_1', 'bedroc_5', 'bedroc_10',
+         'bedroc_30']].mean().reset_index()
+
+    mean_df['disease'] = disease
+
+    return mean_df
+
+for disease in selected_diseases[:4]:
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, feature_df,time)
