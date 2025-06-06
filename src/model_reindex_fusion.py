@@ -16,6 +16,8 @@ from scipy.cluster.hierarchy import fcluster
 from multiprocessing import Pool
 from functools import partial
 from collections import defaultdict
+from sklearn.metrics.pairwise import rbf_kernel
+from scipy.linalg import logm, expm, eigh
 
 def merge_results(results_list):
     merged = defaultdict(list)
@@ -104,48 +106,7 @@ def top_recall_precision(frac,y_scores,y_test):
 
     return recall, precision, max_precision
 
-def eval_assemble(y_test,y_scores):
-    
-    rank_ratio = average_rank_ratio(y_scores, y_test)
-        
-    ############### AUCROC
-    if y_scores is not None:
-        try:
-            auroc = roc_auc_score(y_test, y_scores)
-        except:
-            auroc = "AUROC computation failed (possibly due to label issues)"
-    else:
-        auroc = "AUROC not available (no predict_proba or decision_function)"
 
-
-    ############### BEDROC
-    scores = np.column_stack((y_test, y_scores))  # Stack labels and scores as columns
-    scores = scores[scores[:, 1].argsort()[::-1]]  # Sort by scores in descending order
-    ############# top recall percentage
-    top_recall_10, top_precision_10, max_precision_10 = top_recall_precision(0.1,y_scores,y_test)
-    top_recall_30, top_precision_30, max_precision_30 = top_recall_precision(0.3,y_scores,y_test)
-    ############### top recall
-    total_positives = np.sum(y_test)
-    top_25_positives = np.sum(scores[:25, 0])
-    top_300_positives = np.sum(scores[:300, 0])
-    
-    top_25_recall = top_25_positives / total_positives if total_positives > 0 else 0
-    top_300_recall = top_300_positives / total_positives if total_positives > 0 else 0
-    return (
-        # recall_score(y_test, y_pred, average="binary", pos_label=1), 
-        # precision_score(y_test, y_pred, average="binary", pos_label=1), 
-        # f1_score(y_test, y_pred, average="binary", pos_label=1),
-        top_25_recall,
-        top_300_recall,
-        top_recall_10, top_precision_10, max_precision_10,
-        top_recall_30, top_precision_30, max_precision_30,
-        auroc,
-        rank_ratio,
-        CalcBEDROC(scores, col=0, alpha=160.9),
-        CalcBEDROC(scores, col=0, alpha=32.2),
-        CalcBEDROC(scores, col=0, alpha=16.1),
-        CalcBEDROC(scores, col=0, alpha=5.3)
-    )
 def calculate_er_n(scores, y_test, n):
     """
     Calculate ER_n where the top n predictions are considered positive.
@@ -306,28 +267,6 @@ def string_convert(gene):
     else:
         return None
 
-def mask_enrich(df,train_pos):
-    enr = gp.enrichr(gene_list=train_pos.map(stringId2name).tolist(),
-                    gene_sets=['KEGG_2021_Human'],
-                    organism='human', 
-                    outdir=None, 
-                    )
-    enr_df = enr.results
-    gene_lists = enr_df[enr_df['Adjusted P-value']<0.01]['Genes'].to_list()
-    mask_gene_pool = set()
-    for items in gene_lists:
-        genes = items.split(';')
-        mask_gene_pool.update(set(genes))
-    mask_index = df[df.index.isin([string_convert(gene) for gene in list(mask_gene_pool)])].index
-    return mask_index
-
-def mask_ppi_loop(df,train_pos, threshold):
-    ppi_connection = pd.read_csv(os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/data/stringdb/2023','9606.protein.links.v12.0.txt'), sep=' ', header=0).convert_dtypes().replace(0, float('nan'))
-    ppi_connection_med = ppi_connection[ppi_connection['combined_score']>threshold]
-    first_loop_genes = set(ppi_connection_med[ppi_connection_med['protein1'].isin(list(train_pos))]['protein2'].tolist())
-    mask_index = df[df.index.isin(first_loop_genes)].index
-    return mask_index
-
 def get_top_n_predictions(ranked_predict_index,test_indices,n):
     genes = []
     sorted_indices = np.argsort(ranked_predict_index)
@@ -466,92 +405,59 @@ def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
 #     # Return results for this iteration with gene indices
 #     return [(gene, y_scores[arrayindex]) for arrayindex, gene in enumerate(test_indices)]
 
+def is_spd(A, tol=1e-8):
+    # Check symmetry
+    if not np.allclose(A, A.T, atol=tol):
+        return False
+    # Check eigenvalues > 0
+    eigvals = np.linalg.eigvalsh(A)
+    return np.all(eigvals > tol)
 
-def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
+def project_to_spd(A, tol=1e-8):
+    # Make symmetric
+    A = (A + A.T) / 2
+    eigvals, eigvecs = eigh(A)
+    eigvals_clipped = np.clip(eigvals, tol, None)  # set eigenvalues < tol to tol
+    return eigvecs @ np.diag(eigvals_clipped) @ eigvecs.T
+
+def get_best_gamma_kernel(X, y, cv=3):
+    param_grid = {
+        'C': [0.1, 0.5, 0.8, 1, 10],
+        'kernel': ['rbf'],
+        'gamma': ['scale', 'auto', 0.1, 1, 10, 100]
+    }
+
+    grid = GridSearchCV(svm.SVC(kernel='rbf'), param_grid, cv=cv, scoring='roc_auc', verbose=0)
+    grid.fit(X, y)
+    best_gamma = grid.best_params_['gamma']
+    K = rbf_kernel(X, X, gamma=best_gamma)
+    return K, best_gamma
+
+def weighted_log_euclidean_mean(kernels, weights):
+    weights = np.array(weights)
+    weights = weights / weights.sum()
+    log_sum = np.zeros_like(kernels[0])
+    for w, K in zip(weights, kernels):
+        log_sum += w * logm(K)
+    return expm(log_sum)
+
+def fuse_kernels(features, y, weights=None):
+    kernels = []
+    for X in features:
+        K, best_gamma = get_best_gamma_kernel(X, y)
+        # Ensure SPD
+        if not is_spd(K):
+            K = project_to_spd(K)
+        kernels.append(K)
+    if weights is None:
+        weights = [1/len(kernels)] * len(kernels)
+    K_fused = weighted_log_euclidean_mean(kernels, weights)
+    return K_fused
+
+def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
-    if 'ooc' in methods:
-        # Create test set by combining positive test samples and all negative samples
-        # Using DataFrames to maintain indices
-        neg_df = df[y == 0]
-        
-        # Convert to numpy arrays for modeling but keep track of original indices
-        X_test_pos_np = test_pos_df.values
-        X_neg_np = neg_df.values
-        X_test = np.vstack((X_test_pos_np, X_neg_np))
-        
-        # Create labels for evaluation
-        y_test = np.array([1] * len(test_pos_df) + [-1] * len(neg_df))
-        
-        # Keep track of original indices for the test set
-        test_indices = np.concatenate([test_pos_df.index.values, neg_df.index.values])
-        
-        param_grid = {
-            'kernel': ['rbf'],
-            'gamma': ['scale', 'auto', 0.1, 0.01, 0.001],
-            'nu': [0.5, 0.8, 0.9]
-        }
-        
-        # Use train_pos_df values for training
-        X_train_pos_np = train_pos_df.values
-        y_train_pos_np = np.ones(len(train_pos_df))
-        
-        grid_search = GridSearchCV(svm.OneClassSVM(), param_grid, cv=3, scoring='neg_mean_squared_error')
-        grid_search.fit(X_train_pos_np)
-        best_svm = svm.OneClassSVM(**grid_search.best_params_)
-        ranked_predict_index, results = eval(best_svm, X_train_pos_np, y_train_pos_np, X_test, y_test)
-        
-        # For evaluation, you can use the original indices if needed
-        result_df.loc[len(result_df.index)] = [
-            "ooc", 
-            fold, 
-            str(grid_search.best_params_), 
-            *results
-        ]
-        
-        # If you need to map predictions back to the original dataframe:
-        # print(get_top_n_predictions(ranked_predict_index,test_indices,10))
-
-    # if 'random_negative' in methods:
-    #     # Work with DataFrames to maintain indices
-    #     neg_df = df[y == 0]
-        
-    #     # Randomly select 'neg_num' samples from negative class
-    #     train_neg_df = neg_df.sample(n=neg_num, random_state=42)
-        
-    #     # Get the remaining negative samples
-    #     test_neg_df = neg_df.drop(train_neg_df.index)
-        
-    #     # Combine positive and negative samples for training
-    #     train_df = pd.concat([train_pos_df, train_neg_df])
-    #     X_train = train_df.values
-    #     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-        
-    #     # Store original indices for training set
-    #     train_indices = train_df.index.values
-        
-    #     # Combine positive and negative samples for testing
-    #     test_df = pd.concat([test_pos_df, test_neg_df])
-    #     X_test = test_df.values
-    #     y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-        
-    #     # Store original indices for test set
-    #     test_indices = test_df.index.values
-        
-    #     for metric in ['auroc']:
-    #         # Select parameters and train the model
-    #         parameters = select_parameter(X_train, y_train, metric)
-    #         best_svm = svm.SVC(**parameters)
-    #         ranked_predict_index, results = eval(best_svm, X_train, y_train, X_test, y_test)
-            
-    #         # Add results to the result dataframe
-    #         result_df.loc[len(result_df.index)] = [
-    #             "random_negative" + metric,
-    #             fold,
-    #             str(parameters), 
-    #             *results
-    #         ]
 
     if 'random_negative' in methods:
         # Work with DataFrames to maintain indices
@@ -565,8 +471,23 @@ def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
         
         # Combine positive and negative samples for training
         train_df = pd.concat([train_pos_df, train_neg_df])
-        X_train = train_df.values
+
+        feature_mats = []
+        for feature_name in feature_list:
+            select_columns = [col for col in df.columns if col.startswith(feature_name)]
+            feature_mats.append(df[select_columns].values)
+
+        feature_weights = [1 / len(feature_list)] * len(feature_list)
+
         y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+
+        K_fused = fuse_kernels(feature_mats, y_train, feature_weights)
+
+########################################################
+        svm = svm.SVC(kernel='precomputed')
+        svm.fit(K_fused, y_train)
+###########################################################
+        
         
         # Store original indices for training set
         train_indices = train_df.index.values
@@ -599,7 +520,7 @@ def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
 
         with Pool() as pool:
             partial_func = partial(single_bagging_neg, neg_df, neg_num, train_pos_df, test_pos_df)
-            result_dict_lists = pool.map(partial_func, range(1))
+            result_dict_lists = pool.map(partial_func, range(20))
 
         result_dict = merge_results(result_dict_lists)
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}

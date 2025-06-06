@@ -16,9 +16,9 @@ time_spilt = True
 test_bug = True
 
 if test_bug:
-    feature = 'ppi'
-    out_path = os.path.join(root,'results/temp')
-    time = 2016
+    feature = 'ppi_2019'
+    out_path = os.path.join(root,'results/temp_para_1')
+    time = 2019
 else:
     feature = sys.argv[1]
     out_path = os.path.join(root,sys.argv[2])
@@ -38,7 +38,7 @@ all_df = all_df[all_df['string_id'].isin(feature_df['string_id'])]
 # methods = ['ooc','random_negative','pseudo_labeling','pseudo_labeling_mask']
 # methods = ['random_negative','pseudo_labeling','pseudo_labeling_mask','pseudo_labeling_cluster_all_mask']
 # methods = ['random_negative','random_negative_bagging','random_pos_negative_bagging']
-methods = ['random_negative','random_negative_bagging']
+methods = ['random_negative_bagging']
 
 
 
@@ -70,7 +70,7 @@ def process_disease(disease):
     else:
         df, y = read_data(disease, all_df, feature_df)
 
-    result_df = evaluate_disease(df, y, methods, time_spilt)
+    result_df = evaluate_disease(disease,df, y, methods, time_spilt)
 
     # Save result_df to CSV
     result_df.to_csv(os.path.join(out_path, f"{disease}.csv"), index=False)
@@ -86,13 +86,13 @@ def process_disease(disease):
 
     return mean_df
 
-for disease in selected_diseases[:4]:
+for disease in selected_diseases:
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, feature_df,time)
     else:
         df, y = read_data(disease, all_df, feature_df)
-    result_df = evaluate_disease(df, y, methods,time_spilt)
+    result_df = evaluate_disease(disease, df, y, methods,time_spilt)
     result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
     # Calculate mean metrics
     mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()

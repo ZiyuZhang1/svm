@@ -59,7 +59,7 @@ else:
         .tolist())
 print(feature, len(selected_diseases),len(feature_df))
 all_results = []
-for disease in selected_diseases[16:]:
+for disease in selected_diseases[32:]:
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, feature_df,time)

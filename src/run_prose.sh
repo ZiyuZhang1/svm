@@ -4,9 +4,9 @@
 source /itf-fi-ml/shared/users/ziyuzh/.venv/bin/activate
 
 # Change to the directory containing the Python script
-cd /itf-fi-ml/shared/users/ziyuzh/baseline/src
+cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 
-python main_reindex_time.py "prose" "results/prose_2019_full" 2019
+python main_reindex_time.py "prose" "results/prose_2019_posbag_full" 2019
 # python main_reindex_time.py "bioconcept" "results/bioconcept_2019_full" 2019
 # python main_reindex_time.py "esm2" "results/esm2_2019_full" 2019
 # python main_reindex_time.py "uniport" "results/uniport_2019_full" 2019
