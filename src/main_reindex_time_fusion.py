@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex import evaluate_disease
+from model_reindex_fusion import evaluate_disease
 import sys
 import multiprocessing as mp
 
@@ -11,14 +11,18 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-test_bug = True
+# test_bug = True
+test_bug = False
 
 if test_bug:
+    # feature_list = ['ppi_2019','bioconcept','uniport','esm2']
     feature_list = ['ppi_2019','bioconcept','uniport','esm2']
+
     out_path = os.path.join(root,'results/temp')
     time = 2019
 else:
-    feature = sys.argv[1]
+    feature_list = sys.argv[1]
+    feature_list = ['ppi_2019','bioconcept','uniport','esm2']
     out_path = os.path.join(root,sys.argv[2])
     time = int(sys.argv[3])
 
@@ -69,13 +73,13 @@ else:
 print(feature_list, len(selected_diseases),len(merged_df))
 all_results = []
 
-for disease in selected_diseases:
+for disease in selected_diseases[1:]:
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
-        df, y = read_data_timecut(disease, feature_list, all_df, merged_df,time)
+        df, y = read_data_timecut(disease, all_df, merged_df,time)
     else:
-        df, y = read_data(disease, feature_list, all_df, merged_df)
-    result_df = evaluate_disease(disease, df, y, methods,time_spilt)
+        df, y = read_data(disease, all_df, merged_df,time)
+    result_df = evaluate_disease(disease, feature_list, df, y, methods,time_spilt)
     result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
     # Calculate mean metrics
     mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()

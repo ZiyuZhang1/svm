@@ -16,7 +16,7 @@ def read_data(disease, dga, features):
 
 def read_data_timecut(disease, dga, features,time):
     pos_genes_list = dga[dga['disease_id']==disease]['string_id']
-    columns_to_keep = [col for col in features.columns if col.startswith('feature') or col.startswith('string')]
+    columns_to_keep = [col for col in features.columns if 'feature' in col or col.startswith('string')]
     df = features[columns_to_keep]
     df['label'] = df['string_id'].isin(pos_genes_list).astype(int)
     df['test'] = df['string_id'].isin(dga[(dga['disease_id'] == disease) & (dga['first_pub_year'] > time)]['string_id']).astype(int)

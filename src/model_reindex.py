@@ -337,10 +337,10 @@ def get_top_n_predictions(ranked_predict_index,test_indices,n):
         genes.append(stringId2name[value])
     return genes
 
-def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
+def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
     # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
+    train_neg_df = neg_df.sample(n=neg_num,replace=True, random_state=seed)
     
     # Get the remaining negative samples
     test_neg_df = neg_df
@@ -374,7 +374,7 @@ def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
             result_dict_temp[gene] = [y_scores[arrayindex]]
     return result_dict_temp
 
-def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
+def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
 
     scores_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
@@ -395,11 +395,13 @@ def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
     else:
         probabilities = probabilities / probabilities.sum()
 
+    np.random.seed(seed)
+
     sampled_indices = np.random.choice(train_pos_df.index, size=len(train_pos_df), replace=True, p=probabilities)
     train_pos_df_ran = train_pos_df.loc[sampled_indices]
 
     # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
     
     # Get the remaining negative samples
     test_neg_df = neg_df
@@ -597,9 +599,15 @@ def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
 
+        num_processes = 20
+        base_seed = 42
+        seeds = [base_seed + i for i in range(num_processes)]
+
+        # Create argument tuples for each process call
+        args_list = [(neg_df, neg_num, train_pos_df, test_pos_df, seed, None) for seed in seeds]
+
         with Pool() as pool:
-            partial_func = partial(single_bagging_neg, neg_df, neg_num, train_pos_df, test_pos_df)
-            result_dict_lists = pool.map(partial_func, range(1))
+            result_dict_lists = pool.starmap(single_bagging_neg, args_list)
 
         result_dict = merge_results(result_dict_lists)
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}
@@ -618,9 +626,15 @@ def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
 
+        num_processes = 20
+        base_seed = 42
+        seeds = [base_seed + i for i in range(num_processes)]
+
+        # Create argument tuples for each process call
+        args_list = [(disease, neg_df,neg_num,train_pos_df,test_pos_df, seed, None) for seed in seeds]
+
         with Pool() as pool:
-            partial_func = partial(single_bagging_pos_neg, disease, neg_df, neg_num, train_pos_df, test_pos_df)
-            result_dict_lists = pool.map(partial_func, range(20))
+            result_dict_lists = pool.starmap(single_bagging_pos_neg, args_list)
 
         result_dict = merge_results(result_dict_lists)
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}

@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex import evaluate_disease
+from model_reindex_no_para import evaluate_disease
 import sys
 import multiprocessing as mp
 

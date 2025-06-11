@@ -16,8 +16,6 @@ from scipy.cluster.hierarchy import fcluster
 from multiprocessing import Pool
 from functools import partial
 from collections import defaultdict
-from sklearn.metrics.pairwise import rbf_kernel
-from scipy.linalg import logm, expm, eigh
 
 def merge_results(results_list):
     merged = defaultdict(list)
@@ -106,7 +104,48 @@ def top_recall_precision(frac,y_scores,y_test):
 
     return recall, precision, max_precision
 
+def eval_assemble(y_test,y_scores):
+    
+    rank_ratio = average_rank_ratio(y_scores, y_test)
+        
+    ############### AUCROC
+    if y_scores is not None:
+        try:
+            auroc = roc_auc_score(y_test, y_scores)
+        except:
+            auroc = "AUROC computation failed (possibly due to label issues)"
+    else:
+        auroc = "AUROC not available (no predict_proba or decision_function)"
 
+
+    ############### BEDROC
+    scores = np.column_stack((y_test, y_scores))  # Stack labels and scores as columns
+    scores = scores[scores[:, 1].argsort()[::-1]]  # Sort by scores in descending order
+    ############# top recall percentage
+    top_recall_10, top_precision_10, max_precision_10 = top_recall_precision(0.1,y_scores,y_test)
+    top_recall_30, top_precision_30, max_precision_30 = top_recall_precision(0.3,y_scores,y_test)
+    ############### top recall
+    total_positives = np.sum(y_test)
+    top_25_positives = np.sum(scores[:25, 0])
+    top_300_positives = np.sum(scores[:300, 0])
+    
+    top_25_recall = top_25_positives / total_positives if total_positives > 0 else 0
+    top_300_recall = top_300_positives / total_positives if total_positives > 0 else 0
+    return (
+        # recall_score(y_test, y_pred, average="binary", pos_label=1), 
+        # precision_score(y_test, y_pred, average="binary", pos_label=1), 
+        # f1_score(y_test, y_pred, average="binary", pos_label=1),
+        top_25_recall,
+        top_300_recall,
+        top_recall_10, top_precision_10, max_precision_10,
+        top_recall_30, top_precision_30, max_precision_30,
+        auroc,
+        rank_ratio,
+        CalcBEDROC(scores, col=0, alpha=160.9),
+        CalcBEDROC(scores, col=0, alpha=32.2),
+        CalcBEDROC(scores, col=0, alpha=16.1),
+        CalcBEDROC(scores, col=0, alpha=5.3)
+    )
 def calculate_er_n(scores, y_test, n):
     """
     Calculate ER_n where the top n predictions are considered positive.
@@ -267,6 +306,28 @@ def string_convert(gene):
     else:
         return None
 
+def mask_enrich(df,train_pos):
+    enr = gp.enrichr(gene_list=train_pos.map(stringId2name).tolist(),
+                    gene_sets=['KEGG_2021_Human'],
+                    organism='human', 
+                    outdir=None, 
+                    )
+    enr_df = enr.results
+    gene_lists = enr_df[enr_df['Adjusted P-value']<0.01]['Genes'].to_list()
+    mask_gene_pool = set()
+    for items in gene_lists:
+        genes = items.split(';')
+        mask_gene_pool.update(set(genes))
+    mask_index = df[df.index.isin([string_convert(gene) for gene in list(mask_gene_pool)])].index
+    return mask_index
+
+def mask_ppi_loop(df,train_pos, threshold):
+    ppi_connection = pd.read_csv(os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/data/stringdb/2023','9606.protein.links.v12.0.txt'), sep=' ', header=0).convert_dtypes().replace(0, float('nan'))
+    ppi_connection_med = ppi_connection[ppi_connection['combined_score']>threshold]
+    first_loop_genes = set(ppi_connection_med[ppi_connection_med['protein1'].isin(list(train_pos))]['protein2'].tolist())
+    mask_index = df[df.index.isin(first_loop_genes)].index
+    return mask_index
+
 def get_top_n_predictions(ranked_predict_index,test_indices,n):
     genes = []
     sorted_indices = np.argsort(ranked_predict_index)
@@ -276,10 +337,10 @@ def get_top_n_predictions(ranked_predict_index,test_indices,n):
         genes.append(stringId2name[value])
     return genes
 
-def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
+def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
     # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
+    train_neg_df = neg_df.sample(n=neg_num,replace=True, random_state=seed)
     
     # Get the remaining negative samples
     test_neg_df = neg_df
@@ -313,7 +374,7 @@ def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
             result_dict_temp[gene] = [y_scores[arrayindex]]
     return result_dict_temp
 
-def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
+def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
 
     scores_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
@@ -334,11 +395,13 @@ def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
     else:
         probabilities = probabilities / probabilities.sum()
 
+    np.random.seed(seed)
+
     sampled_indices = np.random.choice(train_pos_df.index, size=len(train_pos_df), replace=True, p=probabilities)
     train_pos_df_ran = train_pos_df.loc[sampled_indices]
 
     # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
     
     # Get the remaining negative samples
     test_neg_df = neg_df
@@ -405,68 +468,93 @@ def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
 #     # Return results for this iteration with gene indices
 #     return [(gene, y_scores[arrayindex]) for arrayindex, gene in enumerate(test_indices)]
 
-def is_spd(A, tol=1e-8):
-    # Check symmetry
-    if not np.allclose(A, A.T, atol=tol):
-        return False
-    # Check eigenvalues > 0
-    eigvals = np.linalg.eigvalsh(A)
-    return np.all(eigvals > tol)
 
-def project_to_spd(A, tol=1e-8):
-    # Make symmetric
-    A = (A + A.T) / 2
-    eigvals, eigvecs = eigh(A)
-    eigvals_clipped = np.clip(eigvals, tol, None)  # set eigenvalues < tol to tol
-    return eigvecs @ np.diag(eigvals_clipped) @ eigvecs.T
-
-def get_best_gamma_kernel(X, y, cv=3):
-    param_grid = {
-        'C': [0.1, 0.5, 0.8, 1, 10],
-        'kernel': ['rbf'],
-        'gamma': ['scale', 'auto', 0.1, 1, 10, 100]
-    }
-
-    grid = GridSearchCV(svm.SVC(kernel='rbf'), param_grid, cv=cv, scoring='roc_auc', verbose=0)
-    grid.fit(X, y)
-    best_gamma = grid.best_params_['gamma']
-
-    if best_gamma == 'scale':
-        best_gamma = 1.0 / (X.shape[1] * X.var())
-    elif best_gamma == 'auto':
-        best_gamma = 1.0 / X.shape[1]
-
-    K = rbf_kernel(X, X, gamma=best_gamma)
-    return K, best_gamma
-
-def weighted_log_euclidean_mean(kernels, weights):
-    weights = np.array(weights)
-    weights = weights / weights.sum()
-    log_sum = np.zeros_like(kernels[0])
-    for w, K in zip(weights, kernels):
-        log_sum += w * logm(K)
-    return expm(log_sum)
-
-def fuse_kernels(features, y, weights=None):
-    kernels = []
-    for X in features:
-        K, best_gamma = get_best_gamma_kernel(X, y)
-        # Ensure SPD
-        if not is_spd(K):
-            K = project_to_spd(K)
-        kernels.append(K)
-    if weights is None:
-        weights = [1/len(kernels)] * len(kernels)
-    K_fused = weighted_log_euclidean_mean(kernels, weights)
-    return K_fused, kernels
-
-def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
+def one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
-    if 'fused' in feature_list:
-        feature_list.remove('fused')
+    if 'ooc' in methods:
+        # Create test set by combining positive test samples and all negative samples
+        # Using DataFrames to maintain indices
+        neg_df = df[y == 0]
         
+        # Convert to numpy arrays for modeling but keep track of original indices
+        X_test_pos_np = test_pos_df.values
+        X_neg_np = neg_df.values
+        X_test = np.vstack((X_test_pos_np, X_neg_np))
+        
+        # Create labels for evaluation
+        y_test = np.array([1] * len(test_pos_df) + [-1] * len(neg_df))
+        
+        # Keep track of original indices for the test set
+        test_indices = np.concatenate([test_pos_df.index.values, neg_df.index.values])
+        
+        param_grid = {
+            'kernel': ['rbf'],
+            'gamma': ['scale', 'auto', 0.1, 0.01, 0.001],
+            'nu': [0.5, 0.8, 0.9]
+        }
+        
+        # Use train_pos_df values for training
+        X_train_pos_np = train_pos_df.values
+        y_train_pos_np = np.ones(len(train_pos_df))
+        
+        grid_search = GridSearchCV(svm.OneClassSVM(), param_grid, cv=3, scoring='neg_mean_squared_error')
+        grid_search.fit(X_train_pos_np)
+        best_svm = svm.OneClassSVM(**grid_search.best_params_)
+        ranked_predict_index, results = eval(best_svm, X_train_pos_np, y_train_pos_np, X_test, y_test)
+        
+        # For evaluation, you can use the original indices if needed
+        result_df.loc[len(result_df.index)] = [
+            "ooc", 
+            fold, 
+            str(grid_search.best_params_), 
+            *results
+        ]
+        
+        # If you need to map predictions back to the original dataframe:
+        # print(get_top_n_predictions(ranked_predict_index,test_indices,10))
+
+    # if 'random_negative' in methods:
+    #     # Work with DataFrames to maintain indices
+    #     neg_df = df[y == 0]
+        
+    #     # Randomly select 'neg_num' samples from negative class
+    #     train_neg_df = neg_df.sample(n=neg_num, random_state=42)
+        
+    #     # Get the remaining negative samples
+    #     test_neg_df = neg_df.drop(train_neg_df.index)
+        
+    #     # Combine positive and negative samples for training
+    #     train_df = pd.concat([train_pos_df, train_neg_df])
+    #     X_train = train_df.values
+    #     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+        
+    #     # Store original indices for training set
+    #     train_indices = train_df.index.values
+        
+    #     # Combine positive and negative samples for testing
+    #     test_df = pd.concat([test_pos_df, test_neg_df])
+    #     X_test = test_df.values
+    #     y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+        
+    #     # Store original indices for test set
+    #     test_indices = test_df.index.values
+        
+    #     for metric in ['auroc']:
+    #         # Select parameters and train the model
+    #         parameters = select_parameter(X_train, y_train, metric)
+    #         best_svm = svm.SVC(**parameters)
+    #         ranked_predict_index, results = eval(best_svm, X_train, y_train, X_test, y_test)
+            
+    #         # Add results to the result dataframe
+    #         result_df.loc[len(result_df.index)] = [
+    #             "random_negative" + metric,
+    #             fold,
+    #             str(parameters), 
+    #             *results
+    #         ]
+
     if 'random_negative' in methods:
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
@@ -479,292 +567,167 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         
         # Combine positive and negative samples for training
         train_df = pd.concat([train_pos_df, train_neg_df])
-        test_df = pd.concat([test_pos_df, test_neg_df])
-
-        X_train_mats = []
-        X_test_mats = []
-        for feature_name in feature_list:
-            select_columns = [col for col in df.columns if col.startswith(feature_name)]
-            X_train_mats.append(train_df[select_columns].values)
-            X_test_mats.append(test_df[select_columns].values)
-
-        feature_weights = [1 / len(feature_list)] * len(feature_list)
-
+        X_train = train_df.values
         y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-
-        # Store gamma per feature set
-        gammas = []
-        kernels_train = []
-        kernels_test = []
-
-        # For each feature set
-        for X_tr, X_te in zip(X_train_mats, X_test_mats):
-            K_train, best_gamma = get_best_gamma_kernel(X_tr, y_train)
-            K_test = rbf_kernel(X_te, X_tr, gamma=best_gamma)
-
-            if not is_spd(K_train): K_train = project_to_spd(K_train)
-
-            kernels_train.append(K_train)
-            kernels_test.append(K_test)
-
-        # Fuse
-        K_fused_train = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_train))
-        K_fused_test  = sum(w * K_test_i for w, K_test_i in zip(feature_weights, kernels_test))
-
-        kernels_train.append(K_fused_train)
-        kernels_test.append(K_fused_test)
-        feature_list.append('fused')
-
+        
         # Store original indices for training set
         train_indices = train_df.index.values
+        
+        # Combine positive and negative samples for testing
+        test_df = pd.concat([test_pos_df, test_neg_df])
+        X_test = test_df.values
+        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+        
         # Store original indices for test set
         test_indices = test_df.index.values
-
-        for feature_index, feature_name in enumerate(feature_list):
-
-            best_svm = svm.SVC(kernel='precomputed')
-            best_svm.fit(kernels_train[feature_index], y_train)
-            y_scores = best_svm.decision_function(kernels_test[feature_index])
-
-            ranked_predict_index, results = eval_bagging(y_scores, y_test)
+        # print('neg_ran',len(test_indices))
+        for metric in ['auroc']:
+            # Select parameters and train the model
+            parameters = select_parameter(X_train, y_train, metric)
+            best_svm = svm.SVC(**parameters)
+            ranked_predict_index, results = eval(best_svm, X_train, y_train, X_test, y_test)
             
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = [
-                "random_negative",
+                "random_negative" + metric,
                 fold,
-                feature_list[feature_index], 
+                str(parameters), 
                 *results
             ]
 
     if 'random_negative_bagging' in methods:
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
-        result_dict_lists = []
-        for seed in [42,43,44]:
-            result_dict_temp = dict()
+        result_dict = dict()
+
+        for iters in range(20):
+
+            seed = iters + 42
+
             # Randomly select 'neg_num' samples from negative class
-            train_neg_df = neg_df.sample(n=neg_num,replace=True, random_state=seed)
-            
-            # Get the all negative samples
+            train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+
+            # Get the remaining negative samples
             test_neg_df = neg_df
-            
+
             # Combine positive and negative samples for training
             train_df = pd.concat([train_pos_df, train_neg_df])
-            test_df = pd.concat([test_pos_df, test_neg_df])
-
-            X_train_mats = []
-            X_test_mats = []
-            for feature_name in feature_list:
-                select_columns = [col for col in df.columns if col.startswith(feature_name)]
-                X_train_mats.append(train_df[select_columns].values)
-                X_test_mats.append(test_df[select_columns].values)
-
-            feature_weights = [1 / len(feature_list)] * len(feature_list)
-
+            X_train = train_df.values
             y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-
-            # Store gamma per feature set
-            gammas = []
-            kernels_train = []
-            kernels_test = []
-
-            # For each feature set
-            for X_tr, X_te in zip(X_train_mats, X_test_mats):
-                K_train, best_gamma = get_best_gamma_kernel(X_tr, y_train)
-                K_test = rbf_kernel(X_te, X_tr, gamma=best_gamma)
-
-                if not is_spd(K_train): K_train = project_to_spd(K_train)
-
-                kernels_train.append(K_train)
-                kernels_test.append(K_test)
-
-            # Fuse
-            K_fused_train = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_train))
-            K_fused_test  = sum(w * K_test_i for w, K_test_i in zip(feature_weights, kernels_test))
-
-            kernels_train.append(K_fused_train)
-            kernels_test.append(K_fused_test)
-            feature_list.append('fused')
 
             # Store original indices for training set
             train_indices = train_df.index.values
+
+            # Combine positive and negative samples for testing
+            test_df = pd.concat([test_pos_df, test_neg_df])
+            X_test = test_df.values
+            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+
             # Store original indices for test set
-            test_indices = test_df.index.values
+            test_indices = test_df.index.values  
+            metric = 'auroc'
+            # Select parameters and train the model
+            parameters = select_parameter(X_train, y_train, metric)
+            best_svm = svm.SVC(**parameters)
+            best_svm.fit(X_train, y_train)
+            y_scores = best_svm.decision_function(X_test)
 
-            for feature_index, feature_name in enumerate(feature_list):
+            for arrayindex, gene in enumerate(test_indices):
+                if gene in result_dict:
+                    result_dict[gene].append(y_scores[arrayindex])
+                else:
+                    result_dict[gene] = [y_scores[arrayindex]]
 
-                best_svm = svm.SVC(kernel='precomputed')
-                best_svm.fit(kernels_train[feature_index], y_train)
-                y_scores = best_svm.decision_function(kernels_test[feature_index])
-
-                for arrayindex, gene in enumerate(test_indices):
-                    key_name = feature_name+'_'+gene
-                    if key_name in result_dict_temp:
-                        result_dict_temp[key_name].append(y_scores[arrayindex])
-                    else:
-        
-                        result_dict_temp[key_name] = [y_scores[arrayindex]]
-            result_dict_lists.append(result_dict_temp)
-
-        result_dict = merge_results(result_dict_lists)
-        result_averages = {key: np.mean(values) for key, values in result_dict.items()}
-
-        for feature_name in feature_list:
-            feature_result_dict = {k: v for k, v in result_averages.items() if feature_name in str(k)}
-            feature_gene_id = [item.split('_')[1] for item in feature_result_dict if '_' in item]
-            ranked_predict_index, results = eval_bagging(np.array(list(feature_result_dict.values())), y[df.index.get_indexer(feature_gene_id)])
-            # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = [
-                "random_negative",
-                fold,
-                feature_list[feature_index], 
-                *results
-            ]
-
-    if 'random_negative_bagging' in methods:
-        # Work with DataFrames to maintain indices
-        neg_df = df[y == 0]
-
-        with Pool() as pool:
-            partial_func = partial(single_bagging_neg, neg_df, neg_num, train_pos_df, test_pos_df)
-            result_dict_lists = pool.map(partial_func, range(20))
-
-        result_dict = merge_results(result_dict_lists)
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}
         # print('neg_ran_bagging',len(result_averages))
         ranked_predict_index, results = eval_bagging(np.array(list(result_averages.values())), y[df.index.get_indexer(list(result_averages.keys()))])
-            
+
         # Add results to the result dataframe
         result_df.loc[len(result_df.index)] = [
-            "random_negative_bagging",
+            "random_negative_bagging" + metric,
             fold,
-            str('parameters'), 
+            str(parameters), 
             *results
         ]
         
     if 'random_pos_negative_bagging' in methods:
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
+        result_dict = dict()
 
-        with Pool() as pool:
-            partial_func = partial(single_bagging_pos_neg, disease, neg_df, neg_num, train_pos_df, test_pos_df)
-            result_dict_lists = pool.map(partial_func, range(20))
+        for iters in range(20):
 
-        result_dict = merge_results(result_dict_lists)
+            seed = iters + 42
+
+            scores_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
+
+            sub_df = scores_df[scores_df['disease_id'] == disease]
+
+            # Filter only rows where string_id is in sampled_ids
+            filtered = sub_df[sub_df['string_id'].isin(train_pos_df.index)]
+
+            # Reindex to match the order of sampled_ids
+            filtered = filtered.set_index('string_id').loc[train_pos_df.index]
+
+            # Get the score column as probabilities
+            probabilities = filtered['score'].values
+
+            if probabilities.sum() == 0:
+                probabilities = np.ones_like(probabilities) / len(probabilities)
+            else:
+                probabilities = probabilities / probabilities.sum()
+
+            np.random.seed(seed)
+
+            sampled_indices = np.random.choice(train_pos_df.index, size=len(train_pos_df), replace=True, p=probabilities)
+            train_pos_df_ran = train_pos_df.loc[sampled_indices]
+
+            # Randomly select 'neg_num' samples from negative class
+            train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+            
+            # Get the remaining negative samples
+            test_neg_df = neg_df
+            
+            # Combine positive and negative samples for training
+            train_df = pd.concat([train_pos_df_ran, train_neg_df])
+            X_train = train_df.values
+            y_train = np.array([1] * len(train_pos_df_ran) + [0] * len(train_neg_df))
+            
+            # Store original indices for training set
+            # train_indices = train_df.index.values
+            
+            # Combine positive and negative samples for testing
+            test_df = pd.concat([test_pos_df, test_neg_df])
+            X_test = test_df.values
+            # y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+
+            # Store original indices for test set
+            test_indices = test_df.index.values  
+            metric = 'auroc'
+            # Select parameters and train the model
+            parameters = select_parameter(X_train, y_train, metric)
+            best_svm = svm.SVC(**parameters)
+            best_svm.fit(X_train, y_train)
+            y_scores = best_svm.decision_function(X_test)
+
+            for arrayindex, gene in enumerate(test_indices):
+                if gene in result_dict:
+                    result_dict[gene].append(y_scores[arrayindex])
+                else:
+                    result_dict[gene] = [y_scores[arrayindex]]
+
         result_averages = {key: np.mean(values) for key, values in result_dict.items()}
         # print('neg_ran_bagging',len(result_averages))
         ranked_predict_index, results = eval_bagging(np.array(list(result_averages.values())), y[df.index.get_indexer(list(result_averages.keys()))])
-            
+
         # Add results to the result dataframe
         result_df.loc[len(result_df.index)] = [
-            "random_pos_negative_bagging",
+            "random_pos_negative_bagging" + metric,
             fold,
-            str('parameters'), 
+            str(parameters), 
             *results
         ]
 
-    # if 'random_negative_bagging' in methods:
-    #     # Work with DataFrames to maintain indices
-    #     neg_df = df[y == 0]
-        
-    #     # Number of parallel workers - adjust based on your system capabilities
-    #     # Usually set to number of CPU cores or slightly less
-    #     max_workers = 1  # Adjust this based on your system
-        
-    #     # Create a partial function with the common arguments
-    #     partial_process = functools.partial(
-    #         process_neg_bagging_iteration,
-    #         neg_df=neg_df,
-    #         neg_num=neg_num,
-    #         train_pos_df=train_pos_df,
-    #         test_pos_df=test_pos_df,
-    #         select_parameter=select_parameter,
-    #         metric='auroc'
-    #     )
-        
-    #     # Execute iterations in parallel
-    #     all_results = []
-    #     with ProcessPoolExecutor(max_workers=max_workers) as executor:
-    #         all_results = list(executor.map(partial_process, range(20)))
-        
-    #     # Flatten results and combine
-    #     result_dict = {}
-    #     for iteration_results in all_results:
-    #         for gene, score in iteration_results:
-    #             if gene in result_dict:
-    #                 result_dict[gene].append(score)
-    #             else:
-    #                 result_dict[gene] = [score]
-        
-    #     result_averages = {key: np.mean(values) for key, values in result_dict.items()}
-    #     # print('neg_ran_bagging',len(result_averages))
-    #     ranked_predict_index, results = eval_bagging(np.array(list(result_averages.values())), 
-    #                                                 y[df.index.get_indexer(list(result_averages.keys()))])
-            
-    #     # Add results to the result dataframe
-    #     result_df.loc[len(result_df.index)] = [
-    #         "random_negative_bagging" ,
-    #         fold,
-    #         str('parameters'), 
-    #         *results
-    #     ]
-
-    # if 'random_pos_negative_bagging' in methods:
-    #     # Work with DataFrames to maintain indices
-    #     neg_df = df[y == 0]
-    #     result_dict = dict()
-        
-    #     for iters in range(20):
-    #         # Randomly select train pos samples
-    #         train_ran_pos_df = train_pos_df.sample(n=len(train_pos_df), replace=True)
-
-    #         # Randomly select 'neg_num' samples from negative class
-    #         train_neg_df = neg_df.sample(n=neg_num)
-            
-    #         # Get the remaining negative samples
-    #         test_neg_df = neg_df
-            
-    #         # Combine positive and negative samples for training
-    #         train_df = pd.concat([train_ran_pos_df, train_neg_df])
-    #         X_train = train_df.values
-    #         y_train = np.array([1] * len(train_ran_pos_df) + [0] * len(train_neg_df))
-            
-    #         # Store original indices for training set
-    #         train_indices = train_df.index.values
-            
-    #         # Combine positive and negative samples for testing
-    #         test_df = pd.concat([test_pos_df, test_neg_df])
-    #         X_test = test_df.values
-    #         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-        
-    #         # Store original indices for test set
-    #         test_indices = test_df.index.values  
-    #         metric = 'auroc'
-    #         # Select parameters and train the model
-    #         parameters = select_parameter(X_train, y_train, metric)
-    #         best_svm = svm.SVC(**parameters)
-    #         best_svm.fit(X_train, y_train)
-    #         y_scores = best_svm.decision_function(X_test)
-
-    #         for arrayindex, gene in enumerate(test_indices):
-    #             if gene in result_dict:
-    #                 result_dict[gene].append(y_scores[arrayindex])
-    #             else:
-    #                 result_dict[gene] = [y_scores[arrayindex]]
-
-    #     result_averages = {key: np.mean(values) for key, values in result_dict.items()}
-    #     # print('neg_ran_bagging',len(result_averages))
-    #     ranked_predict_index, results = eval_bagging(np.array(list(result_averages.values())), y[df.index.get_indexer(list(result_averages.keys()))])
-            
-    #     # Add results to the result dataframe
-    #     result_df.loc[len(result_df.index)] = [
-    #         "random_pos_negative_bagging" + metric,
-    #         fold,
-    #         str(parameters), 
-    #         *results
-    #     ]
 
     if 'pseudo_labeling' in methods:
         # Get negative samples with their indices
@@ -815,20 +778,150 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
                     str(parameters), 
                     *results
                 ]
+    if 'pseudo_labeling_mask' in methods:
+        # Get negative samples with their indices
+        neg_df = df[y == 0]
+        X_neg = neg_df.values
+        y_neg = np.zeros(len(neg_df))
+        neg_indices = neg_df.index.values
+        
+        # Get positive training samples
+        X_train_pos_np = train_pos_df.values
+        y_train_pos_np = np.ones(len(train_pos_df))
 
-def evaluate_disease(disease, feature_list, df, y, methods,time_spilt):
+        # mask_ids = mask_enrich(df,train_pos_df.index).tolist()
+        # print(len(mask_ids))
+        mask_ids = mask_ppi_loop(df,train_pos_df.index, 900).tolist()
+
+        # mask_ids.extend(mask_ppi_loop(df,train_pos_df.index, 900).tolist())
+        # print(len(mask_ids))
+        
+        
+        for func in [1]:
+            # Use the modified function that returns indices
+            all_sampled_combined_indices, neg_relative_indices, X_train_neg, y_train_neg = select_pseudo_negatives_mask(
+                neg_num, X_train_pos_np, y_train_pos_np, X_neg, y_neg, func, neg_indices
+            )
+            
+            # Get original indices of selected negative samples
+            selected_neg_original_indices = neg_indices[neg_relative_indices]
+            
+            # Create test set - get indices of negative samples not used in training
+            test_neg_indices = np.setdiff1d(neg_indices, selected_neg_original_indices)
+            X_test_neg = neg_df.loc[test_neg_indices].values
+            
+            # Create training set
+            X_train = np.vstack((X_train_pos_np, X_train_neg))
+            y_train = np.hstack((y_train_pos_np, y_train_neg))
+            
+            # Store original indices for training and test sets
+            train_indices = np.concatenate([train_pos_df.index.values, selected_neg_original_indices])
+            test_indices = np.concatenate([test_pos_df.index.values, test_neg_indices])
+            
+            # Create test set
+            X_test_pos_np = test_pos_df.values
+            X_test = np.vstack((X_test_pos_np, X_test_neg))
+            y_test = np.array([1] * len(X_test_pos_np) + [0] * len(X_test_neg))
+            
+            for metric in ['auroc']:
+                parameters = select_parameter(X_train, y_train, metric)
+                best_svm = svm.SVC(**parameters)
+                ranked_predict_index, results = eval(best_svm, X_train, y_train, X_test, y_test)
+                
+                # Add results to the result dataframe
+                result_df.loc[len(result_df.index)] = [
+                    "pseudo_labeling_mask" + str(func) + metric,
+                    fold,
+                    str(parameters), 
+                    *results
+                ]
+
+    if 'pseudo_labeling_cluster_all_mask' in methods:
+        # Get negative samples with their indices
+        neg_df = df[y == 0]
+        X_neg = neg_df.values
+        y_neg = np.zeros(len(neg_df))
+        neg_indices = neg_df.index.values
+
+        X_train_pos_np = train_pos_df.values
+        y_train_pos_np = np.ones(len(train_pos_df))
+        
+        with open('/itf-fi-ml/shared/users/ziyuzh/baseline/src/linkage_matrix.pkl', 'rb') as f:
+            map_index , mat = pickle.load(f)
+        map_index = np.array(map_index)
+        n_clusters = 5
+        hierarchical_labels = fcluster(mat, n_clusters, criterion='maxclust')
+
+        mask_ids = mask_enrich(df,train_pos_df.index).tolist()
+        # print(len(mask_ids))
+        # mask_ids = mask_ppi_loop(df,train_pos_df.index, 900).tolist()
+        mask_ids.extend(mask_ppi_loop(df,train_pos_df.index, 900).tolist())
+        # print(len(mask_ids))
+        mask_ids.extend(test_pos_df.index.values.tolist())
+        
+        
+        for func in [1]:
+            selected_neg_original_indices = []
+            a = dict()
+            for cluster_id in np.unique(hierarchical_labels):
+                cluster_samples = np.where(hierarchical_labels == cluster_id)[0]
+                positive_i = len(set(df[y == 1].index.values)&set(map_index[cluster_samples]))
+                a[cluster_id] = len(cluster_samples)*(1-(positive_i/len(df[y == 1])))
+            
+            for cluster_id in np.unique(hierarchical_labels):
+                neg_sample_size = int(neg_num*a[cluster_id]/sum(a.values()))
+                cluster_samples = np.where(hierarchical_labels == cluster_id)[0]
+                filtered = map_index[cluster_samples]
+                neg_pool = filtered[~np.isin(filtered, mask_ids)]
+                selected_neg_original_indices.extend(np.random.choice(neg_pool, size=neg_sample_size, replace=False).tolist())
+ 
+            selected_neg_original_indices = np.array(selected_neg_original_indices)
+            # Create test set - get indices of negative samples not used in training
+            test_neg_indices = np.setdiff1d(neg_indices, selected_neg_original_indices)
+            X_test_neg = neg_df.loc[test_neg_indices].values
+            
+            existing_indices = neg_df.index.intersection(selected_neg_original_indices)
+            X_train_neg = neg_df.loc[existing_indices].values
+
+            # Create training set
+            X_train = np.vstack((X_train_pos_np, X_train_neg))
+            y_train = np.array([1] * len(X_train_pos_np) + [0] * len(X_train_neg))
+            
+            # Store original indices for training and test sets
+            train_indices = np.concatenate([train_pos_df.index.values, selected_neg_original_indices])
+            test_indices = np.concatenate([test_pos_df.index.values, test_neg_indices])
+            
+            # Create test set
+            X_test_pos_np = test_pos_df.values
+            X_test = np.vstack((X_test_pos_np, X_test_neg))
+            y_test = np.array([1] * len(X_test_pos_np) + [0] * len(X_test_neg))
+            
+            for metric in ['auroc']:
+                parameters = select_parameter(X_train, y_train, metric)
+                best_svm = svm.SVC(**parameters)
+                ranked_predict_index, results = eval(best_svm, X_train, y_train, X_test, y_test)
+                
+                # Add results to the result dataframe
+                result_df.loc[len(result_df.index)] = [
+                    "pseudo_labeling_cluster_all_mask" + str(func) + metric,
+                    fold,
+                    str(parameters), 
+                    *results
+                ]
+
+def evaluate_disease(disease, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
     
     if time_spilt:
         test_idx = df[df['test']==1].index
         train_idx = df[y==1].index.difference(test_idx)
         df.drop(columns='test', inplace=True)
-        one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+        one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,1)
         return result_df
     else:
         kf = KFold(n_splits=5, shuffle=True, random_state=42)
         for fold, (train_id, test_id) in enumerate(kf.split(df[y == 1].index)):
             train_idx = df[y == 1].index[train_id]
             test_idx = df[y == 1].index[test_id]
-            one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold)                    
+            one_fold_evaluate(disease, df,y,train_idx,test_idx,methods,result_df,fold)                    
         return result_df
