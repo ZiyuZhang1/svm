@@ -17,6 +17,7 @@ from multiprocessing import Pool
 from functools import partial
 from collections import defaultdict
 from sklearn.metrics.pairwise import rbf_kernel
+from sklearn.neighbors import NearestNeighbors
 from scipy.linalg import logm, expm, eigh
 
 def merge_results(results_list):
@@ -372,39 +373,6 @@ def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
             result_dict_temp[gene] = [y_scores[arrayindex]]
     return result_dict_temp
 
-# def process_neg_bagging_iteration(iter_num, neg_df, neg_num, train_pos_df, test_pos_df, select_parameter, metric='auroc'):
-#     """Process a single iteration of the random negative bagging"""
-#     # Randomly select 'neg_num' samples from negative class
-#     train_neg_df = neg_df.sample(n=neg_num)
-    
-#     # Get the remaining negative samples (unchanged)
-#     test_neg_df = neg_df
-    
-#     # Combine positive and negative samples for training
-#     train_df = pd.concat([train_pos_df, train_neg_df])
-#     X_train = train_df.values
-#     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-    
-#     # Store original indices for training set
-#     train_indices = train_df.index.values
-    
-#     # Combine positive and negative samples for testing
-#     test_df = pd.concat([test_pos_df, test_neg_df])
-#     X_test = test_df.values
-#     y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-
-#     # Store original indices for test set
-#     test_indices = test_df.index.values  
-    
-#     # Select parameters and train the model
-#     parameters = select_parameter(X_train, y_train, metric)
-#     best_svm = svm.SVC(**parameters)
-#     best_svm.fit(X_train, y_train)
-#     y_scores = best_svm.decision_function(X_test)
-    
-#     # Return results for this iteration with gene indices
-#     return [(gene, y_scores[arrayindex]) for arrayindex, gene in enumerate(test_indices)]
-
 def is_spd(A, tol=1e-8):
     # Check symmetry
     if not np.allclose(A, A.T, atol=tol):
@@ -420,63 +388,49 @@ def project_to_spd(A, tol=1e-8):
     eigvals_clipped = np.clip(eigvals, tol, None)  # set eigenvalues < tol to tol
     return eigvecs @ np.diag(eigvals_clipped) @ eigvecs.T
 
-def get_best_gamma_kernel(X, y, cv=3):
-    param_grid = {
-        'C': [0.1, 0.5, 0.8, 1, 10],
-        'kernel': ['rbf'],
-        'gamma': ['scale', 'auto', 0.1, 1, 10, 100]
-    }
-
-    grid = GridSearchCV(svm.SVC(kernel='rbf'), param_grid, cv=cv, scoring='roc_auc', verbose=0)
-    grid.fit(X, y)
-    best_gamma = grid.best_params_['gamma']
-
-    if best_gamma == 'scale':
-        best_gamma = 1.0 / (X.shape[1] * X.var())
-    elif best_gamma == 'auto':
-        best_gamma = 1.0 / X.shape[1]
-
-    K = rbf_kernel(X, X, gamma=best_gamma)
-    return K, best_gamma
+def make_psd(K, min_eig=1e-6):
+    K = (K + K.T) / 2
+    eigvals = np.linalg.eigvalsh(K)
+    if np.min(eigvals) < min_eig:
+        K += np.eye(K.shape[0]) * (min_eig - np.min(eigvals))
+    return K
 
 def weighted_log_euclidean_mean(kernels, weights):
     weights = np.array(weights)
     weights = weights / weights.sum()
+    
     log_sum = np.zeros_like(kernels[0])
     for w, K in zip(weights, kernels):
-        log_sum += w * logm(K)
+        K = make_psd(K)
+        log_K = logm(K)
+        # Handle potential complex results more carefully
+        if np.iscomplexobj(log_K) and np.allclose(log_K.imag, 0, atol=1e-10):
+            log_K = log_K.real
+        log_sum += w * log_K
+    
     return expm(log_sum)
-
-def fuse_kernels(features, y, weights=None):
-    kernels = []
-    for X in features:
-        K, best_gamma = get_best_gamma_kernel(X, y)
-        # Ensure SPD
-        if not is_spd(K):
-            K = project_to_spd(K)
-        kernels.append(K)
-    if weights is None:
-        weights = [1/len(kernels)] * len(kernels)
-    K_fused = weighted_log_euclidean_mean(kernels, weights)
-    return K_fused, kernels
 
 def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
-    if 'fused' in feature_list:
-        feature_list.remove('fused')
+
+    if 'linear_fused' in feature_list:
+        feature_list.remove('linear_fused')
+    if 'geo_fused' in feature_list:
+        feature_list.remove('geo_fused')
         
     if 'random_negative' in methods:
+
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
-        
+
         # Randomly select 'neg_num' samples from negative class
         train_neg_df = neg_df.sample(n=neg_num, random_state=42)
-        
+
         # Get the all negative samples
         test_neg_df = neg_df
-        
+
         # Combine positive and negative samples for training
         train_df = pd.concat([train_pos_df, train_neg_df])
         test_df = pd.concat([test_pos_df, test_neg_df])
@@ -493,28 +447,34 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
 
-        # Store gamma per feature set
-        gammas = []
+        kernels_all = []
         kernels_train = []
         kernels_test = []
 
         # For each feature set
         for X_tr, X_te in zip(X_train_mats, X_test_mats):
-            K_train, best_gamma = get_best_gamma_kernel(X_tr, y_train)
-            K_test = rbf_kernel(X_te, X_tr, gamma=best_gamma)
+            X_all = np.concatenate([X_tr, X_te], axis=0)
 
-            if not is_spd(K_train): K_train = project_to_spd(K_train)
+            nbrs = NearestNeighbors(n_neighbors=2).fit(X_all)
+            distances, _ = nbrs.kneighbors(X_all)
+            avg_nn_dist = np.mean(distances[:, 1])  # skip self-distance
+            gamma = 1 / (2 * avg_nn_dist ** 2)
+            K_full = rbf_kernel(X_all, X_all, gamma=gamma)
+            kernels_all.append(K_full)
 
-            kernels_train.append(K_train)
-            kernels_test.append(K_test)
+            n_train = len(X_tr)
+            kernels_train.append(K_full[:n_train, :n_train])
+            kernels_test.append(K_full[n_train:, :n_train])
 
-        # Fuse
-        K_fused_train = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_train))
-        K_fused_test  = sum(w * K_test_i for w, K_test_i in zip(feature_weights, kernels_test))
+        K_linear_all = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_all))
+        kernels_train.append(K_linear_all[:n_train, :n_train])
+        kernels_test.append(K_linear_all[n_train:, :n_train])
+        feature_list.append('linear_fused')
 
-        kernels_train.append(K_fused_train)
-        kernels_test.append(K_fused_test)
-        feature_list.append('fused')
+        K_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
+        kernels_train.append(K_geo_all[:n_train, :n_train])
+        kernels_test.append(K_geo_all[n_train:, :n_train])
+        feature_list.append('geo_fused')
 
         # Store original indices for training set
         train_indices = train_df.index.values
@@ -533,7 +493,7 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
             result_df.loc[len(result_df.index)] = [
                 "random_negative",
                 fold,
-                feature_list[feature_index], 
+                feature_name, 
                 *results
             ]
 

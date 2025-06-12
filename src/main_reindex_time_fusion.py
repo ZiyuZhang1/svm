@@ -17,6 +17,8 @@ test_bug = False
 if test_bug:
     # feature_list = ['ppi_2019','bioconcept','uniport','esm2']
     feature_list = ['ppi_2019','bioconcept','uniport','esm2']
+    feature_list = ['ppi_2019','bioconcept']
+
 
     out_path = os.path.join(root,'results/temp')
     time = 2019
