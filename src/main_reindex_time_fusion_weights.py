@@ -16,8 +16,8 @@ test_bug = False
 
 if test_bug:
     # feature_list = ['ppi_2019','bioconcept','uniport','esm2']
-    feature_list = ['ppi_2019','bioconcept','uniport','esm2']
     feature_list = ['ppi_2019','bioconcept']
+    # feature_list = ['ppi_2019_short','bioconcept_short']
 
 
     out_path = os.path.join(root,'results/temp')
@@ -75,7 +75,7 @@ else:
 print(feature_list, len(selected_diseases),len(merged_df))
 all_results = []
 
-for disease in selected_diseases[1:]:
+for disease in selected_diseases:
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, merged_df,time)

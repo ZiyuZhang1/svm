@@ -52,7 +52,10 @@ def get_feature(root, feature_name):
     elif feature_name == 'gene2vec':
         feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/expression_emb/exp_emb.csv'))
         # feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/GENE2VEC/GENE2VEC_align.csv'))
-    
+    elif feature_name == 'ppi_2019_short':
+        feature_df = pd.read_csv(os.path.join(root,'data/short/ppi_short.csv'))
+    elif feature_name == 'bioconcept_short':
+        feature_df = pd.read_csv(os.path.join(root,'data/short/bio_short.csv'))
     elif feature_name == 'scgpt':
         feature_df = pd.read_csv(os.path.join(root,'data/scgpt/scgpt_full.csv'))
         # feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/expression_emb/SCGPT-HUMAN/scgpt.csv'))

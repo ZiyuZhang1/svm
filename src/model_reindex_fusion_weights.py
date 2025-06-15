@@ -396,19 +396,22 @@ def make_psd(K, min_eig=1e-6):
         K += np.eye(K.shape[0]) * (min_eig - np.min(eigvals))
     return K
 
+def process_kernel(args):
+    K, w = args
+    K = make_psd(K)
+    log_K = logm(K)
+    if np.iscomplexobj(log_K) and np.allclose(log_K.imag, 0, atol=1e-10):
+        log_K = log_K.real
+    return w * log_K
+
 def weighted_log_euclidean_mean(kernels, weights):
     weights = np.array(weights)
     weights = weights / weights.sum()
-    
-    log_sum = np.zeros_like(kernels[0])
-    for w, K in zip(weights, kernels):
-        K = make_psd(K)
-        log_K = logm(K)
-        # Handle potential complex results more carefully
-        if np.iscomplexobj(log_K) and np.allclose(log_K.imag, 0, atol=1e-10):
-            log_K = log_K.real
-        log_sum += w * log_K
-    
+
+    with Pool(processes=len(weights)) as pool:
+        weighted_logs = pool.map(process_kernel, zip(kernels, weights))
+
+    log_sum = np.sum(weighted_logs, axis=0)
     return expm(log_sum)
 
 def enriched_set(input_stringids,time):
@@ -442,12 +445,38 @@ def calculate_jac_sim(enrich_1, enrich_2):
         return 0.0  # Define similarity as 0 if both sets are empty
     return len(intersection) / len(union)
 
+# def pre_calculate_kernels(args):
+#     X_tr, X_te = args
+#     X_all = np.concatenate([X_tr, X_te], axis=0)
+
+#     nbrs = NearestNeighbors(n_neighbors=2).fit(X_all)
+#     distances, _ = nbrs.kneighbors(X_all)
+#     avg_nn_dist = np.mean(distances[:, 1])  # skip self-distance
+#     gamma = 1 / (2 * avg_nn_dist ** 2)
+#     K_full = rbf_kernel(X_all, X_all, gamma=gamma)
+#     n_train = len(X_tr)
+#     return K_full, n_train
+
+# def weight_enrich_worker(args):
+#     feature_index, feature_name, kernels_train, kernels_test, y_train, y_test, test_indices, time, enrich_train_set = args
+
+#     clf = svm.SVC(kernel='precomputed')
+#     clf.fit(kernels_train[feature_index], y_train)
+#     y_scores = clf.decision_function(kernels_test[feature_index])
+
+#     ranked_predict_index, results = eval_bagging(y_scores, y_test)
+
+#     enrich_test_genes = test_indices[np.argsort(y_scores)[::-1]][:200]
+#     enrich_feature_test = enriched_set(enrich_test_genes, time)
+#     jac_sm = calculate_jac_sim(enrich_train_set, enrich_feature_test)
+
+#     return (feature_name, jac_sm, results)
+
 def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
 
-    weight_features = True
 
     if 'linear_fused' in feature_list:
         feature_list.remove('linear_fused')
@@ -455,6 +484,8 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         feature_list.remove('weighted_linear_fused')
     if 'geo_fused' in feature_list:
         feature_list.remove('geo_fused')
+    if 'weighted_geo_fused' in feature_list:
+        feature_list.remove('weighted_geo_fused')
     init_feature_length = len(feature_list)
 
     if 'random_negative' in methods:
@@ -485,9 +516,16 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         kernels_all = []
         kernels_train = []
         kernels_test = []
+    
+        # args_list = list(zip(X_train_mats, X_test_mats))
+        # with Pool(processes=len(feature_list)) as pool:  # Adjust number of processes as needed
+        #     results = pool.map(pre_calculate_kernels, args_list)
 
+        # for (K_full, n_train) in results:
+        #     kernels_all.append(K_full)
+        #     kernels_train.append(K_full[:n_train, :n_train])
+        #     kernels_test.append(K_full[n_train:, :n_train])
 
-        # For each feature set
         for X_tr, X_te in zip(X_train_mats, X_test_mats):
             X_all = np.concatenate([X_tr, X_te], axis=0)
 
@@ -508,6 +546,20 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         enrich_train_genes = train_pos_df.index.values
         enrich_train_set = enriched_set(enrich_train_genes,time)
 
+        # args_list = [(i, name, kernels_train, kernels_test, y_train, y_test, test_indices, time, enrich_train_set)
+        #     for i, name in enumerate(feature_list)
+        # ]
+            
+        # with Pool(processes=len(feature_list)) as pool:  # Adjust number of processes as needed
+        #     results_list = pool.map(weight_enrich_worker, args_list)
+
+
+        # pathway_overlap = []
+        # # Handle the results
+        # for feature_name, jac_sm, results in results_list:
+        #     pathway_overlap.append(jac_sm)
+        #     result_df.loc[len(result_df.index)] = ["random_negative", fold, feature_name + '-' + str(round(jac_sm, 3)), *results]
+
         pathway_overlap = []
         for feature_index, feature_name in enumerate(feature_list):
             best_svm = svm.SVC(kernel='precomputed')
@@ -523,25 +575,30 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
 
-
         total = sum(pathway_overlap)
         feature_weights = [v / total for v in pathway_overlap]
-
+        print('weighted_linear_fused')
         K_weight_linear_all = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_all))
         kernels_train.append(K_weight_linear_all[:n_train, :n_train])
         kernels_test.append(K_weight_linear_all[n_train:, :n_train])
         feature_list.append('weighted_linear_fused')
+        print('geo_weighted')
+        K__weight_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
+        kernels_train.append(K__weight_geo_all[:n_train, :n_train])
+        kernels_test.append(K__weight_geo_all[n_train:, :n_train])
+        feature_list.append('weighted_geo_fused')
 
-        # K_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
-        # kernels_train.append(K_geo_all[:n_train, :n_train])
-        # kernels_test.append(K_geo_all[n_train:, :n_train])
-        # feature_list.append('geo_fused')
-
-        feature_weights = [1 / len(feature_list)] * len(feature_list)
+        print('linear_fused')
+        feature_weights = [1 / init_feature_length] * init_feature_length
         K_linear_all = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_all))
         kernels_train.append(K_linear_all[:n_train, :n_train])
         kernels_test.append(K_linear_all[n_train:, :n_train])
-        feature_list.append('linear_fused')        
+        feature_list.append('linear_fused')    
+        print('geo')
+        K_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
+        kernels_train.append(K_geo_all[:n_train, :n_train])
+        kernels_test.append(K_geo_all[n_train:, :n_train])
+        feature_list.append('geo_fused')    
 
         for feature_name in feature_list[init_feature_length:]:
             feature_index = feature_list.index(feature_name)
