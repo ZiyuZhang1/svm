@@ -397,12 +397,12 @@ def make_psd(K, min_eig=1e-6):
     return K
 
 def process_kernel(args):
-    K, w = args
+    K= args
     K = make_psd(K)
     log_K = logm(K)
     if np.iscomplexobj(log_K) and np.allclose(log_K.imag, 0, atol=1e-10):
         log_K = log_K.real
-    return w * log_K
+    return log_K
 
 def weighted_log_euclidean_mean(kernels, weights):
     weights = np.array(weights)
@@ -444,6 +444,15 @@ def calculate_jac_sim(enrich_1, enrich_2):
     if not union:
         return 0.0  # Define similarity as 0 if both sets are empty
     return len(intersection) / len(union)
+
+def compute_kernels_logmks(X_feature,feature_id):
+    nbrs = NearestNeighbors(n_neighbors=2).fit(X_feature)
+    distances, _ = nbrs.kneighbors(X_feature)
+    avg_nn_dist = np.mean(distances[:, 1])  # skip self-distance
+    gamma = 1 / (2 * avg_nn_dist ** 2)
+    K_full = rbf_kernel(X_feature, X_feature, gamma=gamma)
+    logm_k = process_kernel(K_full)
+    return feature_id, K_full, logm_k
 
 # def pre_calculate_kernels(args):
 #     X_tr, X_te = args
@@ -488,8 +497,10 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         feature_list.remove('weighted_geo_fused')
     init_feature_length = len(feature_list)
 
-    if 'random_negative' in methods:
+    time = 2019
 
+    if 'random_negative' in methods:
+        
         # Work with DataFrames to maintain indices
         neg_df = df[y == 0]
 
@@ -503,68 +514,78 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         train_df = pd.concat([train_pos_df, train_neg_df])
         test_df = pd.concat([test_pos_df, test_neg_df])
 
-        X_train_mats = []
-        X_test_mats = []
-        for feature_name in feature_list:
-            select_columns = [col for col in df.columns if col.startswith(feature_name)]
-            X_train_mats.append(train_df[select_columns].values)
-            X_test_mats.append(test_df[select_columns].values)
+        kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/kerlens'
+        if not os.path.isdir(kernel_dir_path):
+            os.makedirs(kernel_dir_path, exist_ok=True)
+            print('make dir')
+        else:
+            print('dir exist, checking kernels')
 
+        kernel_pkl_path = os.path.join(kernel_dir_path,str(time)+'.pkl')
+        if os.path.isfile(kernel_pkl_path):
+            with open(kernel_pkl_path, "rb") as f:
+                kernels_all_dict = pickle.load(f)
+            print('loaded kernels: ', list(kernels_all_dict.keys()))
+        else:
+        ####### calculate full kernels for each feature and their logm
+            print('calculating kernels...')
+            X_all = []
+            kernels_all_dict = dict()
+            for feature_name in feature_list:
+                select_columns = [col for col in df.columns if col.startswith(feature_name)]
+                X_all.append(df[select_columns].values)
+            print('calculating logm kernels...')
+            with Pool(processes=len(feature_list)) as pool:
+                # each tuple (X_feature, feature_id) is unpacked by starmap
+                kernel_results = pool.starmap(
+                    compute_kernels_logmks,
+                    zip(X_all, range(len(feature_list))))
+
+            for feature_id, K_full, logm_k in kernel_results:
+                fname = feature_list[feature_id]
+                kernels_all_dict[fname] = [K_full, logm_k]
+        ####### calculate unweighted linear fused kernels and geo fudef kernels
+            # Use an ordered list of items to guarantee consistency in 3.7+
+            items = list(kernels_all_dict.items())
+            weight = 1.0 / init_feature_length
+            # Initialize accumulators with zeros of the correct shape
+            first_key, (first_K, first_logm) = items[0]
+            shape = first_K.shape
+            K_linear_all = np.zeros(shape, dtype=first_K.dtype)
+            expm_sum = np.zeros_like(first_logm)
+            # Accumulate
+            for feature_name, (K_i, logm_K_i) in items:
+                K_linear_all += weight * K_i
+                expm_sum     += weight * logm_K_i
+            # Geometric mean via matrix exponential
+            K_geo_all = expm(expm_sum)
+            kernels_all_dict['linear_fused'] = [K_linear_all]
+            kernels_all_dict['geo_fused'] = [K_geo_all]
+
+            print('calculated kernels: ', list(kernels_all_dict.keys()))
+            with open(kernel_pkl_path, 'wb') as f:
+                pickle.dump(kernels_all_dict, f)
+        ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
+        print('evaluation')
+        train_index_loc = df.index.get_indexer(train_df.index)
+        test_index_loc = df.index.get_indexer(test_df.index)
         y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
 
-        kernels_all = []
-        kernels_train = []
-        kernels_test = []
-    
-        # args_list = list(zip(X_train_mats, X_test_mats))
-        # with Pool(processes=len(feature_list)) as pool:  # Adjust number of processes as needed
-        #     results = pool.map(pre_calculate_kernels, args_list)
-
-        # for (K_full, n_train) in results:
-        #     kernels_all.append(K_full)
-        #     kernels_train.append(K_full[:n_train, :n_train])
-        #     kernels_test.append(K_full[n_train:, :n_train])
-
-        for X_tr, X_te in zip(X_train_mats, X_test_mats):
-            X_all = np.concatenate([X_tr, X_te], axis=0)
-
-            nbrs = NearestNeighbors(n_neighbors=2).fit(X_all)
-            distances, _ = nbrs.kneighbors(X_all)
-            avg_nn_dist = np.mean(distances[:, 1])  # skip self-distance
-            gamma = 1 / (2 * avg_nn_dist ** 2)
-            K_full = rbf_kernel(X_all, X_all, gamma=gamma)
-            kernels_all.append(K_full)
-
-            n_train = len(X_tr)
-            kernels_train.append(K_full[:n_train, :n_train])
-            kernels_test.append(K_full[n_train:, :n_train])
-
-
-        time = 2019
         test_indices = test_df.index.values
         enrich_train_genes = train_pos_df.index.values
         enrich_train_set = enriched_set(enrich_train_genes,time)
 
-        # args_list = [(i, name, kernels_train, kernels_test, y_train, y_test, test_indices, time, enrich_train_set)
-        #     for i, name in enumerate(feature_list)
-        # ]
-            
-        # with Pool(processes=len(feature_list)) as pool:  # Adjust number of processes as needed
-        #     results_list = pool.map(weight_enrich_worker, args_list)
-
-
-        # pathway_overlap = []
-        # # Handle the results
-        # for feature_name, jac_sm, results in results_list:
-        #     pathway_overlap.append(jac_sm)
-        #     result_df.loc[len(result_df.index)] = ["random_negative", fold, feature_name + '-' + str(round(jac_sm, 3)), *results]
-
         pathway_overlap = []
-        for feature_index, feature_name in enumerate(feature_list):
+        print('compute weights based on pathway enrich')
+        for feature_name in list(kernels_all_dict.keys()):
+            X_all = kernels_all_dict[feature_name][0]
+            X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
+            X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
+
             best_svm = svm.SVC(kernel='precomputed')
-            best_svm.fit(kernels_train[feature_index], y_train)
-            y_scores = best_svm.decision_function(kernels_test[feature_index])
+            best_svm.fit(X_feature_train, y_train)
+            y_scores = best_svm.decision_function(X_feature_test)
 
             enrich_test_genes = test_indices[np.argsort(y_scores)[::-1]][:200]
             enrich_feature_test = enriched_set(enrich_test_genes,time)
@@ -574,40 +595,48 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
             ranked_predict_index, results = eval_bagging(y_scores, y_test)
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
-
+        print('evalute weighted fused kernels')
+        pathway_overlap = pathway_overlap[:init_feature_length]
         total = sum(pathway_overlap)
-        feature_weights = [v / total for v in pathway_overlap]
-        print('weighted_linear_fused')
-        K_weight_linear_all = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_all))
-        kernels_train.append(K_weight_linear_all[:n_train, :n_train])
-        kernels_test.append(K_weight_linear_all[n_train:, :n_train])
-        feature_list.append('weighted_linear_fused')
-        print('geo_weighted')
-        K__weight_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
-        kernels_train.append(K__weight_geo_all[:n_train, :n_train])
-        kernels_test.append(K__weight_geo_all[n_train:, :n_train])
-        feature_list.append('weighted_geo_fused')
 
-        print('linear_fused')
-        feature_weights = [1 / init_feature_length] * init_feature_length
-        K_linear_all = sum(w * K_train_i for w, K_train_i in zip(feature_weights, kernels_all))
-        kernels_train.append(K_linear_all[:n_train, :n_train])
-        kernels_test.append(K_linear_all[n_train:, :n_train])
-        feature_list.append('linear_fused')    
-        print('geo')
-        K_geo_all = weighted_log_euclidean_mean(kernels_all, feature_weights)
-        kernels_train.append(K_geo_all[:n_train, :n_train])
-        kernels_test.append(K_geo_all[n_train:, :n_train])
-        feature_list.append('geo_fused')    
+        if total == 0:
+            feature_weights = [1.0 / init_feature_length] * init_feature_length
+            print("Warning: All pathway overlaps are zero; using uniform weights.")
+        else:
+            feature_weights = [v / total for v in pathway_overlap]
+        ######################### evalute weighted kernels
+        # Use an ordered list of items to guarantee consistency in 3.7+
+        items = list(kernels_all_dict.items())[:init_feature_length]
+        # Initialize accumulators with zeros of the correct shape
+        first_key, (first_K, first_logm) = items[0]
+        shape = first_K.shape
+        K_weight_linear_all = np.zeros(shape, dtype=first_K.dtype)
+        expm_sum = np.zeros_like(first_logm)
+        # Accumulate
+        for f_index, (feature_name, (K_i, logm_K_i)) in enumerate(items):
+            weight = feature_weights[f_index]
+            K_weight_linear_all += weight * K_i
+            expm_sum     += weight * logm_K_i
+        # Geometric mean via matrix exponential
+        K_weight_geo_all = expm(expm_sum)
 
-        for feature_name in feature_list[init_feature_length:]:
-            feature_index = feature_list.index(feature_name)
+        for name_idx, X_all in enumerate([K_weight_linear_all,K_weight_geo_all]):
+            feature_name = ['weighted_linear_fused','weighted_geo_fused']
+            X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
+            X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
             best_svm = svm.SVC(kernel='precomputed')
-            best_svm.fit(kernels_train[feature_index], y_train)
-            y_scores = best_svm.decision_function(kernels_test[feature_index])
+            best_svm.fit(X_feature_train, y_train)
+            y_scores = best_svm.decision_function(X_feature_test)
             ranked_predict_index, results = eval_bagging(y_scores, y_test)
+
+            enrich_test_genes = test_indices[np.argsort(y_scores)[::-1]][:200]
+            enrich_feature_test = enriched_set(enrich_test_genes,time)
+            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name, *results]
+            result_df.loc[len(result_df.index)] = ["random_negative",fold, feature_name[name_idx]+'-'+str(round(jac_sm, 3)), *results]
+
+
 
 
     # if 'random_negative_bagging' in methods:
