@@ -278,10 +278,10 @@ def get_top_n_predictions(ranked_predict_index,test_indices,n):
         genes.append(stringId2name[value])
     return genes
 
-def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
+def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
     # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
+    train_neg_df = neg_df.sample(n=neg_num,replace=True, random_state=seed)
     
     # Get the remaining negative samples
     test_neg_df = neg_df
@@ -290,65 +290,6 @@ def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, _):
     train_df = pd.concat([train_pos_df, train_neg_df])
     X_train = train_df.values
     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-    
-    # Store original indices for training set
-    # train_indices = train_df.index.values
-    
-    # Combine positive and negative samples for testing
-    test_df = pd.concat([test_pos_df, test_neg_df])
-    X_test = test_df.values
-    # y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-
-    # Store original indices for test set
-    test_indices = test_df.index.values  
-    metric = 'auroc'
-    # Select parameters and train the model
-    parameters = select_parameter(X_train, y_train, metric)
-    best_svm = svm.SVC(**parameters)
-    best_svm.fit(X_train, y_train)
-    y_scores = best_svm.decision_function(X_test)
-
-    for arrayindex, gene in enumerate(test_indices):
-        if gene in result_dict_temp:
-            result_dict_temp[gene].append(y_scores[arrayindex])
-        else:
-            result_dict_temp[gene] = [y_scores[arrayindex]]
-    return result_dict_temp
-
-def single_bagging_pos_neg(disease, neg_df,neg_num,train_pos_df,test_pos_df, _):
-    result_dict_temp = dict()
-
-    scores_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
-
-    sub_df = scores_df[scores_df['disease_id'] == disease]
-
-    # Filter only rows where string_id is in sampled_ids
-    filtered = sub_df[sub_df['string_id'].isin(train_pos_df.index)]
-
-    # Reindex to match the order of sampled_ids
-    filtered = filtered.set_index('string_id').loc[train_pos_df.index]
-
-    # Get the score column as probabilities
-    probabilities = filtered['score'].values
-
-    if probabilities.sum() == 0:
-        probabilities = np.ones_like(probabilities) / len(probabilities)
-    else:
-        probabilities = probabilities / probabilities.sum()
-
-    sampled_indices = np.random.choice(train_pos_df.index, size=len(train_pos_df), replace=True, p=probabilities)
-    train_pos_df_ran = train_pos_df.loc[sampled_indices]
-
-    # Randomly select 'neg_num' samples from negative class
-    train_neg_df = neg_df.sample(n=neg_num)
-    
-    # Get the remaining negative samples
-    test_neg_df = neg_df
-    
-    # Combine positive and negative samples for training
-    train_df = pd.concat([train_pos_df_ran, train_neg_df])
-    X_train = train_df.values
-    y_train = np.array([1] * len(train_pos_df_ran) + [0] * len(train_neg_df))
     
     # Store original indices for training set
     # train_indices = train_df.index.values
@@ -481,6 +422,21 @@ def compute_kernels_logmks(X_feature,feature_id):
 
 #     return (feature_name, jac_sm, results)
 
+def neg_bagging(args):
+    neg_df, neg_num, train_pos_df, df, X_all, test_index_loc, seed = args
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+    train_df = pd.concat([train_pos_df, train_neg_df])
+    train_index_loc = df.index.get_indexer(train_df.index)
+    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+
+    X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
+    X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
+
+    best_svm = svm.SVC(kernel='precomputed')
+    best_svm.fit(X_feature_train, y_train)
+    y_scores = best_svm.decision_function(X_feature_test)
+    return y_scores
+
 def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
@@ -497,22 +453,9 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         feature_list.remove('weighted_geo_fused')
     init_feature_length = len(feature_list)
 
-    time = 2019
+    time = 2017
 
     if 'random_negative' in methods:
-        
-        # Work with DataFrames to maintain indices
-        neg_df = df[y == 0]
-
-        # Randomly select 'neg_num' samples from negative class
-        train_neg_df = neg_df.sample(n=neg_num, random_state=42)
-
-        # Get the all negative samples
-        test_neg_df = neg_df
-
-        # Combine positive and negative samples for training
-        train_df = pd.concat([train_pos_df, train_neg_df])
-        test_df = pd.concat([test_pos_df, test_neg_df])
 
         kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/kerlens'
         if not os.path.isdir(kernel_dir_path):
@@ -567,32 +510,42 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
                 pickle.dump(kernels_all_dict, f)
         ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
         print('evaluation')
-        train_index_loc = df.index.get_indexer(train_df.index)
+
+        # Work with DataFrames to maintain indices
+        neg_df = df[y == 0]
+        test_neg_df = neg_df
+        test_df = pd.concat([test_pos_df, test_neg_df])
         test_index_loc = df.index.get_indexer(test_df.index)
-        y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+
 
         test_indices = test_df.index.values
         enrich_train_genes = train_pos_df.index.values
         enrich_train_set = enriched_set(enrich_train_genes,time)
 
+        num_processes = 20
+        base_seed = 42
+        seed_list = [base_seed + i for i in range(num_processes)]
+
         pathway_overlap = []
-        print('compute weights based on pathway enrich')
         for feature_name in list(kernels_all_dict.keys()):
+            print('compute weights based on pathway enrich')
             X_all = kernels_all_dict[feature_name][0]
-            X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
-            X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
+            args_list = [
+                (neg_df, neg_num, train_pos_df, df, X_all, test_index_loc, seed)
+                for seed in seed_list]
 
-            best_svm = svm.SVC(kernel='precomputed')
-            best_svm.fit(X_feature_train, y_train)
-            y_scores = best_svm.decision_function(X_feature_test)
+            # Step 2: Use Pool to parallelize
+            with Pool(processes=num_processes) as pool:
+                bagging_y_scores = pool.map(neg_bagging, args_list)
 
-            enrich_test_genes = test_indices[np.argsort(y_scores)[::-1]][:200]
+            final_y_score = np.mean(bagging_y_scores, axis=0)
+            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
             enrich_feature_test = enriched_set(enrich_test_genes,time)
             jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
             pathway_overlap.append(jac_sm)
 
-            ranked_predict_index, results = eval_bagging(y_scores, y_test)
+            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
         print('evalute weighted fused kernels')
@@ -620,16 +573,20 @@ def one_fold_evaluate(disease, feature_list, df,y,train_idx,test_idx,methods,res
         # Geometric mean via matrix exponential
         K_weight_geo_all = expm(expm_sum)
 
+        feature_name = ['weighted_linear_fused','weighted_geo_fused']
         for name_idx, X_all in enumerate([K_weight_linear_all,K_weight_geo_all]):
-            feature_name = ['weighted_linear_fused','weighted_geo_fused']
-            X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
-            X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
-            best_svm = svm.SVC(kernel='precomputed')
-            best_svm.fit(X_feature_train, y_train)
-            y_scores = best_svm.decision_function(X_feature_test)
-            ranked_predict_index, results = eval_bagging(y_scores, y_test)
+            args_list = [
+                (neg_df, neg_num, train_pos_df, df, X_all, test_index_loc, seed)
+                for seed in seed_list]
 
-            enrich_test_genes = test_indices[np.argsort(y_scores)[::-1]][:200]
+            # Step 2: Use Pool to parallelize
+            with Pool(processes=num_processes) as pool:
+                bagging_y_scores = pool.map(neg_bagging, args_list)
+
+            final_y_score = np.mean(bagging_y_scores, axis=0)
+            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+
+            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
             enrich_feature_test = enriched_set(enrich_test_genes,time)
             jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
 

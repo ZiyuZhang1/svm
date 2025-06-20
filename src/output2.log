@@ -1,0 +1,441 @@
+['ppi_2019', 'bioconcept', 'uniport', 'esm2'] 40 12134
+ICD10_C16 67
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C18 38
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C43 27
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C50 398
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C56 84
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C67 138
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_C81 17
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_D57 16
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_D83 16
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_E11 183
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_E66 199
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_F20 605
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_F31 321
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_F72 24
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_F90 17
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G10 24
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G20 96
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G24 20
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G30 138
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G40 89
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G43 17
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_G91 18
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I10 24
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I25 101
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I42 115
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I50 116
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I63 25
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_I70 51
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_J80 41
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_K44 42
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_K51 50
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_L20 43
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_L40 47
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_M32 66
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N04 63
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N17 67
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N18 69
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N46 59
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N80 109
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels
+ICD10_N97 24
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+compute weights based on pathway enrich
+evalute weighted fused kernels

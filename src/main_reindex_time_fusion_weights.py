@@ -15,8 +15,8 @@ time_spilt = True
 test_bug = False
 
 if test_bug:
-    # feature_list = ['ppi_2019','bioconcept','uniport','esm2']
-    feature_list = ['ppi_2019','bioconcept']
+    feature_list = ['ppi_2019','bioconcept','uniport','esm2']
+    # feature_list = ['ppi_2019','bioconcept']
     # feature_list = ['ppi_2019_short','bioconcept_short']
 
 
@@ -24,7 +24,7 @@ if test_bug:
     time = 2019
 else:
     feature_list = sys.argv[1]
-    feature_list = ['ppi_2019','bioconcept','uniport','esm2']
+    feature_list = ['ppi_2016','gene2vec','uniport','esm2']
     out_path = os.path.join(root,sys.argv[2])
     time = int(sys.argv[3])
 
