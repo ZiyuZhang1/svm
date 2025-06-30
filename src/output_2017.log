@@ -1,520 +1,366 @@
 ['ppi_2016', 'gene2vec', 'uniport', 'esm2'] 47 12925
 ICD10_C16 77
 dir exist, checking kernels
-calculating kernels...
-calculating logm kernels...
-calculated kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C18 41
-dir exist, checking kernels
 loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
 evaluation
 compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C43 35
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C45 31
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C50 422
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C56 92
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C67 149
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_C81 21
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_D57 16
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_D83 17
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_E10 79
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_E11 208
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_E66 207
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_E84 32
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_F20 647
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_F31 339
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_F72 27
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_F90 19
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G10 25
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G20 103
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G24 20
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G30 149
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G35 83
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G40 93
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G43 17
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_G91 17
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_H40 16
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I10 28
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I25 115
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I42 123
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I50 126
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I63 27
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_I70 56
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_J45 152
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_J80 43
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_K44 46
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_K51 60
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_L20 48
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_L40 55
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_M32 77
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_M41 22
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N04 68
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N17 71
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N18 74
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N46 60
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N80 122
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
-ICD10_N97 24
-dir exist, checking kernels
-loaded kernels:  ['ppi_2016', 'gene2vec', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
-evaluation
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-compute weights based on pathway enrich
-evalute weighted fused kernels
+Process ForkPoolWorker-19:
+Process ForkPoolWorker-2:
+Process ForkPoolWorker-17:
+Process ForkPoolWorker-20:
+Process ForkPoolWorker-8:
+Process ForkPoolWorker-5:
+Process ForkPoolWorker-4:
+Process ForkPoolWorker-13:
+Process ForkPoolWorker-18:
+Process ForkPoolWorker-9:
+Process ForkPoolWorker-3:
+Process ForkPoolWorker-10:
+Process ForkPoolWorker-1:
+Process ForkPoolWorker-14:
+Process ForkPoolWorker-15:
+Process ForkPoolWorker-12:
+Process ForkPoolWorker-16:
+Process ForkPoolWorker-11:
+Process ForkPoolWorker-6:
+Process ForkPoolWorker-7:
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights.py", line 547, in one_fold_evaluate
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+    bagging_y_scores = pool.map(neg_bagging, args_list)
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+Traceback (most recent call last):
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 367, in map
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 768, in get
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights.py", line 436, in neg_bagging
+    train_df = pd.concat([train_pos_df, train_neg_df])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/pandas/core/reshape/concat.py", line 395, in concat
+    return op.get_result()
+           ^^^^^^^^^^^^^^^
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/pandas/core/reshape/concat.py", line 684, in get_result
+    new_data = concatenate_managers(
+               ^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/pandas/core/internals/concat.py", line 177, in concatenate_managers
+    values = np.concatenate(vals, axis=1)  # type: ignore[arg-type]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 365, in get
+    res = self._reader.recv_bytes()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 220, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 441, in _recv_bytes
+    return self._recv(size)
+           ^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 399, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+    self.wait(timeout)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 765, in wait
+    self._event.wait(timeout)
+  File "/usr/lib64/python3.11/threading.py", line 629, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights.py", line 83, in <module>
+    result_df = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights.py", line 706, in evaluate_disease
+    one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights.py", line 546, in one_fold_evaluate
+    with Pool(processes=num_processes) as pool:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 739, in __exit__
+    self.terminate()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 657, in terminate
+    self._terminate()
+  File "/usr/lib64/python3.11/multiprocessing/util.py", line 227, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 695, in _terminate_pool
+    cls._help_stuff_finish(inqueue, task_handler, len(pool))
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 677, in _help_stuff_finish
+    inqueue._reader.recv()
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 255, in recv
+    return _ForkingPickler.loads(buf.getbuffer())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EOFError: Ran out of input

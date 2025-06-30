@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex_fusion_weights import evaluate_disease
+from model_reindex_fusion_weights_uniport import evaluate_disease
 import sys
 import multiprocessing as mp
 
@@ -15,13 +15,13 @@ time_spilt = True
 test_bug = False
 
 if test_bug:
-    feature_list = ['ppi_2019','bioconcept','uniport','esm2']
+    feature_list = ['uniport_ppi_2017','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['ppi_2019','bioconcept']
     # feature_list = ['ppi_2019_short','bioconcept_short']
 
 
     out_path = os.path.join(root,'results/temp')
-    time = 2019
+    time = 2017
 else:
     feature_list = sys.argv[1].split(',')
     out_path = os.path.join(root,sys.argv[2])
@@ -45,7 +45,7 @@ for feature in feature_list:
         merged_df = pd.merge(merged_df, feature_df, on='string_id', how='inner')
     del feature_df  # Free memory
 
-all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/disgent_with_time.csv')
+all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
 all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
 # all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/align_disgent_with_time.csv')
 

@@ -6,8 +6,8 @@ source /itf-fi-ml/shared/users/ziyuzh/.venv/bin/activate
 # Change to the directory containing the Python script
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 
-python main_reindex_time_fusion_weights.py 'ppi_2016,gene2vec,uniport,esm2' "results/2017_fused_geo_weight_bag_new_kernel" 2017 > output_2017.log 2>&1
-python main_reindex_time_fusion_weights.py 'ppi_2019,bioconcept,uniport,esm2' "results/2019_fused_geo_weight_bag_new_kernel" 2019 > output_2019.log 2>&1
+python main_reindex_time_fusion_weights_uniport.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_fused_geo_weight_bag_new_kernel_uni_update" 2017 > output_2017_uni_update.log 2>&1
+python main_reindex_time_fusion_weights_uniport.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_fused_geo_weight_bag_new_kernel_uni_update" 2019 > output_2019_uni_update.log 2>&1
 
 # python main_reindex_time.py "ppi_2016" "results/ppi_2017_bootstrap_po_neg_full" 2017
 # python main_reindex_time.py "bioconcept" "results/bioconcept_2019_posbag_full" 2019

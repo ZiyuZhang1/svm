@@ -1,0 +1,95 @@
+['uniport_ppi_2017', 'uniport_exp', 'uniport_seq', 'uniport_esm'] 54 15328
+ICD10_C16 89
+evaluation
+Epoch 1/100 - Train Loss: 0.7386 - Val Loss: 0.6819 - Best Val Loss: inf
+Epoch 2/100 - Train Loss: 0.5945 - Val Loss: 0.6149 - Best Val Loss: 0.6819
+Epoch 3/100 - Train Loss: 0.4877 - Val Loss: 0.5640 - Best Val Loss: 0.6149
+Epoch 4/100 - Train Loss: 0.3886 - Val Loss: 0.5102 - Best Val Loss: 0.5640
+Epoch 5/100 - Train Loss: 0.3026 - Val Loss: 0.4713 - Best Val Loss: 0.5102
+Epoch 6/100 - Train Loss: 0.2162 - Val Loss: 0.4566 - Best Val Loss: 0.4713
+Epoch 7/100 - Train Loss: 0.1487 - Val Loss: 0.4610 - Best Val Loss: 0.4566
+Epoch 8/100 - Train Loss: 0.0958 - Val Loss: 0.4631 - Best Val Loss: 0.4566
+Epoch 9/100 - Train Loss: 0.0641 - Val Loss: 0.4793 - Best Val Loss: 0.4566
+Epoch 10/100 - Train Loss: 0.0485 - Val Loss: 0.5124 - Best Val Loss: 0.4566
+Early stopping triggered at epoch 10
+ICD10_C18 48
+evaluation
+Epoch 1/100 - Train Loss: 0.6834 - Val Loss: 0.6342 - Best Val Loss: inf
+Epoch 2/100 - Train Loss: 0.5468 - Val Loss: 0.5808 - Best Val Loss: 0.6342
+Epoch 3/100 - Train Loss: 0.4391 - Val Loss: 0.5338 - Best Val Loss: 0.5808
+Epoch 4/100 - Train Loss: 0.3516 - Val Loss: 0.4943 - Best Val Loss: 0.5338
+Epoch 5/100 - Train Loss: 0.2675 - Val Loss: 0.4724 - Best Val Loss: 0.4943
+Epoch 6/100 - Train Loss: 0.1909 - Val Loss: 0.4437 - Best Val Loss: 0.4724
+Epoch 7/100 - Train Loss: 0.1391 - Val Loss: 0.4489 - Best Val Loss: 0.4437
+Epoch 8/100 - Train Loss: 0.0984 - Val Loss: 0.4416 - Best Val Loss: 0.4437
+Epoch 9/100 - Train Loss: 0.0765 - Val Loss: 0.4737 - Best Val Loss: 0.4416
+Epoch 10/100 - Train Loss: 0.0539 - Val Loss: 0.4577 - Best Val Loss: 0.4416
+Epoch 11/100 - Train Loss: 0.0383 - Val Loss: 0.4557 - Best Val Loss: 0.4416
+Epoch 12/100 - Train Loss: 0.0323 - Val Loss: 0.4571 - Best Val Loss: 0.4416
+Early stopping triggered at epoch 12
+ICD10_C43 45
+evaluation
+ICD10_C45 38
+evaluation
+Epoch 1/100 - Train Loss: 0.6859 - Val Loss: 0.6313 - Best Val Loss: inf
+Epoch 2/100 - Train Loss: 0.5599 - Val Loss: 0.5660 - Best Val Loss: 0.6313
+Epoch 3/100 - Train Loss: 0.4665 - Val Loss: 0.5133 - Best Val Loss: 0.5660
+Epoch 4/100 - Train Loss: 0.3849 - Val Loss: 0.4595 - Best Val Loss: 0.5133
+Epoch 5/100 - Train Loss: 0.3009 - Val Loss: 0.4202 - Best Val Loss: 0.4595
+Epoch 6/100 - Train Loss: 0.2321 - Val Loss: 0.3858 - Best Val Loss: 0.4202
+Epoch 7/100 - Train Loss: 0.1558 - Val Loss: 0.3645 - Best Val Loss: 0.3858
+Epoch 8/100 - Train Loss: 0.1114 - Val Loss: 0.3577 - Best Val Loss: 0.3645
+Epoch 9/100 - Train Loss: 0.0795 - Val Loss: 0.3621 - Best Val Loss: 0.3577
+Epoch 10/100 - Train Loss: 0.0586 - Val Loss: 0.3673 - Best Val Loss: 0.3577
+Epoch 11/100 - Train Loss: 0.0412 - Val Loss: 0.3815 - Best Val Loss: 0.3577
+Epoch 12/100 - Train Loss: 0.0307 - Val Loss: 0.3911 - Best Val Loss: 0.3577
+Early stopping triggered at epoch 12
+ICD10_C50 529
+evaluation
+Epoch 1/100 - Train Loss: 0.5595 - Val Loss: 0.4832 - Best Val Loss: inf
+Epoch 2/100 - Train Loss: 0.4575 - Val Loss: 0.4581 - Best Val Loss: 0.4832
+Epoch 3/100 - Train Loss: 0.4144 - Val Loss: 0.4495 - Best Val Loss: 0.4581
+Epoch 4/100 - Train Loss: 0.3667 - Val Loss: 0.4455 - Best Val Loss: 0.4495
+Epoch 5/100 - Train Loss: 0.3351 - Val Loss: 0.4475 - Best Val Loss: 0.4455
+Epoch 6/100 - Train Loss: 0.2878 - Val Loss: 0.4729 - Best Val Loss: 0.4455
+Epoch 7/100 - Train Loss: 0.2490 - Val Loss: 0.5027 - Best Val Loss: 0.4455
+Epoch 8/100 - Train Loss: 0.2010 - Val Loss: 0.5777 - Best Val Loss: 0.4455
+Early stopping triggered at epoch 8
+ICD10_C67 183
+evaluation
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_nn.py", line 145, in <module>
+    main()
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_nn.py", line 130, in main
+    result_df = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_nn.py", line 68, in evaluate_disease
+    one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_nn.py", line 39, in one_fold_evaluate
+    X_scaled = scaler.fit_transform(df[select_columns].values)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/utils/_set_output.py", line 316, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/base.py", line 1098, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/preprocessing/_data.py", line 878, in fit
+    return self.partial_fit(X, y, sample_weight)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/base.py", line 1473, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/preprocessing/_data.py", line 999, in partial_fit
+    self.mean_, self.var_, self.n_samples_seen_ = _incremental_mean_and_var(
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/sklearn/utils/extmath.py", line 1133, in _incremental_mean_and_var
+    new_sample_count = n_samples - np.sum(X_nan_mask, axis=0)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/numpy/_core/fromnumeric.py", line 2466, in sum
+    return _wrapreduction(
+           ^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/numpy/_core/fromnumeric.py", line 86, in _wrapreduction
+    return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

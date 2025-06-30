@@ -1,0 +1,111 @@
+['uniport_ppi_2017', 'uniport_exp', 'uniport_seq', 'uniport_esm'] 54 15328
+ICD10_C16 89
+evaluation
+ICD10_C18 48
+evaluation
+ICD10_C43 45
+evaluation
+ICD10_C45 38
+evaluation
+ICD10_C50 529
+evaluation
+ICD10_C67 183
+evaluation
+ICD10_C81 23
+evaluation
+ICD10_D46 15
+evaluation
+ICD10_D57 22
+evaluation
+ICD10_D66 15
+evaluation
+ICD10_D83 23
+evaluation
+ICD10_E10 104
+evaluation
+ICD10_E11 266
+evaluation
+ICD10_E66 255
+evaluation
+ICD10_E84 42
+evaluation
+ICD10_F01 33
+evaluation
+ICD10_F20 816
+evaluation
+ICD10_F31 428
+evaluation
+ICD10_F72 31
+evaluation
+ICD10_F90 20
+evaluation
+ICD10_G10 32
+evaluation
+ICD10_G20 128
+evaluation
+ICD10_G24 21
+evaluation
+ICD10_G30 179
+evaluation
+ICD10_G35 102
+evaluation
+2025-06-26 12:12:51,034 [ERROR] Error fetching enrichment results: KEGG_2016
+2025-06-26 12:12:51,258 [ERROR] Error fetching enrichment results: KEGG_2016
+ICD10_G40 114
+evaluation
+ICD10_G43 21
+evaluation
+ICD10_G91 20
+evaluation
+ICD10_H40 18
+evaluation
+ICD10_I10 35
+evaluation
+ICD10_I25 134
+evaluation
+ICD10_I26 15
+evaluation
+ICD10_I42 152
+evaluation
+ICD10_I50 152
+evaluation
+ICD10_I63 37
+evaluation
+ICD10_I70 64
+evaluation
+ICD10_J45 185
+evaluation
+ICD10_J62 16
+evaluation
+ICD10_J80 51
+evaluation
+ICD10_K44 59
+evaluation
+ICD10_K51 74
+evaluation
+ICD10_L20 56
+evaluation
+ICD10_L40 70
+evaluation
+ICD10_M32 95
+evaluation
+ICD10_M34 35
+evaluation
+ICD10_M41 26
+evaluation
+ICD10_N04 72
+evaluation
+ICD10_N17 87
+evaluation
+ICD10_N18 91
+evaluation
+ICD10_N46 81
+evaluation
+ICD10_N80 148
+evaluation
+ICD10_N97 28
+evaluation
+ICD10_C23 18
+evaluation
+ICD10_C53 15
+evaluation

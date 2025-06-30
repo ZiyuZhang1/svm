@@ -1,0 +1,6 @@
+['ppi_2019', 'bioconcept', 'uniport', 'esm2'] 40 12134
+ICD10_C16 67
+dir exist, checking kernels
+loaded kernels:  ['ppi_2019', 'bioconcept', 'uniport', 'esm2', 'linear_fused', 'geo_fused']
+evaluation
+compute weights based on pathway enrich

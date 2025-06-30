@@ -76,5 +76,17 @@ def get_feature(root, feature_name):
     #     feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/GENEPT_MODEL3/GENEPT_MODEL3_align.csv'))    
     # elif feature_name == 'GF_12L95M':
     #     feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/GF_12L95M/GF_12L95M_align.csv')) 
+    elif feature_name == 'uniport_ppi_2017':
+        feature_df = pd.read_csv(os.path.join(root,'data/stringdb/uniport_ppi_2017.csv'))
+    elif feature_name == 'uniport_ppi_2019':
+        feature_df = pd.read_csv(os.path.join(root,'data/stringdb/uniport_ppi_2019.csv'))
+    elif feature_name == 'uniport_esm':
+        feature_df = pd.read_csv(os.path.join(root,'data/esmfold/uniport_esm2.csv'))
+    elif feature_name == 'uniport_seq':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/seq_emb/uniport_emb.csv'))
+    elif feature_name == 'uniport_exp':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/expression_emb/gene2vec_emb.csv'))
+    elif feature_name == 'uniport_bio':
+        feature_df = pd.read_csv(os.path.join(root,'data/bioconcept/uniport_bio_emb.csv'))
 
     return feature_df

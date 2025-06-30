@@ -4,21 +4,19 @@ from sklearn import svm
 from sklearn.model_selection import KFold, GridSearchCV
 from rdkit.ML.Scoring.Scoring import CalcBEDROC
 # from pseudo_label import select_pseudo_negatives
-from pseudo_reindex import select_pseudo_negatives, select_pseudo_negatives_mask
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import make_scorer
 import os
 import pickle
 import gseapy as gp
-from scipy.cluster.hierarchy import fcluster
 # from concurrent.futures import ProcessPoolExecutor
 # import functools
 from multiprocessing import Pool
-from functools import partial
 from collections import defaultdict
 from sklearn.metrics.pairwise import rbf_kernel
 from sklearn.neighbors import NearestNeighbors
 from scipy.linalg import logm, expm, eigh
+from mygene import MyGeneInfo
 
 def merge_results(results_list):
     merged = defaultdict(list)
@@ -256,27 +254,8 @@ def eval(clf, X_train, y_train, X_test, y_test):
         CalcBEDROC(scores, col=0, alpha=5.3)
     )
 
-with open('/itf-fi-ml/shared/users/ziyuzh/svm/data/stringdb/2023/name_convert.pkl', 'rb') as file:
-    loaded_data = pickle.load(file)
-stringId2name,name2stringId,aliases2stringId = loaded_data
-del name2stringId,aliases2stringId
-
-def string_convert(gene):
-    if gene in name2stringId.keys():
-        return name2stringId[gene]
-    elif gene in aliases2stringId.keys():
-        return aliases2stringId[gene]
-    else:
-        return None
-
-def get_top_n_predictions(ranked_predict_index,test_indices,n):
-    genes = []
-    sorted_indices = np.argsort(ranked_predict_index)
-    top_10_indices = sorted_indices[:n]
-    test_indices[top_10_indices]
-    for value in test_indices[top_10_indices]:
-        genes.append(stringId2name[value])
-    return genes
+with open('/itf-fi-ml/shared/users/ziyuzh/svm/data/uniport_id/uni2name.pkl', 'rb') as file:
+    uni2name_dict = pickle.load(file)
 
 def single_bagging_neg(neg_df,neg_num,train_pos_df,test_pos_df, seed, _):
     result_dict_temp = dict()
@@ -359,8 +338,13 @@ def weighted_log_euclidean_mean(kernels, weights):
     log_sum = np.sum(weighted_logs, axis=0)
     return expm(log_sum)
 
-def enriched_set(input_stringids,time):
-    gene_names = [stringId2name.get(sid) for sid in input_stringids if stringId2name.get(sid) is not None]
+def enriched_set(input_ids,time):
+    gene_names = set()
+    for unid in input_ids:
+        gene_list = uni2name_dict.get(unid, [])
+        gene_names.update(gene_list)
+    gene_names = list(gene_names) 
+    
     if time == 2019:
         enrich_db = ['GO_Biological_Process_2021','GO_Cellular_Component_2021','GO_Molecular_Function_2021','KEGG_2019_Human']
     elif time == 2017:
@@ -464,7 +448,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
     if 'random_negative' in methods:
 
-        kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/kerlens'
+        kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel'
         if not os.path.isdir(kernel_dir_path):
             os.makedirs(kernel_dir_path, exist_ok=True)
             print('make dir')
@@ -530,7 +514,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         enrich_train_genes = train_pos_df.index.values
         enrich_train_set = enriched_set(enrich_train_genes,time)
 
-        num_processes = 20
+        num_processes = 15
         base_seed = 42
         seed_list = [base_seed + i for i in range(num_processes)]
 
