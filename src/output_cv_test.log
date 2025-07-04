@@ -1,0 +1,41 @@
+['uniport_ppi_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm'] 48 15686
+ICD10_C16 90
+calculating kernels...
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 306, in neg_bagging
+    with open(X_path, 'rb') as f:
+         ^^^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not ndarray
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_cv_filter.py", line 84, in <module>
+    result_df = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 488, in evaluate_disease
+    one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 469, in one_fold_evaluate
+    bagging_y_scores = pool.map(neg_bagging, args_list)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 774, in get
+    raise self._value
+TypeError: expected str, bytes or os.PathLike object, not ndarray

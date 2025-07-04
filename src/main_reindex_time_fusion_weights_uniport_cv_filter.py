@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex_fusion_weights_uniport import evaluate_disease
+from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
 import sys
 import multiprocessing as mp
 
@@ -11,8 +11,8 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-test_bug = True
-# test_bug = False
+# test_bug = True
+test_bug = False
 
 if test_bug:
     feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']

@@ -1,0 +1,323 @@
+['uniport_ppi_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm'] 48 15686
+ICD10_C16 90
+kernels existing
+uniport_ppi_2019 2 0.8537401832508866
+uniport_seq 2 0.7597226083464617
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+2025-07-03 17:10:47,082 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-07-03 17:10:47,300 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+ICD10_C18 50
+kernels existing
+uniport_bio 2 0.7785945760690006
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C43 47
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+kernel fusion and evaluation
+ICD10_C50 544
+kernels existing
+uniport_ppi_2019 0.1 0.6826639918727415
+uniport_bio 2 0.6486220953409719
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C67 191
+kernels existing
+uniport_ppi_2019 2 0.8382786324776498
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C81 23
+kernels existing
+uniport_ppi_2019 2 0.9224030337941628
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D57 22
+kernels existing
+uniport_ppi_2019 2 0.9428571428571427
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D66 15
+kernels existing
+uniport_ppi_2019 2 0.9217391304347826
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D83 23
+kernels existing
+uniport_ppi_2019 4 0.9197278911564627
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+kernel fusion and evaluation
+ICD10_E11 269
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_E66 259
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F01 33
+kernels existing
+uniport_ppi_2019 4 0.7175925925925926
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+kernel fusion and evaluation
+Warning: All pathway overlaps are zero; using uniform weights.
+ICD10_F20 834
+kernels existing
+uniport_ppi_2019 2 0.8048264462809916
+uniport_bio 2 0.8130829752066115
+uniport_seq 2 0.7172293112947657
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F31 441
+kernels existing
+uniport_ppi_2019 8 0.8279333522569544
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_F72 31
+kernels existing
+uniport_ppi_2019 0.1 0.6204081632653061
+uniport_bio 0.1 0.6666666666666666
+uniport_seq 2 0.6380952380952382
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F90 24
+kernels existing
+uniport_ppi_2019 8 0.6474958949096881
+uniport_bio 2 0.7069239189928845
+uniport_seq 8 0.7086206896551724
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G10 32
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G20 137
+kernels existing
+uniport_ppi_2019 4 0.8559999999999999
+uniport_bio 2 0.8691851851851852
+uniport_seq 2 0.6787818930041153
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G24 22
+kernels existing
+uniport_ppi_2019 8 0.8759259259259261
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_G30 183
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G40 120
+kernels existing
+uniport_ppi_2019 4 0.8090142971805409
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G43 23
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G91 22
+kernels existing
+uniport_ppi_2019 2 0.6660937102113572
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+Warning: All pathway overlaps are zero; using uniform weights.
+ICD10_I10 35
+kernels existing
+uniport_ppi_2019 2 0.9515321280027162
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I25 138
+kernels existing
+uniport_ppi_2019 2 0.8940155294205313
+uniport_esm 8 0.7069385348127416
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I26 15
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I42 154
+kernels existing
+uniport_bio 2 0.8673500370450982
+uniport_ppi_2019 2 0.9058487315630847
+uniport_seq 8 0.7233233375137375
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I50 155
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I63 37
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I70 65
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J45 187
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J62 16
+kernels existing
+uniport_ppi_2019 0.1 0.8863636363636364
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J80 52
+kernels existing
+uniport_ppi_2019 2 0.8747404844290658
+uniport_bio 2 0.815916955017301
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_K44 60
+kernels existing
+uniport_ppi_2019 2 0.9385135415370578
+uniport_bio 2 0.8802591107525544
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_K51 74
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_L20 58
+kernels existing
+uniport_ppi_2019 2 0.9200369344413666
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_L40 73
+kernels existing
+uniport_ppi_2019 2 0.9130584007122869
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+kernel fusion and evaluation

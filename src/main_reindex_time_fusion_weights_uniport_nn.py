@@ -1,12 +1,13 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
+# from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
+from model_nn_uni_inductive import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
+
 import sys
 import torch.multiprocessing as mp
 import torch
 import numpy as np
-from sklearn.preprocessing import StandardScaler
 
 def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
@@ -32,22 +33,15 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         base_seed = 42
         seed_list = [base_seed + i for i in range(num_processes)]
 
-        X_all = []
-        for feature_name in feature_list:
-            select_columns = [col for col in df.columns if col.startswith(feature_name)]
-            scaler = StandardScaler()
-            X_scaled = scaler.fit_transform(df[select_columns].values)
-            X_all.append(X_scaled)
-
         args_list = [
-            (neg_df, neg_num, train_pos_df, df, y, X_all, test_index_loc, seed)
+            (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
             for seed in seed_list]
 
         # Step 2: Use Pool to parallelize
         with mp.Pool(processes=num_processes) as pool:
             bagging_y_scores = pool.map(neg_bagging, args_list)
 
-        final_y_score = torch.stack(bagging_y_scores).mean(dim=0).cpu().numpy()
+        final_y_score = np.mean(bagging_y_scores, axis=0)
 
         enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
         enrich_feature_test = enriched_set(enrich_test_genes,time)
@@ -121,7 +115,7 @@ def main():
                     selected_diseases.append(disease_id)
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases:
+    for disease in selected_diseases[13:]:
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:
             df, y = read_data_timecut(disease, all_df, merged_df,time)

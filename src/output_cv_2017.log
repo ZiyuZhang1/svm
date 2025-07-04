@@ -1,0 +1,468 @@
+['uniport_ppi_2017', 'uniport_exp', 'uniport_seq', 'uniport_esm'] 54 15328
+ICD10_C16 89
+calculating kernels...
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C18 48
+kernels existing
+uniport_esm 8 0.722831132987383
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C43 45
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C45 38
+kernels existing
+uniport_ppi_2017 0.1 0.8921985382852649
+uniport_esm 0.01 0.5
+uniport_exp 2 0.6333554805262896
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C50 529
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C67 183
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C81 23
+kernels existing
+uniport_ppi_2017 6 0.9409722222222223
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D46 15
+kernels existing
+uniport_ppi_2017 2 0.946135265700483
+evaluation
+collect valid feature:  uniport_exp
+kernel fusion and evaluation
+ICD10_D57 22
+kernels existing
+uniport_ppi_2017 2 0.9695059842118665
+uniport_exp 2 0.709935489347254
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D66 15
+kernels existing
+uniport_ppi_2017 0.1 0.8689915458937199
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_D83 23
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+kernel fusion and evaluation
+ICD10_E10 104
+kernels existing
+uniport_ppi_2017 4 0.9360302165201726
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_E11 266
+kernels existing
+uniport_ppi_2017 2 0.9154332458616946
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_E66 255
+kernels existing
+uniport_ppi_2017 4 0.9010516212842278
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_E84 42
+kernels existing
+uniport_ppi_2017 2 0.943624328215121
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F01 33
+kernels existing
+uniport_ppi_2017 2 0.8587962962962963
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+kernel fusion and evaluation
+Warning: All pathway overlaps are zero; using uniform weights.
+ICD10_F20 816
+kernels existing
+uniport_ppi_2017 2 0.7992011594889279
+uniport_exp 0.1 0.6588373335910402
+uniport_seq 2 0.7133227231032625
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F31 428
+kernels existing
+uniport_ppi_2017 2 0.84507727480567
+uniport_exp 2 0.6389465020576132
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_F72 31
+kernels existing
+uniport_ppi_2017 2 0.6731870839733743
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_F90 20
+kernels existing
+uniport_ppi_2017 2 0.6272005772005772
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G10 32
+kernels existing
+uniport_exp 0.1 0.597051967640203
+uniport_ppi_2017 2 0.9341297591297592
+uniport_seq 8 0.6373725947255359
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G20 128
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G24 21
+kernels existing
+uniport_ppi_2017 2 0.749192665571976
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+kernel fusion and evaluation
+ICD10_G30 179
+kernels existing
+uniport_ppi_2017 2 0.9090247933884297
+uniport_exp 2 0.6790523415977961
+uniport_seq 4 0.7070853994490358
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_G35 102
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G40 114
+kernels existing
+uniport_ppi_2017 2 0.8836305984938565
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G43 21
+kernels existing
+uniport_ppi_2017 2 0.9346628679962014
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_G91 20
+kernels existing
+uniport_ppi_2017 2 0.7433876811594202
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_H40 18
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I10 35
+kernels existing
+uniport_ppi_2017 2 0.9703703703703704
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I25 134
+kernels existing
+uniport_ppi_2017 2 0.9106001500069296
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I26 15
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I42 152
+kernels existing
+uniport_ppi_2017 2 0.9046863224312024
+uniport_exp 6 0.7028688381282483
+uniport_seq 8 0.7095033413644605
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I50 152
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I63 37
+kernels existing
+uniport_ppi_2017 2 0.9302648046803511
+uniport_exp 2 0.781113295432407
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_I70 64
+kernels existing
+uniport_ppi_2017 2 0.9553093259464451
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J45 185
+kernels existing
+uniport_ppi_2017 2 0.9483148148148147
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J62 16
+kernels existing
+uniport_ppi_2017 0.1 0.9021284271284271
+uniport_exp 2 0.6452380952380952
+uniport_seq 4 0.573051948051948
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_J80 51
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_K44 59
+kernels existing
+uniport_ppi_2017 2 0.9196311540164812
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_K51 74
+kernels existing
+uniport_ppi_2017 4 0.9068491820785399
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_L20 56
+kernels existing
+uniport_ppi_2017 4 0.9326811314797584
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_L40 70
+kernels existing
+uniport_ppi_2017 2 0.902634071112332
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_M32 95
+kernels existing
+uniport_ppi_2017 4 0.9162095493665445
+uniport_exp 6 0.7643728816629625
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+2025-07-03 13:45:44,194 [ERROR] Error fetching enrichment results: KEGG_2016
+2025-07-03 13:45:44,432 [ERROR] Error fetching enrichment results: KEGG_2016
+ICD10_M34 35
+kernels existing
+uniport_ppi_2017 2 0.9549228184096604
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_M41 26
+kernels existing
+uniport_ppi_2017 6 0.7837256899756899
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N04 72
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_N17 87
+kernels existing
+uniport_ppi_2017 6 0.9486193293885602
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+kernel fusion and evaluation
+ICD10_N18 91
+kernels existing
+uniport_ppi_2017 2 0.9694348310887889
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N46 81
+kernels existing
+uniport_ppi_2017 2 0.8361839379455572
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N80 148
+kernels existing
+uniport_ppi_2017 2 0.8435491172476234
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N97 28
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C23 18
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_C53 15
+kernels existing
+uniport_ppi_2017 2 0.9953703703703703
+evaluation
+collect valid feature:  uniport_ppi_2017
+collect valid feature:  uniport_exp
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
