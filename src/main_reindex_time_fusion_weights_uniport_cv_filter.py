@@ -4,6 +4,8 @@ from features_reindex import get_feature, read_data, read_data_timecut
 from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
 import sys
 import multiprocessing as mp
+from sklearn.preprocessing import MinMaxScaler
+
 
 root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 
@@ -38,6 +40,12 @@ for feature in feature_list:
         col: f"{feature}_{col}" if col.startswith('feature') else col
         for col in feature_df.columns
     }, inplace=True)
+
+    feature_cols = [col for col in feature_df.columns if col.startswith('feature')]
+    if feature_cols:
+        scaler = MinMaxScaler()
+        feature_df[feature_cols] = scaler.fit_transform(feature_df[feature_cols])
+
     # Merge iteratively to avoid keeping all DataFrames
     if merged_df is None:
         merged_df = feature_df

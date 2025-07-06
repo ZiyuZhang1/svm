@@ -17,6 +17,8 @@ from sklearn.metrics.pairwise import rbf_kernel
 from sklearn.neighbors import NearestNeighbors
 from scipy.linalg import logm, expm, eigh
 from sklearn.model_selection import StratifiedKFold
+from scipy.stats import rankdata
+
 
 def merge_results(results_list):
     merged = defaultdict(list)
@@ -235,7 +237,7 @@ def calculate_jac_sim(enrich_1, enrich_2):
 
 def compute_kernels(X_feature, feature_id, save_dir):
 
-    ratio_list = [0.01, 0.1, 2, 4, 6, 8]
+    ratio_list = [2,4,8]
     K_s_path = dict()
     nbrs = NearestNeighbors(n_neighbors=2).fit(X_feature)
     distances, _ = nbrs.kneighbors(X_feature)
@@ -247,11 +249,11 @@ def compute_kernels(X_feature, feature_id, save_dir):
         logm_k = process_kernel(K_full)
 
         # Save the kernel immediately
-        kernel_path = os.path.join(save_dir, f'{feature_id}_K_{ratio}.pkl')
+        kernel_path = os.path.join(save_dir, f'{feature_id}_K_{ratio}_{gamma}.pkl')
         with open(kernel_path, 'wb') as f:
             pickle.dump(K_full, f)
 
-        kernel_path2 = os.path.join(save_dir, f'{feature_id}_logK_{ratio}.pkl')
+        kernel_path2 = os.path.join(save_dir, f'{feature_id}_logK_{ratio}_{gamma}.pkl')
         with open(kernel_path2, 'wb') as f:
             pickle.dump(logm_k, f)
 
@@ -272,32 +274,74 @@ def select_gamma_ratio(args):
     train_index_loc = df.index.get_indexer(train_df.index)
     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
 
-    best_gamma_ratio = None
-    best_score = -float('inf')
+    C_values = [1,3,9,27,81]
+    gamma_ratios = [2,4,8]
+
+    best_score = 0
+    best_params = {'C': None, 'gamma': None}
+
     # Define stratified k-fold
     skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
-    for gamma_ratio, pre_kernel_path in X_dict.items():
-        scores = []
-        with open(pre_kernel_path[0], 'rb') as f:
+    for gamma_ratio in gamma_ratios:
+        pre_kernel_path = X_dict[gamma_ratio][0]
+        with open(pre_kernel_path, 'rb') as f:
             pre_kernel = pickle.load(f)
+        for C_num in C_values:
+            cv_scores = []
+            for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
+                y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
+                X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
+                X_feature_test = pre_kernel[np.ix_(train_index_loc[val_idx],train_index_loc[train_idx])]
+                best_svm = svm.SVC(C=C_num, kernel='precomputed')
+                best_svm.fit(X_feature_train, y_cv_train)
+                y_scores = best_svm.decision_function(X_feature_test)
+                auroc = roc_auc_score(y_cv_val, y_scores)
+                cv_scores.append(auroc)
+                avg_score = np.mean(cv_scores)
+                
+                if avg_score > best_score:
+                    best_score = avg_score
+                    best_params = {'C_num': C_num, 'gamma_ratio': gamma_ratio, 'gamma':pre_kernel_path.split('_')[-1].replace('.pkl', '')}
+
+    return fname, best_params, best_score
+
+def select_C(args):
+    neg_df, neg_num, train_pos_df, df, pre_kernel, fname = args
+
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
+    train_df = pd.concat([train_pos_df, train_neg_df])
+    train_index_loc = df.index.get_indexer(train_df.index)
+    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+
+    C_values = [1,3,9,27,81]
+
+    best_score = 0
+    best_params = 0
+
+    # Define stratified k-fold
+    skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+
+    for C_num in C_values:
+        cv_scores = []
         for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
             y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
             X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
             X_feature_test = pre_kernel[np.ix_(train_index_loc[val_idx],train_index_loc[train_idx])]
-            best_svm = svm.SVC(kernel='precomputed')
+            best_svm = svm.SVC(C=C_num, kernel='precomputed')
             best_svm.fit(X_feature_train, y_cv_train)
             y_scores = best_svm.decision_function(X_feature_test)
             auroc = roc_auc_score(y_cv_val, y_scores)
-            scores.append(auroc)
-        avg_score = sum(scores) / len(scores)
-        if avg_score > best_score:
-            best_score = avg_score
-            best_gamma_ratio = gamma_ratio
-    print(fname, best_gamma_ratio, best_score)
-    return fname, best_gamma_ratio
+            cv_scores.append(auroc)
+            avg_score = np.mean(cv_scores)
+            
+            if avg_score > best_score:
+                best_score = avg_score
+                best_params = C_num
+
+    return fname, best_params, best_score
 
 def neg_bagging(args):
-    neg_df, neg_num, train_pos_df, df, X_path, test_index_loc, seed = args
+    neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed = args
     train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
     train_df = pd.concat([train_pos_df, train_neg_df])
     train_index_loc = df.index.get_indexer(train_df.index)
@@ -313,7 +357,7 @@ def neg_bagging(args):
     X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
     X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
 
-    best_svm = svm.SVC(kernel='precomputed')
+    best_svm = svm.SVC(C=C_num, kernel='precomputed')
     best_svm.fit(X_feature_train, y_train)
     y_scores = best_svm.decision_function(X_feature_test)
     return y_scores
@@ -326,7 +370,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
     if 'random_negative' in methods:
 
-        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv',str(time))
+        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled',str(time))
         os.makedirs(kernel_dir_path, exist_ok=True)
         kernel_pkl_path = os.path.join(kernel_dir_path,'path_save.pkl')
 
@@ -363,7 +407,15 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
         with Pool(processes=len(feature_list)) as pool:
             best_ratios = pool.map(select_gamma_ratio, args_list)
-        best_ratios_dict = dict(best_ratios)
+
+        best_ratios_dict = dict()
+        agg_feature = []
+        for fname, best_params, best_score in best_ratios:
+            print(fname, best_params, best_score)
+            best_ratios_dict[fname] = best_params
+            if best_score > 0.70:
+                agg_feature.append(fname)
+        print('collect valid feature: ', agg_feature)
       ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
         print('evaluation')
 
@@ -381,14 +433,16 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         base_seed = 42
         seed_list = [base_seed + i for i in range(num_processes)]
 
-        pathway_overlap = []
-        agg_feature = []
+        pathway_overlap_dict = dict()
+        
+        rank_results_per_feature = dict()
         for feature_name in list(kernels_all_dict.keys()):
-            gamma = best_ratios_dict[feature_name]
+            gamma = best_ratios_dict[feature_name]['gamma_ratio']
             X_path = kernels_all_dict[feature_name][gamma][0]
+            C_num = best_ratios_dict[feature_name]['C_num']
 
             args_list = [
-                (neg_df, neg_num, train_pos_df, df, X_path, test_index_loc, seed)
+                (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
                 for seed in seed_list]
 
             # Step 2: Use Pool to parallelize
@@ -399,88 +453,141 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
             enrich_feature_test = enriched_set(enrich_test_genes,time)
             jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            pathway_overlap_dict[feature_name] = jac_sm
 
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
-            if results[-6] > 0.5:
-                print('collect valid feature: ', feature_name)
-                agg_feature.append(feature_name)
-                pathway_overlap.append(jac_sm)
+            rank_results_per_feature[feature_name] = rankdata(final_y_score, method='average')
+        ################################## later fusion
+        if len(agg_feature) > 0:
+            print('later fusion')
+            selected_ranks = np.array([rank_results_per_feature[fname] for fname in agg_feature])  # Shape: (num_features, num_elements)
+            selected_weights = np.array([pathway_overlap_dict[fname] for fname in agg_feature])    # Shape: (num_features,)
 
-        print('kernel fusion and evaluation')
-        ############################################ kernel fusion
-        ks = []
-        logks = []
-        for fname in agg_feature:
-            gamma = best_ratios_dict[fname]
-            X_k_path = kernels_all_dict[fname][gamma][0]
-            with open(X_k_path, 'rb') as f:
-                X_k = pickle.load(f)
-            ks.append(X_k)
-            X_logk_path = kernels_all_dict[fname][gamma][1]
-            with open(X_logk_path, 'rb') as f:
-                X_logk = pickle.load(f)
-            logks.append(X_logk)            
+            if np.sum(selected_weights) == 0:
+                norm_weights = np.ones_like(selected_weights) / len(selected_weights)
+                print("Warning: All selected weights are zero; using uniform weights.")
+            else:
+                norm_weights = selected_weights / np.sum(selected_weights)
 
-        K_linear_fused = np.mean(ks, axis=0)
-        K_linear_fused = 0.5 * (K_linear_fused + K_linear_fused.T)
-        K_linear_fused = normalize_kernel(K_linear_fused)
-        kernels_all_dict['linear_fused'] = [K_linear_fused]
-
-        logk_avg = np.mean(logks, axis=0)
-        eigenvalues, eigenvectors = np.linalg.eigh(logk_avg)
-        eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
-        K_geo_mean = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
-        K_geo_mean = 0.5 * (K_geo_mean + K_geo_mean.T)  # Enforce symmetry
-        K_geo_mean = normalize_kernel(K_geo_mean)
-        kernels_all_dict['geo_fused'] = [K_geo_mean]
-
-        ######################### evalute weighted kernels
-        total = sum(pathway_overlap)
-        if total == 0:
-            feature_weights = [1.0 / len(pathway_overlap)] * len(pathway_overlap)
-            print("Warning: All pathway overlaps are zero; using uniform weights.")
-        else:
-            feature_weights = [v / total for v in pathway_overlap]
-
-        first_K = ks[0]
-        K_weight_linear_all = np.zeros(first_K.shape, dtype=first_K.dtype)
-        expm_sum = np.zeros_like(logks[0])
-        # Accumulate
-        for f_index, K_i in enumerate(ks):
-            weight = feature_weights[f_index]
-            K_weight_linear_all += weight * K_i
-            expm_sum     += weight * logks[f_index]
-
-        K_weight_linear_all = 0.5 * (K_weight_linear_all + K_weight_linear_all.T)
-        K_weight_linear_all = normalize_kernel(K_weight_linear_all)
-        # Geometric mean via matrix exponential
-        eigenvalues, eigenvectors = np.linalg.eigh(expm_sum)
-        eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
-        K_weight_geo_all = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
-        K_weight_geo_all = 0.5 * (K_weight_geo_all + K_weight_geo_all.T)  # Enforce symmetry
-        K_weight_geo_all = normalize_kernel(K_weight_geo_all)
-
-        feature_name = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
-        for name_idx, X_all in enumerate([K_linear_fused, K_geo_mean, K_weight_linear_all,K_weight_geo_all]):
-            args_list = [
-                (neg_df, neg_num, train_pos_df, df, X_all, test_index_loc, seed)
-                for seed in seed_list]
-
-            # Step 2: Use Pool to parallelize
-            with Pool(processes=num_processes) as pool:
-                bagging_y_scores = pool.map(neg_bagging, args_list)
-
-            final_y_score = np.mean(bagging_y_scores, axis=0)
-            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
-
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            weighted_rank = np.sum(norm_weights[:, np.newaxis] * selected_ranks, axis=0)
+            enrich_test_genes = test_indices[np.argsort(weighted_rank)[::-1]][:200]
             enrich_feature_test = enriched_set(enrich_test_genes,time)
             jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            ranked_predict_index, results = eval_bagging(weighted_rank, y_test)
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_weighted_rank'+str(round(jac_sm, 3)), *results]
 
-            # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold, feature_name[name_idx]+'-'+str(round(jac_sm, 3)), *results]
+            avg_rank = np.mean(selected_ranks, axis=0)
+            enrich_test_genes = test_indices[np.argsort(avg_rank)[::-1]][:200]
+            enrich_feature_test = enriched_set(enrich_test_genes,time)
+            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            ranked_predict_index, results = eval_bagging(avg_rank, y_test)
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_avg_rank'+str(round(jac_sm, 3)), *results]
+        else:
+            print('no valid features, no later fusion')
+        ############################################ kernel fusion
+        if len(agg_feature) > 0:
+            print('middle fusion')
+            print('kernel fusion')
+            ks = []
+            logks = []
+            for fname in agg_feature:
+                gamma = best_ratios_dict[fname]['gamma_ratio']
+                X_k_path = kernels_all_dict[fname][gamma][0]
+                with open(X_k_path, 'rb') as f:
+                    X_k = pickle.load(f)
+                ks.append(X_k)
+                X_logk_path = kernels_all_dict[fname][gamma][1]
+                with open(X_logk_path, 'rb') as f:
+                    X_logk = pickle.load(f)
+                logks.append(X_logk)            
+
+            K_linear_fused = np.mean(ks, axis=0)
+            K_linear_fused = 0.5 * (K_linear_fused + K_linear_fused.T)
+            K_linear_fused = normalize_kernel(K_linear_fused)
+            kernels_all_dict['linear_fused'] = K_linear_fused
+            del K_linear_fused
+
+            logk_avg = np.mean(logks, axis=0)
+            eigenvalues, eigenvectors = np.linalg.eigh(logk_avg)
+            eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
+            K_geo_mean = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
+            K_geo_mean = 0.5 * (K_geo_mean + K_geo_mean.T)  # Enforce symmetry
+            K_geo_mean = normalize_kernel(K_geo_mean)
+            kernels_all_dict['geo_fused'] = K_geo_mean
+            del K_geo_mean
+
+            ######################### weighted kernels
+            pathway_overlap = []
+            for fname in agg_feature:
+                pathway_overlap.append(pathway_overlap_dict[fname])
+            total = sum(pathway_overlap)
+            if total == 0:
+                feature_weights = [1.0 / len(pathway_overlap)] * len(pathway_overlap)
+                print("Warning: All pathway overlaps are zero; using uniform weights.")
+            else:
+                feature_weights = [v / total for v in pathway_overlap]
+
+            first_K = ks[0]
+            K_weight_linear_all = np.zeros(first_K.shape, dtype=first_K.dtype)
+            expm_sum = np.zeros_like(logks[0])
+            # Accumulate
+            for f_index, K_i in enumerate(ks):
+                weight = feature_weights[f_index]
+                K_weight_linear_all += weight * K_i
+                expm_sum     += weight * logks[f_index]
+
+            K_weight_linear_all = 0.5 * (K_weight_linear_all + K_weight_linear_all.T)
+            K_weight_linear_all = normalize_kernel(K_weight_linear_all)
+            kernels_all_dict['weighted_linear_fused'] = K_weight_linear_all
+            del K_weight_linear_all
+
+            # Geometric mean via matrix exponential
+            eigenvalues, eigenvectors = np.linalg.eigh(expm_sum)
+            eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
+            K_weight_geo_all = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
+            K_weight_geo_all = 0.5 * (K_weight_geo_all + K_weight_geo_all.T)  # Enforce symmetry
+            K_weight_geo_all = normalize_kernel(K_weight_geo_all)
+            kernels_all_dict['weighted_geo_fused'] = K_weight_geo_all
+            del K_weight_geo_all
+            #################################### cv choose best C for all kernels
+            print('grid search C for fused kernels')
+            fusion_methods = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
+
+            args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
+                for fname in fusion_methods]
+
+            with Pool(processes=len(fusion_methods)) as pool:
+                best_Cs = pool.map(select_C, args_list)
+            C_dict = dict()
+            for fname, best_params, best_score in best_Cs:
+                print(fname, best_params, best_score)
+                C_dict[fname] = best_params
+            ###########################################################
+            print('fused kernels evaluation')
+            for fusion_method in fusion_methods:
+                C_num = C_dict[fusion_method]
+                X_all = kernels_all_dict[fusion_method]
+                args_list = [
+                    (neg_df, neg_num, train_pos_df, df, X_all, C_num, test_index_loc, seed)
+                    for seed in seed_list]
+
+                # Step 2: Use Pool to parallelize
+                with Pool(processes=num_processes) as pool:
+                    bagging_y_scores = pool.map(neg_bagging, args_list)
+
+                final_y_score = np.mean(bagging_y_scores, axis=0)
+                ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+
+                enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+                enrich_feature_test = enriched_set(enrich_test_genes,time)
+                jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
+                # Add results to the result dataframe
+                result_df.loc[len(result_df.index)] = ["random_negative",fold, fusion_method+'-'+str(round(jac_sm, 3)), *results]
+        else:
+            print('no valid features, no mid fusion')
 
 def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])

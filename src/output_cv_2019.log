@@ -321,3 +321,62 @@ evaluation
 collect valid feature:  uniport_ppi_2019
 collect valid feature:  uniport_bio
 kernel fusion and evaluation
+ICD10_M32 97
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_M34 38
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_M41 27
+kernels existing
+uniport_ppi_2019 0.1 0.7841979610272292
+uniport_bio 2 0.7065750419408956
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N04 73
+kernels existing
+uniport_bio 6 0.8053334443889167
+uniport_seq 2 0.6264840336242136
+uniport_ppi_2019 2 0.8447773976259733
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+kernel fusion and evaluation
+ICD10_N17 88
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+kernel fusion and evaluation
+ICD10_N18 91
+kernels existing
+uniport_ppi_2019 2 0.96697445536256
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation
+ICD10_N46 86
+kernels existing
+evaluation
+collect valid feature:  uniport_ppi_2019
+collect valid feature:  uniport_bio
+collect valid feature:  uniport_seq
+collect valid feature:  uniport_esm
+kernel fusion and evaluation

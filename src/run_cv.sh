@@ -5,9 +5,10 @@ source /itf-fi-ml/shared/users/ziyuzh/.venv/bin/activate
 
 # Change to the directory containing the Python script
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
+# python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv" 2017 > output_cv_test.log 2>&1
 
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv" 2017 > output_cv_2017.log 2>&1
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv" 2019 > output_cv_2019.log 2>&1
+python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_update" 2017 > output_cv_2017_update.log 2>&1
+python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_update" 2019 > output_cv_2019_update.log 2>&1
 
 # python main_reindex_time.py "ppi_2016" "results/ppi_2017_bootstrap_po_neg_full" 2017
 # python main_reindex_time.py "bioconcept" "results/bioconcept_2019_posbag_full" 2019
