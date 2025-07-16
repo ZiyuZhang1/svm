@@ -1,7 +1,9 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
+# from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
+from model_cv import evaluate_disease
+
 import sys
 import multiprocessing as mp
 from sklearn.preprocessing import MinMaxScaler
@@ -17,13 +19,13 @@ time_spilt = True
 test_bug = False
 
 if test_bug:
-    feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']
+    # feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']
     # feature_list = ['ppi_2019','bioconcept']
-    # feature_list = ['ppi_2019_short','bioconcept_short']
+    feature_list = ['uniport_ppi_2017','uniport_exp','uniport_seq','uniport_esm']
 
 
     out_path = os.path.join(root,'results/temp')
-    time = 2019
+    time = 2017
 else:
     feature_list = sys.argv[1].split(',')
     out_path = os.path.join(root,sys.argv[2])
@@ -83,7 +85,7 @@ print(feature_list, len(selected_diseases),len(merged_df))
 all_results = []
 
 for disease in selected_diseases:
-    # disease = 'ICD10_C50'
+    # disease = 'ICD10_M34'
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, merged_df,time)

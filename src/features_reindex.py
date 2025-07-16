@@ -41,6 +41,18 @@ def get_feature(root, feature_name):
     #     feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_400_emb.csv'))
     elif feature_name == 'ppi_2016':
         feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2016_emb.csv'))
+    elif feature_name == 'ppi_2017_dw_10':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2016_dw_emb_10.csv'))
+    elif feature_name == 'ppi_2017_dw_40':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2016_dw_emb_40.csv'))
+    elif feature_name == 'ppi_2017_dw_80':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2016_dw_emb_80.csv'))
+    elif feature_name == 'ppi_2019_dw_10':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2019_dw_emb_10.csv'))
+    elif feature_name == 'ppi_2019_dw_40':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2019_dw_emb_40.csv'))
+    elif feature_name == 'ppi_2019_dw_80':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2019_dw_emb_80.csv'))
     elif feature_name == 'ppi_2019':
         feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2019_emb.csv'))
     # elif feature_name == 'ppi_2013':

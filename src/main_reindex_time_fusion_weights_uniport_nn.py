@@ -2,46 +2,57 @@ import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
 # from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
-from model_nn_uni_inductive import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
-
+from model_nn_uni_inductive import enriched_set, neg_bagging_early, neg_bagging_mid, neg_bagging_later, calculate_jac_sim, eval_bagging
+from sklearn.preprocessing import MinMaxScaler
 import sys
 import torch.multiprocessing as mp
 import torch
 import numpy as np
+from collections import defaultdict
 
 def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
 
-    if 'random_negative' in methods:
-        ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
-        print('evaluation')
+    ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
+    print('train test split')
 
-        # Work with DataFrames to maintain indices
-        neg_df = df[y == 0]
-        test_neg_df = neg_df
-        test_df = pd.concat([test_pos_df, test_neg_df])
-        test_index_loc = df.index.get_indexer(test_df.index)
+    # Work with DataFrames to maintain indices
+    neg_df = df[y == 0]
+    test_neg_df = neg_df
+    test_df = pd.concat([test_pos_df, test_neg_df])
+    test_index_loc = df.index.get_indexer(test_df.index)
 
 
-        test_indices = test_df.index.values
-        enrich_train_genes = train_pos_df.index.values
-        enrich_train_set = enriched_set(enrich_train_genes,time)
+    test_indices = test_df.index.values
+    enrich_train_genes = train_pos_df.index.values
+    enrich_train_set = enriched_set(enrich_train_genes,time)
 
-        num_processes = 2
-        base_seed = 42
-        seed_list = [base_seed + i for i in range(num_processes)]
+    num_processes = 2
+    base_seed = 42
+    seed_list = [base_seed + i for i in range(num_processes)]
 
-        args_list = [
-            (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
-            for seed in seed_list]
+    args_list = [
+        (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
+        for seed in seed_list]
+    
+    if 'early_fusion' in methods:
+        print('early fusion')
 
         # Step 2: Use Pool to parallelize
         with mp.Pool(processes=num_processes) as pool:
-            bagging_y_scores = pool.map(neg_bagging, args_list)
+            bagging_y_scores = pool.map(neg_bagging_early, args_list)
 
-        final_y_score = np.mean(bagging_y_scores, axis=0)
+        # Unzip the list of tuples into two lists
+        all_preds, all_aucs = zip(*bagging_y_scores)  # all_preds is a tuple of arrays, all_aucs is a tuple of scalars
+
+        # Compute mean predictions across all bags
+        final_y_score = np.mean(all_preds, axis=0)
+
+        # Compute mean AUC
+        mean_auc = np.mean(all_aucs)
+        print('early fusion validation auc:',mean_auc)
 
         enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
         enrich_feature_test = enriched_set(enrich_test_genes,time)
@@ -50,7 +61,86 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
         # Add results to the result dataframe
-        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-'+str(round(jac_sm, 3)), *results]
+        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-early'+str(round(jac_sm, 3)), *results]
+
+    if 'mid_fusion' in methods:
+        print('mid fusion')
+
+        # Step 2: Use Pool to parallelize
+        with mp.Pool(processes=num_processes) as pool:
+            bagging_y_scores = pool.map(neg_bagging_mid, args_list)
+
+        # Unzip the list of tuples into two lists
+        all_preds, all_aucs = zip(*bagging_y_scores)  # all_preds is a tuple of arrays, all_aucs is a tuple of scalars
+
+        # Compute mean predictions across all bags
+        final_y_score = np.mean(all_preds, axis=0)
+
+        # Compute mean AUC
+        mean_auc = np.mean(all_aucs)
+        print('early fusion validation auc:',mean_auc)
+
+        enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+        enrich_feature_test = enriched_set(enrich_test_genes,time)
+        jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
+        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+        ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+        # Add results to the result dataframe
+        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-mid'+str(round(jac_sm, 3)), *results]
+
+    if 'later_fusion' in methods:
+        print('later fusion')
+        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+        # Step 2: Use Pool to parallelize
+        with mp.Pool(processes=num_processes) as pool:
+            bagging_y_scores = pool.map(neg_bagging_later, args_list)
+
+        feature_preds_collection = defaultdict(list)
+        fused_preds_collection = []
+        dict_list = []
+        # Collect predictions
+        for feature_preds, fused_preds , auc_records in bagging_y_scores:
+            dict_list.append(auc_records)
+            for feature_name, preds in feature_preds.items():
+                feature_preds_collection[feature_name].append(preds)
+            fused_preds_collection.append(fused_preds)
+
+        aggregated = defaultdict(list)
+
+        for d in dict_list:
+            for key, value in d.items():
+                aggregated[key].append(value)
+
+        # Compute mean per key
+        mean_dict = {key: np.mean(values) for key, values in aggregated.items()}
+
+        # Average predictions per feature
+        aggregated_feature_preds = {}
+        for feature_name, preds_list in feature_preds_collection.items():
+            final_y_score = np.mean(preds_list, axis=0)
+            aggregated_feature_preds[feature_name] = final_y_score
+            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            enrich_feature_test = enriched_set(enrich_test_genes,time)
+            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
+            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+            # Add results to the result dataframe
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-'+str(feature_name)+str(round(jac_sm, 3)), *results]
+
+        # Average fused predictions
+        valid_preds = [p for p in fused_preds_collection if p is not None]
+        if valid_preds:
+            final_y_score = np.mean(valid_preds, axis=0)
+
+            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            enrich_feature_test = enriched_set(enrich_test_genes,time)
+            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
+            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+            # Add results to the result dataframe
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-later'+str(round(jac_sm, 3)), *results]
 
 def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
@@ -92,7 +182,11 @@ def main():
             col: f"{feature}_{col}" if col.startswith('feature') else col
             for col in feature_df.columns
         }, inplace=True)
-        # Merge iteratively to avoid keeping all DataFrames
+        feature_cols = [col for col in feature_df.columns if col.startswith('feature')]
+        if feature_cols:
+            scaler = MinMaxScaler()
+            feature_df[feature_cols] = scaler.fit_transform(feature_df[feature_cols])
+
         if merged_df is None:
             merged_df = feature_df
         else:
@@ -101,7 +195,7 @@ def main():
 
     all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
     all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
-    methods = ['random_negative']
+    methods = ['early_fusion','mid_fusion','later_fusion']
 
     if time_spilt:
         selected_diseases = []
@@ -115,7 +209,7 @@ def main():
                     selected_diseases.append(disease_id)
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases[13:]:
+    for disease in selected_diseases:
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:
             df, y = read_data_timecut(disease, all_df, merged_df,time)

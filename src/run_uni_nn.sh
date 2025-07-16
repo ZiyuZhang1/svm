@@ -6,8 +6,8 @@ source /itf-fi-ml/shared/users/ziyuzh/new_esm_env/bin/activate
 # Change to the directory containing the Python script
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 
-python main_reindex_time_fusion_weights_uniport_nn.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_fused_geo_weight_bag_new_kernel_uni_nn_update_2" 2017 > output_2017_uni_nn_update_2.log 2>&1
-# python main_reindex_time_fusion_weights_uniport_nn.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_fused_geo_weight_bag_new_kernel_uni_nn_update" 2019 > output_2019_uni_nn_update.log 2>&1
+python main_reindex_time_fusion_weights_uniport_nn.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_nn" 2017 > output_2017_nn.log 2>&1
+python main_reindex_time_fusion_weights_uniport_nn.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_nn" 2019 > output_2019_nn.log 2>&1
 
 # python main_reindex_time.py "ppi_2016" "results/ppi_2017_bootstrap_po_neg_full" 2017
 # python main_reindex_time.py "bioconcept" "results/bioconcept_2019_posbag_full" 2019

@@ -1,0 +1,481 @@
+['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80', 'uniport_bio', 'uniport_seq', 'uniport_esm'] 48 15686
+ICD10_C16 90
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.8524858310791034
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.8819511556514614
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.8648105490613137
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.564622120432518
+uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.5223959413561859
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5959982083835295
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C18 50
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8209464945398449
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8119138959931799
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.846749513629309
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5710081691539491
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5531393159270397
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.46893590212004543
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C43 47
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8541756854256853
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8479548777246144
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.88506849510139
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5091580751120225
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.6385900831624515
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.514296869066606
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C50 544
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.7114488895747334
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.7048776410375114
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.7091418798143075
+uniport_bio {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5460668955673006
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5684400036006841
+uniport_esm {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5721435644200971
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C67 191
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8295136416954841
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8425534388196511
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8359767264640886
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.491680327084913
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5322288510283729
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.4812033662018169
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C81 23
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.9206669226830516
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.026603926721615736'} 0.9288194444444445
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.9463805683563749
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.35258256528417814
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.46711789554531497
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.45276497695852536
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_D57 22
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8816326530612245
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.8952380952380953
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8938775510204081
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.4884353741496598
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.6612244897959184
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.6040816326530613
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_D66 15
+kernels existing
+ppi_2019_dw_10 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.918840579710145
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.927536231884058
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.9304347826086957
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.611201690821256
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.6830314009661836
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.6964371980676329
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_D83 23
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.9238095238095237
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9238095238095237
+ppi_2019_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.026339513803000304'} 0.9605442176870748
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.35510204081632657
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.3986394557823129
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.35374149659863946
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_E11 269
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8619280588862178
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8878735749273425
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.8856297261707441
+uniport_bio {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.5112567240826129
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5460471260408161
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5693114025088037
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_E66 259
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.875699823285396
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8803608482288494
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8851990836479112
+uniport_bio {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.4980029424790122
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.514454647218627
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.499586120522521
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_F01 33
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.8217592592592592
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.875
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.8958333333333334
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5416666666666666
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5509259259259259
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_F20 834
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.806924517906336
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8140685399449036
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8115755371900826
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5769190082644627
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5809727823691461
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5741487603305786
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_F31 441
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8271601182562062
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8504871301121343
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8495580375709979
+uniport_bio {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5605574305737594
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5579126815905485
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5574069511029204
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_F72 31
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.6571428571428571
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.6884353741496598
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.6122448979591836
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.3931972789115647
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5115646258503401
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.6816326530612246
+collect valid feature:  []
+evaluation
+ICD10_F90 24
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.6488779419813903
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.026603926721615736'} 0.7267925561029008
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.026339513803000304'} 0.666735084838533
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.3632731253420909
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.31533935413245756
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.3412287903667213
+collect valid feature:  ['ppi_2019_dw_40']
+evaluation
+ICD10_G10 32
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9204956807897985
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9046425796425797
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8708704693998812
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5682652315005257
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5013277572101101
+uniport_esm {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.4413672928378811
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_G20 137
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8695637860082304
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8825349794238684
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.886485596707819
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5759670781893004
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.6076707818930042
+uniport_esm {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5576296296296296
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_G24 22
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.7666666666666666
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.026603926721615736'} 0.8555555555555556
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.026339513803000304'} 0.8166666666666668
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.3444444444444444
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.7962962962962963
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.6814814814814815
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80', 'uniport_seq']
+evaluation
+ICD10_G30 183
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9053327466879476
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.917762149063412
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.9232345296513668
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5362799407483392
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.518670889526653
+uniport_esm {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5944254207473475
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_G40 120
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8232804159018808
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8225356848453295
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8398103065253174
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.4774143384413508
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5331109864875275
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5259246328363442
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_G43 23
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.8405977982590885
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.9061059907834101
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8598950332821301
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5238095238095238
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.31339605734767023
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.42638728878648235
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_G91 22
+kernels existing
+ppi_2019_dw_10 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.6646931499872677
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.5951744334097275
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.6026016467192937
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5338256514727103
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5206052117816824
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.6125116713352008
+collect valid feature:  []
+evaluation
+ICD10_I10 35
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.815147271029624
+ppi_2019_dw_40 {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.9222901281724812
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8986291486291487
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.6354299295475766
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5491681521093286
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5783889313301078
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I25 138
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.8772430244994635
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.9103747738032918
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.026339513803000304'} 0.9238109890405525
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5365120893303051
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5423572068308911
+uniport_esm {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5339027570737164
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I26 15
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.8563103864734299
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.8945954106280194
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.8853260869565217
+uniport_bio {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.4855374396135266
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.6175724637681159
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.6280193236714976
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I42 154
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8930007859252888
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9106489450311862
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.919615419839392
+uniport_bio {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.6069139727807953
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.6269669006052178
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.6197819818404368
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I50 155
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9117360735532719
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9062556336758608
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9118802956553091
+uniport_bio {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.49374436632413915
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5941950603930052
+uniport_esm {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.6087254371732468
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I63 37
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.8721279126743768
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9172230782400274
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9031260884709161
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5910566801858445
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5307066869749512
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.518351988617915
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_I70 65
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.9193439044773997
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.9358760239221405
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9270181342390081
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.577376062448878
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5408487884822836
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5649179973209099
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_J45 187
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9288588276101284
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9407734998265695
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9472597988206729
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5708029830038154
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5783732223378425
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5441900797780089
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_J62 16
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8533910533910535
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8421356421356423
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8389610389610388
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.7902236652236653
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.7279581529581529
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.523917748917749
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80', 'uniport_bio', 'uniport_seq']
+evaluation
+ICD10_J80 52
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8348327566320645
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8535178777393311
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.883275663206459
+uniport_bio {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.5575547866205306
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.6154555940023068
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.542560553633218
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_K44 60
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.9235066714295844
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9254181935430354
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9410150767752906
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.48542058838088886
+uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.61949304359809
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.6433996128122487
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_K51 74
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.93099173553719
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9265840220385675
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9272727272727272
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.47672176308539943
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.6305785123966943
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.540633608815427
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_L20 58
+kernels existing
+ppi_2019_dw_10 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8967682363804248
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9096952908587258
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9239150507848569
+uniport_bio {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.5802400738688828
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.48864265927977835
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.46204986149584487
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_L40 73
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.8742699179893032
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9092617764374235
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9122173679100724
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.4978498338662411
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5504807179565513
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5241498159076944
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_M32 97
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8959180521311326
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9093826198899269
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9140071412390088
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5459129511677283
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5398150361583944
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5238859402631362
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_M34 38
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9253905137696782
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9211266141461806
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9175977527378901
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.576125890972533
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.6270503102866931
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.561044330544595
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_M41 27
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.12624098115114474'} 0.7072283520454253
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8673861143373339
+ppi_2019_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.7952881016905406
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.6303152019615433
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5378435927216415
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.3761291779584463
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N04 73
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.7521754614145918
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.8088686692978296
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05267902760600061'} 0.802786907828137
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5501811060281825
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.5353235508314219
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5611243523537376
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N17 88
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.9559149781623976
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9601680284481869
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9576964377428355
+uniport_bio {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.029267529201135845'} 0.5757968504423514
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5275131861384598
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.5495133913573075
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N18 91
+kernels existing
+ppi_2019_dw_10 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.06312049057557237'} 0.9465283033554268
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.05320785344323147'} 0.9540696737005462
+ppi_2019_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9575162816137128
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5412588357855657
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5399981791557816
+uniport_esm {'C_num': 0.1, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5790948840532271
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N46 86
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8225080451543555
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8582634263295841
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8271151028784617
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5092304265332256
+uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.8662190444227043'} 0.5419564767529145
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.16976843097202018'} 0.5126583905209859
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N80 151
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8090933333333333
+ppi_2019_dw_40 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.8309333333333333
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.8483733333333333
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.05853505840227169'} 0.5269066666666666
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.5165066666666667
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5506133333333333
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_N97 29
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9037037037037038
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.026603926721615736'} 0.9275720164609053
+ppi_2019_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.922633744855967
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5818930041152263
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.44526748971193414
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.4411522633744856
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation
+ICD10_C23 18
+kernels existing
+ppi_2019_dw_10 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.8739326765188835
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9331417624521073
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9386836343732895
+uniport_bio {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5759715380405036
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '1.7324380888454085'} 0.729064039408867
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.08488421548601009'} 0.7193349753694581
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+ICD10_C53 15
+kernels existing
+ppi_2019_dw_10 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.2524819623022895'} 0.9333333333333335
+ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.10641570688646294'} 0.9208333333333334
+ppi_2019_dw_80 {'C_num': 0.1, 'gamma_ratio': 2, 'gamma': '0.10535805521200121'} 0.9416666666666668
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.014633764600567922'} 0.5041666666666667
+uniport_seq {'C_num': 0.1, 'gamma_ratio': 8, 'gamma': '0.4331095222113521'} 0.5041666666666667
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.33953686194404037'} 0.5458333333333333
+collect valid feature:  ['ppi_2019_dw_10', 'ppi_2019_dw_40', 'ppi_2019_dw_80']
+evaluation

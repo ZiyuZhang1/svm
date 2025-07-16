@@ -246,7 +246,8 @@ def compute_kernels(X_feature, feature_id, save_dir):
     for ratio in ratio_list:
         gamma = 1 / (ratio * avg_nn_dist ** 2)
         K_full = rbf_kernel(X_feature, X_feature, gamma=gamma)
-        logm_k = process_kernel(K_full)
+        K_nrom = normalize_kernel(K_full)
+        logm_k = process_kernel(K_nrom)
 
         # Save the kernel immediately
         kernel_path = os.path.join(save_dir, f'{feature_id}_K_{ratio}_{gamma}.pkl')
@@ -274,12 +275,10 @@ def select_gamma_ratio(args):
     train_index_loc = df.index.get_indexer(train_df.index)
     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
 
-    # C_values = [1,3,9,27,81]
-    C_values = [1e-2, 1e-1, 1, 10]
+    C_values = [0.1,1,3,9,27]
     gamma_ratios = [2,4,8]
 
-    best_bedroc = 0
-    best_auc = 0
+    best_score = 0
     best_params = {'C': None, 'gamma': None}
 
     # Define stratified k-fold
@@ -289,7 +288,7 @@ def select_gamma_ratio(args):
         with open(pre_kernel_path, 'rb') as f:
             pre_kernel = pickle.load(f)
         for C_num in C_values:
-            cv_scores = {'auc': [], 'bedroc': []}
+            cv_scores = []
             for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
                 y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
                 X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
@@ -298,21 +297,14 @@ def select_gamma_ratio(args):
                 best_svm.fit(X_feature_train, y_cv_train)
                 y_scores = best_svm.decision_function(X_feature_test)
                 auroc = roc_auc_score(y_cv_val, y_scores)
-                scores = np.column_stack((y_cv_val, y_scores))  # Stack labels and scores as columns
-                scores = scores[scores[:, 1].argsort()[::-1]]
-                bedroc_10 = CalcBEDROC(scores, col=0, alpha=16.1)
-                cv_scores['auc'].append(auroc)
-                cv_scores['bedroc'].append(bedroc_10)
-
-            avg_auc = np.mean(cv_scores['auc'])
-            avg_bedroc = np.mean(cv_scores['bedroc'])
-
-            if avg_bedroc > best_bedroc:
-                best_bedroc = avg_bedroc
+                cv_scores.append(auroc)
+            avg_score = np.mean(cv_scores)
+            
+            if avg_score > best_score:
+                best_score = avg_score
                 best_params = {'C_num': C_num, 'gamma_ratio': gamma_ratio, 'gamma':pre_kernel_path.split('_')[-1].replace('.pkl', '')}
-                best_auc = avg_auc
 
-    return fname, best_params, best_bedroc, best_auc
+    return fname, best_params, best_score
 
 def select_C(args):
     neg_df, neg_num, train_pos_df, df, pre_kernel, fname = args
@@ -321,21 +313,17 @@ def select_C(args):
     train_df = pd.concat([train_pos_df, train_neg_df])
     train_index_loc = df.index.get_indexer(train_df.index)
     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-    if len(train_pos_df) > 40:
-        # C_values = [1,3,9,27,81]
-        C_values = [1e-2, 1e-1, 1, 10]
-    else:
-        C_values = [1e-3]
 
-    best_bedroc = 0
-    best_auc = 0
+    C_values = [0.1,1,3,9,27]
+
+    best_score = 0
     best_params = 0
 
     # Define stratified k-fold
     skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
 
     for C_num in C_values:
-        cv_scores = {'auc': [], 'bedroc': []}
+        cv_scores = []
         for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
             y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
             X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
@@ -344,21 +332,14 @@ def select_C(args):
             best_svm.fit(X_feature_train, y_cv_train)
             y_scores = best_svm.decision_function(X_feature_test)
             auroc = roc_auc_score(y_cv_val, y_scores)
-            scores = np.column_stack((y_cv_val, y_scores))  # Stack labels and scores as columns
-            scores = scores[scores[:, 1].argsort()[::-1]]
-            bedroc_10 = CalcBEDROC(scores, col=0, alpha=16.1)
-            cv_scores['auc'].append(auroc)
-            cv_scores['bedroc'].append(bedroc_10)
-
-        avg_auc = np.mean(cv_scores['auc'])
-        avg_bedroc = np.mean(cv_scores['bedroc'])
-
-        if avg_bedroc > best_bedroc:
-            best_bedroc = avg_bedroc
+            cv_scores.append(auroc)
+        avg_score = np.mean(cv_scores)
+        
+        if avg_score > best_score:
+            best_score = avg_score
             best_params = C_num
-            best_auc = avg_auc
 
-    return fname, best_params, best_bedroc, best_auc
+    return fname, best_params, best_score
 
 def neg_bagging(args):
     neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed = args
@@ -390,7 +371,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
     if 'random_negative' in methods:
 
-        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled',str(time))
+        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled_norm',str(time))
         os.makedirs(kernel_dir_path, exist_ok=True)
         kernel_pkl_path = os.path.join(kernel_dir_path,'path_save.pkl')
 
@@ -430,10 +411,10 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
         best_ratios_dict = dict()
         agg_feature = []
-        for fname, best_params, best_bedroc, best_auc in best_ratios:
-            print(fname, best_params, best_bedroc, best_auc)
+        for fname, best_params, best_score in best_ratios:
+            print(fname, best_params, best_score)
             best_ratios_dict[fname] = best_params
-            if best_auc > 0.67 and best_bedroc > 0.5:
+            if best_score > 0.70:
                 agg_feature.append(fname)
         print('collect valid feature: ', agg_feature)
       ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
@@ -576,15 +557,14 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             # fusion_methods = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
             fusion_methods = ['linear_fused','geo_fused']
 
-
             args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
                 for fname in fusion_methods]
 
             with Pool(processes=len(fusion_methods)) as pool:
                 best_Cs = pool.map(select_C, args_list)
             C_dict = dict()
-            for fname, best_params, best_bedroc, best_auc in best_Cs:
-                print(fname, best_params, best_bedroc, best_auc)
+            for fname, best_params, best_score in best_Cs:
+                print(fname, best_params, best_score)
                 C_dict[fname] = best_params
             ###########################################################
             print('fused kernels evaluation')

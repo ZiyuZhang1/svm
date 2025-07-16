@@ -7,13 +7,10 @@ source /itf-fi-ml/shared/users/ziyuzh/.venv/bin/activate
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv" 2017 > output_cv_test.log 2>&1
 
-# python kernel_calculation.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_norm" 2017 > 2017_dw_test.log 2>&1
+python kernel_calculation_2019.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_norm" 2017 > 2019_dw_test.log 2>&1
 
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_rank_save" 2017 > 2017_cv_rank_save.log 2>&1
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq' "results/2017_cv_rank_save_without_esm" 2017 > 201_cv_rank_save_without_esm.log 2>&1
-
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_rank_save" 2019 > 2019_cv_rank_save.log 2>&1
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq' "results/2019_cv_rank_save_without_esm" 2019 > 2019_cv_rank_save_without_esm.log 2>&1
+# python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_norm" 2017 > output_cv_2017_norm.log 2>&1
+# python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_nrom" 2019 > output_cv_2019_norm.log 2>&1
 
 
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_bedroc_c" 2017 > output_cv_2017_bedroc_c.log 2>&1

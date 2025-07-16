@@ -10,6 +10,7 @@ from sklearn.metrics import roc_auc_score
 import gseapy as gp
 import pickle
 from torch.utils.data import DataLoader, TensorDataset, random_split
+from sklearn.model_selection import train_test_split
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
@@ -186,8 +187,31 @@ def calculate_jac_sim(enrich_1, enrich_2):
         return 0.0  # Define similarity as 0 if both sets are empty
     return len(intersection) / len(union)
 
-import torch
-import torch.nn as nn
+
+def stratified_tensor_split(features, labels, val_ratio=0.2, random_state=42):
+    indices = np.arange(len(labels))
+
+    # Move labels to CPU and numpy for stratification
+    labels_np = labels.cpu().numpy()
+
+    # Stratified split
+    train_idx, val_idx = train_test_split(
+        indices,
+        test_size=val_ratio,
+        stratify=labels_np,
+        random_state=random_state
+    )
+
+    if isinstance(features, list):  # Case 1: list of feature arrays
+        train_features = [f[train_idx] for f in features]
+        val_features = [f[val_idx] for f in features]
+        train_dataset = TensorDataset(*train_features, labels[train_idx])
+        val_dataset = TensorDataset(*val_features, labels[val_idx])
+    else:  # Case 2: single feature array
+        train_dataset = TensorDataset(features[train_idx], labels[train_idx])
+        val_dataset = TensorDataset(features[val_idx], labels[val_idx])
+
+    return train_dataset, val_dataset
 
 class IntegratedMLP(nn.Module):
     def __init__(self, input_dims, hidden_dim=64, n_hidden_layers=1, output_dim=1, task='classification', dropout_rate=0.3):
@@ -244,7 +268,8 @@ class SimpleModel(nn.Module):
         return self.fc(x)
 
 
-def neg_bagging(args):
+
+def neg_bagging_early(args):
     neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed = args
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -265,38 +290,31 @@ def neg_bagging(args):
     X_train = np.concatenate(X_all, axis=1)
     train_features = torch.from_numpy(X_train).to(device).float()
 
-    # Train/validation split
-    val_ratio = 0.2
-    num_samples = len(train_features)
-    indices = np.arange(num_samples)
-    np.random.shuffle(indices)
+    train_dataset, val_dataset = stratified_tensor_split(train_features, train_labels, val_ratio=0.2)
 
-    split = int(num_samples * (1 - val_ratio))
-    train_idx, val_idx = indices[:split], indices[split:]
-
-    train_dataset = TensorDataset(train_features[train_idx], train_labels[train_idx])
-    val_dataset = TensorDataset(train_features[val_idx], train_labels[val_idx])
-
-    num_epochs=100
+    num_epochs = 100
     patience = 5
     best_val_loss = float('inf')
     patience_counter = 0
-    batch_size=32
-    lr=0.001
+    batch_size = 32
+    lr = 0.001
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
     model = SimpleModel(input_size=X_train.shape[1]).to(device)
     criterion = nn.BCELoss()
-    # optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
-    # optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-3)  # Stronger L2
 
+    best_val_auc = 0
+    best_train_auc = 0
 
     for epoch in range(num_epochs):
         model.train()
         train_loss = 0
+        train_probs = []
+        train_targets = []
+
         for X_batch, y_batch in train_loader:
             optimizer.zero_grad()
             outputs = model(X_batch).squeeze(dim=1)
@@ -305,32 +323,47 @@ def neg_bagging(args):
             optimizer.step()
             train_loss += loss.item() * X_batch.size(0)
 
+            train_probs.extend(outputs.detach().cpu().numpy())
+            train_targets.extend(y_batch.detach().cpu().numpy())
+
         train_loss /= len(train_loader.dataset)
+        train_auc = roc_auc_score(train_targets, train_probs)
 
         # Validation
         model.eval()
         val_loss = 0
+        val_probs = []
+        val_targets = []
+
         with torch.no_grad():
             for X_batch, y_batch in val_loader:
                 outputs = model(X_batch).squeeze(dim=1)
                 loss = criterion(outputs, y_batch)
                 val_loss += loss.item() * X_batch.size(0)
 
-        val_loss /= len(val_loader.dataset)
+                val_probs.extend(outputs.cpu().numpy())
+                val_targets.extend(y_batch.cpu().numpy())
 
-        print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
+        val_loss /= len(val_loader.dataset)
+        val_auc = roc_auc_score(val_targets, val_probs)
+
+        print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Train AUC: {train_auc:.4f}, Val AUC: {val_auc:.4f}")
 
         # Early stopping logic
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             patience_counter = 0
             best_model_state = model.state_dict()  # Save best model
+            best_val_auc = val_auc
+            best_train_auc = train_auc
         else:
             patience_counter += 1
 
         if patience_counter >= patience:
             print(f"Early stopping triggered at epoch {epoch + 1}")
             break
+
+    print(f"Best Train AUC: {best_train_auc:.4f}, Best Val AUC: {best_val_auc:.4f}")
 
     # Load the best model before testing
     model.load_state_dict(best_model_state)
@@ -349,4 +382,283 @@ def neg_bagging(args):
     with torch.no_grad():
         preds = model(test_features).squeeze(dim=1)
 
-    return preds.cpu().numpy()
+    return preds.cpu().numpy(), best_val_auc
+
+
+
+class FeatureEncoder(nn.Module):
+    """A simple feedforward encoder for each feature source."""
+    def __init__(self, input_size, hidden_size=64):
+        super(FeatureEncoder, self).__init__()
+        self.encoder = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU(),
+            nn.LayerNorm(hidden_size)
+        )
+
+    def forward(self, x):
+        return self.encoder(x)
+
+
+class MidFusionModel(nn.Module):
+    """Mid-fusion model with separate encoders for each feature source."""
+    def __init__(self, input_sizes, hidden_size=32):
+        super(MidFusionModel, self).__init__()
+        self.encoders = nn.ModuleList([FeatureEncoder(size, hidden_size) for size in input_sizes])
+        fusion_input_size = hidden_size * len(input_sizes)
+
+        self.classifier = nn.Sequential(
+            nn.Linear(fusion_input_size, 128),
+            nn.ReLU(),
+            nn.Linear(128, 1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x_list):
+        encoded_features = [encoder(x) for encoder, x in zip(self.encoders, x_list)]
+        fused = torch.cat(encoded_features, dim=1)
+        return self.classifier(fused)
+
+
+
+def neg_bagging_mid(args):
+    neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed = args
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+    train_df = pd.concat([train_pos_df, train_neg_df])
+
+    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+    train_labels = torch.from_numpy(y_train).to(device).float()
+
+    feature_data = []
+    input_sizes = []
+    for feature_name in feature_list:
+        select_columns = [col for col in train_df.columns if col.startswith(feature_name)]
+        feature_values = train_df[select_columns].values
+        feature_data.append(torch.from_numpy(feature_values).to(device).float())
+        input_sizes.append(feature_values.shape[1])
+
+    train_dataset, val_dataset = stratified_tensor_split(feature_data, train_labels, val_ratio=0.2)
+
+    num_epochs = 100
+    patience = 8
+    best_val_loss = float('inf')
+    best_val_auc = 0
+    best_train_auc = 0
+    patience_counter = 0
+    batch_size = 32
+    lr = 0.0005
+
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+    model = MidFusionModel(input_sizes).to(device)
+    criterion = nn.BCELoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
+
+    for epoch in range(num_epochs):
+        model.train()
+        train_loss = 0
+        train_preds = []
+        train_targets = []
+
+        for batch in train_loader:
+            *X_batches, y_batch = batch
+            optimizer.zero_grad()
+            outputs = model(X_batches).squeeze(dim=1)
+            loss = criterion(outputs, y_batch)
+            loss.backward()
+            optimizer.step()
+            train_loss += loss.item() * y_batch.size(0)
+
+            train_preds.extend(outputs.detach().cpu().numpy())
+            train_targets.extend(y_batch.cpu().numpy())
+
+        train_loss /= len(train_loader.dataset)
+        train_auc = roc_auc_score(train_targets, train_preds)
+
+        model.eval()
+        val_loss = 0
+        val_preds = []
+        val_targets = []
+
+        with torch.no_grad():
+            for batch in val_loader:
+                *X_batches, y_batch = batch
+                outputs = model(X_batches).squeeze(dim=1)
+                loss = criterion(outputs, y_batch)
+                val_loss += loss.item() * y_batch.size(0)
+
+                val_preds.extend(outputs.cpu().numpy())
+                val_targets.extend(y_batch.cpu().numpy())
+
+        val_loss /= len(val_loader.dataset)
+        val_auc = roc_auc_score(val_targets, val_preds)
+
+        print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Train AUC: {train_auc:.4f}, Val AUC: {val_auc:.4f}")
+
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            best_val_auc = val_auc
+            best_train_auc = train_auc
+            patience_counter = 0
+            best_model_state = model.state_dict()
+        else:
+            patience_counter += 1
+
+        if patience_counter >= patience:
+            print(f"Early stopping triggered at epoch {epoch + 1}")
+            break
+
+    model.load_state_dict(best_model_state)
+
+    print(f"Best Train AUC: {best_train_auc:.4f}, Best Val AUC: {best_val_auc:.4f}")
+
+    # Prepare test data
+    test_df = df.iloc[test_index_loc]
+    test_features = []
+
+    for feature_name in feature_list:
+        select_columns = [col for col in test_df.columns if col.startswith(feature_name)]
+        feature_values = torch.from_numpy(test_df[select_columns].values).to(device).float()
+        test_features.append(feature_values)
+
+    model.eval()
+    with torch.no_grad():
+        preds = model(test_features).squeeze(dim=1)
+
+    return preds.cpu().numpy(), best_val_auc
+
+
+def neg_bagging_later(args):
+    neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed = args
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    # Prepare training data
+    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+    train_df = pd.concat([train_pos_df, train_neg_df])
+
+    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+    train_labels = torch.from_numpy(y_train).to(device).float()
+
+    feature_preds = {}
+    fusion_candidates = {}
+    auc_records = {}
+    # Loop through each feature source
+    for feature_name in feature_list:
+        select_columns = [col for col in train_df.columns if col.startswith(feature_name)]
+        X_train = train_df[select_columns].values
+        train_features = torch.from_numpy(X_train).to(device).float()
+
+        train_dataset, val_dataset = stratified_tensor_split(train_features, train_labels, val_ratio=0.2)
+
+        num_epochs = 100
+        patience = 5
+        best_val_loss = float('inf')
+        patience_counter = 0
+        batch_size = 32
+        lr = 0.001
+
+        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+        model = SimpleModel(input_size=X_train.shape[1]).to(device)
+        criterion = nn.BCELoss()
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
+
+        best_val_auc = 0
+        best_train_auc = 0
+
+        for epoch in range(num_epochs):
+            model.train()
+            train_loss = 0
+            train_probs = []
+            train_targets = []
+
+            for X_batch, y_batch in train_loader:
+                optimizer.zero_grad()
+                outputs = model(X_batch).squeeze(dim=1)
+                loss = criterion(outputs, y_batch)
+                loss.backward()
+                optimizer.step()
+                train_loss += loss.item() * X_batch.size(0)
+
+                train_probs.extend(outputs.detach().cpu().numpy())
+                train_targets.extend(y_batch.detach().cpu().numpy())
+
+            train_loss /= len(train_loader.dataset)
+            train_auc = roc_auc_score(train_targets, train_probs)
+
+            # Validation
+            model.eval()
+            val_loss = 0
+            val_probs = []
+            val_targets = []
+
+            with torch.no_grad():
+                for X_batch, y_batch in val_loader:
+                    outputs = model(X_batch).squeeze(dim=1)
+                    loss = criterion(outputs, y_batch)
+                    val_loss += loss.item() * X_batch.size(0)
+
+                    val_probs.extend(outputs.cpu().numpy())
+                    val_targets.extend(y_batch.cpu().numpy())
+
+            val_loss /= len(val_loader.dataset)
+            val_auc = roc_auc_score(val_targets, val_probs)
+
+            print(f"Feature: {feature_name}, Epoch {epoch + 1}/{num_epochs}, "
+                  f"Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, "
+                  f"Train AUC: {train_auc:.4f}, Val AUC: {val_auc:.4f}")
+
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                best_val_auc = val_auc
+                best_train_auc = train_auc
+                patience_counter = 0
+                best_model_state = model.state_dict()
+            else:
+                patience_counter += 1
+
+            if patience_counter >= patience:
+                print(f"Early stopping for feature {feature_name} at epoch {epoch + 1}")
+                break
+
+        print(f"Best Train AUC for feature {feature_name}: {best_train_auc:.4f}")
+        print(f"Best Val AUC for feature {feature_name}: {best_val_auc:.4f}")
+        auc_records[feature_name] = best_val_auc
+
+        # Load the best model
+        model.load_state_dict(best_model_state)
+
+        # Prepare test data for this feature
+        test_df = df.iloc[test_index_loc]
+        select_columns = [col for col in test_df.columns if col.startswith(feature_name)]
+        X_test = test_df[select_columns].values
+        test_features = torch.from_numpy(X_test).to(device).float()
+
+        model.eval()
+        with torch.no_grad():
+            preds = model(test_features).squeeze(dim=1).cpu().numpy()
+
+        # Always save individual feature predictions
+        feature_preds[feature_name] = preds
+
+        # Only include features with val AUC > 0.7 in fusion
+        if best_val_auc >= 0.7:
+            fusion_candidates[feature_name] = preds
+        else:
+            print(f"Feature {feature_name} excluded from fusion due to low Val AUC: {best_val_auc:.4f}")
+
+    # Late fusion: average predictions from all eligible feature sources
+    if fusion_candidates:
+        all_preds = np.array(list(fusion_candidates.values()))
+        fused_preds = np.mean(all_preds, axis=0)
+    else:
+        fused_preds = None
+        print("No features passed the AUC threshold. Fusion result is None.")
+
+    return feature_preds, fused_preds, auc_records
