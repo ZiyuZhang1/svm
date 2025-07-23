@@ -1,0 +1,891 @@
+['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_exp', 'uniport_seq', 'uniport_esm'] 54 15328
+ICD10_C16 89
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7796267848263652 0.892819349962207
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8515219907492968 0.9235071806500378
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4356560047964508 0.7425547996976568
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.5319207700145575 0.7724867724867726
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.46984098743731906 0.6837490551776266
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.46984098743731906 0.6837490551776266
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 27 0.8409592602861613 0.9150415721844293
+geo_fused 3 0.8158840909850587 0.9124716553287983
+fused kernels evaluation
+ICD10_C18 48
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6989402427441022 0.8684657356532357
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7193308203072135 0.8845327126577128
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.2508177234015593 0.5981379731379731
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.6845380404387101 0.79934243996744
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6275889320897549 0.7279313568376069
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6275889320897549 0.7279313568376069
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.6468963450350929 0.8668107066544567
+geo_fused 0.001 0.6636028105895716 0.8823307768620268
+fused kernels evaluation
+ICD10_C43 45
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.9124956347562873 0.9268043445860347
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.928630469292453 0.9392111930844326
+uniport_exp {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.4928684443662748 0.7358996572024741
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.7384346901072055 0.7832597436470676
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.6331705479641659 0.731076272449512
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.6331705479641659 0.731076272449512
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.9269727693384381 0.9347408525225426
+geo_fused 3 0.9223414458694404 0.9321484462329531
+fused kernels evaluation
+ICD10_C45 38
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7854582804677454 0.8577556983823511
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8044145760712177 0.8814735341044172
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.33124991464534453 0.6452810659579565
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.33459304089022934 0.5454785827604443
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.21623889915831598 0.48995579601079337
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.21623889915831598 0.48995579601079337
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.7974751686607523 0.8618433244292577
+geo_fused 0.001 0.8016858540617874 0.8784531541670622
+fused kernels evaluation
+ICD10_C50 529
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.48837322739540623 0.7004897959183674
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.5110513652034 0.7305
+uniport_exp {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.33636605830597704 0.6316836734693878
+uniport_seq {'C_num': 81, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.3761987444147817 0.646734693877551
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.3176294467969239 0.6216190476190476
+collect valid feature:  []
+evaluation
+no valid features, no early fusion
+no valid features, no mid fusion
+ICD10_C67 183
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.7727655303602919 0.8504191321499014
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8034159719270207 0.8576429980276133
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.3576237191775946 0.6178254437869822
+uniport_seq {'C_num': 81, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.4703428874585314 0.6601084812623274
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4282723614923371 0.6296104536489152
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4282723614923371 0.6296104536489152
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8010692444792405 0.8578155818540433
+geo_fused 1 0.7934405247454043 0.8599605522682445
+fused kernels evaluation
+ICD10_C81 23
+kernels existing
+uniport_ppi_2017 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02897293090008957'} 0.9715931558267519 0.946580581157194
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.9509184058528694 0.962205581157194
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.44551746109760076 0.7551203277009728
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.7152123288643476 0.8184923835125448
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4928041188689602 0.7250784050179212
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4928041188689602 0.7250784050179212
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.8961805326522438 0.9246111751152074
+geo_fused 0.001 0.869340600898367 0.9228750640040962
+fused kernels evaluation
+ICD10_D46 15
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8818278576426403 0.9478562801932368
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8780077528485503 0.9554045893719806
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.1962306419769304 0.6043176328502415
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.6408237422078482 0.7624094202898551
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6236184079238696 0.745048309178744
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6236184079238696 0.745048309178744
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.897895317963199 0.9455615942028985
+geo_fused 0.001 0.8242182827031431 0.9241243961352659
+fused kernels evaluation
+ICD10_D57 22
+kernels existing
+uniport_ppi_2017 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8937785359733891 0.9711399711399711
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.9294376382056134 0.9725829725829725
+uniport_exp {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.3237122466822906 0.7304133774722009
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.7567719135891694 0.8447924624395213
+uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6834843597334608 0.8088871912401324
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq-uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6834843597334608 0.8088871912401324
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.925538291307208 0.9740259740259741
+geo_fused 0.001 0.814272677439793 0.9622909769968594
+fused kernels evaluation
+ICD10_D66 15
+kernels existing
+uniport_ppi_2017 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.9417859981399421 0.8898550724637682
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.9216629005120671 0.8666666666666667
+uniport_exp {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.12455211839359043 0.5075785024154589
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.6382953818219347 0.8470108695652175
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.38429176044135244 0.7479166666666667
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.38429176044135244 0.7479166666666667
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9216401948711562 0.8753623188405797
+geo_fused 0.001 0.9007072972753227 0.8568236714975845
+fused kernels evaluation
+ICD10_D83 23
+kernels existing
+uniport_ppi_2017 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02897293090008957'} 0.9773045238486865 0.9795918367346937
+ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.9524353056452295 0.9564625850340137
+uniport_exp {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.5627387813387842 0.7795918367346939
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.7233953203352089 0.7619047619047619
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.664873845595438 0.7496598639455782
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.664873845595438 0.7496598639455782
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9441442059989614 0.9578231292517007
+geo_fused 0.001 0.9315024993334354 0.9591836734693878
+fused kernels evaluation
+ICD10_E10 104
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8125343782386857 0.9360302165201726
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8373868214462025 0.9394054180899886
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4690103202090239 0.6835040272058777
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.5814012463857131 0.7029389002983214
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5782515370607423 0.7051281399272614
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5782515370607423 0.7051281399272614
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.8270777665122928 0.9343789440160668
+geo_fused 9 0.8233179495325605 0.9366184784807435
+fused kernels evaluation
+ICD10_E11 266
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8530734075915496 0.9154332458616946
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.8557137649086831 0.9167593591542555
+uniport_exp {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.3822417815785711 0.6624478308487268
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.49825523566951985 0.7109836977140459
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.481661388678672 0.7145164591730667
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.481661388678672 0.7145164591730667
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8592394953048105 0.9202291873070011
+geo_fused 1 0.8588200422856501 0.9202330226902101
+fused kernels evaluation
+ICD10_E66 255
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.80081711333054 0.9010516212842278
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.7962898590037305 0.90465340033363
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.2960281495902897 0.6287490077681254
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.46261904745228416 0.7081319307748507
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.45681854464415395 0.7205574328668343
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.45681854464415395 0.7205574328668343
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8060423760100003 0.9067330962998232
+geo_fused 1 0.7964061570464988 0.9100282943751443
+fused kernels evaluation
+ICD10_E84 42
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8999408644455139 0.947926718067383
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.8852027294332121 0.9625697547692432
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4832069650675989 0.6509950691536369
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.664452449533015 0.745248712640017
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5664388235707113 0.73143633150027
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5664388235707113 0.73143633150027
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.9045392197830585 0.9588173619503543
+geo_fused 1 0.9061678530204119 0.9585530979392872
+fused kernels evaluation
+ICD10_F01 33
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6782090012459318 0.8958333333333334
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.6777832319081422 0.8541666666666666
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.013778570547382978 0.40972222222222227
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.3489580130848002 0.7800925925925926
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.07820599315540215 0.6296296296296297
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.07820599315540215 0.6296296296296297
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.3493128540989045 0.8009259259259259
+geo_fused 0.001 0.573362880795287 0.8425925925925926
+fused kernels evaluation
+ICD10_F20 816
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6806488057285588 0.7992011594889279
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.6932186110250068 0.8160004530314665
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.3528326569804663 0.6516731715575971
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.5091891742418032 0.7194531732806619
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.4707866436151032 0.7049978422642541
+collect valid feature:  ['ppi_2017_dw_80']
+evaluation
+early fusion
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.6932186110250068 0.8160004530314665
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.7035016366013117 0.8123896947238641
+geo_fused 1 0.7035016366013117 0.8123896947238641
+fused kernels evaluation
+ICD10_F31 428
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7860220372159478 0.84507727480567
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7968852214701666 0.8670653863740284
+uniport_exp {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.38895450040442636 0.6435372656607226
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.6355404685526459 0.7548056698673983
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.6161129370932086 0.7300667581161409
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.6161129370932086 0.7300667581161409
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8051416840820188 0.8593763145861911
+geo_fused 3 0.808964963214028 0.8571083676268861
+fused kernels evaluation
+2025-07-21 02:19:50,960 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-07-21 02:19:51,181 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+ICD10_F72 31
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.497392289472775 0.7123175883256527
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.6241598582994103 0.7525281618023554
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.04658821345585224 0.4900873655913978
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.04961834807518459 0.5536514336917562
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.2530643128116702 0.5405625960061444
+collect valid feature:  []
+evaluation
+no valid features, no early fusion
+no valid features, no mid fusion
+ICD10_F90 20
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.5254039887322609 0.6272005772005772
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.5388157045740948 0.6514790764790764
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.03141905586225031 0.4209235209235209
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.10023479248225325 0.6919191919191919
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.15301893841445122 0.67994227994228
+collect valid feature:  []
+evaluation
+no valid features, no early fusion
+no valid features, no mid fusion
+ICD10_G10 32
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8161685468834659 0.9385232414644179
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7989397153084546 0.9275469628410805
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.2649632481305797 0.5771584624525801
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.5024373590572374 0.6827768636592166
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5602898347164093 0.6406714200831848
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5602898347164093 0.6406714200831848
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.8166036010620675 0.9193541752365282
+geo_fused 0.001 0.8297881783829156 0.9427441839206545
+fused kernels evaluation
+ICD10_G20 128
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8050482663007479 0.8375650012705851
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.797271501626201 0.8592568261848538
+uniport_exp {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.3622981322913741 0.6323844785864365
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.5649540200982212 0.7197653169689064
+uniport_esm {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4682138600096332 0.6677807915434819
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.4682138600096332 0.6677807915434819
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 27 0.8116997780651657 0.8400068819666354
+geo_fused 27 0.815263097227109 0.8428544865818252
+fused kernels evaluation
+ICD10_G24 21
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6478940376919371 0.749192665571976
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.6683013906191761 0.7376026272577997
+uniport_exp {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.25603660264437755 0.4991926655719759
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.3316652637857132 0.6185823754789271
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.35138882268114574 0.6490421455938696
+collect valid feature:  []
+evaluation
+no valid features, no early fusion
+no valid features, no mid fusion
+ICD10_G30 179
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.849336743598537 0.9090247933884297
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8747416411110006 0.9239669421487604
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4343987474334386 0.6790523415977961
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.5166823054582833 0.7144683195592285
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5192035303044388 0.738931129476584
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5192035303044388 0.738931129476584
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8691642600686288 0.9213663911845731
+geo_fused 1 0.8649607577983517 0.9215867768595042
+fused kernels evaluation
+ICD10_G35 102
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8522182657102997 0.8992696801840792
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.8575869297848194 0.9175402948862441
+uniport_exp {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.622185992821012 0.7893528517420708
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.7248187834599902 0.8228050409913615
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.7370596211739819 0.8097477159749081
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq-uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.7370596211739819 0.8097477159749081
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8438840049397446 0.9234263382944438
+geo_fused 27 0.8714080955468674 0.9400062420732841
+fused kernels evaluation
+ICD10_G40 114
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7752019138946845 0.8836305984938565
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8037483598488938 0.9028141101862861
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.31280378765003 0.6232263178755449
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.6254259120039134 0.7766944114149821
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5659267588009488 0.7454617518826794
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5659267588009488 0.7454617518826794
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 27 0.8011746950494727 0.8859294490685693
+geo_fused 9 0.8132431339013643 0.8919540229885058
+fused kernels evaluation
+ICD10_G43 21
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8576701349880116 0.9346628679962014
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8033290707595291 0.9349952516619183
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4834277592218232 0.7365622032288699
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.8174621498731858 0.877920227920228
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.2971943730637933 0.6597340930674265
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.2971943730637933 0.6597340930674265
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.8766093272528505 0.9377967711301044
+geo_fused 0.001 0.9035200707987716 0.9152421652421653
+fused kernels evaluation
+ICD10_G91 20
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.32528199091616766 0.7433876811594202
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.5005937341142318 0.6756340579710146
+uniport_exp {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.006690524578763841 0.33602053140096616
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.3821952196758012 0.6866847826086957
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.47117996412254737 0.776328502415459
+collect valid feature:  []
+evaluation
+no valid features, no early fusion
+no valid features, no mid fusion
+ICD10_H40 18
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6898413486517144 0.8349753694581281
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7937646741690001 0.8612753147235908
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.3458180548863317 0.6477832512315271
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.5472820620185422 0.7489053092501369
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.5835026971620019 0.7281198686371101
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.5835026971620019 0.7281198686371101
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.6561578190338412 0.7960180623973727
+geo_fused 0.001 0.6868994196603057 0.7821291735084839
+fused kernels evaluation
+ICD10_I10 35
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.9346315624133115 0.9722222222222223
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.9587252728156131 0.9796296296296297
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.41670996912919317 0.75
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.42548637085343927 0.7685185185185185
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.3036024844011402 0.7444444444444445
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.3036024844011402 0.7444444444444445
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9502645717908114 0.9685185185185184
+geo_fused 0.001 0.8838262471450496 0.9462962962962963
+fused kernels evaluation
+ICD10_I25 134
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8192710186203774 0.9106001500069296
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.8612433434117138 0.9376421600997872
+uniport_exp {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4776762585087814 0.7221810773187892
+uniport_seq {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.47056022971771827 0.7039530698429005
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.42883178265137706 0.6518665773962384
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.42883178265137706 0.6518665773962384
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8497193833729167 0.9309641257204816
+geo_fused 1 0.8319121300466975 0.9342331710975779
+fused kernels evaluation
+ICD10_I26 15
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.688287391772949 0.8690519323671498
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7478111557324688 0.9159722222222223
+uniport_exp {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.04837268346582616 0.4652173913043478
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.5785258776693039 0.6623490338164252
+uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6101198652013281 0.5632246376811595
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6101198652013281 0.5632246376811595
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.7160551970377173 0.895108695652174
+geo_fused 0.001 0.7103204865487046 0.8968599033816425
+fused kernels evaluation
+ICD10_I42 152
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8365545448533792 0.9066773551658454
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8400773491980433 0.9091590726279941
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.5590523479056162 0.702775415773892
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.6115077428338124 0.7127060459954508
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5434049428288041 0.7102143908531658
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5434049428288041 0.7102143908531658
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.8430821366215882 0.9116424223054528
+geo_fused 3 0.8501560610808157 0.9140313577438667
+fused kernels evaluation
+ICD10_I50 152
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8185851673619627 0.9218071792038435
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.8276342165455007 0.9226663182518875
+uniport_exp {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.36197160575036763 0.6740126735322529
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.624495156089833 0.7699366024556379
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5931712521504995 0.7300262594950775
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5931712521504995 0.7300262594950775
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.8376438837494202 0.9210037001915174
+geo_fused 3 0.8265571401376838 0.9192353623735059
+fused kernels evaluation
+ICD10_I63 37
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8519492507219387 0.9302648046803511
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8816942969112999 0.9459306684613522
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.6385141426853979 0.781113295432407
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.8365458466499364 0.8840383673083849
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.8440275736075923 0.8684485120049117
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq-uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.8440275736075923 0.8684485120049117
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.890106724325026 0.9438548252838141
+geo_fused 0.001 0.8856694770019984 0.9377608640466618
+fused kernels evaluation
+ICD10_I70 64
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8466836516421375 0.9553093259464451
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8631710997719098 0.9588180978762696
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.30815311872630763 0.6566943674976915
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.5571094434325455 0.739796860572484
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.47725603955069235 0.7333333333333334
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.47725603955069235 0.7333333333333334
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 27 0.8764913142584473 0.9242843951985226
+geo_fused 81 0.8857001606642395 0.9156048014773776
+fused kernels evaluation
+ICD10_J45 185
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8500884133613354 0.9483148148148147
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8589565391183037 0.9502962962962963
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.5135421849444476 0.7390925925925925
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.7199263177013898 0.7938333333333333
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.668344646182281 0.785462962962963
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.668344646182281 0.785462962962963
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8594219016783659 0.9525185185185187
+geo_fused 1 0.8559371872171161 0.9531851851851852
+fused kernels evaluation
+ICD10_J62 16
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7285514094454425 0.831890331890332
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7925797214356963 0.8596320346320346
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.5592031224262274 0.645959595959596
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.09632241968622518 0.5957792207792209
+uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.12247023599477404 0.6222943722943723
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.12247023599477404 0.6222943722943723
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.7056437109655637 0.7949134199134199
+geo_fused 0.001 0.7059388554572855 0.7993145743145743
+fused kernels evaluation
+ICD10_J80 51
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7276637541530837 0.8720624796103179
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7332154402631098 0.8678323236925292
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.38583875745242474 0.6354231702721249
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.5493653509390407 0.7478880859572744
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.5658672671445331 0.7688191491456019
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.5658672671445331 0.7688191491456019
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.7315930790414891 0.8756878002204899
+geo_fused 3 0.730008441959674 0.8629794036088331
+fused kernels evaluation
+ICD10_K44 59
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.8158440397062344 0.9196311540164812
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8332167528950237 0.9240108454004686
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.5178085439527326 0.7636484085178732
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.3624380493564881 0.7015321478722006
+uniport_esm {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.3763198037798259 0.6378113866134355
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.3763198037798259 0.6378113866134355
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.8298846615595222 0.9157080832560013
+geo_fused 1 0.8137795888587749 0.9229882822496834
+fused kernels evaluation
+ICD10_K51 74
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8004256677209215 0.9068491820785399
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8554279343232415 0.9237198694385239
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.6170339332621317 0.7565611701697329
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.6160034382184052 0.7272271278387487
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6351182679254169 0.7529538504309148
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.6351182679254169 0.7529538504309148
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.8371530982276317 0.914947126720827
+geo_fused 1 0.8158805007955742 0.9229544241012131
+fused kernels evaluation
+ICD10_L20 56
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.9224274062600161 0.9326811314797584
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.9272123469174282 0.9122825644564775
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.427430200670399 0.7231712689378593
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.7576374198595387 0.793951852876338
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.7060071321202369 0.7677865930154261
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.7060071321202369 0.7677865930154261
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.9328174472558203 0.9161356801516983
+geo_fused 3 0.934876939674805 0.9149476254739413
+fused kernels evaluation
+ICD10_L40 70
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8450701513622705 0.9030461150026367
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8498637132376717 0.9134064541673238
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.570096444883951 0.7593623408840801
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.6075028344744496 0.795056278751931
+uniport_esm {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.5299999009632855 0.7024431086931088
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.3421818757741188'} 0.5299999009632855 0.7024431086931088
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.854692148620848 0.9095225059898974
+geo_fused 3 0.8522416737469789 0.9066391525630656
+fused kernels evaluation
+ICD10_M32 95
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8515838872888271 0.9162095493665445
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8430348796700136 0.9174573146888442
+uniport_exp {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.5307249613159218 0.765360965255837
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.5963692732310845 0.7673458775115529
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5290282573679975 0.7602968045514341
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.5290282573679975 0.7602968045514341
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.8501179499013016 0.9203831808567919
+geo_fused 1 0.8528783235585188 0.9215867835757591
+fused kernels evaluation
+ICD10_M34 35
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.9066565595399695 0.962009664312296
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8892745526472275 0.9617628351180981
+uniport_exp {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.43937204511558575 0.762922932330827
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.6456632195926301 0.7359782030834663
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.512245863677444 0.693383553580922
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.512245863677444 0.693383553580922
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9172185233345916 0.9460274739880002
+geo_fused 0.001 0.9307010431622746 0.9555636249715196
+fused kernels evaluation
+ICD10_M41 26
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.5953354623453294 0.7815315315315315
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7093538236752986 0.8095863720863722
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.09769001374887094 0.47800925925925924
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.3052133623181865 0.47998891748891753
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.40848773316165293 0.5650159087659087
+collect valid feature:  ['ppi_2017_dw_80']
+evaluation
+early fusion
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7093538236752986 0.8095863720863722
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.6596038192348957 0.806873838123838
+geo_fused 0.001 0.6596038192348957 0.806873838123838
+fused kernels evaluation
+ICD10_N04 72
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7809619734322389 0.9062837610470574
+ppi_2017_dw_80 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.8804126400462579 0.9309518327636388
+uniport_exp {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.23363289255610917 0.6181245535424379
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.6472415805653905 0.7692456416886575
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.7448331335057515 0.7623178010378479
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.7448331335057515 0.7623178010378479
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.7421713051203135 0.8883420706185171
+geo_fused 0.001 0.7421956742661499 0.9071028815330394
+fused kernels evaluation
+ICD10_N17 87
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.8950003803604213 0.9482248520710059
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.04960671286886536'} 0.9049192177901325 0.9550295857988166
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.707693547226003 0.790828402366864
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.721835526060174 0.8611439842209072
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6705096693996779 0.8413214990138066
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq-uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.6705096693996779 0.8413214990138066
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 27 0.881824729775357 0.9604536489151873
+geo_fused 27 0.89693107090709 0.9611439842209073
+fused kernels evaluation
+ICD10_N18 91
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.9191235000441921 0.9694348310887889
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.924519409037377 0.96780832629068
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.4703953380965573 0.8015323528246127
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.646788357571393 0.7782278113575772
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.517995843115838 0.7535073484597743
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_exp']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_exp {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.517995843115838 0.7535073484597743
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.9279209241951291 0.9697183581352554
+geo_fused 3 0.921665619996712 0.9688448013436203
+fused kernels evaluation
+ICD10_N46 81
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7277610114320265 0.8409362359418582
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7650773972984052 0.8189161295420666
+uniport_exp {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.2564349902919225 0.621187670053862
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.5692030172874661 0.7194338194150788
+uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.37852106023883064 0.6706928320028019
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.37852106023883064 0.6706928320028019
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.7730744625718889 0.838747426500425
+geo_fused 1 0.7671134621400464 0.8319925240371266
+fused kernels evaluation
+ICD10_N80 148
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.7267179329407324 0.8435491172476234
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.7352098510529507 0.8266787384940395
+uniport_exp {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.46874363857016194 0.7244001810774107
+uniport_seq {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.599719946874945 0.7264825712992304
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.54277009761937 0.7226799456767768
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.54277009761937 0.7226799456767768
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.7436760312331901 0.8395352346461445
+geo_fused 1 0.7376413075779281 0.8414365474573714
+fused kernels evaluation
+ICD10_N97 28
+kernels existing
+uniport_ppi_2017 {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.05794586180017914'} 0.9644650956186444 0.9518889534133436
+ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.9642648074252631 0.9595592979739321
+uniport_exp {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.03767826092892096'} 0.29227133753169765 0.7179878048780489
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.773249362786942 0.8478513356562137
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.8205523345626501 0.8276551813137178
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_seq', 'uniport_esm']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80-uniport_seq-uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.8205523345626501 0.8276551813137178
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.8898609267157669 0.9182475158084914
+geo_fused 0.001 0.8382851638291927 0.9289666408568849
+fused kernels evaluation
+ICD10_C23 18
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.9034055316598238 0.9761904761904763
+ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.9478717528657382 0.9801587301587302
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.505799333653316 0.7228927203065135
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.8718928263926449'} 0.13457812397037874 0.5355090311986864
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.09982618951988682 0.467200328407225
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.0855454689435297'} 0.09982618951988682 0.467200328407225
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9361835173890095 0.9722222222222223
+geo_fused 0.001 0.8953403457264102 0.9692939244663382
+fused kernels evaluation
+ICD10_C53 15
+kernels existing
+uniport_ppi_2017 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.9894419593685667 0.9953703703703703
+ppi_2017_dw_80 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02480335643443268'} 0.9788839187371335 0.9907407407407408
+uniport_exp {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.01883913046446048'} 0.29275910873403477 0.5277777777777778
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.43594641319632244'} 0.38481757059282673 0.5375243664717348
+uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.4423290072983499 0.6413255360623782
+collect valid feature:  ['uniport_ppi_2017', 'ppi_2017_dw_80']
+evaluation
+early fusion
+uniport_ppi_2017-ppi_2017_dw_80 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.1710909378870594'} 0.4423290072983499 0.6413255360623782
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 0.001 0.9568043275749701 0.9710038986354776
+geo_fused 0.001 0.939185545153749 0.9744152046783626
+fused kernels evaluation

@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-# from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
-from model_cv import compute_kernels, select_gamma_ratio, neg_bagging, eval_bagging
+from model_reindex_fusion_weights_uniport_cv_filter import compute_kernels, select_gamma_ratio, neg_bagging, eval_bagging
+# from model_cv import compute_kernels, select_gamma_ratio, neg_bagging, eval_bagging
 import sys
 import multiprocessing as mp
 from sklearn.preprocessing import MinMaxScaler
@@ -24,7 +24,7 @@ if test_bug:
     # feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']
     # feature_list = ['ppi_2019','bioconcept']
     feature_list = ['ppi_2019_dw_10','ppi_2019_dw_40','ppi_2019_dw_80','uniport_bio','uniport_seq','uniport_esm']
-    out_path = os.path.join(root,'results/ppi_2019_dw_test')
+    out_path = os.path.join(root,'results/ppi_2019_dw_test_scale')
     if not os.path.exists(out_path):
         os.makedirs(out_path)
     time = 2019
@@ -127,10 +127,10 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
         best_ratios_dict = dict()
         agg_feature = []
-        for fname, best_params, best_score in best_ratios:
-            print(fname, best_params, best_score)
+        for fname, best_params, best_bedroc, best_auc in best_ratios:
+            print(fname, best_params, best_bedroc, best_auc)
             best_ratios_dict[fname] = best_params
-            if best_score > 0.70:
+            if best_auc > 0.7:
                 agg_feature.append(fname)
         print('collect valid feature: ', agg_feature)
       ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
@@ -159,7 +159,6 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                 bagging_y_scores = pool.map(neg_bagging, args_list)
 
             final_y_score = np.mean(bagging_y_scores, axis=0)
-
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)            # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-', *results]
 

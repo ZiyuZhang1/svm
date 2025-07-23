@@ -371,7 +371,9 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
     if 'random_negative' in methods:
 
-        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled_norm',str(time))
+        # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled_norm',str(time))
+        kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/uni_kernel_cv_scaled',str(time))
+        
         os.makedirs(kernel_dir_path, exist_ok=True)
         kernel_pkl_path = os.path.join(kernel_dir_path,'path_save.pkl')
 

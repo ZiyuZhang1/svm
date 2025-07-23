@@ -61,7 +61,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
         # Add results to the result dataframe
-        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-early'+str(round(jac_sm, 3)), *results]
+        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_early'+'-'+str(round(jac_sm, 3)), *results]
 
     if 'mid_fusion' in methods:
         print('mid fusion')
@@ -87,7 +87,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
         # Add results to the result dataframe
-        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-mid'+str(round(jac_sm, 3)), *results]
+        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_mid'+'-'+str(round(jac_sm, 3)), *results]
 
     if 'later_fusion' in methods:
         print('later fusion')
@@ -126,7 +126,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-'+str(feature_name)+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_'+str(feature_name)+str(round(jac_sm, 3)), *results]
 
         # Average fused predictions
         valid_preds = [p for p in fused_preds_collection if p is not None]
@@ -140,7 +140,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL-later'+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_later'+'-'+str(round(jac_sm, 3)), *results]
 
 def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
@@ -161,7 +161,8 @@ def main():
     test_bug = False
 
     if test_bug:
-        feature_list = ['uniport_ppi_2017','uniport_exp','uniport_seq','uniport_esm']
+        # feature_list = ['uniport_ppi_2017','uniport_exp','uniport_seq','uniport_esm']
+        feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
         # feature_list = ['ppi_2019','bioconcept']
         # feature_list = ['ppi_2019_short','bioconcept_short']
         out_path = os.path.join(root,'results/temp')
@@ -177,15 +178,17 @@ def main():
     merged_df = None
     for feature in feature_list:
         feature_df = get_feature(root, feature)
+
+        feature_cols = [col for col in feature_df.columns if col.startswith('feature')]
+        if feature_cols:
+            scaler = MinMaxScaler()
+            feature_df[feature_cols] = scaler.fit_transform(feature_df[feature_cols])
+
         # Rename columns starting with 'feature'
         feature_df.rename(columns={
             col: f"{feature}_{col}" if col.startswith('feature') else col
             for col in feature_df.columns
         }, inplace=True)
-        feature_cols = [col for col in feature_df.columns if col.startswith('feature')]
-        if feature_cols:
-            scaler = MinMaxScaler()
-            feature_df[feature_cols] = scaler.fit_transform(feature_df[feature_cols])
 
         if merged_df is None:
             merged_df = feature_df

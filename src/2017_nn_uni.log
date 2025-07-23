@@ -1,0 +1,1330 @@
+['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_exp', 'uniport_seq', 'uniport_esm'] 54 15328
+ICD10_C16 89
+train test split
+early fusion
+early fusion validation auc: 0.7442002442002442
+mid fusion
+early fusion validation auc: 0.808913308913309
+later fusion
+ICD10_C18 48
+train test split
+early fusion
+early fusion validation auc: 0.6842105263157894
+mid fusion
+early fusion validation auc: 0.8651315789473684
+later fusion
+ICD10_C43 45
+train test split
+early fusion
+early fusion validation auc: 0.6589147286821706
+mid fusion
+early fusion validation auc: 0.875968992248062
+later fusion
+ICD10_C45 38
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4839, Val Loss: 0.4397, Train AUC: 0.5621, Val AUC: 0.5940
+Epoch 2/100, Train Loss: 0.4906, Val Loss: 0.4374, Train AUC: 0.4726, Val AUC: 0.5827
+Epoch 3/100, Train Loss: 0.4477, Val Loss: 0.4339, Train AUC: 0.6297, Val AUC: 0.5902
+Epoch 4/100, Train Loss: 0.4582, Val Loss: 0.4322, Train AUC: 0.5533, Val AUC: 0.5977
+Epoch 5/100, Train Loss: 0.4764, Val Loss: 0.4353, Train AUC: 0.4626, Val AUC: 0.6090
+Epoch 6/100, Train Loss: 0.4460, Val Loss: 0.4320, Train AUC: 0.6093, Val AUC: 0.6165
+Epoch 7/100, Train Loss: 0.4701, Val Loss: 0.4322, Train AUC: 0.5016, Val AUC: 0.6053
+Epoch 8/100, Train Loss: 0.4878, Val Loss: 0.4318, Train AUC: 0.3710, Val AUC: 0.6090
+Epoch 9/100, Train Loss: 0.4734, Val Loss: 0.4318, Train AUC: 0.4875, Val AUC: 0.6053
+Epoch 10/100, Train Loss: 0.4660, Val Loss: 0.4314, Train AUC: 0.4862, Val AUC: 0.6053
+Epoch 11/100, Train Loss: 0.4496, Val Loss: 0.4320, Train AUC: 0.5814, Val AUC: 0.6128
+Epoch 12/100, Train Loss: 0.4529, Val Loss: 0.4325, Train AUC: 0.5655, Val AUC: 0.6090
+Epoch 13/100, Train Loss: 0.4664, Val Loss: 0.4321, Train AUC: 0.5136, Val AUC: 0.6053
+Epoch 14/100, Train Loss: 0.4629, Val Loss: 0.4330, Train AUC: 0.5243, Val AUC: 0.6053
+Epoch 15/100, Train Loss: 0.4605, Val Loss: 0.4330, Train AUC: 0.5247, Val AUC: 0.6090
+Early stopping triggered at epoch 15
+Best Train AUC: 0.4862, Best Val AUC: 0.6053
+early fusion validation auc: 0.6165413533834586
+mid fusion
+early fusion validation auc: 0.8947368421052632
+later fusion
+ICD10_C50 529
+train test split
+early fusion
+early fusion validation auc: 0.6364937641723356
+mid fusion
+early fusion validation auc: 0.7247590702947846
+later fusion
+ICD10_C67 183
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4843, Val Loss: 0.4480, Train AUC: 0.4533, Val AUC: 0.4876
+Epoch 2/100, Train Loss: 0.4721, Val Loss: 0.4480, Train AUC: 0.4347, Val AUC: 0.5414
+Epoch 3/100, Train Loss: 0.4618, Val Loss: 0.4475, Train AUC: 0.4980, Val AUC: 0.5735
+Epoch 4/100, Train Loss: 0.4626, Val Loss: 0.4474, Train AUC: 0.4949, Val AUC: 0.5952
+Epoch 5/100, Train Loss: 0.4548, Val Loss: 0.4476, Train AUC: 0.5357, Val AUC: 0.6098
+Epoch 6/100, Train Loss: 0.4566, Val Loss: 0.4472, Train AUC: 0.5325, Val AUC: 0.6203
+Epoch 7/100, Train Loss: 0.4599, Val Loss: 0.4476, Train AUC: 0.5018, Val AUC: 0.6207
+Epoch 8/100, Train Loss: 0.4689, Val Loss: 0.4470, Train AUC: 0.4540, Val AUC: 0.6246
+Epoch 9/100, Train Loss: 0.4606, Val Loss: 0.4469, Train AUC: 0.4922, Val AUC: 0.6263
+Epoch 10/100, Train Loss: 0.4657, Val Loss: 0.4488, Train AUC: 0.4723, Val AUC: 0.6213
+Epoch 11/100, Train Loss: 0.4552, Val Loss: 0.4469, Train AUC: 0.5354, Val AUC: 0.6279
+Epoch 12/100, Train Loss: 0.4581, Val Loss: 0.4467, Train AUC: 0.5055, Val AUC: 0.6339
+Epoch 13/100, Train Loss: 0.4578, Val Loss: 0.4468, Train AUC: 0.5151, Val AUC: 0.6293
+Epoch 14/100, Train Loss: 0.4614, Val Loss: 0.4463, Train AUC: 0.4955, Val AUC: 0.6302
+Epoch 15/100, Train Loss: 0.4634, Val Loss: 0.4463, Train AUC: 0.4791, Val AUC: 0.6320
+Epoch 16/100, Train Loss: 0.4638, Val Loss: 0.4466, Train AUC: 0.4733, Val AUC: 0.6284
+Epoch 17/100, Train Loss: 0.4562, Val Loss: 0.4486, Train AUC: 0.5145, Val AUC: 0.6300
+Epoch 18/100, Train Loss: 0.4649, Val Loss: 0.4461, Train AUC: 0.4786, Val AUC: 0.6302
+Epoch 19/100, Train Loss: 0.4624, Val Loss: 0.4458, Train AUC: 0.4908, Val AUC: 0.6353
+Epoch 20/100, Train Loss: 0.4570, Val Loss: 0.4472, Train AUC: 0.5201, Val AUC: 0.6371
+Epoch 21/100, Train Loss: 0.4595, Val Loss: 0.4453, Train AUC: 0.5053, Val AUC: 0.6345
+Epoch 22/100, Train Loss: 0.4664, Val Loss: 0.4467, Train AUC: 0.4632, Val AUC: 0.6361
+Epoch 23/100, Train Loss: 0.4532, Val Loss: 0.4452, Train AUC: 0.5484, Val AUC: 0.6365
+Epoch 24/100, Train Loss: 0.4537, Val Loss: 0.4447, Train AUC: 0.5354, Val AUC: 0.6382
+Epoch 25/100, Train Loss: 0.4575, Val Loss: 0.4451, Train AUC: 0.5200, Val AUC: 0.6378
+Epoch 26/100, Train Loss: 0.4596, Val Loss: 0.4460, Train AUC: 0.5044, Val AUC: 0.6367
+Epoch 27/100, Train Loss: 0.4655, Val Loss: 0.4458, Train AUC: 0.4795, Val AUC: 0.6337
+Epoch 28/100, Train Loss: 0.4581, Val Loss: 0.4453, Train AUC: 0.5119, Val AUC: 0.6374
+Epoch 29/100, Train Loss: 0.4601, Val Loss: 0.4452, Train AUC: 0.4996, Val AUC: 0.6380
+Early stopping triggered at epoch 29
+Best Train AUC: 0.5354, Best Val AUC: 0.6382
+early fusion validation auc: 0.6518389151427985
+mid fusion
+early fusion validation auc: 0.8666529689747278
+later fusion
+ICD10_C81 23
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.5036, Val Loss: 0.4705, Train AUC: 0.5509, Val AUC: 0.9079
+Epoch 2/100, Train Loss: 0.4647, Val Loss: 0.4676, Train AUC: 0.4860, Val AUC: 0.8947
+Epoch 3/100, Train Loss: 0.4548, Val Loss: 0.4628, Train AUC: 0.5219, Val AUC: 0.8553
+Epoch 4/100, Train Loss: 0.4869, Val Loss: 0.4601, Train AUC: 0.4070, Val AUC: 0.8684
+Epoch 5/100, Train Loss: 0.4828, Val Loss: 0.4598, Train AUC: 0.3930, Val AUC: 0.8421
+Epoch 6/100, Train Loss: 0.4621, Val Loss: 0.4596, Train AUC: 0.4579, Val AUC: 0.8158
+Epoch 7/100, Train Loss: 0.4542, Val Loss: 0.4594, Train AUC: 0.5342, Val AUC: 0.8158
+Epoch 8/100, Train Loss: 0.4602, Val Loss: 0.4591, Train AUC: 0.5070, Val AUC: 0.8158
+Epoch 9/100, Train Loss: 0.4622, Val Loss: 0.4590, Train AUC: 0.4754, Val AUC: 0.8158
+Epoch 10/100, Train Loss: 0.4756, Val Loss: 0.4586, Train AUC: 0.4333, Val AUC: 0.8158
+Epoch 11/100, Train Loss: 0.4772, Val Loss: 0.4583, Train AUC: 0.4061, Val AUC: 0.8158
+Epoch 12/100, Train Loss: 0.4656, Val Loss: 0.4581, Train AUC: 0.4728, Val AUC: 0.8026
+Epoch 13/100, Train Loss: 0.4731, Val Loss: 0.4579, Train AUC: 0.4465, Val AUC: 0.8026
+Epoch 14/100, Train Loss: 0.4383, Val Loss: 0.4579, Train AUC: 0.5851, Val AUC: 0.8026
+Epoch 15/100, Train Loss: 0.4518, Val Loss: 0.4580, Train AUC: 0.5474, Val AUC: 0.8026
+Epoch 16/100, Train Loss: 0.4563, Val Loss: 0.4582, Train AUC: 0.5140, Val AUC: 0.8158
+Epoch 17/100, Train Loss: 0.4697, Val Loss: 0.4573, Train AUC: 0.4421, Val AUC: 0.8158
+Epoch 18/100, Train Loss: 0.4666, Val Loss: 0.4570, Train AUC: 0.4868, Val AUC: 0.8158
+Epoch 19/100, Train Loss: 0.4729, Val Loss: 0.4561, Train AUC: 0.4588, Val AUC: 0.8026
+Epoch 20/100, Train Loss: 0.4414, Val Loss: 0.4558, Train AUC: 0.5825, Val AUC: 0.8026
+Epoch 21/100, Train Loss: 0.4533, Val Loss: 0.4555, Train AUC: 0.5140, Val AUC: 0.8026
+Epoch 22/100, Train Loss: 0.4493, Val Loss: 0.4551, Train AUC: 0.5246, Val AUC: 0.7895
+Epoch 23/100, Train Loss: 0.4462, Val Loss: 0.4554, Train AUC: 0.5228, Val AUC: 0.7895
+Epoch 24/100, Train Loss: 0.4278, Val Loss: 0.4550, Train AUC: 0.6789, Val AUC: 0.8026
+Epoch 25/100, Train Loss: 0.4381, Val Loss: 0.4544, Train AUC: 0.6272, Val AUC: 0.7895
+Epoch 26/100, Train Loss: 0.4245, Val Loss: 0.4538, Train AUC: 0.6763, Val AUC: 0.7895
+Epoch 27/100, Train Loss: 0.4712, Val Loss: 0.4535, Train AUC: 0.4658, Val AUC: 0.7895
+Epoch 28/100, Train Loss: 0.4492, Val Loss: 0.4531, Train AUC: 0.5763, Val AUC: 0.7895
+Epoch 29/100, Train Loss: 0.4495, Val Loss: 0.4524, Train AUC: 0.5544, Val AUC: 0.7895
+Epoch 30/100, Train Loss: 0.4402, Val Loss: 0.4516, Train AUC: 0.5956, Val AUC: 0.7895
+Epoch 31/100, Train Loss: 0.4410, Val Loss: 0.4509, Train AUC: 0.6000, Val AUC: 0.7895
+Epoch 32/100, Train Loss: 0.4510, Val Loss: 0.4510, Train AUC: 0.5281, Val AUC: 0.7895
+Epoch 33/100, Train Loss: 0.4817, Val Loss: 0.4504, Train AUC: 0.3798, Val AUC: 0.7895
+Epoch 34/100, Train Loss: 0.4452, Val Loss: 0.4502, Train AUC: 0.5754, Val AUC: 0.7895
+Epoch 35/100, Train Loss: 0.4506, Val Loss: 0.4493, Train AUC: 0.5711, Val AUC: 0.7895
+Epoch 36/100, Train Loss: 0.4488, Val Loss: 0.4482, Train AUC: 0.5807, Val AUC: 0.8026
+Epoch 37/100, Train Loss: 0.3938, Val Loss: 0.4484, Train AUC: 0.8035, Val AUC: 0.8026
+Epoch 38/100, Train Loss: 0.4289, Val Loss: 0.4473, Train AUC: 0.6386, Val AUC: 0.8026
+Epoch 39/100, Train Loss: 0.4638, Val Loss: 0.4461, Train AUC: 0.4711, Val AUC: 0.7895
+Epoch 40/100, Train Loss: 0.4180, Val Loss: 0.4455, Train AUC: 0.7228, Val AUC: 0.7895
+Epoch 41/100, Train Loss: 0.4651, Val Loss: 0.4442, Train AUC: 0.4904, Val AUC: 0.7895
+Epoch 42/100, Train Loss: 0.4543, Val Loss: 0.4432, Train AUC: 0.5456, Val AUC: 0.7895
+Epoch 43/100, Train Loss: 0.4318, Val Loss: 0.4422, Train AUC: 0.6421, Val AUC: 0.7895
+Epoch 44/100, Train Loss: 0.4485, Val Loss: 0.4413, Train AUC: 0.5675, Val AUC: 0.7895
+Epoch 45/100, Train Loss: 0.4523, Val Loss: 0.4407, Train AUC: 0.5439, Val AUC: 0.7895
+Epoch 46/100, Train Loss: 0.4105, Val Loss: 0.4387, Train AUC: 0.7465, Val AUC: 0.7895
+Epoch 47/100, Train Loss: 0.4046, Val Loss: 0.4385, Train AUC: 0.7272, Val AUC: 0.7895
+Epoch 48/100, Train Loss: 0.4293, Val Loss: 0.4372, Train AUC: 0.6360, Val AUC: 0.7895
+Epoch 49/100, Train Loss: 0.4165, Val Loss: 0.4358, Train AUC: 0.6649, Val AUC: 0.7895
+Epoch 50/100, Train Loss: 0.4242, Val Loss: 0.4332, Train AUC: 0.6614, Val AUC: 0.7895
+Epoch 51/100, Train Loss: 0.4012, Val Loss: 0.4314, Train AUC: 0.7719, Val AUC: 0.7895
+Epoch 52/100, Train Loss: 0.4242, Val Loss: 0.4296, Train AUC: 0.6614, Val AUC: 0.7895
+Epoch 53/100, Train Loss: 0.4225, Val Loss: 0.4285, Train AUC: 0.6851, Val AUC: 0.7895
+Epoch 54/100, Train Loss: 0.4359, Val Loss: 0.4269, Train AUC: 0.6254, Val AUC: 0.7895
+Epoch 55/100, Train Loss: 0.4412, Val Loss: 0.4271, Train AUC: 0.6675, Val AUC: 0.7895
+Epoch 56/100, Train Loss: 0.3852, Val Loss: 0.4226, Train AUC: 0.8351, Val AUC: 0.7895
+Epoch 57/100, Train Loss: 0.4101, Val Loss: 0.4266, Train AUC: 0.7342, Val AUC: 0.7895
+Epoch 58/100, Train Loss: 0.3976, Val Loss: 0.4259, Train AUC: 0.7807, Val AUC: 0.7895
+Epoch 59/100, Train Loss: 0.4215, Val Loss: 0.4162, Train AUC: 0.6895, Val AUC: 0.7895
+Epoch 60/100, Train Loss: 0.3926, Val Loss: 0.4127, Train AUC: 0.7877, Val AUC: 0.7895
+Epoch 61/100, Train Loss: 0.3847, Val Loss: 0.4079, Train AUC: 0.7342, Val AUC: 0.7895
+Epoch 62/100, Train Loss: 0.4199, Val Loss: 0.4032, Train AUC: 0.6807, Val AUC: 0.7895
+Epoch 63/100, Train Loss: 0.4112, Val Loss: 0.4061, Train AUC: 0.7105, Val AUC: 0.7895
+Epoch 64/100, Train Loss: 0.3783, Val Loss: 0.3980, Train AUC: 0.8009, Val AUC: 0.7895
+Epoch 65/100, Train Loss: 0.3810, Val Loss: 0.3892, Train AUC: 0.8026, Val AUC: 0.7895
+Epoch 66/100, Train Loss: 0.3739, Val Loss: 0.3811, Train AUC: 0.8272, Val AUC: 0.7895
+Epoch 67/100, Train Loss: 0.3548, Val Loss: 0.3733, Train AUC: 0.8289, Val AUC: 0.7895
+Epoch 68/100, Train Loss: 0.3426, Val Loss: 0.3628, Train AUC: 0.8167, Val AUC: 0.7895
+Epoch 69/100, Train Loss: 0.3016, Val Loss: 0.3612, Train AUC: 0.9158, Val AUC: 0.7895
+Epoch 70/100, Train Loss: 0.3504, Val Loss: 0.3338, Train AUC: 0.7816, Val AUC: 0.7895
+Epoch 71/100, Train Loss: 0.2889, Val Loss: 0.3471, Train AUC: 0.8632, Val AUC: 0.7895
+Epoch 72/100, Train Loss: 0.2937, Val Loss: 0.3267, Train AUC: 0.9026, Val AUC: 0.7895
+Epoch 73/100, Train Loss: 0.3128, Val Loss: 0.3192, Train AUC: 0.8439, Val AUC: 0.7895
+Epoch 74/100, Train Loss: 0.3136, Val Loss: 0.3377, Train AUC: 0.8219, Val AUC: 0.7895
+Epoch 75/100, Train Loss: 0.2879, Val Loss: 0.3078, Train AUC: 0.9070, Val AUC: 0.7895
+Epoch 76/100, Train Loss: 0.2388, Val Loss: 0.3334, Train AUC: 0.9439, Val AUC: 0.7895
+Epoch 77/100, Train Loss: 0.2494, Val Loss: 0.3192, Train AUC: 0.9105, Val AUC: 0.7895
+Epoch 78/100, Train Loss: 0.2884, Val Loss: 0.3365, Train AUC: 0.8544, Val AUC: 0.7895
+Epoch 79/100, Train Loss: 0.3255, Val Loss: 0.3625, Train AUC: 0.8430, Val AUC: 0.7895
+Epoch 80/100, Train Loss: 0.3105, Val Loss: 0.3257, Train AUC: 0.8781, Val AUC: 0.7895
+Early stopping triggered at epoch 80
+Best Train AUC: 0.9070, Best Val AUC: 0.7895
+early fusion validation auc: 0.756578947368421
+mid fusion
+early fusion validation auc: 0.8289473684210527
+later fusion
+ICD10_D46 15
+train test split
+early fusion
+early fusion validation auc: 0.7023809523809523
+mid fusion
+early fusion validation auc: 0.7023809523809523
+later fusion
+ICD10_D57 22
+train test split
+early fusion
+early fusion validation auc: 0.83125
+mid fusion
+early fusion validation auc: 0.9
+later fusion
+ICD10_D66 15
+train test split
+early fusion
+early fusion validation auc: 0.5357142857142857
+mid fusion
+Epoch 1/100, Train Loss: 0.5921, Val Loss: 0.4781, Train AUC: 0.6672, Val AUC: 0.0714
+Epoch 2/100, Train Loss: 0.4487, Val Loss: 0.4781, Train AUC: 0.5422, Val AUC: 0.0714
+Epoch 3/100, Train Loss: 0.4512, Val Loss: 0.4944, Train AUC: 0.5373, Val AUC: 0.2143
+Epoch 4/100, Train Loss: 0.4631, Val Loss: 0.5036, Train AUC: 0.6234, Val AUC: 0.3333
+Epoch 5/100, Train Loss: 0.4708, Val Loss: 0.4976, Train AUC: 0.7321, Val AUC: 0.5000
+Epoch 6/100, Train Loss: 0.4573, Val Loss: 0.4752, Train AUC: 0.8815, Val AUC: 0.6190
+Epoch 7/100, Train Loss: 0.4423, Val Loss: 0.4642, Train AUC: 0.7532, Val AUC: 0.7619
+Epoch 8/100, Train Loss: 0.4395, Val Loss: 0.4660, Train AUC: 0.8036, Val AUC: 0.8333
+Epoch 9/100, Train Loss: 0.4462, Val Loss: 0.4697, Train AUC: 0.8133, Val AUC: 0.8095
+Epoch 10/100, Train Loss: 0.4487, Val Loss: 0.4657, Train AUC: 0.9692, Val AUC: 0.8095
+Epoch 11/100, Train Loss: 0.4446, Val Loss: 0.4629, Train AUC: 0.7727, Val AUC: 0.8095
+Epoch 12/100, Train Loss: 0.4407, Val Loss: 0.4632, Train AUC: 0.9708, Val AUC: 0.8333
+Epoch 13/100, Train Loss: 0.4405, Val Loss: 0.4637, Train AUC: 0.9919, Val AUC: 0.8333
+Epoch 14/100, Train Loss: 0.4409, Val Loss: 0.4682, Train AUC: 0.9903, Val AUC: 0.8095
+Epoch 15/100, Train Loss: 0.4548, Val Loss: 0.4822, Train AUC: 0.6997, Val AUC: 0.7857
+Epoch 16/100, Train Loss: 0.4612, Val Loss: 0.4807, Train AUC: 0.9886, Val AUC: 0.7857
+Epoch 17/100, Train Loss: 0.4585, Val Loss: 0.4730, Train AUC: 0.9886, Val AUC: 0.7857
+Epoch 18/100, Train Loss: 0.4464, Val Loss: 0.4614, Train AUC: 0.9708, Val AUC: 0.7857
+Epoch 19/100, Train Loss: 0.4352, Val Loss: 0.4583, Train AUC: 0.8669, Val AUC: 0.7857
+Epoch 20/100, Train Loss: 0.4302, Val Loss: 0.4610, Train AUC: 0.9789, Val AUC: 0.7857
+Epoch 21/100, Train Loss: 0.4301, Val Loss: 0.4667, Train AUC: 0.9903, Val AUC: 0.7857
+Epoch 22/100, Train Loss: 0.4346, Val Loss: 0.4734, Train AUC: 0.9821, Val AUC: 0.8095
+Epoch 23/100, Train Loss: 0.4455, Val Loss: 0.4730, Train AUC: 0.9692, Val AUC: 0.8095
+Epoch 24/100, Train Loss: 0.4379, Val Loss: 0.4596, Train AUC: 0.9237, Val AUC: 0.8095
+Epoch 25/100, Train Loss: 0.4256, Val Loss: 0.4536, Train AUC: 0.9821, Val AUC: 0.8095
+Epoch 26/100, Train Loss: 0.4265, Val Loss: 0.4532, Train AUC: 0.9562, Val AUC: 0.8095
+Epoch 27/100, Train Loss: 0.4225, Val Loss: 0.4522, Train AUC: 0.9935, Val AUC: 0.8095
+Epoch 28/100, Train Loss: 0.4203, Val Loss: 0.4497, Train AUC: 0.9919, Val AUC: 0.8095
+Epoch 29/100, Train Loss: 0.4157, Val Loss: 0.4510, Train AUC: 0.9903, Val AUC: 0.8095
+Epoch 30/100, Train Loss: 0.4177, Val Loss: 0.4547, Train AUC: 0.9789, Val AUC: 0.8095
+Epoch 31/100, Train Loss: 0.4172, Val Loss: 0.4511, Train AUC: 0.9919, Val AUC: 0.8333
+Epoch 32/100, Train Loss: 0.4133, Val Loss: 0.4449, Train AUC: 0.9968, Val AUC: 0.8333
+Epoch 33/100, Train Loss: 0.4042, Val Loss: 0.4375, Train AUC: 1.0000, Val AUC: 0.8095
+Epoch 34/100, Train Loss: 0.4012, Val Loss: 0.4424, Train AUC: 0.9838, Val AUC: 0.8810
+Epoch 35/100, Train Loss: 0.4010, Val Loss: 0.4291, Train AUC: 0.9935, Val AUC: 0.8333
+Epoch 36/100, Train Loss: 0.3852, Val Loss: 0.4220, Train AUC: 0.9708, Val AUC: 0.8333
+Epoch 37/100, Train Loss: 0.3691, Val Loss: 0.4161, Train AUC: 0.9968, Val AUC: 0.9286
+Epoch 38/100, Train Loss: 0.3690, Val Loss: 0.4219, Train AUC: 0.9854, Val AUC: 0.9524
+Epoch 39/100, Train Loss: 0.3635, Val Loss: 0.3843, Train AUC: 0.9968, Val AUC: 0.9524
+Epoch 40/100, Train Loss: 0.3305, Val Loss: 0.3709, Train AUC: 0.9951, Val AUC: 0.8571
+Epoch 41/100, Train Loss: 0.3122, Val Loss: 0.3546, Train AUC: 0.9838, Val AUC: 0.9762
+Epoch 42/100, Train Loss: 0.2909, Val Loss: 0.3697, Train AUC: 0.9919, Val AUC: 0.8810
+Epoch 43/100, Train Loss: 0.3007, Val Loss: 0.3680, Train AUC: 0.9935, Val AUC: 0.8095
+Epoch 44/1early fusion validation auc: 1.0
+later fusion
+ICD10_D83 23
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.5174, Val Loss: 0.4295, Train AUC: 0.5393, Val AUC: 0.4318
+Epoch 2/100, Train Loss: 0.4595, Val Loss: 0.4383, Train AUC: 0.5741, Val AUC: 0.5909
+Epoch 3/100, Train Loss: 0.4903, Val Loss: 0.4395, Train AUC: 0.4770, Val AUC: 0.6250
+Epoch 4/100, Train Loss: 0.4706, Val Loss: 0.4309, Train AUC: 0.5450, Val AUC: 0.6136
+Epoch 5/100, Train Loss: 0.4796, Val Loss: 0.4287, Train AUC: 0.4536, Val AUC: 0.7045
+Epoch 6/100, Train Loss: 0.4592, Val Loss: 0.4293, Train AUC: 0.5344, Val AUC: 0.6818
+Epoch 7/100, Train Loss: 0.4553, Val Loss: 0.4288, Train AUC: 0.5719, Val AUC: 0.7045
+Epoch 8/100, Train Loss: 0.4875, Val Loss: 0.4284, Train AUC: 0.3976, Val AUC: 0.7045
+Epoch 9/100, Train Loss: 0.4813, Val Loss: 0.4283, Train AUC: 0.4189, Val AUC: 0.7045
+Epoch 10/100, Train Loss: 0.4433, Val Loss: 0.4280, Train AUC: 0.6201, Val AUC: 0.7045
+Epoch 11/100, Train Loss: 0.4809, Val Loss: 0.4283, Train AUC: 0.4047, Val AUC: 0.7045
+Epoch 12/100, Train Loss: 0.4579, Val Loss: 0.4287, Train AUC: 0.5535, Val AUC: 0.7045
+Epoch 13/100, Train Loss: 0.4670, Val Loss: 0.4283, Train AUC: 0.4678, Val AUC: 0.7045
+Epoch 14/100, Train Loss: 0.4660, Val Loss: 0.4279, Train AUC: 0.5131, Val AUC: 0.7045
+Epoch 15/100, Train Loss: 0.4887, Val Loss: 0.4278, Train AUC: 0.3870, Val AUC: 0.7045
+Epoch 16/100, Train Loss: 0.4702, Val Loss: 0.4280, Train AUC: 0.4359, Val AUC: 0.7045
+Epoch 17/100, Train Loss: 0.4324, Val Loss: 0.4277, Train AUC: 0.6846, Val AUC: 0.7045
+Epoch 18/100, Train Loss: 0.4822, Val Loss: 0.4277, Train AUC: 0.4415, Val AUC: 0.7045
+Epoch 19/100, Train Loss: 0.4606, Val Loss: 0.4288, Train AUC: 0.5174, Val AUC: 0.7159
+Epoch 20/100, Train Loss: 0.4505, Val Loss: 0.4305, Train AUC: 0.5925, Val AUC: 0.7273
+Epoch 21/100, Train Loss: 0.4632, Val Loss: 0.4333, Train AUC: 0.5322, Val AUC: 0.7273
+Epoch 22/100, Train Loss: 0.4493, Val Loss: 0.4344, Train AUC: 0.5996, Val AUC: 0.7273
+Epoch 23/100, Train Loss: 0.4536, Val Loss: 0.4314, Train AUC: 0.5762, Val AUC: 0.7386
+Early stopping triggered at epoch 23
+Best Train AUC: 0.4415, Best Val AUC: 0.7045
+early fusion validation auc: 0.7443181818181819
+mid fusion
+early fusion validation auc: 0.9375
+later fusion
+ICD10_E10 104
+train test split
+early fusion
+early fusion validation auc: 0.8072122052704577
+mid fusion
+early fusion validation auc: 0.8964401294498381
+later fusion
+ICD10_E11 266
+train test split
+early fusion
+early fusion validation auc: 0.8111620158267389
+mid fusion
+early fusion validation auc: 0.9103706788837984
+later fusion
+ICD10_E66 255
+train test split
+early fusion
+early fusion validation auc: 0.7643762183235867
+mid fusion
+early fusion validation auc: 0.9017056530214425
+later fusion
+ICD10_E84 42
+train test split
+early fusion
+early fusion validation auc: 0.8303571428571428
+mid fusion
+early fusion validation auc: 0.9315476190476191
+later fusion
+ICD10_F01 33
+train test split
+early fusion
+early fusion validation auc: 0.8
+mid fusion
+early fusion validation auc: 0.9
+later fusion
+ICD10_F20 816
+train test split
+early fusion
+early fusion validation auc: 0.6920708832561125
+mid fusion
+Epoch 1/100, Train Loss: 0.4563, Val Loss: 0.4469, Train AUC: 0.5199, Val AUC: 0.7348
+Epoch 2/100, Train Loss: 0.4487, Val Loss: 0.4354, Train AUC: 0.5539, Val AUC: 0.7601
+Epoch 3/100, Train Loss: 0.4140, Val Loss: 0.3934, Train AUC: 0.7093, Val AUC: 0.7823
+Epoch 4/100, Train Loss: 0.3895, Val Loss: 0.3725, Train AUC: 0.7496, Val AUC: 0.7821
+Epoch 5/100, Train Loss: 0.3734, Val Loss: 0.4434, Train AUC: 0.7751, Val AUC: 0.7873
+Epoch 6/100, Train Loss: 0.3782, Val Loss: 0.3700, Train AUC: 0.7693, Val AUC: 0.7900
+Epoch 7/100, Train Loss: 0.3588, Val Loss: 0.3649, Train AUC: 0.8019, Val AUC: 0.7973
+Epoch 8/100, Train Loss: 0.3717, Val Loss: 0.3660, Train AUC: 0.7815, Val AUC: 0.7939
+Epoch 9/100, Train Loss: 0.3566, Val Loss: 0.3654, Train AUC: 0.8046, Val AUC: 0.7974
+Epoch 10/100, Train Loss: 0.3514, Val Loss: 0.3818, Train AUC: 0.8105, Val AUC: 0.7976
+Epoch 11/100, Train Loss: 0.3452, Val Loss: 0.3595, Train AUC: 0.8220, Val AUC: 0.7977
+Epoch 12/100, Train Loss: 0.3619, Val Loss: 0.3607, Train AUC: 0.7943, Val AUC: 0.7968
+Epoch 13/100, Train Loss: 0.3422, Val Loss: 0.3622, Train AUC: 0.8254, Val AUC: 0.7982
+Epoch 14/100, Train Loss: 0.3477, Val Loss: 0.4018, Train AUC: 0.8158, Val AUC: 0.7986
+Epoch 15/100, Train Loss: 0.3467, Val Loss: 0.3608, Train AUC: 0.8213, Val AUC: 0.7986
+Epoch 16/100, Train Loss: 0.3410, Val Loss: 0.3591, Train AUC: 0.8251, Val AUC: 0.7993
+Epoch 17/100, Train Loss: 0.3352, Val Loss: 0.3591, Train AUC: 0.8317, Val AUC: 0.7999
+Epoch 18/100, Train Loss: 0.3370, Val Loss: 0.3642, Train AUC: 0.8333, Val AUC: 0.7998
+Epoch 19/100, Train Loss: 0.3351, Val Loss: 0.3585, Train AUC: 0.8331, Val AUC: 0.8017
+Epoch 20/100, Train Loss: 0.3604, Val Loss: 0.3958, Train AUC: 0.7972, Val AUC: 0.7986
+Epoch 21/100, Train Loss: 0.3362, Val Loss: 0.3568, Train AUC: 0.8315, Val AUC: 0.8019
+Epoch 22/100, Train Loss: 0.3311, Val Loss: 0.3750, Train AUC: 0.8397, Val AUC: 0.7987
+Epoch 23/100, Train Loss: 0.3342, Val Loss: 0.3569, Train AUC: 0.8344, Val AUC: 0.7999
+Epoch 24/100, Train Loss: 0.3250, Val Loss: 0.3556, Train AUC: 0.8486, Val AUC: 0.8026
+Epoch 25/100, Train Loss: 0.3259, Val Loss: 0.3795, Train AUC: 0.8470, Val AUC: 0.8019
+Epoch 26/100, Train Loss: 0.3297, Val Loss: 0.3688, Train AUC: 0.8410, Val AUC: 0.7997
+Epoch 27/100, Train Loss: 0.3277, Val Loss: 0.3570, Train AUC: 0.8423, Val AUC: 0.8003
+Epoch 28/100, Train Loss: 0.3377, Val Loss: 0.3655, Train AUC: 0.8319, Val AUC: 0.8005
+Epoch 29/100, Train Loss: 0.3311, Val Loss: 0.3824, Train AUC: 0.8405, Val AUC: 0.8013
+Epoch 30/100, Train Loss: 0.3238, Val Loss: 0.3574, Train AUC: 0.8479, Val AUC: 0.8053
+Epoch 31/100, Train Loss: 0.3176, Val Loss: 0.4207, Train AUC: 0.8559, Val AUC: 0.7990
+Epoch 32/100, Train Loss: 0.3198, Val Loss: 0.3758, Train AUC: 0.8525, Val AUC: 0.7994
+Early stopping triggered at epoch 32
+Best Train AUC: 0.8486, Best Val AUC: 0.8026
+early fusion validation auc: 0.8005460888129143
+later fusion
+ICD10_F31 428
+train test split
+early fusion
+early fusion validation auc: 0.7607376924249353
+mid fusion
+early fusion validation auc: 0.8537265660722451
+later fusion
+ICD10_F72 31
+train test split
+early fusion
+early fusion validation auc: 0.7039473684210527
+mid fusion
+early fusion validation auc: 0.855263157894737
+later fusion
+ICD10_F90 20
+train test split
+early fusion
+early fusion validation auc: 0.43589743589743585
+mid fusion
+Epoch 1/100, Train Loss: 0.6263, Val Loss: 0.4956, Train AUC: 0.3788, Val AUC: 0.5897
+Epoch 2/100, Train Loss: 0.4569, Val Loss: 0.4835, Train AUC: 0.5212, Val AUC: 0.4872
+Epoch 3/100, Train Loss: 0.4468, Val Loss: 0.4948, Train AUC: 0.4115, Val AUC: 0.4103
+Epoch 4/100, Train Loss: 0.4494, Val Loss: 0.5015, Train AUC: 0.3712, Val AUC: 0.4103
+Epoch 5/100, Train Loss: 0.4489, Val Loss: 0.5013, Train AUC: 0.5019, Val AUC: 0.3846
+Epoch 6/100, Train Loss: 0.4464, Val Loss: 0.4953, Train AUC: 0.5442, Val AUC: 0.3333
+Epoch 7/100, Train Loss: 0.4416, Val Loss: 0.4916, Train AUC: 0.6769, Val AUC: 0.2308
+Epoch 8/100, Train Loss: 0.4391, Val Loss: 0.4878, Train AUC: 0.7077, Val AUC: 0.2051
+Epoch 9/100, Train Loss: 0.4388, Val Loss: 0.4855, Train AUC: 0.6596, Val AUC: 0.2308
+Epoch 10/100, Train Loss: 0.4387, Val Loss: 0.4851, Train AUC: 0.7731, Val AUC: 0.2308
+Early stopping triggered at epoch 10
+Best Train AUC: 0.5212, Best Val AUC: 0.4872
+early fusion validation auc: 0.6923076923076923
+later fusion
+ICD10_G10 32
+train test split
+early fusion
+early fusion validation auc: 0.5755208333333334
+mid fusion
+early fusion validation auc: 0.8619791666666667
+later fusion
+ICD10_G20 128
+train test split
+early fusion
+early fusion validation auc: 0.5139477401129944
+mid fusion
+early fusion validation auc: 0.868114406779661
+later fusion
+ICD10_G24 21
+train test split
+early fusion
+early fusion validation auc: 0.39814814814814814
+mid fusion
+early fusion validation auc: 0.8425925925925926
+later fusion
+ICD10_G30 179
+train test split
+early fusion
+early fusion validation auc: 0.7720844811753902
+mid fusion
+early fusion validation auc: 0.878236914600551
+later fusion
+ICD10_G35 102
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4704, Val Loss: 0.4546, Train AUC: 0.5459, Val AUC: 0.8469
+Epoch 2/100, Train Loss: 0.4665, Val Loss: 0.4601, Train AUC: 0.5189, Val AUC: 0.8469
+Epoch 3/100, Train Loss: 0.4676, Val Loss: 0.4535, Train AUC: 0.4843, Val AUC: 0.8476
+Epoch 4/100, Train Loss: 0.4607, Val Loss: 0.4530, Train AUC: 0.5097, Val AUC: 0.8476
+Epoch 5/100, Train Loss: 0.4554, Val Loss: 0.4524, Train AUC: 0.5281, Val AUC: 0.8462
+Epoch 6/100, Train Loss: 0.4556, Val Loss: 0.4516, Train AUC: 0.5302, Val AUC: 0.8498
+Epoch 7/100, Train Loss: 0.4543, Val Loss: 0.4520, Train AUC: 0.5437, Val AUC: 0.8469
+Epoch 8/100, Train Loss: 0.4710, Val Loss: 0.4498, Train AUC: 0.4786, Val AUC: 0.8398
+Epoch 9/100, Train Loss: 0.4564, Val Loss: 0.4483, Train AUC: 0.5314, Val AUC: 0.8391
+Epoch 10/100, Train Loss: 0.4504, Val Loss: 0.4474, Train AUC: 0.5842, Val AUC: 0.8420
+Epoch 11/100, Train Loss: 0.4608, Val Loss: 0.4452, Train AUC: 0.5011, Val AUC: 0.8427
+Epoch 12/100, Train Loss: 0.4526, Val Loss: 0.4428, Train AUC: 0.5496, Val AUC: 0.8441
+Epoch 13/100, Train Loss: 0.4459, Val Loss: 0.4406, Train AUC: 0.5868, Val AUC: 0.8405
+Epoch 14/100, Train Loss: 0.4408, Val Loss: 0.4362, Train AUC: 0.5901, Val AUC: 0.8391
+Epoch 15/100, Train Loss: 0.4475, Val Loss: 0.4377, Train AUC: 0.5759, Val AUC: 0.8434
+Epoch 16/100, Train Loss: 0.4498, Val Loss: 0.4297, Train AUC: 0.5651, Val AUC: 0.8405
+Epoch 17/100, Train Loss: 0.4435, Val Loss: 0.4328, Train AUC: 0.6020, Val AUC: 0.8434
+Epoch 18/100, Train Loss: 0.4404, Val Loss: 0.4376, Train AUC: 0.6013, Val AUC: 0.8420
+Epoch 19/100, Train Loss: 0.4333, Val Loss: 0.4198, Train AUC: 0.6640, Val AUC: 0.8427
+Epoch 20/100, Train Loss: 0.4263, Val Loss: 0.4035, Train AUC: 0.6598, Val AUC: 0.8434
+Epoch 21/100, Train Loss: 0.4074, Val Loss: 0.3870, Train AUC: 0.7149, Val AUC: 0.8455
+Epoch 22/100, Train Loss: 0.4031, Val Loss: 0.3763, Train AUC: 0.7392, Val AUC: 0.8476
+Epoch 23/100, Train Loss: 0.4065, Val Loss: 0.3718, Train AUC: 0.7144, Val AUC: 0.8462
+Epoch 24/100, Train Loss: 0.3970, Val Loss: 0.3451, Train AUC: 0.7474, Val AUC: 0.8476
+Epoch 25/100, Train Loss: 0.3769, Val Loss: 0.3422, Train AUC: 0.7757, Val AUC: 0.8512
+Epoch 26/100, Train Loss: 0.3650, Val Loss: 0.3567, Train AUC: 0.7612, Val AUC: 0.8540
+Epoch 27/100, Train Loss: 0.3744, Val Loss: 0.3341, Train AUC: 0.7915, Val AUC: 0.8568
+Epoch 28/100, Train Loss: 0.3631, Val Loss: 0.3285, Train AUC: 0.7933, Val AUC: 0.8597
+Epoch 29/100, Train Loss: 0.3708, Val Loss: 0.3472, Train AUC: 0.7826, Val AUC: 0.8625
+Epoch 30/100, Train Loss: 0.3640, Val Loss: 0.3321, Train AUC: 0.7979, Val AUC: 0.8618
+Epoch 31/100, Train Loss: 0.3725, Val Loss: 0.3556, Train AUC: 0.7665, Val AUC: 0.8646
+Epoch 32/100, Train Loss: 0.3775, Val Loss: 0.3273, Train AUC: 0.7630, Val AUC: 0.8653
+Epoch 33/100, Train Loss: 0.3433, Val Loss: 0.3068, Train AUC: 0.8069, Val AUC: 0.8675
+Epoch 34/100, Train Loss: 0.3554, Val Loss: 0.3355, Train AUC: 0.7842, Val AUC: 0.8717
+Epoch 35/100, Train Loss: 0.3456, Val Loss: 0.3311, Train AUC: 0.7962, Val AUC: 0.8724
+Epoch 36/100, Train Loss: 0.3566, Val Loss: 0.3624, Train AUC: 0.7824, Val AUC: 0.8724
+Epoch 37/100, Train Loss: 0.3747, Val Loss: 0.3507, Train AUC: 0.7597, Val AUC: 0.8724
+Epoch 38/100, Train Loss: 0.3507, Val Loss: 0.3098, Train AUC: 0.8095, Val AUC: 0.8724
+Early stopping triggered at epoch 38
+Best Train AUC: 0.8069, Best Val AUC: 0.8675
+early fusion validation auc: 0.8564847625797306
+mid fusion
+early fusion validation auc: 0.9347980155917789
+later fusion
+ICD10_G40 114
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4772, Val Loss: 0.4429, Train AUC: 0.5153, Val AUC: 0.8309
+Epoch 2/100, Train Loss: 0.4733, Val Loss: 0.4483, Train AUC: 0.4960, Val AUC: 0.8242
+Epoch 3/100, Train Loss: 0.4833, Val Loss: 0.4436, Train AUC: 0.4538, Val AUC: 0.8456
+Epoch 4/100, Train Loss: 0.4633, Val Loss: 0.4415, Train AUC: 0.5163, Val AUC: 0.8476
+Epoch 5/100, Train Loss: 0.4631, Val Loss: 0.4451, Train AUC: 0.5295, Val AUC: 0.8496
+Epoch 6/100, Train Loss: 0.4696, Val Loss: 0.4426, Train AUC: 0.4913, Val AUC: 0.8489
+Epoch 7/100, Train Loss: 0.4619, Val Loss: 0.4406, Train AUC: 0.5294, Val AUC: 0.8523
+Epoch 8/100, Train Loss: 0.4523, Val Loss: 0.4407, Train AUC: 0.5639, Val AUC: 0.8509
+Epoch 9/100, Train Loss: 0.4586, Val Loss: 0.4404, Train AUC: 0.5430, Val AUC: 0.8516
+Epoch 10/100, Train Loss: 0.4765, Val Loss: 0.4398, Train AUC: 0.4562, Val AUC: 0.8549
+Epoch 11/100, Train Loss: 0.4601, Val Loss: 0.4395, Train AUC: 0.5341, Val AUC: 0.8556
+Epoch 12/100, Train Loss: 0.4645, Val Loss: 0.4389, Train AUC: 0.5081, Val AUC: 0.8549
+Epoch 13/100, Train Loss: 0.4513, Val Loss: 0.4386, Train AUC: 0.5706, Val AUC: 0.8596
+Epoch 14/100, Train Loss: 0.4678, Val Loss: 0.4381, Train AUC: 0.4897, Val AUC: 0.8576
+Epoch 15/100, Train Loss: 0.4464, Val Loss: 0.4364, Train AUC: 0.5679, Val AUC: 0.8570
+Epoch 16/100, Train Loss: 0.4493, Val Loss: 0.4357, Train AUC: 0.5726, Val AUC: 0.8576
+Epoch 17/100, Train Loss: 0.4611, Val Loss: 0.4350, Train AUC: 0.5312, Val AUC: 0.8596
+Epoch 18/100, Train Loss: 0.4513, Val Loss: 0.4339, Train AUC: 0.5695, Val AUC: 0.8610
+Epoch 19/100, Train Loss: 0.4629, Val Loss: 0.4324, Train AUC: 0.5315, Val AUC: 0.8623
+Epoch 20/100, Train Loss: 0.4298, Val Loss: 0.4312, Train AUC: 0.6611, Val AUC: 0.8603
+Epoch 21/100, Train Loss: 0.4392, Val Loss: 0.4308, Train AUC: 0.6262, Val AUC: 0.8576
+Epoch 22/100, Train Loss: 0.4642, Val Loss: 0.4295, Train AUC: 0.5263, Val AUC: 0.8616
+Epoch 23/100, Train Loss: 0.4473, Val Loss: 0.4290, Train AUC: 0.5870, Val AUC: 0.8616
+Epoch 24/100, Train Loss: 0.4758, Val Loss: 0.4319, Train AUC: 0.5150, Val AUC: 0.8643
+Epoch 25/100, Train Loss: 0.4526, Val Loss: 0.4324, Train AUC: 0.5777, Val AUC: 0.8623
+Epoch 26/100, Train Loss: 0.4830, Val Loss: 0.4308, Train AUC: 0.4676, Val AUC: 0.8630
+Epoch 27/100, Train Loss: 0.4748, Val Loss: 0.4386, Train AUC: 0.5411, Val AUC: 0.8636
+Epoch 28/100, Train Loss: 0.4654, Val Loss: 0.4318, Train AUC: 0.5261, Val AUC: 0.8643
+Early stopping triggered at epoch 28
+Best Train AUC: 0.5870, Best Val AUC: 0.8616
+early fusion validation auc: 0.8442513368983957
+mid fusion
+early fusion validation auc: 0.8933823529411764
+later fusion
+ICD10_G43 21
+train test split
+early fusion
+early fusion validation auc: 0.6470588235294117
+mid fusion
+early fusion validation auc: 0.5196078431372548
+later fusion
+ICD10_G91 20
+train test split
+early fusion
+early fusion validation auc: 0.6904761904761905
+mid fusion
+early fusion validation auc: 0.6785714285714286
+later fusion
+ICD10_H40 18
+train test split
+early fusion
+early fusion validation auc: 0.6851851851851851
+mid fusion
+early fusion validation auc: 0.6666666666666666
+later fusion
+ICD10_I10 35
+train test split
+early fusion
+early fusion validation auc: 0.5902777777777777
+mid fusion
+early fusion validation auc: 0.9236111111111112
+later fusion
+ICD10_I25 134
+train test split
+early fusion
+early fusion validation auc: 0.8302180685358256
+mid fusion
+Epoch 1/100, Train Loss: 0.4713, Val Loss: 0.4469, Train AUC: 0.4948, Val AUC: 0.5145
+Epoch 2/100, Train Loss: 0.4512, Val Loss: 0.4456, Train AUC: 0.5374, Val AUC: 0.6943
+Epoch 3/100, Train Loss: 0.4477, Val Loss: 0.4450, Train AUC: 0.6162, Val AUC: 0.7592
+Epoch 4/100, Train Loss: 0.4456, Val Loss: 0.4386, Train AUC: 0.6131, Val AUC: 0.7753
+Epoch 5/100, Train Loss: 0.4401, Val Loss: 0.4304, Train AUC: 0.6709, Val AUC: 0.7980
+Epoch 6/100, Train Loss: 0.4175, Val Loss: 0.4126, Train AUC: 0.7564, Val AUC: 0.7837
+Epoch 7/100, Train Loss: 0.3921, Val Loss: 0.3698, Train AUC: 0.7739, Val AUC: 0.8336
+Epoch 8/100, Train Loss: 0.3534, Val Loss: 0.3603, Train AUC: 0.8378, Val AUC: 0.8304
+Epoch 9/100, Train Loss: 0.3179, Val Loss: 0.3225, Train AUC: 0.8787, Val AUC: 0.8585
+Epoch 10/100, Train Loss: 0.3032, Val Loss: 0.3652, Train AUC: 0.8948, Val AUC: 0.8478
+Epoch 11/100, Train Loss: 0.3035, Val Loss: 0.3531, Train AUC: 0.8844, Val AUC: 0.8224
+Epoch 12/100, Train Loss: 0.2671, Val Loss: 0.3396, Train AUC: 0.9074, Val AUC: 0.8327
+Epoch 13/100, Train Loss: 0.3079, Val Loss: 0.3426, Train AUC: 0.8749, Val AUC: 0.8358
+Epoch 14/100, Train Loss: 0.2759, Val Loss: 0.3398, Train AUC: 0.9007, Val AUC: 0.8393
+Epoch 15/100, Train Loss: 0.2391, Val Loss: 0.3620, Train AUC: 0.9328, Val AUC: 0.8309
+Epoch 16/100, Train Loss: 0.2306, Val Loss: 0.3214, Train AUC: 0.9340, Val AUC: 0.8500
+Epoch 17/100, Train Loss: 0.2241, Val Loss: 0.3528, Train AUC: 0.9381, Val AUC: 0.8398
+Epoch 18/100, Train Loss: 0.2117, Val Loss: 0.3644, Train AUC: 0.9452, Val AUC: 0.8540
+Epoch 19/100, Train Loss: 0.2482, Val Loss: 0.4069, Train AUC: 0.9237, Val AUC: 0.8393
+Epoch 20/100, Train Loss: 0.2688, Val Loss: 0.3595, Train AUC: 0.9073, Val AUC: 0.8576
+Epoch 21/100, Train Loss: 0.2270, Val Loss: 0.3412, Train AUC: 0.9402, Val AUC: 0.8344
+Epoch 22/100, Train Loss: 0.1952, Val Loss: 0.3439, Train AUC: 0.9545, Val AUC: 0.8340
+Epoch 23/100, Train Loss: 0.1893, Val Loss: 0.3440, Train AUC: 0.9591, Val AUC: 0.8376
+Epoch 24/100, Train Loss: 0.1862, Val Loss: 0.3839, Train AUC: 0.9591, Val AUC: 0.8509
+Early stopping triggered at epoch 24
+Best Train AUC: 0.9340, Best Val AUC: 0.8500
+early fusion validation auc: 0.8569203382287494
+later fusion
+ICD10_I26 15
+train test split
+early fusion
+early fusion validation auc: 0.7380952380952381
+mid fusion
+early fusion validation auc: 0.9285714285714286
+later fusion
+ICD10_I42 152
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4775, Val Loss: 0.4484, Train AUC: 0.4734, Val AUC: 0.5677
+Epoch 2/100, Train Loss: 0.4591, Val Loss: 0.4492, Train AUC: 0.5117, Val AUC: 0.6142
+Epoch 3/100, Train Loss: 0.4490, Val Loss: 0.4466, Train AUC: 0.5668, Val AUC: 0.6461
+Epoch 4/100, Train Loss: 0.4601, Val Loss: 0.4473, Train AUC: 0.5129, Val AUC: 0.6494
+Epoch 5/100, Train Loss: 0.4490, Val Loss: 0.4459, Train AUC: 0.5809, Val AUC: 0.6550
+Epoch 6/100, Train Loss: 0.4724, Val Loss: 0.4458, Train AUC: 0.4387, Val AUC: 0.6664
+Epoch 7/100, Train Loss: 0.4613, Val Loss: 0.4472, Train AUC: 0.4872, Val AUC: 0.6713
+Epoch 8/100, Train Loss: 0.4570, Val Loss: 0.4450, Train AUC: 0.5337, Val AUC: 0.6807
+Epoch 9/100, Train Loss: 0.4572, Val Loss: 0.4447, Train AUC: 0.5153, Val AUC: 0.6813
+Epoch 10/100, Train Loss: 0.4606, Val Loss: 0.4449, Train AUC: 0.4979, Val AUC: 0.6823
+Epoch 11/100, Train Loss: 0.4587, Val Loss: 0.4438, Train AUC: 0.5235, Val AUC: 0.6813
+Epoch 12/100, Train Loss: 0.4616, Val Loss: 0.4458, Train AUC: 0.5101, Val AUC: 0.6848
+Epoch 13/100, Train Loss: 0.4590, Val Loss: 0.4427, Train AUC: 0.5201, Val AUC: 0.6818
+Epoch 14/100, Train Loss: 0.4459, Val Loss: 0.4417, Train AUC: 0.5810, Val AUC: 0.6856
+Epoch 15/100, Train Loss: 0.4580, Val Loss: 0.4440, Train AUC: 0.5179, Val AUC: 0.6859
+Epoch 16/100, Train Loss: 0.4559, Val Loss: 0.4412, Train AUC: 0.5468, Val AUC: 0.6869
+Epoch 17/100, Train Loss: 0.4406, Val Loss: 0.4424, Train AUC: 0.6253, Val AUC: 0.6918
+Epoch 18/100, Train Loss: 0.4572, Val Loss: 0.4397, Train AUC: 0.5594, Val AUC: 0.6948
+Epoch 19/100, Train Loss: 0.4528, Val Loss: 0.4387, Train AUC: 0.5533, Val AUC: 0.6937
+Epoch 20/100, Train Loss: 0.4533, Val Loss: 0.4380, Train AUC: 0.5490, Val AUC: 0.6934
+Epoch 21/100, Train Loss: 0.4510, Val Loss: 0.4363, Train AUC: 0.5779, Val AUC: 0.6932
+Epoch 22/100, Train Loss: 0.4565, Val Loss: 0.4352, Train AUC: 0.5333, Val AUC: 0.6951
+Epoch 23/100, Train Loss: 0.4498, Val Loss: 0.4325, Train AUC: 0.5622, Val AUC: 0.6969
+Epoch 24/100, Train Loss: 0.4531, Val Loss: 0.4338, Train AUC: 0.5796, Val AUC: 0.6948
+Epoch 25/100, Train Loss: 0.4564, Val Loss: 0.4321, Train AUC: 0.5641, Val AUC: 0.6991
+Epoch 26/100, Train Loss: 0.4295, Val Loss: 0.4397, Train AUC: 0.6599, Val AUC: 0.7026
+Epoch 27/100, Train Loss: 0.4349, Val Loss: 0.4257, Train AUC: 0.6472, Val AUC: 0.7007
+Epoch 28/100, Train Loss: 0.4366, Val Loss: 0.4272, Train AUC: 0.6364, Val AUC: 0.7048
+Epoch 29/100, Train Loss: 0.4242, Val Loss: 0.4356, Train AUC: 0.6794, Val AUC: 0.7086
+Epoch 30/100, Train Loss: 0.4208, Val Loss: 0.4408, Train AUC: 0.6890, Val AUC: 0.7107
+Epoch 31/100, Train Loss: 0.4352, Val Loss: 0.4254, Train AUC: 0.6474, Val AUC: 0.7137
+Epoch 32/100, Train Loss: 0.4420, Val Loss: 0.4564, Train AUC: 0.6369, Val AUC: 0.7159
+Epoch 33/100, Train Loss: 0.4478, Val Loss: 0.4378, Train AUC: 0.5985, Val AUC: 0.7170
+Epoch 34/100, Train Loss: 0.4325, Val Loss: 0.4235, Train AUC: 0.6543, Val AUC: 0.7167
+Epoch 35/100, Train Loss: 0.4182, Val Loss: 0.4186, Train AUC: 0.7037, Val AUC: 0.7167
+Epoch 36/100, Train Loss: 0.4181, Val Loss: 0.4268, Train AUC: 0.6818, Val AUC: 0.7197
+Epoch 37/100, Train Loss: 0.4105, Val Loss: 0.4138, Train AUC: 0.7230, Val AUC: 0.7188
+Epoch 38/100, Train Loss: 0.4296, Val Loss: 0.4277, Train AUC: 0.6646, Val AUC: 0.7213
+Epoch 39/100, Train Loss: 0.4354, Val Loss: 0.4237, Train AUC: 0.6432, Val AUC: 0.7178
+Epoch 40/100, Train Loss: 0.4299, Val Loss: 0.4181, Train AUC: 0.6494, Val AUC: 0.7188
+Epoch 41/100, Train Loss: 0.4189, Val Loss: 0.4183, Train AUC: 0.6899, Val AUC: 0.7175
+Epoch 42/100, Train Loss: 0.4033, Val Loss: 0.4051, Train AUC: 0.7304, Val AUC: 0.7186
+Epoch 43/100, Train Loss: 0.4054, Val Loss: 0.4141, Train AUC: 0.7305, Val AUC: 0.7253
+Epoch 44/100, Train Loss: 0.4233, Val Loss: 0.4145, Train AUC: 0.6894, Val AUC: 0.7283
+Epoch 45/100, Train Loss: 0.3974, Val Loss: 0.4021, Train AUC: 0.7311, Val AUC: 0.7261
+Epoch 46/100, Train Loss: 0.4059, Val Loss: 0.4134, Train AUC: 0.7198, Val AUC: 0.7256
+Epoch 47/100, Train Loss: 0.3991, Val Loss: 0.4119, Train AUC: 0.7398, Val AUC: 0.7205
+Epoch 48/100, Train Loss: 0.3894, Val Loss: 0.4336, Train AUC: 0.7588, Val AUC: 0.7245
+Epoch 49/100, Train Loss: 0.4550, Val Loss: 0.4254, Train AUC: 0.5960, Val AUC: 0.7334
+Epoch 50/100, Train Loss: 0.4227, Val Loss: 0.4091, Train AUC: 0.6870, Val AUC: 0.7321
+Early stopping triggered at epoch 50
+Best Train AUC: 0.7311, Best Val AUC: 0.7261
+early fusion validation auc: 0.7192484455258178
+mid fusion
+early fusion validation auc: 0.8573938902406055
+later fusion
+ICD10_I50 152
+train test split
+early fusion
+early fusion validation auc: 0.7628884180790961
+mid fusion
+early fusion validation auc: 0.9113700564971752
+later fusion
+ICD10_I63 37
+train test split
+early fusion
+early fusion validation auc: 0.8979591836734693
+mid fusion
+early fusion validation auc: 0.8918367346938776
+later fusion
+ICD10_I70 64
+train test split
+early fusion
+early fusion validation auc: 0.8746081504702194
+mid fusion
+early fusion validation auc: 0.9584639498432601
+later fusion
+ICD10_J45 185
+train test split
+early fusion
+early fusion validation auc: 0.9010030864197531
+mid fusion
+early fusion validation auc: 0.9524691358024692
+later fusion
+ICD10_J62 16
+train test split
+early fusion
+early fusion validation auc: 0.7435897435897436
+mid fusion
+early fusion validation auc: 0.9358974358974359
+later fusion
+ICD10_J80 51
+train test split
+early fusion
+early fusion validation auc: 0.801
+mid fusion
+early fusion validation auc: 0.75
+later fusion
+ICD10_K44 59
+train test split
+early fusion
+early fusion validation auc: 0.7993138936535163
+mid fusion
+Epoch 1/100, Train Loss: 0.5202, Val Loss: 0.4606, Train AUC: 0.3826, Val AUC: 0.3877
+Epoch 2/100, Train Loss: 0.4516, Val Loss: 0.4575, Train AUC: 0.3771, Val AUC: 0.6055
+Epoch 3/100, Train Loss: 0.4483, Val Loss: 0.4566, Train AUC: 0.5261, Val AUC: 0.7153
+Epoch 4/100, Train Loss: 0.4484, Val Loss: 0.4540, Train AUC: 0.5079, Val AUC: 0.8096
+Epoch 5/100, Train Loss: 0.4473, Val Loss: 0.4552, Train AUC: 0.5440, Val AUC: 0.8319
+Epoch 6/100, Train Loss: 0.4432, Val Loss: 0.4512, Train AUC: 0.7839, Val AUC: 0.8679
+Epoch 7/100, Train Loss: 0.4455, Val Loss: 0.4500, Train AUC: 0.6278, Val AUC: 0.8937
+Epoch 8/100, Train Loss: 0.4459, Val Loss: 0.4505, Train AUC: 0.5480, Val AUC: 0.8988
+Epoch 9/100, Train Loss: 0.4374, Val Loss: 0.4445, Train AUC: 0.7629, Val AUC: 0.9057
+Epoch 10/100, Train Loss: 0.4362, Val Loss: 0.4395, Train AUC: 0.8373, Val AUC: 0.9039
+Epoch 11/100, Train Loss: 0.4343, Val Loss: 0.4331, Train AUC: 0.7433, Val AUC: 0.9022
+Epoch 12/100, Train Loss: 0.4212, Val Loss: 0.4208, Train AUC: 0.8643, Val AUC: 0.9160
+Epoch 13/100, Train Loss: 0.4096, Val Loss: 0.3998, Train AUC: 0.8269, Val AUC: 0.9194
+Epoch 14/100, Train Loss: 0.3826, Val Loss: 0.3474, Train AUC: 0.8766, Val AUC: 0.9262
+Epoch 15/100, Train Loss: 0.3575, Val Loss: 0.3831, Train AUC: 0.8433, Val AUC: 0.9142
+Epoch 16/100, Train Loss: 0.3874, Val Loss: 0.3488, Train AUC: 0.7642, Val AUC: 0.9142
+Epoch 17/100, Train Loss: 0.3early fusion validation auc: 0.8842195540308748
+later fusion
+ICD10_K51 74
+train test split
+early fusion
+early fusion validation auc: 0.7284023668639054
+mid fusion
+early fusion validation auc: 0.9236686390532544
+later fusion
+Feature: uniport_ppi_2017, Epoch 1/100, Train Loss: 0.4955, Val Loss: 0.4509, Train AUC: 0.5745, Val AUC: 0.4935
+Feature: uniport_ppi_2017, Epoch 2/100, Train Loss: 0.4779, Val Loss: 0.4515, Train AUC: 0.4742, Val AUC: 0.6355
+Feature: uniport_ppi_2017, Epoch 3/100, Train Loss: 0.4470, Val Loss: 0.4471, Train AUC: 0.5828, Val AUC: 0.6923
+Feature: uniport_ppi_2017, Epoch 4/100, Train Loss: 0.4312, Val Loss: 0.4456, Train AUC: 0.6373, Val AUC: 0.7538
+Feature: uniport_ppi_2017, Epoch 5/100, Train Loss: 0.4587, Val Loss: 0.4448, Train AUC: 0.5296, Val AUC: 0.7728
+Feature: uniport_ppi_2017, Epoch 6/100, Train Loss: 0.4614, Val Loss: 0.4449, Train AUC: 0.5135, Val AUC: 0.7822
+Feature: uniport_ppi_2017, Epoch 7/100, Train Loss: 0.4529, Val Loss: 0.4427, Train AUC: 0.5522, Val AUC: 0.7941
+Feature: uniport_ppi_2017, Epoch 8/100, Train Loss: 0.4571, Val Loss: 0.4410, Train AUC: 0.5464, Val AUC: 0.8142
+Feature: uniport_ppi_2017, Epoch 9/100, Train Loss: 0.4482, Val Loss: 0.4409, Train AUC: 0.5777, Val AUC: 0.8308
+Feature: uniport_ppi_2017, Epoch 10/100, Train Loss: 0.4415, Val Loss: 0.4360, Train AUC: 0.6250, Val AUC: 0.8331
+Feature: uniport_ppi_2017, Epoch 11/100, Train Loss: 0.4414, Val Loss: 0.4338, Train AUC: 0.6018, Val AUC: 0.8331
+Feature: uniport_ppi_2017, Epoch 12/100, Train Loss: 0.4283, Val Loss: 0.4318, Train AUC: 0.6644, Val AUC: 0.8355
+Feature: uniport_ppi_2017, Epoch 13/100, Train Loss: 0.4400, Val Loss: 0.4273, Train AUC: 0.6105, Val AUC: 0.8509
+Feature: uniport_ppi_2017, Epoch 14/100, Train Loss: 0.4185, Val Loss: 0.4203, Train AUC: 0.6920, Val AUC: 0.8462
+Feature: uniport_ppi_2017, Epoch 15/100, Train Loss: 0.4213, Val Loss: 0.4171, Train AUC: 0.6939, Val AUC: 0.8556
+Feature: uniport_ppi_2017, Epoch 16/100, Train Loss: 0.4145, Val Loss: 0.4284, Train AUC: 0.7531, Val AUC: 0.8426
+Feature: uniport_ppi_2017, Epoch 17/100, Train Loss: 0.4208, Val Loss: 0.4197, Train AUC: 0.6676, Val AUC: 0.8710
+Feature: uniport_ppi_2017, Epoch 18/100, Train Loss: 0.4126, Val Loss: 0.4073, Train AUC: 0.6752, Val AUC: 0.8379
+Feature: uniport_ppi_2017, Epoch 19/100, Train Loss: 0.3668, Val Loss: 0.3973, Train AUC: 0.8305, Val AUC: 0.8639
+Feature: uniport_ppi_2017, Epoch 20/100, Train Loss: 0.3591, Val Loss: 0.3694, Train AUC: 0.7902, Val AUC: 0.8651
+Feature: uniport_ppi_2017, Epoch 21/100, Train Loss: 0.3570, Val Loss: 0.3705, Train AUC: 0.8261, Val AUC: 0.8497
+Feature: uniport_ppi_2017, Epoch 22/100, Train Loss: 0.3362, Val Loss: 0.3504, Train AUC: 0.8441, Val AUC: 0.8651
+Feature: uniport_ppi_2017, Epoch 23/100, Train Loss: 0.3070, Val Loss: 0.3557, Train AUC: 0.8851, Val AUC: 0.8556
+Feature: uniport_ppi_2017, Epoch 24/100, Train Loss: 0.3117, Val Loss: 0.3525, Train AUC: 0.8783, Val AUC: 0.8639
+Feature: uniport_ppi_2017, Epoch 25/100, Train Loss: 0.3009, Val Loss: 0.3721, Train AUC: 0.8699, Val AUC: 0.8521
+Feature: uniport_ppi_2017, Epoch 26/100, Train Loss: 0.2918, Val Loss: 0.3397, Train AUC: 0.9016, Val AUC: 0.8604
+Feature: uniport_ppi_2017, Epoch 27/100, Train Loss: 0.2763, Val Loss: 0.3363, Train AUC: 0.8936, Val AUC: 0.8710
+Feature: uniport_ppi_2017, Epoch 28/100, Train Loss: 0.2991, Val Loss: 0.3675, Train AUC: 0.8828, Val AUC: 0.8698
+Feature: uniport_ppi_2017, Epoch 29/100, Train Loss: 0.2991, Val Loss: 0.3349, Train AUC: 0.8749, Val AUC: 0.8722
+Feature: uniport_ppi_2017, Epoch 30/100, Train Loss: 0.2790, Val Loss: 0.3338, Train AUC: 0.8947, Val AUC: 0.8710
+Feature: uniport_ppi_2017, Epoch 31/100, Train Loss: 0.2730, Val Loss: 0.3279, Train AUC: 0.9045, Val AUC: 0.8757
+Feature: uniport_ppi_2017, Epoch 32/100, Train Loss: 0.2652, Val Loss: 0.3348, Train AUC: 0.9070, Val AUC: 0.8675
+Feature: uniport_ppi_2017, Epoch 33/100, Train Loss: 0.2618, Val Loss: 0.3279, Train AUC: 0.9246, Val AUC: 0.8840
+Feature: uniport_ppi_2017, Epoch 34/100, Train Loss: 0.2693, Val Loss: 0.3229, Train AUC: 0.8928, Val AUC: 0.8769
+Feature: uniport_ppi_2017, Epoch 35/100, Train Loss: 0.2397, Val Loss: 0.3273, Train AUC: 0.9330, Val AUC: 0.8817
+Feature: uniport_ppi_2017, Epoch 36/100, Train Loss: 0.2525, Val Loss: 0.3410, Train AUC: 0.9098, Val AUC: 0.8923
+Feature: uniport_ppi_2017, Epoch 37/100, Train Loss: 0.2726, Val Loss: 0.3438, Train AUC: 0.9179, Val AUC: 0.8947
+Feature: uniport_ppi_2017, Epoch 38/100, Train Loss: 0.2819, Val Loss: 0.3370, Train AUC: 0.8892, Val AUC: 0.8710
+Feature: uniport_ppi_2017, Epoch 39/100, Train Loss: 0.2535, Val Loss: 0.3302, Train AUC: 0.9209, Val AUC: 0.8580
+Early stopping for feature uniport_ppi_2017 at epoch 39
+Best Train AUC for feature uniport_ppi_2017: 0.8928
+Best Val AUC for feature uniport_ppi_2017: 0.8769
+Feature: ppi_2017_dw_80, Epoch 1/100, Train Loss: 0.5113, Val Loss: 0.4509, Train AUC: 0.5195, Val AUC: 0.6331
+Feature: ppi_2017_dw_80, Epoch 2/100, Train Loss: 0.4699, Val Loss: 0.4466, Train AUC: 0.4419, Val AUC: 0.7385
+Feature: ppi_2017_dw_80, Epoch 3/100, Train Loss: 0.4613, Val Loss: 0.4472, Train AUC: 0.4947, Val AUC: 0.7941
+Feature: ppi_2017_dw_80, Epoch 4/100, Train Loss: 0.4539, Val Loss: 0.4434, Train AUC: 0.5356, Val AUC: 0.8260
+Feature: ppi_2017_dw_80, Epoch 5/100, Train Loss: 0.4408, Val Loss: 0.4416, Train AUC: 0.6001, Val AUC: 0.8426
+Feature: ppi_2017_dw_80, Epoch 6/100, Train Loss: 0.4528, Val Loss: 0.4393, Train AUC: 0.5428, Val AUC: 0.8568
+Feature: ppi_2017_dw_80, Epoch 7/100, Train Loss: 0.4485, Val Loss: 0.4381, Train AUC: 0.5729, Val AUC: 0.8663
+Feature: ppi_2017_dw_80, Epoch 8/100, Train Loss: 0.4392, Val Loss: 0.4344, Train AUC: 0.6135, Val AUC: 0.8639
+Feature: ppi_2017_dw_80, Epoch 9/100, Train Loss: 0.4391, Val Loss: 0.4291, Train AUC: 0.6113, Val AUC: 0.8781
+Feature: ppi_2017_dw_80, Epoch 10/100, Train Loss: 0.4231, Val Loss: 0.4228, Train AUC: 0.6864, Val AUC: 0.8817
+Feature: ppi_2017_dw_80, Epoch 11/100, Train Loss: 0.4251, Val Loss: 0.4162, Train AUC: 0.6695, Val AUC: 0.8840
+Feature: ppi_2017_dw_80, Epoch 12/100, Train Loss: 0.4216, Val Loss: 0.4146, Train AUC: 0.7187, Val AUC: 0.8852
+Feature: ppi_2017_dw_80, Epoch 13/100, Train Loss: 0.4039, Val Loss: 0.4032, Train AUC: 0.7562, Val AUC: 0.8899
+Feature: ppi_2017_dw_80, Epoch 14/100, Train Loss: 0.4196, Val Loss: 0.4093, Train AUC: 0.7416, Val AUC: 0.8805
+Feature: ppi_2017_dw_80, Epoch 15/100, Train Loss: 0.3781, Val Loss: 0.3802, Train AUC: 0.8006, Val AUC: 0.8899
+Feature: ppi_2017_dw_80, Epoch 16/100, Train Loss: 0.3292, Val Loss: 0.3536, Train AUC: 0.8705, Val AUC: 0.8959
+Feature: ppi_2017_dw_80, Epoch 17/100, Train Loss: 0.3379, Val Loss: 0.3565, Train AUC: 0.8442, Val AUC: 0.9018
+Feature: ppi_2017_dw_80, Epoch 18/100, Train Loss: 0.3214, Val Loss: 0.3424, Train AUC: 0.8732, Val AUC: 0.8840
+Feature: ppi_2017_dw_80, Epoch 19/100, Train Loss: 0.3159, Val Loss: 0.3267, Train AUC: 0.8611, Val AUC: 0.9112
+Feature: ppi_2017_dw_80, Epoch 20/100, Train Loss: 0.2955, Val Loss: 0.3432, Train AUC: 0.8931, Val AUC: 0.8888
+Feature: ppi_2017_dw_80, Epoch 21/100, Train Loss: 0.2969, Val Loss: 0.3503, Train AUC: 0.8841, Val AUC: 0.9041
+Feature: ppi_2017_dw_80, Epoch 22/100, Train Loss: 0.2877, Val Loss: 0.3135, Train AUC: 0.8999, Val AUC: 0.9089
+Feature: ppi_2017_dw_80, Epoch 23/100, Train Loss: 0.2749, Val Loss: 0.3023, Train AUC: 0.9117, Val AUC: 0.9124
+Feature: ppi_2017_dw_80, Epoch 24/100, Train Loss: 0.2623, Val Loss: 0.3157, Train AUC: 0.9214, Val AUC: 0.9077
+Feature: ppi_2017_dw_80, Epoch 25/100, Train Loss: 0.2916, Val Loss: 0.3507, Train AUC: 0.8800, Val AUC: 0.9089
+Feature: ppi_2017_dw_80, Epoch 26/100, Train Loss: 0.2775, Val Loss: 0.3014, Train AUC: 0.8942, Val AUC: 0.9053
+Feature: ppi_2017_dw_80, Epoch 27/100, Train Loss: 0.2849, Val Loss: 0.3387, Train AUC: 0.9126, Val AUC: 0.9030
+Feature: ppi_2017_dw_80, Epoch 28/100, Train Loss: 0.2852, Val Loss: 0.3035, Train AUC: 0.8802, Val AUC: 0.9148
+Feature: ppi_2017_dw_80, Epoch 29/100, Train Loss: 0.2261, Val Loss: 0.3239, Train AUC: 0.9343, Val AUC: 0.9053
+Feature: ppi_2017_dw_80, Epoch 30/100, Train Loss: 0.2508, Val Loss: 0.2935, Train AUC: 0.9336, Val AUC: 0.9112
+Feature: ppi_2017_dw_80, Epoch 31/100, Train Loss: 0.2332, Val Loss: 0.2915, Train AUC: 0.9299, Val AUC: 0.9101
+Feature: ppi_2017_dw_80, Epoch 32/100, Train Loss: 0.2264, Val Loss: 0.3008, Train AUC: 0.9121, Val AUC: 0.9124
+Feature: ppi_2017_dw_80, Epoch 33/100, Train Loss: 0.2248, Val Loss: 0.2996, Train AUC: 0.9382, Val AUC: 0.9148
+Feature: ppi_2017_dw_80, Epoch 34/100, Train Loss: 0.2363, Val Loss: 0.2863, Train AUC: 0.9362, Val AUC: 0.9195
+Feature: ppi_2017_dw_80, Epoch 35/100, Train Loss: 0.2134, Val Loss: 0.3269, Train AUC: 0.9484, Val AUC: 0.9089
+Feature: ppi_2017_dw_80, Epoch 36/100, Train Loss: 0.2752, Val Loss: 0.3145, Train AUC: 0.8927, Val AUC: 0.9160
+Feature: ppi_2017_dw_80, Epoch 37/100, Train Loss: 0.2403, Val Loss: 0.2843, Train AUC: 0.9180, Val AUC: 0.9160
+Feature: ppi_2017_dw_80, Epoch 38/100, Train Loss: 0.2161, Val Loss: 0.2847, Train AUC: 0.9422, Val AUC: 0.9148
+Feature: ppi_2017_dw_80, Epoch 39/100, Train Loss: 0.1831, Val Loss: 0.2928, Train AUC: 0.9657, Val AUC: 0.9231
+Feature: ppi_2017_dw_80, Epoch 40/100, Train Loss: 0.2190, Val Loss: 0.2806, Train AUC: 0.9421, Val AUC: 0.9183
+Feature: ppi_2017_dw_80, Epoch 41/100, Train Loss: 0.2442, Val Loss: 0.3066, Train AUC: 0.9053, Val AUC: 0.9207
+Feature: ppi_2017_dw_80, Epoch 42/100, Train Loss: 0.2039, Val Loss: 0.2832, Train AUC: 0.9617, Val AUC: 0.9207
+Feature: ppi_2017_dw_80, Epoch 43/100, Train Loss: 0.2164, Val Loss: 0.2976, Train AUC: 0.9377, Val AUC: 0.9172
+Feature: ppi_2017_dw_80, Epoch 44/100, Train Loss: 0.2283, Val Loss: 0.2875, Train AUC: 0.9271, Val AUC: 0.9219
+Feature: ppi_2017_dw_80, Epoch 45/100, Train Loss: 0.2222, Val Loss: 0.3321, Train AUC: 0.9368, Val AUC: 0.9195
+Early stopping for feature ppi_2017_dw_80 at epoch 45
+Best Train AUC for feature ppi_2017_dw_80: 0.9421
+Best Val AUC for feature ppi_2017_dw_80: 0.9183
+Feature: uniport_exp, Epoch 1/100, Train Loss: 0.5043, Val Loss: 0.4664, Train AUC: 0.5252, Val AUC: 0.4308
+Feature: uniport_exp, Epoch 2/100, Train Loss: 0.4601, Val Loss: 0.4534, Train AUC: 0.5490, Val AUC: 0.4746
+Feature: uniport_exp, Epoch 3/100, Train Loss: 0.4486, Val Loss: 0.4506, Train AUC: 0.5775, Val AUC: 0.4746
+Feature: uniport_exp, Epoch 4/100, Train Loss: 0.4571, Val Loss: 0.4504, Train AUC: 0.5286, Val AUC: 0.5018
+Feature: uniport_exp, Epoch 5/100, Train Loss: 0.4590, Val Loss: 0.4504, Train AUC: 0.5101, Val AUC: 0.5266
+Feature: uniport_exp, Epoch 6/100, Train Loss: 0.4633, Val Loss: 0.4504, Train AUC: 0.5143, Val AUC: 0.5361
+Feature: uniport_exp, Epoch 7/100, Train Loss: 0.4741, Val Loss: 0.4520, Train AUC: 0.4578, Val AUC: 0.5467
+Feature: uniport_exp, Epoch 8/100, Train Loss: 0.4487, Val Loss: 0.4500, Train AUC: 0.5689, Val AUC: 0.5586
+Feature: uniport_exp, Epoch 9/100, Train Loss: 0.4592, Val Loss: 0.4504, Train AUC: 0.5077, Val AUC: 0.5811
+Feature: uniport_exp, Epoch 10/100, Train Loss: 0.4588, Val Loss: 0.4499, Train AUC: 0.5314, Val AUC: 0.5870
+Feature: uniport_exp, Epoch 11/100, Train Loss: 0.4645, Val Loss: 0.4495, Train AUC: 0.5053, Val AUC: 0.6107
+Feature: uniport_exp, Epoch 12/100, Train Loss: 0.4503, Val Loss: 0.4504, Train AUC: 0.5726, Val AUC: 0.6213
+Feature: uniport_exp, Epoch 13/100, Train Loss: 0.4622, Val Loss: 0.4498, Train AUC: 0.4993, Val AUC: 0.6355
+Feature: uniport_exp, Epoch 14/100, Train Loss: 0.4574, Val Loss: 0.4492, Train AUC: 0.5229, Val AUC: 0.6521
+Feature: uniport_exp, Epoch 15/100, Train Loss: 0.4685, Val Loss: 0.4497, Train AUC: 0.4620, Val AUC: 0.6734
+Feature: uniport_exp, Epoch 16/100, Train Loss: 0.4729, Val Loss: 0.4496, Train AUC: 0.4448, Val AUC: 0.6698
+Feature: uniport_exp, Epoch 17/100, Train Loss: 0.4533, Val Loss: 0.4495, Train AUC: 0.5418, Val AUC: 0.6805
+Feature: uniport_exp, Epoch 18/100, Train Loss: 0.4519, Val Loss: 0.4490, Train AUC: 0.5437, Val AUC: 0.6899
+Feature: uniport_exp, Epoch 19/100, Train Loss: 0.4540, Val Loss: 0.4488, Train AUC: 0.5381, Val AUC: 0.7030
+Feature: uniport_exp, Epoch 20/100, Train Loss: 0.4647, Val Loss: 0.4493, Train AUC: 0.4919, Val AUC: 0.7041
+Feature: uniport_exp, Epoch 21/100, Train Loss: 0.4552, Val Loss: 0.4486, Train AUC: 0.5217, Val AUC: 0.7041
+Feature: uniport_exp, Epoch 22/100, Train Loss: 0.4580, Val Loss: 0.4484, Train AUC: 0.5229, Val AUC: 0.7183
+Feature: uniport_exp, Epoch 23/100, Train Loss: 0.4507, Val Loss: 0.4486, Train AUC: 0.5540, Val AUC: 0.7254
+Feature: uniport_exp, Epoch 24/100, Train Loss: 0.4456, Val Loss: 0.4491, Train AUC: 0.5645, Val AUC: 0.7219
+Feature: uniport_exp, Epoch 25/100, Train Loss: 0.4471, Val Loss: 0.4480, Train AUC: 0.5607, Val AUC: 0.7266
+Feature: uniport_exp, Epoch 26/100, Train Loss: 0.4638, Val Loss: 0.4490, Train AUC: 0.4741, Val AUC: 0.7183
+Feature: uniport_exp, Epoch 27/100, Train Loss: 0.4542, Val Loss: 0.4480, Train AUC: 0.5469, Val AUC: 0.7278
+Feature: uniport_exp, Epoch 28/100, Train Loss: 0.4388, Val Loss: 0.4475, Train AUC: 0.6218, Val AUC: 0.7254
+Feature: uniport_exp, Epoch 29/100, Train Loss: 0.4636, Val Loss: 0.4472, Train AUC: 0.4808, Val AUC: 0.7278
+Feature: uniport_exp, Epoch 30/100, Train Loss: 0.4473, Val Loss: 0.4469, Train AUC: 0.5723, Val AUC: 0.7361
+Feature: uniport_exp, Epoch 31/100, Train Loss: 0.4703, Val Loss: 0.4465, Train AUC: 0.4592, Val AUC: 0.7349
+Feature: uniport_exp, Epoch 32/100, Train Loss: 0.4651, Val Loss: 0.4471, Train AUC: 0.4962, Val AUC: 0.7325
+Feature: uniport_exp, Epoch 33/100, Train Loss: 0.4397, Val Loss: 0.4467, Train AUC: 0.6183, Val AUC: 0.7302
+Feature: uniport_exp, Epoch 34/100, Train Loss: 0.4331, Val Loss: 0.4457, Train AUC: 0.6382, Val AUC: 0.7408
+Feature: uniport_exp, Epoch 35/100, Train Loss: 0.4425, Val Loss: 0.4452, Train AUC: 0.5937, Val AUC: 0.7337
+Feature: uniport_exp, Epoch 36/100, Train Loss: 0.4698, Val Loss: 0.4484, Train AUC: 0.4781, Val AUC: 0.7302
+Feature: uniport_exp, Epoch 37/100, Train Loss: 0.4544, Val Loss: 0.4452, Train AUC: 0.5469, Val AUC: 0.7444
+Feature: uniport_exp, Epoch 38/100, Train Loss: 0.4588, Val Loss: 0.4444, Train AUC: 0.5067, Val AUC: 0.7527
+Feature: uniport_exp, Epoch 39/100, Train Loss: 0.4506, Val Loss: 0.4441, Train AUC: 0.5680, Val AUC: 0.7550
+Feature: uniport_exp, Epoch 40/100, Train Loss: 0.4636, Val Loss: 0.4446, Train AUC: 0.5168, Val AUC: 0.7432
+Feature: uniport_exp, Epoch 41/100, Train Loss: 0.4672, Val Loss: 0.4435, Train AUC: 0.4760, Val AUC: 0.7432
+Feature: uniport_exp, Epoch 42/100, Train Loss: 0.4324, Val Loss: 0.4434, Train AUC: 0.6344, Val AUC: 0.7527
+Feature: uniport_exp, Epoch 43/100, Train Loss: 0.4504, Val Loss: 0.4432, Train AUC: 0.5558, Val AUC: 0.7633
+Feature: uniport_exp, Epoch 44/100, Train Loss: 0.4483, Val Loss: 0.4418, Train AUC: 0.5635, Val AUC: 0.7609
+Feature: uniport_exp, Epoch 45/100, Train Loss: 0.4473, Val Loss: 0.4440, Train AUC: 0.5692, Val AUC: 0.7586
+Feature: uniport_exp, Epoch 46/100, Train Loss: 0.4457, Val Loss: 0.4411, Train AUC: 0.5822, Val AUC: 0.7527
+Feature: uniport_exp, Epoch 47/100, Train Loss: 0.4527, Val Loss: 0.4412, Train AUC: 0.5685, Val AUC: 0.7420
+Feature: uniport_exp, Epoch 48/100, Train Loss: 0.4519, Val Loss: 0.4415, Train AUC: 0.5614, Val AUC: 0.7515
+Feature: uniport_exp, Epoch 49/100, Train Loss: 0.4352, Val Loss: 0.4376, Train AUC: 0.6514, Val AUC: 0.7503
+Feature: uniport_exp, Epoch 50/100, Train Loss: 0.4476, Val Loss: 0.4390, Train AUC: 0.5865, Val AUC: 0.7515
+Feature: uniport_exp, Epoch 51/100, Train Loss: 0.4540, Val Loss: 0.4443, Train AUC: 0.5832, Val AUC: 0.7515
+Feature: uniport_exp, Epoch 52/100, Train Loss: 0.4556, Val Loss: 0.4377, Train AUC: 0.5579, Val AUC: 0.7408
+Feature: uniport_exp, Epoch 53/100, Train Loss: 0.4538, Val Loss: 0.4367, Train AUC: 0.5535, Val AUC: 0.7396
+Feature: uniport_exp, Epoch 54/100, Train Loss: 0.4484, Val Loss: 0.4355, Train AUC: 0.5608, Val AUC: 0.7373
+Feature: uniport_exp, Epoch 55/100, Train Loss: 0.4396, Val Loss: 0.4358, Train AUC: 0.6223, Val AUC: 0.7432
+Feature: uniport_exp, Epoch 56/100, Train Loss: 0.4140, Val Loss: 0.4326, Train AUC: 0.7411, Val AUC: 0.7479
+Feature: uniport_exp, Epoch 57/100, Train Loss: 0.4307, Val Loss: 0.4270, Train AUC: 0.6474, Val AUC: 0.7538
+Feature: uniport_exp, Epoch 58/100, Train Loss: 0.4304, Val Loss: 0.4336, Train AUC: 0.6723, Val AUC: 0.7503
+Feature: uniport_exp, Epoch 59/100, Train Loss: 0.4105, Val Loss: 0.4385, Train AUC: 0.7153, Val AUC: 0.7467
+Feature: uniport_exp, Epoch 60/100, Train Loss: 0.4450, Val Loss: 0.4406, Train AUC: 0.6271, Val AUC: 0.7479
+Feature: uniport_exp, Epoch 61/100, Train Loss: 0.4525, Val Loss: 0.4295, Train AUC: 0.5701, Val AUC: 0.7515
+Feature: uniport_exp, Epoch 62/100, Train Loss: 0.4646, Val Loss: 0.4314, Train AUC: 0.5331, Val AUC: 0.7562
+Early stopping for feature uniport_exp at epoch 62
+Best Train AUC for feature uniport_exp: 0.6474
+Best Val AUC for feature uniport_exp: 0.7538
+Feature: uniport_seq, Epoch 1/100, Train Loss: 0.4854, Val Loss: 0.4505, Train AUC: 0.5530, Val AUC: 0.5751
+Feature: uniport_seq, Epoch 2/100, Train Loss: 0.4750, Val Loss: 0.4504, Train AUC: 0.4351, Val AUC: 0.6012
+Feature: uniport_seq, Epoch 3/100, Train Loss: 0.4486, Val Loss: 0.4504, Train AUC: 0.5598, Val AUC: 0.6284
+Feature: uniport_seq, Epoch 4/100, Train Loss: 0.4668, Val Loss: 0.4503, Train AUC: 0.4886, Val AUC: 0.6213
+Feature: uniport_seq, Epoch 5/100, Train Loss: 0.4838, Val Loss: 0.4507, Train AUC: 0.3757, Val AUC: 0.6260
+Feature: uniport_seq, Epoch 6/100, Train Loss: 0.4466, Val Loss: 0.4505, Train AUC: 0.5721, Val AUC: 0.6201
+Feature: uniport_seq, Epoch 7/100, Train Loss: 0.4625, Val Loss: 0.4515, Train AUC: 0.5007, Val AUC: 0.6142
+Feature: uniport_seq, Epoch 8/100, Train Loss: 0.4594, Val Loss: 0.4509, Train AUC: 0.5038, Val AUC: 0.6178
+Feature: uniport_seq, Epoch 9/100, Train Loss: 0.4536, Val Loss: 0.4503, Train AUC: 0.5467, Val AUC: 0.6000
+Feature: uniport_seq, Epoch 10/100, Train Loss: 0.4597, Val Loss: 0.4502, Train AUC: 0.5030, Val AUC: 0.6012
+Feature: uniport_seq, Epoch 11/100, Train Loss: 0.4506, Val Loss: 0.4505, Train AUC: 0.5678, Val AUC: 0.5941
+Feature: uniport_seq, Epoch 12/100, Train Loss: 0.4501, Val Loss: 0.4501, Train AUC: 0.5663, Val AUC: 0.5893
+Feature: uniport_seq, Epoch 13/100, Train Loss: 0.4643, Val Loss: 0.4506, Train AUC: 0.4781, Val AUC: 0.5846
+Feature: uniport_seq, Epoch 14/100, Train Loss: 0.4681, Val Loss: 0.4509, Train AUC: 0.4669, Val AUC: 0.5870
+Feature: uniport_seq, Epoch 15/100, Train Loss: 0.4726, Val Loss: 0.4515, Train AUC: 0.4232, Val AUC: 0.5846
+Feature: uniport_seq, Epoch 16/100, Train Loss: 0.4465, Val Loss: 0.4499, Train AUC: 0.5854, Val AUC: 0.5846
+Feature: uniport_seq, Epoch 17/100, Train Loss: 0.4770, Val Loss: 0.4514, Train AUC: 0.4084, Val AUC: 0.5775
+Feature: uniport_seq, Epoch 18/100, Train Loss: 0.4570, Val Loss: 0.4498, Train AUC: 0.5030, Val AUC: 0.5775
+Feature: uniport_seq, Epoch 19/100, Train Loss: 0.4532, Val Loss: 0.4495, Train AUC: 0.5243, Val AUC: 0.5704
+Feature: uniport_seq, Epoch 20/100, Train Loss: 0.4774, Val Loss: 0.4525, Train AUC: 0.4087, Val AUC: 0.5657
+Feature: uniport_seq, Epoch 21/100, Train Loss: 0.4578, Val Loss: 0.4496, Train AUC: 0.5252, Val AUC: 0.5645
+Feature: uniport_seq, Epoch 22/100, Train Loss: 0.4594, Val Loss: 0.4496, Train AUC: 0.4965, Val AUC: 0.5633
+Feature: uniport_seq, Epoch 23/100, Train Loss: 0.4569, Val Loss: 0.4497, Train AUC: 0.5078, Val AUC: 0.5609
+Feature: uniport_seq, Epoch 24/100, Train Loss: 0.4640, Val Loss: 0.4497, Train AUC: 0.4823, Val AUC: 0.5586
+Early stopping for feature uniport_seq at epoch 24
+Best Train AUC for feature uniport_seq: 0.5243
+Best Val AUC for feature uniport_seq: 0.5704
+Feature uniport_seq excluded from fusion due to low Val AUC: 0.5704
+Feature: uniport_esm, Epoch 1/100, Train Loss: 0.5017, Val Loss: 0.4513, Train AUC: 0.5027, Val AUC: 0.6911
+Feature: uniport_esm, Epoch 2/100, Train Loss: 0.4519, Val Loss: 0.4500, Train AUC: 0.5529, Val AUC: 0.6189
+Feature: uniport_esm, Epoch 3/100, Train Loss: 0.4718, Val Loss: 0.4500, Train AUC: 0.4232, Val AUC: 0.6130
+Feature: uniport_esm, Epoch 4/100, Train Loss: 0.4585, Val Loss: 0.4501, Train AUC: 0.5171, Val AUC: 0.6083
+Feature: uniport_esm, Epoch 5/100, Train Loss: 0.4684, Val Loss: 0.4496, Train AUC: 0.4680, Val AUC: 0.6118
+Feature: uniport_esm, Epoch 6/100, Train Loss: 0.4468, Val Loss: 0.4494, Train AUC: 0.5717, Val AUC: 0.6178
+Feature: uniport_esm, Epoch 7/100, Train Loss: 0.4564, Val Loss: 0.4493, Train AUC: 0.5194, Val AUC: 0.6154
+Feature: uniport_esm, Epoch 8/100, Train Loss: 0.4535, Val Loss: 0.4491, Train AUC: 0.5398, Val AUC: 0.6142
+Feature: uniport_esm, Epoch 9/100, Train Loss: 0.4545, Val Loss: 0.4489, Train AUC: 0.5345, Val AUC: 0.6142
+Feature: uniport_esm, Epoch 10/100, Train Loss: 0.4504, Val Loss: 0.4487, Train AUC: 0.5512, Val AUC: 0.6083
+Feature: uniport_esm, Epoch 11/100, Train Loss: 0.4562, Val Loss: 0.4486, Train AUC: 0.5337, Val AUC: 0.6071
+Feature: uniport_esm, Epoch 12/100, Train Loss: 0.4513, Val Loss: 0.4486, Train AUC: 0.5482, Val AUC: 0.6036
+Feature: uniport_esm, Epoch 13/100, Train Loss: 0.4692, Val Loss: 0.4481, Train AUC: 0.4602, Val AUC: 0.6024
+Feature: uniport_esm, Epoch 14/100, Train Loss: 0.4589, Val Loss: 0.4482, Train AUC: 0.5097, Val AUC: 0.6024
+Feature: uniport_esm, Epoch 15/100, Train Loss: 0.4419, Val Loss: 0.4480, Train AUC: 0.6099, Val AUC: 0.5976
+Feature: uniport_esm, Epoch 16/100, Train Loss: 0.4547, Val Loss: 0.4474, Train AUC: 0.5199, Val AUC: 0.5988
+Feature: uniport_esm, Epoch 17/100, Train Loss: 0.4568, Val Loss: 0.4473, Train AUC: 0.5260, Val AUC: 0.5988
+Feature: uniport_esm, Epoch 18/100, Train Loss: 0.4530, Val Loss: 0.4465, Train AUC: 0.5249, Val AUC: 0.5988
+Feature: uniport_esm, Epoch 19/100, Train Loss: 0.4505, Val Loss: 0.4460, Train AUC: 0.5666, Val AUC: 0.6036
+Feature: uniport_esm, Epoch 20/100, Train Loss: 0.4585, Val Loss: 0.4482, Train AUC: 0.5127, Val AUC: 0.6059
+Feature: uniport_esm, Epoch 21/100, Train Loss: 0.4582, Val Loss: 0.4458, Train AUC: 0.5317, Val AUC: 0.6012
+Feature: uniport_esm, Epoch 22/100, Train Loss: 0.4560, Val Loss: 0.4454, Train AUC: 0.5447, Val AUC: 0.5976
+Feature: uniport_esm, Epoch 23/100, Train Loss: 0.4453, Val Loss: 0.4457, Train AUC: 0.5696, Val AUC: 0.5929
+Feature: uniport_esm, Epoch 24/100, Train Loss: 0.4361, Val Loss: 0.4445, Train AUC: 0.6403, Val AUC: 0.5964
+Feature: uniport_esm, Epoch 25/100, Train Loss: 0.4415, Val Loss: 0.4435, Train AUC: 0.6047, Val AUC: 0.5976
+Feature: uniport_esm, Epoch 26/100, Train Loss: 0.4376, Val Loss: 0.4440, Train AUC: 0.6334, Val AUC: 0.6012
+Feature: uniport_esm, Epoch 27/100, Train Loss: 0.4321, Val Loss: 0.4414, Train AUC: 0.6578, Val AUC: 0.5976
+Feature: uniport_esm, Epoch 28/100, Train Loss: 0.4426, Val Loss: 0.4464, Train AUC: 0.5925, Val AUC: 0.6059
+Feature: uniport_esm, Epoch 29/100, Train Loss: 0.4360, Val Loss: 0.4413, Train AUC: 0.6297, Val AUC: 0.6083
+Feature: uniport_esm, Epoch 30/100, Train Loss: 0.4454, Val Loss: 0.4439, Train AUC: 0.6167, Val AUC: 0.6083
+Feature: uniport_esm, Epoch 31/100, Train Loss: 0.4188, Val Loss: 0.4417, Train AUC: 0.7048, Val AUC: 0.6071
+Feature: uniport_esm, Epoch 32/100, Train Loss: 0.4386, Val Loss: 0.4402, Train AUC: 0.6289, Val AUC: 0.6036
+Feature: uniport_esm, Epoch 33/100, Train Loss: 0.4257, Val Loss: 0.4482, Train AUC: 0.6790, Val AUC: 0.5988
+Feature: uniport_esm, Epoch 34/100, Train Loss: 0.4077, Val Loss: 0.4397, Train AUC: 0.7201, Val AUC: 0.6012
+Feature: uniport_esm, Epoch 35/100, Train Loss: 0.4187, Val Loss: 0.4477, Train AUC: 0.6830, Val AUC: 0.6012
+Feature: uniport_esm, Epoch 36/100, Train Loss: 0.3869, Val Loss: 0.4682, Train AUC: 0.7801, Val AUC: 0.5917
+Feature: uniport_esm, Epoch 37/100, Train Loss: 0.4330, Val Loss: 0.4528, Train AUC: 0.6642, Val AUC: 0.5917
+Feature: uniport_esm, Epoch 38/100, Train Loss: 0.4191, Val Loss: 0.4456, Train AUC: 0.7179, Val AUC: 0.5929
+Feature: uniport_esm, Epoch 39/100, Train Loss: 0.4227, Val Loss: 0.4396, Train AUC: 0.6681, Val AUC: 0.5953
+Feature: uniport_esm, Epoch 40/100, Train Loss: 0.3911, Val Loss: 0.4420, Train AUC: 0.7626, Val AUC: 0.5964
+Feature: uniport_esm, Epoch 41/100, Train Loss: 0.4217, Val Loss: 0.4451, Train AUC: 0.6796, Val AUC: 0.6036
+Feature: uniport_esm, Epoch 42/100, Train Loss: 0.3833, Val Loss: 0.4459, Train AUC: 0.7587, Val AUC: 0.6083
+Feature: uniport_esm, Epoch 43/100, Train Loss: 0.4031, Val Loss: 0.4532, Train AUC: 0.7225, Val AUC: 0.6036
+Feature: uniport_esm, Epoch 44/100, Train Loss: 0.3935, Val Loss: 0.4497, Train AUC: 0.7387, Val AUC: 0.6083
+Early stopping for feature uniport_esm at epoch 44
+Best Train AUC for feature uniport_esm: 0.6681
+Best Val AUC for feature uniport_esm: 0.5953
+Feature uniport_esm excluded from fusion due to low Val AUC: 0.5953
+ICD10_L20 56
+train test split
+early fusion
+early fusion validation auc: 0.7454545454545454
+mid fusion
+early fusion validation auc: 0.868595041322314
+later fusion
+ICD10_L40 70
+train test split
+early fusion
+early fusion validation auc: 0.784502262443439
+mid fusion
+early fusion validation auc: 0.8410633484162896
+later fusion
+ICD10_M32 95
+train test split
+early fusion
+early fusion validation auc: 0.786231884057971
+mid fusion
+early fusion validation auc: 0.9060990338164251
+later fusion
+ICD10_M34 35
+train test split
+early fusion
+early fusion validation auc: 0.6764705882352942
+mid fusion
+Epoch 1/100, Train Loss: 0.5261, Val Loss: 0.4566, Train AUC: 0.5763, Val AUC: 0.5210
+Epoch 2/100, Train Loss: 0.4570, Val Loss: 0.4707, Train AUC: 0.4820, Val AUC: 0.5000
+Epoch 3/100, Train Loss: 0.4509, Val Loss: 0.4581, Train AUC: 0.6296, Val AUC: 0.5252
+Epoch 4/100, Train Loss: 0.4444, Val Loss: 0.4562, Train AUC: 0.6925, Val AUC: 0.5462
+Epoch 5/100, Train Loss: 0.4490, Val Loss: 0.4657, Train AUC: 0.6013, Val AUC: 0.5546
+Epoch 6/100, Train Loss: 0.4545, Val Loss: 0.4632, Train AUC: 0.8407, Val AUC: 0.6134
+Epoch 7/100, Train Loss: 0.4502, Val Loss: 0.4569, Train AUC: 0.8420, Val AUC: 0.6345
+Epoch 8/100, Train Loss: 0.4403, Val Loss: 0.4530, Train AUC: 0.7737, Val AUC: 0.6555
+Epoch 9/100, Train Loss: 0.4406, Val Loss: 0.4519, Train AUC: 0.7751, Val AUC: 0.6597
+Epoch 10/100, Train Loss: 0.4335, Val Loss: 0.4505, Train AUC: 0.8499, Val AUC: 0.6807
+Epoch 11/100, Train Loss: 0.4265, Val Loss: 0.4495, Train AUC: 0.8867, Val AUC: 0.7059
+Epoch 12/100, Train Loss: 0.4215, Val Loss: 0.4452, Train AUC: 0.8804, Val AUC: 0.7143
+Epoch 13/100, Train Loss: 0.4137, Val Loss: 0.4487, Train AUC: 0.8685, Val AUC: 0.7227
+Epoch 14/100, Train Loss: 0.4040, Val Loss: 0.4374, Train AUC: 0.8826, Val AUC: 0.7689
+Epoch 15/100, Train Loss: 0.3810, Val Loss: 0.4306, Train AUC: 0.8875, Val AUC: 0.7983
+Epoch 16/100, Train Loss: 0.3671, Val Loss: 0.3972, Train AUC: 0.8772, Val AUC: 0.8445
+Epoch 17/100, Train Loss: 0.3289, Val Loss: 0.4131, Train AUC: 0.8851, Val AUC: 0.7857
+Epoch 18/100, Train Loss: 0.3016, Val Loss: 0.3619, Train AUC: 0.8943, Val AUC: 0.8319
+Epoch 19/100, Train Loss: 0.2951, Val Loss: 0.4472, Train AUC: 0.9175, Val AUC: 0.7521
+Epoch 20/100, Train Loss: 0.3006, Val Loss: 0.3655, Train AUC: 0.9104, Val AUC: 0.8277
+Epoch 21/100, Train Loss: 0.2672, Val Loss: 0.3960, Train AUC: 0.9341, Val AUC: 0.8193
+Epoch 22/100, Train Loss: 0.2705, Val Loss: 0.3890, Train AUC: 0.9180, Val AUC: 0.8361
+Epoch 23/100, Train Loss: 0.2403, Val Loss: 0.4131, Train AUC: 0.9254, Val AUC: 0.7479
+Epoch 24/100, Train Loss: 0.2630, Val Loss: 0.3618, Train AUC: 0.9257, Val AUC: 0.8571
+Epoch 25/100, Train Loss: 0.3191, Val Loss: 0.5048, Train AUC: 0.9458, Val AUC: 0.7689
+Epoch 26/100, Train Loss: 0.4070, Val Loss: 0.4659, Train AUC: 0.8998, Val AUC: 0.8193
+Epoch 27/100, Train Loss: 0.2926, Val Loss: 0.3799, Train AUC: 0.9033, Val AUC: 0.8655
+Epoch 28/100, Train Loss: 0.2747, Val Loss: 0.4357, Train AUC: 0.9308, Val AUC: 0.8277
+Epoch 29/100, Train Loss: 0.2344, Val Loss: 0.3416, Train AUC: 0.9286, Val AUC: 0.8529
+Epoch 30/100, Train Loss: 0.2544, Val Loss: 0.3922, Train AUC: 0.9409, Val AUC: 0.8193
+Epoch 31/100, Train Loss: 0.2594, Val Loss: 0.4158, Train AUC: 0.9289, Val AUC: 0.8109
+Epoch 32/100, Train Loss: 0.2241, Val Loss: 0.3500, Train AUC: 0.9227, Val AUC: 0.8445
+Epoch 33/100, Train Loss: 0.1992, Val Loss: 0.4542, Train AUC: 0.9379, Val AUC: 0.7941
+Epoch 34/100, Train Loss: 0.2136, Val Loss: 0.3719, Train AUC: 0.9493, Val AUC: 0.8277
+Epoch 35/100, Train Loss: 0.2088, Val Loss: 0.3927, Train AUC: 0.9551, Val AUC: 0.8277
+Epoch 36/100, Train Loss: 0.1948, Val Loss: 0.3551, Train AUC: 0.9630, Val AUC: 0.8361
+Epoch 37/100, Train Loss: 0.2098, Val Loss: 0.4370, Train AUC: 0.9673, Val AUC: 0.7815
+Early stopping triggered at epoch 37
+Best Train AUC: 0.9286, Best Val AUC: 0.8529
+early fusion validation auc: 0.8340336134453781
+later fusion
+ICD10_M41 26
+train test split
+early fusion
+early fusion validation auc: 0.657608695652174
+mid fusion
+early fusion validation auc: 0.9130434782608696
+later fusion
+ICD10_N04 72
+train test split
+early fusion
+early fusion validation auc: 0.8428571428571427
+mid fusion
+early fusion validation auc: 0.953061224489796
+later fusion
+ICD10_N17 87
+train test split
+early fusion
+early fusion validation auc: 0.8317307692307692
+mid fusion
+early fusion validation auc: 0.9519230769230769
+later fusion
+ICD10_N18 91
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.4894, Val Loss: 0.4615, Train AUC: 0.4708, Val AUC: 0.7847
+Epoch 2/100, Train Loss: 0.4698, Val Loss: 0.4546, Train AUC: 0.4799, Val AUC: 0.7816
+Epoch 3/100, Train Loss: 0.4636, Val Loss: 0.4556, Train AUC: 0.4765, Val AUC: 0.8138
+Epoch 4/100, Train Loss: 0.4646, Val Loss: 0.4543, Train AUC: 0.4658, Val AUC: 0.8119
+Epoch 5/100, Train Loss: 0.4603, Val Loss: 0.4538, Train AUC: 0.4991, Val AUC: 0.8062
+Epoch 6/100, Train Loss: 0.4659, Val Loss: 0.4536, Train AUC: 0.4811, Val AUC: 0.8081
+Epoch 7/100, Train Loss: 0.4588, Val Loss: 0.4536, Train AUC: 0.5086, Val AUC: 0.8112
+Epoch 8/100, Train Loss: 0.4605, Val Loss: 0.4529, Train AUC: 0.4946, Val AUC: 0.8112
+Epoch 9/100, Train Loss: 0.4443, Val Loss: 0.4527, Train AUC: 0.5897, Val AUC: 0.8056
+Epoch 10/100, Train Loss: 0.4545, Val Loss: 0.4530, Train AUC: 0.5369, Val AUC: 0.8030
+Epoch 11/100, Train Loss: 0.4560, Val Loss: 0.4521, Train AUC: 0.5039, Val AUC: 0.7986
+Epoch 12/100, Train Loss: 0.4503, Val Loss: 0.4519, Train AUC: 0.5607, Val AUC: 0.7999
+Epoch 13/100, Train Loss: 0.4569, Val Loss: 0.4501, Train AUC: 0.5078, Val AUC: 0.8043
+Epoch 14/100, Train Loss: 0.4520, Val Loss: 0.4509, Train AUC: 0.5587, Val AUC: 0.8005
+Epoch 15/100, Train Loss: 0.4458, Val Loss: 0.4493, Train AUC: 0.5690, Val AUC: 0.8056
+Epoch 16/100, Train Loss: 0.4608, Val Loss: 0.4489, Train AUC: 0.5089, Val AUC: 0.8062
+Epoch 17/100, Train Loss: 0.4636, Val Loss: 0.4478, Train AUC: 0.4713, Val AUC: 0.8100
+Epoch 18/100, Train Loss: 0.4489, Val Loss: 0.4482, Train AUC: 0.5644, Val AUC: 0.8106
+Epoch 19/100, Train Loss: 0.4425, Val Loss: 0.4449, Train AUC: 0.6327, Val AUC: 0.8106
+Epoch 20/100, Train Loss: 0.4444, Val Loss: 0.4435, Train AUC: 0.5858, Val AUC: 0.8068
+Epoch 21/100, Train Loss: 0.4530, Val Loss: 0.4426, Train AUC: 0.5477, Val AUC: 0.8049
+Epoch 22/100, Train Loss: 0.4407, Val Loss: 0.4416, Train AUC: 0.5974, Val AUC: 0.8037
+Epoch 23/100, Train Loss: 0.4480, Val Loss: 0.4396, Train AUC: 0.5650, Val AUC: 0.8043
+Epoch 24/100, Train Loss: 0.4356, Val Loss: 0.4383, Train AUC: 0.6398, Val AUC: 0.8030
+Epoch 25/100, Train Loss: 0.4463, Val Loss: 0.4365, Train AUC: 0.5776, Val AUC: 0.8043
+Epoch 26/100, Train Loss: 0.4253, Val Loss: 0.4405, Train AUC: 0.6831, Val AUC: 0.8087
+Epoch 27/100, Train Loss: 0.4379, Val Loss: 0.4425, Train AUC: 0.6333, Val AUC: 0.8100
+Epoch 28/100, Train Loss: 0.4475, Val Loss: 0.4376, Train AUC: 0.6308, Val AUC: 0.8131
+Epoch 29/100, Train Loss: 0.4629, Val Loss: 0.4315, Train AUC: 0.5413, Val AUC: 0.8112
+Epoch 30/100, Train Loss: 0.4433, Val Loss: 0.4280, Train AUC: 0.6054, Val AUC: 0.8125
+Epoch 31/100, Train Loss: 0.4317, Val Loss: 0.4229, Train AUC: 0.6409, Val AUC: 0.8087
+Epoch 32/100, Train Loss: 0.4147, Val Loss: 0.4254, Train AUC: 0.7233, Val AUC: 0.8125
+Epoch 33/100, Train Loss: 0.4192, Val Loss: 0.4187, Train AUC: 0.6692, Val AUC: 0.8112
+Epoch 34/100, Train Loss: 0.4106, Val Loss: 0.4047, Train AUC: 0.7165, Val AUC: 0.8138
+Epoch 35/100, Train Loss: 0.4114, Val Loss: 0.4192, Train AUC: 0.7170, Val AUC: 0.8119
+Epoch 36/100, Train Loss: 0.3953, Val Loss: 0.4042, Train AUC: 0.7524, Val AUC: 0.8131
+Epoch 37/100, Train Loss: 0.3899, Val Loss: 0.3845, Train AUC: 0.7637, Val AUC: 0.8163
+Epoch 38/100, Train Loss: 0.3748, Val Loss: 0.4139, Train AUC: 0.7879, Val AUC: 0.8163
+Epoch 39/100, Train Loss: 0.4033, Val Loss: 0.4012, Train AUC: 0.7347, Val AUC: 0.8201
+Epoch 40/100, Train Loss: 0.4042, Val Loss: 0.4031, Train AUC: 0.7237, Val AUC: 0.8270
+Epoch 41/100, Train Loss: 0.4021, Val Loss: 0.4099, Train AUC: 0.7346, Val AUC: 0.8245
+Epoch 42/100, Train Loss: 0.3658, Val Loss: 0.3793, Train AUC: 0.7994, Val AUC: 0.8277
+Epoch 43/100, Train Loss: 0.3749, Val Loss: 0.3807, Train AUC: 0.7811, Val AUC: 0.8384
+Epoch 44/100, Train Loss: 0.3810, Val Loss: 0.4306, Train AUC: 0.7585, Val AUC: 0.8396
+Epoch 45/100, Train Loss: 0.3745, Val Loss: 0.3898, Train AUC: 0.7846, Val AUC: 0.8384
+Epoch 46/100, Train Loss: 0.3775, Val Loss: 0.4037, Train AUC: 0.7835, Val AUC: 0.8371
+Epoch 47/100, Train Loss: 0.3755, Val Loss: 0.3623, Train AUC: 0.7877, Val AUC: 0.8384
+Epoch 48/100, Train Loss: 0.3546, Val Loss: 0.4313, Train AUC: 0.8157, Val AUC: 0.8396
+Epoch 49/100, Train Loss: 0.4062, Val Loss: 0.3860, Train AUC: 0.7150, Val AUC: 0.8453
+Epoch 50/100, Train Loss: 0.3459, Val Loss: 0.3601, Train AUC: 0.8311, Val AUC: 0.8428
+Epoch 51/100, Train Loss: 0.3434, Val Loss: 0.3578, Train AUC: 0.8326, Val AUC: 0.8441
+Epoch 52/100, Train Loss: 0.3710, Val Loss: 0.4104, Train AUC: 0.7829, Val AUC: 0.8460
+Epoch 53/100, Train Loss: 0.3898, Val Loss: 0.3852, Train AUC: 0.7472, Val AUC: 0.8472
+Epoch 54/100, Train Loss: 0.3774, Val Loss: 0.3690, Train AUC: 0.7720, Val AUC: 0.8460
+Epoch 55/100, Train Loss: 0.3282, Val Loss: 0.3460, Train AUC: 0.8541, Val AUC: 0.8491
+Epoch 56/100, Train Loss: 0.3050, Val Loss: 0.3689, Train AUC: 0.8746, Val AUC: 0.8573
+Epoch 57/100, Train Loss: 0.3294, Val Loss: 0.3464, Train AUC: 0.8478, Val AUC: 0.8510
+Epoch 58/100, Train Loss: 0.3211, Val Loss: 0.3424, Train AUC: 0.8624, Val AUC: 0.8504
+Epoch 59/100, Train Loss: 0.3055, Val Loss: 0.3445, Train AUC: 0.8733, Val AUC: 0.8554
+Epoch 60/100, Train Loss: 0.3150, Val Loss: 0.3352, Train AUC: 0.8652, Val AUC: 0.8510
+Epoch 61/100, Train Loss: 0.3099, Val Loss: 0.3774, Train AUC: 0.8664, Val AUC: 0.8548
+Epoch 62/100, Train Loss: 0.3770, Val Loss: 0.3883, Train AUC: 0.7644, Val AUC: 0.8592
+Epoch 63/100, Train Loss: 0.3592, Val Loss: 0.3665, Train AUC: 0.8231, Val AUC: 0.8605
+Epoch 64/100, Train Loss: 0.3476, Val Loss: 0.3576, Train AUC: 0.8199, Val AUC: 0.8561
+Epoch 65/100, Train Loss: 0.2899, Val Loss: 0.3354, Train AUC: 0.8744, Val AUC: 0.8611
+Early stopping triggered at epoch 65
+Best Train AUC: 0.8652, Best Val AUC: 0.8510
+early fusion validation auc: 0.8361742424242424
+mid fusion
+early fusion validation auc: 0.9273989898989898
+later fusion
+Feature: uniport_ppi_2017, Epoch 1/100, Train Loss: 0.5278, Val Loss: 0.4549, Train AUC: 0.4752, Val AUC: 0.6256
+Feature: uniport_ppi_2017, Epoch 2/100, Train Loss: 0.4620, Val Loss: 0.4518, Train AUC: 0.4882, Val AUC: 0.7652
+Feature: uniport_ppi_2017, Epoch 3/100, Train Loss: 0.4654, Val Loss: 0.4492, Train AUC: 0.4845, Val AUC: 0.8289
+Feature: uniport_ppi_2017, Epoch 4/100, Train Loss: 0.4479, Val Loss: 0.4479, Train AUC: 0.5703, Val AUC: 0.8497
+Feature: uniport_ppi_2017, Epoch 5/100, Train Loss: 0.4620, Val Loss: 0.4488, Train AUC: 0.4797, Val AUC: 0.8580
+Feature: uniport_ppi_2017, Epoch 6/100, Train Loss: 0.4493, Val Loss: 0.4460, Train AUC: 0.5611, Val AUC: 0.8624
+Feature: uniport_ppi_2017, Epoch 7/100, Train Loss: 0.4459, Val Loss: 0.4436, Train AUC: 0.5516, Val AUC: 0.8750
+Feature: uniport_ppi_2017, Epoch 8/100, Train Loss: 0.4389, Val Loss: 0.4405, Train AUC: 0.6198, Val AUC: 0.8876
+Feature: uniport_ppi_2017, Epoch 9/100, Train Loss: 0.4426, Val Loss: 0.4364, Train AUC: 0.5851, Val AUC: 0.8996
+Feature: uniport_ppi_2017, Epoch 10/100, Train Loss: 0.4317, Val Loss: 0.4339, Train AUC: 0.6541, Val AUC: 0.9116
+Feature: uniport_ppi_2017, Epoch 11/100, Train Loss: 0.4291, Val Loss: 0.4241, Train AUC: 0.6663, Val AUC: 0.9097
+Feature: uniport_ppi_2017, Epoch 12/100, Train Loss: 0.4178, Val Loss: 0.4138, Train AUC: 0.7024, Val AUC: 0.9116
+Feature: uniport_ppi_2017, Epoch 13/100, Train Loss: 0.4168, Val Loss: 0.3914, Train AUC: 0.7062, Val AUC: 0.9186
+Feature: uniport_ppi_2017, Epoch 14/100, Train Loss: 0.3855, Val Loss: 0.4831, Train AUC: 0.7776, Val AUC: 0.9299
+Feature: uniport_ppi_2017, Epoch 15/100, Train Loss: 0.4040, Val Loss: 0.3788, Train AUC: 0.7312, Val AUC: 0.9217
+Feature: uniport_ppi_2017, Epoch 16/100, Train Loss: 0.3692, Val Loss: 0.3505, Train AUC: 0.8136, Val AUC: 0.9173
+Feature: uniport_ppi_2017, Epoch 17/100, Train Loss: 0.3000, Val Loss: 0.3195, Train AUC: 0.9149, Val AUC: 0.9230
+Feature: uniport_ppi_2017, Epoch 18/100, Train Loss: 0.2969, Val Loss: 0.3167, Train AUC: 0.9093, Val AUC: 0.9148
+Feature: uniport_ppi_2017, Epoch 19/100, Train Loss: 0.2878, Val Loss: 0.3333, Train AUC: 0.9154, Val AUC: 0.9192
+Feature: uniport_ppi_2017, Epoch 20/100, Train Loss: 0.3473, Val Loss: 0.3384, Train AUC: 0.8583, Val AUC: 0.9261
+Feature: uniport_ppi_2017, Epoch 21/100, Train Loss: 0.3310, Val Loss: 0.2976, Train AUC: 0.8545, Val AUC: 0.9268
+Feature: uniport_ppi_2017, Epoch 22/100, Train Loss: 0.2764, Val Loss: 0.2788, Train AUC: 0.9182, Val AUC: 0.9293
+Feature: uniport_ppi_2017, Epoch 23/100, Train Loss: 0.2409, Val Loss: 0.2785, Train AUC: 0.9463, Val AUC: 0.9223
+Feature: uniport_ppi_2017, Epoch 24/100, Train Loss: 0.2697, Val Loss: 0.2735, Train AUC: 0.9165, Val AUC: 0.9350
+Feature: uniport_ppi_2017, Epoch 25/100, Train Loss: 0.2334, Val Loss: 0.3179, Train AUC: 0.9440, Val AUC: 0.9249
+Feature: uniport_ppi_2017, Epoch 26/100, Train Loss: 0.2412, Val Loss: 0.2759, Train AUC: 0.9259, Val AUC: 0.9343
+Feature: uniport_ppi_2017, Epoch 27/100, Train Loss: 0.2410, Val Loss: 0.2607, Train AUC: 0.9313, Val AUC: 0.9337
+Feature: uniport_ppi_2017, Epoch 28/100, Train Loss: 0.2481, Val Loss: 0.2665, Train AUC: 0.9305, Val AUC: 0.9293
+Feature: uniport_ppi_2017, Epoch 29/100, Train Loss: 0.2398, Val Loss: 0.2464, Train AUC: 0.9315, Val AUC: 0.9337
+Feature: uniport_ppi_2017, Epoch 30/100, Train Loss: 0.2043, Val Loss: 0.2431, Train AUC: 0.9538, Val AUC: 0.9388
+Feature: uniport_ppi_2017, Epoch 31/100, Train Loss: 0.2436, Val Loss: 0.2503, Train AUC: 0.9243, Val AUC: 0.9318
+Feature: uniport_ppi_2017, Epoch 32/100, Train Loss: 0.1905, Val Loss: 0.2382, Train AUC: 0.9661, Val AUC: 0.9343
+Feature: uniport_ppi_2017, Epoch 33/100, Train Loss: 0.1979, Val Loss: 0.2532, Train AUC: 0.9560, Val AUC: 0.9324
+Feature: uniport_ppi_2017, Epoch 34/100, Train Loss: 0.1715, Val Loss: 0.2395, Train AUC: 0.9685, Val AUC: 0.9381
+Feature: uniport_ppi_2017, Epoch 35/100, Train Loss: 0.1908, Val Loss: 0.2388, Train AUC: 0.9521, Val AUC: 0.9381
+Feature: uniport_ppi_2017, Epoch 36/100, Train Loss: 0.1924, Val Loss: 0.2491, Train AUC: 0.9635, Val AUC: 0.9388
+Feature: uniport_ppi_2017, Epoch 37/100, Train Loss: 0.1881, Val Loss: 0.2567, Train AUC: 0.9579, Val AUC: 0.9299
+Early stopping for feature uniport_ppi_2017 at epoch 37
+Best Train AUC for feature uniport_ppi_2017: 0.9661
+Best Val AUC for feature uniport_ppi_2017: 0.9343
+Feature: ppi_2017_dw_80, Epoch 1/100, Train Loss: 0.4805, Val Loss: 0.4506, Train AUC: 0.4965, Val AUC: 0.7348
+Feature: ppi_2017_dw_80, Epoch 2/100, Train Loss: 0.4577, Val Loss: 0.4468, Train AUC: 0.5250, Val AUC: 0.8378
+Feature: ppi_2017_dw_80, Epoch 3/100, Train Loss: 0.4463, Val Loss: 0.4438, Train AUC: 0.5724, Val AUC: 0.8750
+Feature: ppi_2017_dw_80, Epoch 4/100, Train Loss: 0.4519, Val Loss: 0.4405, Train AUC: 0.5511, Val AUC: 0.8933
+Feature: ppi_2017_dw_80, Epoch 5/100, Train Loss: 0.4300, Val Loss: 0.4376, Train AUC: 0.6550, Val AUC: 0.8946
+Feature: ppi_2017_dw_80, Epoch 6/100, Train Loss: 0.4307, Val Loss: 0.4288, Train AUC: 0.6371, Val AUC: 0.9028
+Feature: ppi_2017_dw_80, Epoch 7/100, Train Loss: 0.4394, Val Loss: 0.4210, Train AUC: 0.6116, Val AUC: 0.9135
+Feature: ppi_2017_dw_80, Epoch 8/100, Train Loss: 0.4203, Val Loss: 0.4094, Train AUC: 0.6985, Val AUC: 0.9217
+Feature: ppi_2017_dw_80, Epoch 9/100, Train Loss: 0.3979, Val Loss: 0.3783, Train AUC: 0.7547, Val AUC: 0.9186
+Feature: ppi_2017_dw_80, Epoch 10/100, Train Loss: 0.3579, Val Loss: 0.3494, Train AUC: 0.8586, Val AUC: 0.9331
+Feature: ppi_2017_dw_80, Epoch 11/100, Train Loss: 0.3404, Val Loss: 0.3250, Train AUC: 0.8664, Val AUC: 0.9249
+Feature: ppi_2017_dw_80, Epoch 12/100, Train Loss: 0.3004, Val Loss: 0.3112, Train AUC: 0.9196, Val AUC: 0.9299
+Feature: ppi_2017_dw_80, Epoch 13/100, Train Loss: 0.2948, Val Loss: 0.2913, Train AUC: 0.9114, Val AUC: 0.9331
+Feature: ppi_2017_dw_80, Epoch 14/100, Train Loss: 0.2635, Val Loss: 0.2857, Train AUC: 0.9340, Val AUC: 0.9287
+Feature: ppi_2017_dw_80, Epoch 15/100, Train Loss: 0.2859, Val Loss: 0.2811, Train AUC: 0.9158, Val AUC: 0.9337
+Feature: ppi_2017_dw_80, Epoch 16/100, Train Loss: 0.2603, Val Loss: 0.2697, Train AUC: 0.9272, Val AUC: 0.9343
+Feature: ppi_2017_dw_80, Epoch 17/100, Train Loss: 0.2279, Val Loss: 0.2446, Train AUC: 0.9447, Val AUC: 0.9375
+Feature: ppi_2017_dw_80, Epoch 18/100, Train Loss: 0.2138, Val Loss: 0.2842, Train AUC: 0.9526, Val AUC: 0.9350
+Feature: ppi_2017_dw_80, Epoch 19/100, Train Loss: 0.2547, Val Loss: 0.2468, Train AUC: 0.9300, Val AUC: 0.9419
+Feature: ppi_2017_dw_80, Epoch 20/100, Train Loss: 0.2142, Val Loss: 0.2508, Train AUC: 0.9558, Val AUC: 0.9432
+Feature: ppi_2017_dw_80, Epoch 21/100, Train Loss: 0.2222, Val Loss: 0.2317, Train AUC: 0.9472, Val AUC: 0.9476
+Feature: ppi_2017_dw_80, Epoch 22/100, Train Loss: 0.2277, Val Loss: 0.2739, Train AUC: 0.9394, Val AUC: 0.9527
+Feature: ppi_2017_dw_80, Epoch 23/100, Train Loss: 0.2129, Val Loss: 0.2937, Train AUC: 0.9445, Val AUC: 0.9520
+Feature: ppi_2017_dw_80, Epoch 24/100, Train Loss: 0.2150, Val Loss: 0.2293, Train AUC: 0.9541, Val AUC: 0.9508
+Feature: ppi_2017_dw_80, Epoch 25/100, Train Loss: 0.1887, Val Loss: 0.2313, Train AUC: 0.9612, Val AUC: 0.9426
+Feature: ppi_2017_dw_80, Epoch 26/100, Train Loss: 0.1707, Val Loss: 0.2388, Train AUC: 0.9676, Val AUC: 0.9495
+Feature: ppi_2017_dw_80, Epoch 27/100, Train Loss: 0.1800, Val Loss: 0.2856, Train AUC: 0.9612, Val AUC: 0.9520
+Feature: ppi_2017_dw_80, Epoch 28/100, Train Loss: 0.2211, Val Loss: 0.2694, Train AUC: 0.9341, Val AUC: 0.9501
+Feature: ppi_2017_dw_80, Epoch 29/100, Train Loss: 0.2175, Val Loss: 0.2270, Train AUC: 0.9455, Val AUC: 0.9508
+Feature: ppi_2017_dw_80, Epoch 30/100, Train Loss: 0.1922, Val Loss: 0.2608, Train AUC: 0.9542, Val AUC: 0.9501
+Feature: ppi_2017_dw_80, Epoch 31/100, Train Loss: 0.1948, Val Loss: 0.2164, Train AUC: 0.9480, Val AUC: 0.9514
+Feature: ppi_2017_dw_80, Epoch 32/100, Train Loss: 0.2050, Val Loss: 0.2275, Train AUC: 0.9433, Val AUC: 0.9552
+Feature: ppi_2017_dw_80, Epoch 33/100, Train Loss: 0.1783, Val Loss: 0.2268, Train AUC: 0.9611, Val AUC: 0.9533
+Feature: ppi_2017_dw_80, Epoch 34/100, Train Loss: 0.1806, Val Loss: 0.2298, Train AUC: 0.9629, Val AUC: 0.9508
+Feature: ppi_2017_dw_80, Epoch 35/100, Train Loss: 0.1716, Val Loss: 0.2213, Train AUC: 0.9651, Val AUC: 0.9495
+Feature: ppi_2017_dw_80, Epoch 36/100, Train Loss: 0.1890, Val Loss: 0.2146, Train AUC: 0.9561, Val AUC: 0.9552
+Feature: ppi_2017_dw_80, Epoch 37/100, Train Loss: 0.1832, Val Loss: 0.2303, Train AUC: 0.9680, Val AUC: 0.9482
+Feature: ppi_2017_dw_80, Epoch 38/100, Train Loss: 0.1729, Val Loss: 0.2128, Train AUC: 0.9642, Val AUC: 0.9514
+Feature: ppi_2017_dw_80, Epoch 39/100, Train Loss: 0.1958, Val Loss: 0.2113, Train AUC: 0.9584, Val AUC: 0.9558
+Feature: ppi_2017_dw_80, Epoch 40/100, Train Loss: 0.1801, Val Loss: 0.2327, Train AUC: 0.9570, Val AUC: 0.9527
+Feature: ppi_2017_dw_80, Epoch 41/100, Train Loss: 0.1761, Val Loss: 0.2117, Train AUC: 0.9666, Val AUC: 0.9545
+Feature: ppi_2017_dw_80, Epoch 42/100, Train Loss: 0.1452, Val Loss: 0.2131, Train AUC: 0.9764, Val AUC: 0.9558
+Feature: ppi_2017_dw_80, Epoch 43/100, Train Loss: 0.1345, Val Loss: 0.2104, Train AUC: 0.9818, Val AUC: 0.9552
+Feature: ppi_2017_dw_80, Epoch 44/100, Train Loss: 0.1612, Val Loss: 0.2187, Train AUC: 0.9668, Val AUC: 0.9514
+Feature: ppi_2017_dw_80, Epoch 45/100, Train Loss: 0.1593, Val Loss: 0.2269, Train AUC: 0.9665, Val AUC: 0.9533
+Feature: ppi_2017_dw_80, Epoch 46/100, Train Loss: 0.1785, Val Loss: 0.2067, Train AUC: 0.9589, Val AUC: 0.9527
+Feature: ppi_2017_dw_80, Epoch 47/100, Train Loss: 0.1790, Val Loss: 0.2162, Train AUC: 0.9714, Val AUC: 0.9552
+Feature: ppi_2017_dw_80, Epoch 48/100, Train Loss: 0.2353, Val Loss: 0.2069, Train AUC: 0.9379, Val AUC: 0.9564
+Feature: ppi_2017_dw_80, Epoch 49/100, Train Loss: 0.1679, Val Loss: 0.2750, Train AUC: 0.9707, Val AUC: 0.9558
+Feature: ppi_2017_dw_80, Epoch 50/100, Train Loss: 0.1795, Val Loss: 0.2330, Train AUC: 0.9613, Val AUC: 0.9527
+Feature: ppi_2017_dw_80, Epoch 51/100, Train Loss: 0.1369, Val Loss: 0.2124, Train AUC: 0.9838, Val AUC: 0.9564
+Early stopping for feature ppi_2017_dw_80 at epoch 51
+Best Train AUC for feature ppi_2017_dw_80: 0.9589
+Best Val AUC for feature ppi_2017_dw_80: 0.9527
+Feature: uniport_exp, Epoch 1/100, Train Loss: 0.4970, Val Loss: 0.4598, Train AUC: 0.5038, Val AUC: 0.3832
+Feature: uniport_exp, Epoch 2/100, Train Loss: 0.4634, Val Loss: 0.4562, Train AUC: 0.5035, Val AUC: 0.4154
+Feature: uniport_exp, Epoch 3/100, Train Loss: 0.4550, Val Loss: 0.4574, Train AUC: 0.5517, Val AUC: 0.4659
+Feature: uniport_exp, Epoch 4/100, Train Loss: 0.4762, Val Loss: 0.4556, Train AUC: 0.4572, Val AUC: 0.4994
+Feature: uniport_exp, Epoch 5/100, Train Loss: 0.4652, Val Loss: 0.4565, Train AUC: 0.4861, Val AUC: 0.5013
+Feature: uniport_exp, Epoch 6/100, Train Loss: 0.4545, Val Loss: 0.4560, Train AUC: 0.5476, Val AUC: 0.4937
+Feature: uniport_exp, Epoch 7/100, Train Loss: 0.4556, Val Loss: 0.4557, Train AUC: 0.5195, Val AUC: 0.4975
+Feature: uniport_exp, Epoch 8/100, Train Loss: 0.4621, Val Loss: 0.4575, Train AUC: 0.5140, Val AUC: 0.5183
+Feature: uniport_exp, Epoch 9/100, Train Loss: 0.4568, Val Loss: 0.4558, Train AUC: 0.5294, Val AUC: 0.5164
+Early stopping for feature uniport_exp at epoch 9
+Best Train AUC for feature uniport_exp: 0.4572
+Best Val AUC for feature uniport_exp: 0.4994
+Feature uniport_exp excluded from fusion due to low Val AUC: 0.4994
+Feature: uniport_seq, Epoch 1/100, Train Loss: 0.4847, Val Loss: 0.4552, Train AUC: 0.5149, Val AUC: 0.7437
+Feature: uniport_seq, Epoch 2/100, Train Loss: 0.4691, Val Loss: 0.4564, Train AUC: 0.4629, Val AUC: 0.7077
+Feature: uniport_seq, Epoch 3/100, Train Loss: 0.4530, Val Loss: 0.4547, Train AUC: 0.5293, Val AUC: 0.7153
+Feature: uniport_seq, Epoch 4/100, Train Loss: 0.4513, Val Loss: 0.4546, Train AUC: 0.5402, Val AUC: 0.7323
+Feature: uniport_seq, Epoch 5/100, Train Loss: 0.4549, Val Loss: 0.4546, Train AUC: 0.5067, Val AUC: 0.7443
+Feature: uniport_seq, Epoch 6/100, Train Loss: 0.4615, Val Loss: 0.4553, Train AUC: 0.5072, Val AUC: 0.7412
+Feature: uniport_seq, Epoch 7/100, Train Loss: 0.4726, Val Loss: 0.4551, Train AUC: 0.4137, Val AUC: 0.7431
+Feature: uniport_seq, Epoch 8/100, Train Loss: 0.4664, Val Loss: 0.4544, Train AUC: 0.4506, Val AUC: 0.7399
+Feature: uniport_seq, Epoch 9/100, Train Loss: 0.4375, Val Loss: 0.4534, Train AUC: 0.6167, Val AUC: 0.7380
+Feature: uniport_seq, Epoch 10/100, Train Loss: 0.4637, Val Loss: 0.4536, Train AUC: 0.4653, Val AUC: 0.7355
+Feature: uniport_seq, Epoch 11/100, Train Loss: 0.4569, Val Loss: 0.4536, Train AUC: 0.5079, Val AUC: 0.7399
+Feature: uniport_seq, Epoch 12/100, Train Loss: 0.4659, Val Loss: 0.4538, Train AUC: 0.4586, Val AUC: 0.7399
+Feature: uniport_seq, Epoch 13/100, Train Loss: 0.4588, Val Loss: 0.4526, Train AUC: 0.4923, Val AUC: 0.7399
+Feature: uniport_seq, Epoch 14/100, Train Loss: 0.4468, Val Loss: 0.4523, Train AUC: 0.5565, Val AUC: 0.7405
+Feature: uniport_seq, Epoch 15/100, Train Loss: 0.4525, Val Loss: 0.4522, Train AUC: 0.5366, Val AUC: 0.7393
+Feature: uniport_seq, Epoch 16/100, Train Loss: 0.4524, Val Loss: 0.4515, Train AUC: 0.5330, Val AUC: 0.7386
+Feature: uniport_seq, Epoch 17/100, Train Loss: 0.4529, Val Loss: 0.4517, Train AUC: 0.5326, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 18/100, Train Loss: 0.4572, Val Loss: 0.4508, Train AUC: 0.5039, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 19/100, Train Loss: 0.4616, Val Loss: 0.4504, Train AUC: 0.4865, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 20/100, Train Loss: 0.4494, Val Loss: 0.4501, Train AUC: 0.5613, Val AUC: 0.7456
+Feature: uniport_seq, Epoch 21/100, Train Loss: 0.4586, Val Loss: 0.4506, Train AUC: 0.5231, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 22/100, Train Loss: 0.4499, Val Loss: 0.4497, Train AUC: 0.5595, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 23/100, Train Loss: 0.4530, Val Loss: 0.4493, Train AUC: 0.5343, Val AUC: 0.7412
+Feature: uniport_seq, Epoch 24/100, Train Loss: 0.4489, Val Loss: 0.4485, Train AUC: 0.5594, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 25/100, Train Loss: 0.4501, Val Loss: 0.4477, Train AUC: 0.5553, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 26/100, Train Loss: 0.4566, Val Loss: 0.4478, Train AUC: 0.5077, Val AUC: 0.7405
+Feature: uniport_seq, Epoch 27/100, Train Loss: 0.4503, Val Loss: 0.4464, Train AUC: 0.5636, Val AUC: 0.7437
+Feature: uniport_seq, Epoch 28/100, Train Loss: 0.4504, Val Loss: 0.4444, Train AUC: 0.5578, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 29/100, Train Loss: 0.4579, Val Loss: 0.4434, Train AUC: 0.5246, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 30/100, Train Loss: 0.4461, Val Loss: 0.4467, Train AUC: 0.5861, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 31/100, Train Loss: 0.4458, Val Loss: 0.4430, Train AUC: 0.5789, Val AUC: 0.7418
+Feature: uniport_seq, Epoch 32/100, Train Loss: 0.4444, Val Loss: 0.4414, Train AUC: 0.5905, Val AUC: 0.7412
+Feature: uniport_seq, Epoch 33/100, Train Loss: 0.4592, Val Loss: 0.4392, Train AUC: 0.5190, Val AUC: 0.7424
+Feature: uniport_seq, Epoch 34/100, Train Loss: 0.4301, Val Loss: 0.4376, Train AUC: 0.7063, Val AUC: 0.7462
+Feature: uniport_seq, Epoch 35/100, Train Loss: 0.4370, Val Loss: 0.4369, Train AUC: 0.6298, Val AUC: 0.7431
+Feature: uniport_seq, Epoch 36/100, Train Loss: 0.4630, Val Loss: 0.4395, Train AUC: 0.5309, Val AUC: 0.7443
+Feature: uniport_seq, Epoch 37/100, Train Loss: 0.4430, Val Loss: 0.4355, Train AUC: 0.6032, Val AUC: 0.7456
+Feature: uniport_seq, Epoch 38/100, Train Loss: 0.4423, Val Loss: 0.4319, Train AUC: 0.5946, Val AUC: 0.7462
+Feature: uniport_seq, Epoch 39/100, Train Loss: 0.4196, Val Loss: 0.4347, Train AUC: 0.7113, Val AUC: 0.7443
+Feature: uniport_seq, Epoch 40/100, Train Loss: 0.4313, Val Loss: 0.4248, Train AUC: 0.6493, Val AUC: 0.7462
+Feature: uniport_seq, Epoch 41/100, Train Loss: 0.4382, Val Loss: 0.4226, Train AUC: 0.6233, Val AUC: 0.7481
+Feature: uniport_seq, Epoch 42/100, Train Loss: 0.4220, Val Loss: 0.4227, Train AUC: 0.6901, Val AUC: 0.7449
+Feature: uniport_seq, Epoch 43/100, Train Loss: 0.4148, Val Loss: 0.4140, Train AUC: 0.6951, Val AUC: 0.7506
+Feature: uniport_seq, Epoch 44/100, Train Loss: 0.4043, Val Loss: 0.4270, Train AUC: 0.7301, Val AUC: 0.7500
+Feature: uniport_seq, Epoch 45/100, Train Loss: 0.4327, Val Loss: 0.4409, Train AUC: 0.6564, Val AUC: 0.7551
+Feature: uniport_seq, Epoch 46/100, Train Loss: 0.4290, Val Loss: 0.4324, Train AUC: 0.6601, Val AUC: 0.7532
+Feature: uniport_seq, Epoch 47/100, Train Loss: 0.4277, Val Loss: 0.4367, Train AUC: 0.6531, Val AUC: 0.7513
+Feature: uniport_seq, Epoch 48/100, Train Loss: 0.4295, Val Loss: 0.4403, Train AUC: 0.6953, Val AUC: 0.7525
+Early stopping for feature uniport_seq at epoch 48
+Best Train AUC for feature uniport_seq: 0.6951
+Best Val AUC for feature uniport_seq: 0.7506
+Feature: uniport_esm, Epoch 1/100, Train Loss: 0.4767, Val Loss: 0.4590, Train AUC: 0.5148, Val AUC: 0.7557
+Feature: uniport_esm, Epoch 2/100, Train Loss: 0.4717, Val Loss: 0.4557, Train AUC: 0.4428, Val AUC: 0.7721
+Feature: uniport_esm, Epoch 3/100, Train Loss: 0.4617, Val Loss: 0.4553, Train AUC: 0.4737, Val AUC: 0.7658
+Feature: uniport_esm, Epoch 4/100, Train Loss: 0.4551, Val Loss: 0.4541, Train AUC: 0.5193, Val AUC: 0.7569
+Feature: uniport_esm, Epoch 5/100, Train Loss: 0.4505, Val Loss: 0.4540, Train AUC: 0.5439, Val AUC: 0.7595
+Feature: uniport_esm, Epoch 6/100, Train Loss: 0.4618, Val Loss: 0.4535, Train AUC: 0.4726, Val AUC: 0.7494
+Feature: uniport_esm, Epoch 7/100, Train Loss: 0.4501, Val Loss: 0.4532, Train AUC: 0.5560, Val AUC: 0.7386
+Feature: uniport_esm, Epoch 8/100, Train Loss: 0.4540, Val Loss: 0.4531, Train AUC: 0.4951, Val AUC: 0.7235
+Feature: uniport_esm, Epoch 9/100, Train Loss: 0.4477, Val Loss: 0.4534, Train AUC: 0.5630, Val AUC: 0.7235
+Feature: uniport_esm, Epoch 10/100, Train Loss: 0.4610, Val Loss: 0.4526, Train AUC: 0.4689, Val AUC: 0.7203
+Feature: uniport_esm, Epoch 11/100, Train Loss: 0.4511, Val Loss: 0.4521, Train AUC: 0.5561, Val AUC: 0.7216
+Feature: uniport_esm, Epoch 12/100, Train Loss: 0.4551, Val Loss: 0.4543, Train AUC: 0.5361, Val AUC: 0.7172
+Feature: uniport_esm, Epoch 13/100, Train Loss: 0.4557, Val Loss: 0.4517, Train AUC: 0.5147, Val AUC: 0.7102
+Feature: uniport_esm, Epoch 14/100, Train Loss: 0.4528, Val Loss: 0.4512, Train AUC: 0.5488, Val AUC: 0.7090
+Feature: uniport_esm, Epoch 15/100, Train Loss: 0.4648, Val Loss: 0.4507, Train AUC: 0.4746, Val AUC: 0.7083
+Feature: uniport_esm, Epoch 16/100, Train Loss: 0.4486, Val Loss: 0.4515, Train AUC: 0.5823, Val AUC: 0.7090
+Feature: uniport_esm, Epoch 17/100, Train Loss: 0.4465, Val Loss: 0.4497, Train AUC: 0.5739, Val AUC: 0.7039
+Feature: uniport_esm, Epoch 18/100, Train Loss: 0.4573, Val Loss: 0.4482, Train AUC: 0.4910, Val AUC: 0.7064
+Feature: uniport_esm, Epoch 19/100, Train Loss: 0.4342, Val Loss: 0.4477, Train AUC: 0.6490, Val AUC: 0.7052
+Feature: uniport_esm, Epoch 20/100, Train Loss: 0.4576, Val Loss: 0.4489, Train AUC: 0.5480, Val AUC: 0.7090
+Feature: uniport_esm, Epoch 21/100, Train Loss: 0.4467, Val Loss: 0.4490, Train AUC: 0.5612, Val AUC: 0.7083
+Feature: uniport_esm, Epoch 22/100, Train Loss: 0.4413, Val Loss: 0.4470, Train AUC: 0.6072, Val AUC: 0.7083
+Feature: uniport_esm, Epoch 23/100, Train Loss: 0.4416, Val Loss: 0.4458, Train AUC: 0.5892, Val AUC: 0.7090
+Feature: uniport_esm, Epoch 24/100, Train Loss: 0.4447, Val Loss: 0.4449, Train AUC: 0.5923, Val AUC: 0.7064
+Feature: uniport_esm, Epoch 25/100, Train Loss: 0.4414, Val Loss: 0.4448, Train AUC: 0.6236, Val AUC: 0.6976
+Feature: uniport_esm, Epoch 26/100, Train Loss: 0.4372, Val Loss: 0.4431, Train AUC: 0.6147, Val AUC: 0.6970
+Feature: uniport_esm, Epoch 27/100, Train Loss: 0.4399, Val Loss: 0.4436, Train AUC: 0.6360, Val AUC: 0.6951
+Feature: uniport_esm, Epoch 28/100, Train Loss: 0.4491, Val Loss: 0.4404, Train AUC: 0.5644, Val AUC: 0.6976
+Feature: uniport_esm, Epoch 29/100, Train Loss: 0.4360, Val Loss: 0.4374, Train AUC: 0.6521, Val AUC: 0.7008
+Feature: uniport_esm, Epoch 30/100, Train Loss: 0.4343, Val Loss: 0.4395, Train AUC: 0.6281, Val AUC: 0.7014
+Feature: uniport_esm, Epoch 31/100, Train Loss: 0.4404, Val Loss: 0.4336, Train AUC: 0.6197, Val AUC: 0.7039
+Feature: uniport_esm, Epoch 32/100, Train Loss: 0.4188, Val Loss: 0.4293, Train AUC: 0.7083, Val AUC: 0.7077
+Feature: uniport_esm, Epoch 33/100, Train Loss: 0.4177, Val Loss: 0.4508, Train AUC: 0.6898, Val AUC: 0.7109
+Feature: uniport_esm, Epoch 34/100, Train Loss: 0.4461, Val Loss: 0.4267, Train AUC: 0.5996, Val AUC: 0.7083
+Feature: uniport_esm, Epoch 35/100, Train Loss: 0.4153, Val Loss: 0.4246, Train AUC: 0.7101, Val AUC: 0.7071
+Feature: uniport_esm, Epoch 36/100, Train Loss: 0.3954, Val Loss: 0.4275, Train AUC: 0.7580, Val AUC: 0.7128
+Feature: uniport_esm, Epoch 37/100, Train Loss: 0.4287, Val Loss: 0.4235, Train AUC: 0.6842, Val AUC: 0.7071
+Feature: uniport_esm, Epoch 38/100, Train Loss: 0.4426, Val Loss: 0.4340, Train AUC: 0.6571, Val AUC: 0.7159
+Feature: uniport_esm, Epoch 39/100, Train Loss: 0.4459, Val Loss: 0.4441, Train AUC: 0.6894, Val AUC: 0.7128
+Feature: uniport_esm, Epoch 40/100, Train Loss: 0.4351, Val Loss: 0.4359, Train AUC: 0.6426, Val AUC: 0.7102
+Feature: uniport_esm, Epoch 41/100, Train Loss: 0.4357, Val Loss: 0.4336, Train AUC: 0.6365, Val AUC: 0.7140
+Feature: uniport_esm, Epoch 42/100, Train Loss: 0.4275, Val Loss: 0.4306, Train AUC: 0.6603, Val AUC: 0.7140
+Early stopping for feature uniport_esm at epoch 42
+Best Train AUC for feature uniport_esm: 0.6842
+Best Val AUC for feature uniport_esm: 0.7071
+ICD10_N46 81
+train test split
+early fusion
+early fusion validation auc: 0.633673469387755
+mid fusion
+early fusion validation auc: 0.8612244897959185
+later fusion
+ICD10_N80 148
+train test split
+early fusion
+early fusion validation auc: 0.7640845070422535
+mid fusion
+2025-07-22 15:58:07,851 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-07-22 15:58:08,087 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+early fusion validation auc: 0.9102112676056338
+later fusion
+ICD10_N97 28
+train test split
+early fusion
+early fusion validation auc: 0.288
+mid fusion
+early fusion validation auc: 0.564
+later fusion
+ICD10_C23 18
+train test split
+early fusion
+Epoch 1/100, Train Loss: 0.5697, Val Loss: 0.4224, Train AUC: 0.3891, Val AUC: 0.4074
+Epoch 2/100, Train Loss: 0.4740, Val Loss: 0.4165, Trearly fusion validation auc: 0.4814814814814814
+mid fusion
+early fusion validation auc: 0.6944444444444444
+later fusion
+ICD10_C53 15
+train test split
+early fusion
+early fusion validation auc: 0.20833333333333334
+mid fusion
+early fusion validation auc: 0.9583333333333333
+later fusion

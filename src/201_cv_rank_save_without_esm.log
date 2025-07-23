@@ -1,0 +1,42 @@
+['uniport_ppi_2017', 'ppi_2017_dw_80', 'uniport_exp', 'uniport_seq'] 54 15332
+ICD10_C16 89
+kernels existing
+uniport_ppi_2017 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11589172360035828'} 0.6727198848297652 0.7876039304610734
+ppi_2017_dw_80 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.09921342573773072'} 0.17602748724908812 0.5177626606198035
+uniport_exp {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.07535652185784192'} 0.44735781762515153 0.6777021919879064
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '1.7437856527852897'} 0.498073625219479 0.6777021919879062
+collect valid feature:  ['uniport_ppi_2017']
+evaluation
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 376, in neg_bagging
+    X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
+                     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: index 15328 is out of bounds for axis 0 with size 15328
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_reindex_time_fusion_weights_uniport_cv_filter.py", line 97, in <module>
+    result_df, predcition_collection = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 679, in evaluate_disease
+    predcition_collection = one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_reindex_fusion_weights_uniport_cv_filter.py", line 472, in one_fold_evaluate
+    bagging_y_scores = pool.map(neg_bagging, args_list)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 774, in get
+    raise self._value
+IndexError: index 15328 is out of bounds for axis 0 with size 15328
