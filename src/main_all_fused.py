@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
+from model_all_fused import evaluate_disease
 # from model_cv import evaluate_disease
 import pickle
 import sys

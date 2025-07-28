@@ -1,0 +1,13 @@
+['uniport_bio'] 48 15686
+ICD10_G91 22
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.6761645976291671 0.8275825481707834
+collect valid feature:  ['uniport_bio']
+evaluation
+middle fusion
+kernel fusion
+/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc_norm_test/2019/uniport_bio_K_2_0.5427586367192363.pkl /itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc_norm_test/2019/uniport_bio_logK_2_0.5427586367192363.pkl
+grid search C for fused kernels
+linear_fused 3 0.6761645976291671 0.8275825481707834
+geo_fused 3 0.6761645976291671 0.8275825481707834
+fused kernels evaluation

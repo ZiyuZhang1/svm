@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-from model_reindex_fusion_weights_uniport_cv_filter import evaluate_disease
+from model_occ import evaluate_disease
 # from model_cv import evaluate_disease
 import pickle
 import sys
@@ -23,8 +23,8 @@ if test_bug:
     # feature_list = ['ppi_2019','bioconcept']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq']
-    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
-    feature_list = ['uniport_bio']
+    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
+    # feature_list = ['uniport_bio']
 
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq']
 
@@ -88,7 +88,7 @@ all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
 # methods = ['ooc','random_negative','pseudo_labeling','pseudo_labeling_mask']
 # methods = ['random_negative','pseudo_labeling','pseudo_labeling_mask','pseudo_labeling_cluster_all_mask']
 # methods = ['random_negative','random_negative_bagging','random_pos_negative_bagging']
-methods = ['random_negative']
+methods = ['occ']
 
 if time_spilt:
     selected_diseases = []

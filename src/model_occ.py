@@ -263,125 +263,116 @@ def normalize_kernel(K):
     diag[diag == 0] = 1e-8  # Avoid division by zero
     return K / (diag[:, None] * diag[None, :])
 
-def select_gamma_ratio(args):
-    neg_df, neg_num, train_pos_df, df, X_dict, fname = args
+from sklearn.model_selection import KFold
+from sklearn.svm import OneClassSVM
+import numpy as np
+import pickle
 
-    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
-    train_df = pd.concat([train_pos_df, train_neg_df])
-    train_index_loc = df.index.get_indexer(train_df.index)
-    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+def select_gamma_ratio_occ(args):
+    train_pos_df, df, X_dict, fname = args
 
-    C_values = [1,3,9,27,81]
-    # C_values = [1e-2, 1e-1, 1, 10]
-    gamma_ratios = [2,4,8]
+    train_index_loc = df.index.get_indexer(train_pos_df.index)
 
-    best_bedroc = 0
-    best_auc = 0
-    best_params = {'C': None, 'gamma': None}
+    nu_values = [0.1, 0.2, 0.5, 0.7, 0.9]  # You can tune this as needed
+    gamma_ratios = [2, 4, 8]
 
-    # Define stratified k-fold
-    skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+    best_fp_rate = float('inf')
+    best_params = {'nu': None, 'gamma': None, 'gamma_ratio': None}
+
+    kf = KFold(n_splits=3, shuffle=True, random_state=42)
+
     for gamma_ratio in gamma_ratios:
         pre_kernel_path = X_dict[gamma_ratio][0]
         with open(pre_kernel_path, 'rb') as f:
             pre_kernel = pickle.load(f)
             pre_kernel = 0.5 * (pre_kernel + pre_kernel.T)
-        for C_num in C_values:
-            cv_scores = {'auc': [], 'bedroc': []}
-            for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
-                y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
+
+        for nu_val in nu_values:
+            fp_rates = []
+
+            for train_idx, val_idx in kf.split(train_index_loc):
                 X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
-                X_feature_test = pre_kernel[np.ix_(train_index_loc[val_idx],train_index_loc[train_idx])]
-                best_svm = svm.SVC(C=C_num, kernel='precomputed')
-                best_svm.fit(X_feature_train, y_cv_train)
-                y_scores = best_svm.decision_function(X_feature_test)
-                auroc = roc_auc_score(y_cv_val, y_scores)
-                scores = np.column_stack((y_cv_val, y_scores))  # Stack labels and scores as columns
-                scores = scores[scores[:, 1].argsort()[::-1]]
-                bedroc_10 = CalcBEDROC(scores, col=0, alpha=16.1)
-                cv_scores['auc'].append(auroc)
-                cv_scores['bedroc'].append(bedroc_10)
+                X_feature_val = pre_kernel[np.ix_(train_index_loc[val_idx], train_index_loc[train_idx])]
 
-            avg_auc = np.mean(cv_scores['auc'])
-            avg_bedroc = np.mean(cv_scores['bedroc'])
+                clf = OneClassSVM(nu=nu_val, kernel='precomputed')
+                clf.fit(X_feature_train)
+                preds = clf.predict(X_feature_val)
 
-            if avg_auc > best_auc:
-                best_auc = avg_auc
-                best_params = {'C_num': C_num, 'gamma_ratio': gamma_ratio, 'gamma':pre_kernel_path.split('_')[-1].replace('.pkl', '')}
-                best_bedroc = avg_bedroc
-            # if avg_bedroc > best_bedroc:
-            #     best_bedroc = avg_bedroc
-            #     best_params = {'C_num': C_num, 'gamma_ratio': gamma_ratio, 'gamma':pre_kernel_path.split('_')[-1].replace('.pkl', '')}
-            #     best_auc = avg_auc
+                # Measure false positive rate: true inliers predicted as -1
+                false_outlier_rate = np.mean(preds == -1)
+                fp_rates.append(false_outlier_rate)
 
-    return fname, best_params, best_bedroc, best_auc
+            avg_fp_rate = np.mean(fp_rates)
 
-def select_C(args):
-    neg_df, neg_num, train_pos_df, df, pre_kernel, fname = args
+            if avg_fp_rate < best_fp_rate:
+                best_fp_rate = avg_fp_rate
+                best_params = {
+                    'nu': nu_val,
+                    'gamma_ratio': gamma_ratio,
+                    'gamma': pre_kernel_path.split('_')[-1].replace('.pkl', '')
+                }
 
-    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
-    train_df = pd.concat([train_pos_df, train_neg_df])
-    train_index_loc = df.index.get_indexer(train_df.index)
-    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+    return fname, best_params, best_fp_rate
 
-    C_values = [1,3,9,27,81]
 
-    best_bedroc = 0
-    best_auc = 0
-    best_params = 0
+def select_nu(args):
+    train_pos_df, df, pre_kernel, fname = args
 
-    # Define stratified k-fold
-    skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+    train_index_loc = df.index.get_indexer(train_pos_df.index)
 
-    for C_num in C_values:
-        cv_scores = {'auc': [], 'bedroc': []}
-        for fold, (train_idx, val_idx) in enumerate(skf.split(train_index_loc, y_train)):
-            y_cv_train, y_cv_val = y_train[train_idx], y_train[val_idx]
+    nu_values = [0.01, 0.05, 0.1, 0.2]  # Replace C_values
+    best_fp_rate = float('inf')
+    best_params = None
+
+    kf = KFold(n_splits=3, shuffle=True, random_state=42)
+
+    for nu_val in nu_values:
+        fold_fp_rates = []
+
+        for train_idx, val_idx in kf.split(train_index_loc):
             X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
-            X_feature_test = pre_kernel[np.ix_(train_index_loc[val_idx],train_index_loc[train_idx])]
-            best_svm = svm.SVC(C=C_num, kernel='precomputed')
-            best_svm.fit(X_feature_train, y_cv_train)
-            y_scores = best_svm.decision_function(X_feature_test)
-            auroc = roc_auc_score(y_cv_val, y_scores)
-            scores = np.column_stack((y_cv_val, y_scores))  # Stack labels and scores as columns
-            scores = scores[scores[:, 1].argsort()[::-1]]
-            bedroc_10 = CalcBEDROC(scores, col=0, alpha=16.1)
-            cv_scores['auc'].append(auroc)
-            cv_scores['bedroc'].append(bedroc_10)
+            X_feature_val = pre_kernel[np.ix_(train_index_loc[val_idx], train_index_loc[train_idx])]
 
-        avg_auc = np.mean(cv_scores['auc'])
-        avg_bedroc = np.mean(cv_scores['bedroc'])
+            clf = OneClassSVM(kernel='precomputed', nu=nu_val)
+            clf.fit(X_feature_train)
+            preds = clf.predict(X_feature_val)
 
-        if avg_auc > best_auc:
-            best_auc = avg_auc
-            best_bedroc = avg_bedroc
-            best_params = C_num
+            # +1 = accepted, -1 = rejected
+            false_outlier_rate = np.mean(preds == -1)
+            fold_fp_rates.append(false_outlier_rate)
 
-            
+        avg_fp_rate = np.mean(fold_fp_rates)
 
-    return fname, best_params, best_bedroc, best_auc
+        if avg_fp_rate < best_fp_rate:
+            best_fp_rate = avg_fp_rate
+            best_params = nu_val
 
-def neg_bagging(args):
-    neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed = args
-    train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
-    train_df = pd.concat([train_pos_df, train_neg_df])
-    train_index_loc = df.index.get_indexer(train_df.index)
-    y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+    return fname, best_params, best_fp_rate
 
+def one_class_svm(args):
+    train_pos_df, df, X_path, test_index_loc, nu_num = args
+
+    train_index_loc = df.index.get_indexer(train_pos_df.index)
+
+    # Load feature matrix
     if isinstance(X_path, str):
         with open(X_path, 'rb') as f:
             X_all = pickle.load(f)
     else:
         X_all = X_path
 
-
+    # Use only positive samples for training
     X_feature_train = X_all[np.ix_(train_index_loc, train_index_loc)]
-    X_feature_test = X_all[np.ix_(test_index_loc,train_index_loc)]
+    X_feature_test = X_all[np.ix_(test_index_loc, train_index_loc)]
 
-    best_svm = svm.SVC(C=C_num, kernel='precomputed')
-    best_svm.fit(X_feature_train, y_train)
-    y_scores = best_svm.decision_function(X_feature_test)
+    # Train one-class SVM on positive class only
+    clf = svm.OneClassSVM(kernel='precomputed', nu=nu_num)  # adjust nu if needed
+    clf.fit(X_feature_train)
+
+    # Decision function: higher scores = more likely to be in the class
+    y_scores = clf.decision_function(X_feature_test)
     return y_scores
+
 
 def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
@@ -389,7 +380,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     neg_num = 5*len(train_pos_df)
     neg_df = df[y == 0]
 
-    if 'random_negative' in methods:
+    if 'occ' in methods:
         # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc',str(time))
         # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc_norm_test',str(time))
 
@@ -433,20 +424,18 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             with open(kernel_pkl_path, 'wb') as f:
                 pickle.dump(kernels_all_dict, f)
       ############################## cv get best gamma
-        args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
+        args_list = [(train_pos_df, df, kernels_all_dict[fname], fname)
             for fname in feature_list]
 
         with Pool(processes=len(feature_list)) as pool:
-            best_ratios = pool.map(select_gamma_ratio, args_list)
+            best_ratios = pool.map(select_gamma_ratio_occ, args_list)
 
         best_ratios_dict = dict()
         agg_feature = []
-        for fname, best_params, best_bedroc, best_auc in best_ratios:
-            print(fname, best_params, best_bedroc, best_auc)
+        for fname, best_params, best_fp_rate in best_ratios:
+            print(fname, best_params, best_fp_rate)
             best_ratios_dict[fname] = best_params
-            # if best_auc > 0.67 and best_bedroc > 0.5:
-            if best_auc > 0.8:
-                agg_feature.append(fname)
+            agg_feature.append(fname)
         print('collect valid feature: ', agg_feature)
       ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
         print('evaluation')
@@ -457,15 +446,15 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
 
 
-        test_indices = test_df.index.values
-        enrich_train_genes = train_pos_df.index.values
-        enrich_train_set = enriched_set(enrich_train_genes,time)
+        # test_indices = test_df.index.values
+        # enrich_train_genes = train_pos_df.index.values
+        # enrich_train_set = enriched_set(enrich_train_genes,time)
 
-        num_processes = 15
-        base_seed = 42
-        seed_list = [base_seed + i for i in range(num_processes)]
+        # num_processes = 15
+        # base_seed = 42
+        # seed_list = [base_seed + i for i in range(num_processes)]
 
-        pathway_overlap_dict = dict()
+        # pathway_overlap_dict = dict()
         
         rank_results_per_feature = dict()
         predcition_collection = dict()
@@ -474,75 +463,68 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         for feature_name in feature_list:
             gamma = best_ratios_dict[feature_name]['gamma_ratio']
             X_path = kernels_all_dict[feature_name][gamma][0]
-            C_num = best_ratios_dict[feature_name]['C_num']
+            nu = best_ratios_dict[feature_name]['nu']
 
-            args_list = [
-                (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
-                for seed in seed_list]
+            args = [train_pos_df, df, X_path, test_index_loc, nu]
+            final_y_score = one_class_svm(args)
 
-            # Step 2: Use Pool to parallelize
-            with Pool(processes=num_processes) as pool:
-                bagging_y_scores = pool.map(neg_bagging, args_list)
-
-            final_y_score = np.mean(bagging_y_scores, axis=0)
-
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-            enrich_feature_test = enriched_set(enrich_test_genes,time)
-            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
-            pathway_overlap_dict[feature_name] = jac_sm
-
+            # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            # enrich_feature_test = enriched_set(enrich_test_genes,time)
+            # jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            # pathway_overlap_dict[feature_name] = jac_sm
+            jac_sm = 0
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["occ",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
             rank_results_per_feature[feature_name] = rankdata(final_y_score, method='average')
             predcition_collection[feature_name] = final_y_score
         ################################# early fusion
-        if len(agg_feature) > 0:
-            print('early fusion')
-            for feature_name in agg_feature:
-                select_columns = [col for col in df.columns if col.startswith(feature_name)]
+        # if len(agg_feature) > 0:
+        #     print('early fusion')
+        #     for feature_name in agg_feature:
+        #         select_columns = [col for col in df.columns if col.startswith(feature_name)]
 
-            X_concat = df[select_columns].values
-            train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
-            train_df = pd.concat([train_pos_df, train_neg_df])
-            train_index_loc = df.index.get_indexer(train_df.index)
-            y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
-            X_concat_train = X_concat[train_index_loc]
+        #     X_concat = df[select_columns].values
+        #     train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
+        #     train_df = pd.concat([train_pos_df, train_neg_df])
+        #     train_index_loc = df.index.get_indexer(train_df.index)
+        #     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
+        #     X_concat_train = X_concat[train_index_loc]
 
-            feature_names = '-'.join(agg_feature)
-            early_dir = '/itf-fi-ml/shared/users/ziyuzh/svm/results/early_concat'
-            early_files = glob.glob(os.path.join(early_dir, f'{feature_names}*.pkl'))
+        #     feature_names = '-'.join(agg_feature)
+        #     early_dir = '/itf-fi-ml/shared/users/ziyuzh/svm/results/early_concat'
+        #     early_files = glob.glob(os.path.join(early_dir, f'{feature_names}*.pkl'))
 
-            feature_names, K_path = compute_kernels(X_concat, feature_names, early_dir, False)
+        #     feature_names, K_path = compute_kernels(X_concat, feature_names, early_dir, False)
 
-            ## read corresponding file and cv get parametrs
-            args = neg_df, neg_num, train_pos_df, df, K_path, feature_names
-            feature_names, best_params, best_bedroc, best_auc = select_gamma_ratio(args)
-            print(feature_names, best_params, best_bedroc, best_auc)
-            ## evaluation
-            gamma = best_params['gamma_ratio']
-            X_path = K_path[gamma][0]
-            C_num = best_params['C_num']
+        #     ## read corresponding file and cv get parametrs
+        #     args = neg_df, neg_num, train_pos_df, df, K_path, feature_names
+        #     feature_names, best_params, best_bedroc, best_auc = select_gamma_ratio(args)
+        #     print(feature_names, best_params, best_bedroc, best_auc)
+        #     ## evaluation
+        #     gamma = best_params['gamma_ratio']
+        #     X_path = K_path[gamma][0]
+        #     C_num = best_params['C_num']
 
-            args_list = [
-                (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
-                for seed in seed_list]
+        #     args_list = [
+        #         (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
+        #         for seed in seed_list]
 
-            # Step 2: Use Pool to parallelize
-            with Pool(processes=num_processes) as pool:
-                bagging_y_scores = pool.map(neg_bagging, args_list)
+        #     # Step 2: Use Pool to parallelize
+        #     with Pool(processes=num_processes) as pool:
+        #         bagging_y_scores = pool.map(neg_bagging, args_list)
 
-            final_y_score = np.mean(bagging_y_scores, axis=0)
-            predcition_collection['early_fusion'] = final_y_score
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-            enrich_feature_test = enriched_set(enrich_test_genes,time)
-            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+        #     final_y_score = np.mean(bagging_y_scores, axis=0)
+        #     predcition_collection['early_fusion'] = final_y_score
+        #     enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+        #     enrich_feature_test = enriched_set(enrich_test_genes,time)
+        #     jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
 
-            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
-            # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'early_fusion-'+str(round(jac_sm, 3)), *results]
-        else:
-            print('no valid features, no early fusion')
+        #     ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+        #     # Add results to the result dataframe
+        #     result_df.loc[len(result_df.index)] = ["random_negative",fold,'early_fusion-'+str(round(jac_sm, 3)), *results]
+        # else:
+        #     print('no valid features, no early fusion')
         ################################## later fusion
         # if len(agg_feature) > 0:
         #     print('later fusion')
@@ -586,7 +568,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                 with open(X_logk_path, 'rb') as f:
                     X_logk = pickle.load(f)
                 logks.append(X_logk)  
-                print(X_k_path,X_logk_path)          
+                # print(X_k_path,X_logk_path)          
 
             K_linear_fused = np.mean(ks, axis=0)
             K_linear_fused = 0.5 * (K_linear_fused + K_linear_fused.T)
@@ -641,39 +623,29 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             # fusion_methods = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
             fusion_methods = ['linear_fused','geo_fused']
 
-
-            args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
+            args_list = [(train_pos_df, df, kernels_all_dict[fname], fname)
                 for fname in fusion_methods]
 
             with Pool(processes=len(fusion_methods)) as pool:
-                best_Cs = pool.map(select_C, args_list)
+                best_Cs = pool.map(select_nu, args_list)
             C_dict = dict()
-            for fname, best_params, best_bedroc, best_auc in best_Cs:
-                print(fname, best_params, best_bedroc, best_auc)
+            for fname, best_params, best_fp_rate in best_Cs:
+                print(fname, best_params, best_fp_rate)
                 C_dict[fname] = best_params
             ###########################################################
             print('fused kernels evaluation')
             for fusion_method in fusion_methods:
-                C_num = C_dict[fusion_method]
+                nu = C_dict[fusion_method]
                 X_all = kernels_all_dict[fusion_method]
-                args_list = [
-                    (neg_df, neg_num, train_pos_df, df, X_all, C_num, test_index_loc, seed)
-                    for seed in seed_list]
 
-                # Step 2: Use Pool to parallelize
-                with Pool(processes=num_processes) as pool:
-                    bagging_y_scores = pool.map(neg_bagging, args_list)
+                args = [train_pos_df, df, X_all, test_index_loc, nu]
+                final_y_score = one_class_svm(args)
 
-                final_y_score = np.mean(bagging_y_scores, axis=0)
                 predcition_collection[fusion_method] = final_y_score
                 ranked_predict_index, results = eval_bagging(final_y_score, y_test)
 
-                enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-                enrich_feature_test = enriched_set(enrich_test_genes,time)
-                jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
-
                 # Add results to the result dataframe
-                result_df.loc[len(result_df.index)] = ["random_negative",fold, fusion_method+'-'+str(round(jac_sm, 3)), *results]
+                result_df.loc[len(result_df.index)] = ["occ",fold, fusion_method+'-'+str(round(jac_sm, 3)), *results]
         else:
             print('no valid features, no mid fusion')
         

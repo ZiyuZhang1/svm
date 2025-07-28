@@ -445,8 +445,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             print(fname, best_params, best_bedroc, best_auc)
             best_ratios_dict[fname] = best_params
             # if best_auc > 0.67 and best_bedroc > 0.5:
-            if best_auc > 0.8:
-                agg_feature.append(fname)
+            agg_feature.append(fname)
         print('collect valid feature: ', agg_feature)
       ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
         print('evaluation')

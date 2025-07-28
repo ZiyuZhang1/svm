@@ -9,7 +9,7 @@ cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 
 # python kernel_calculation.py 'uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_norm" 2017 > 2017_dw_test.log 2>&1
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'ppi_2017_dw_10,ppi_2017_dw_40,ppi_2017_dw_80,uniport_ppi_2017,uniport_exp,uniport_seq,uniport_esm' "results/2017_dw_test_auc" 2017 > 2017_dw_test_auc.log 2>&1
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_rank_save_auc_norm_correct" 2017 'disgenet' > 2017_cv_rank_save_auc_norm_correct.log 2>&1
+python main_all_fused.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq,uniport_esm' "results/2017_all_fused" 2017 'disgenet' > 2017_all_fused.log 2>&1
 
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq,uniport_esm' "results/2017_cv_rank_save_auc_norm" 2017 'disgenet'> 2017_cv_rank_save_auc_norm.log 2>&1
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2017,ppi_2017_dw_80,uniport_exp,uniport_seq' "results/2017_cv_rank_save_auc_norm_without_esm" 2017 'disgenet'> 2017_cv_rank_save_auc_norm_without_esm.log 2>&1

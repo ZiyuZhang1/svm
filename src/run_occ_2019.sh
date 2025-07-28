@@ -11,7 +11,7 @@ cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'ppi_2019_dw_10,ppi_2019_dw_40,ppi_2019_dw_80,uniport_ppi_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_dw_test_auc" 2019 > 2019_dw_test_auc.log 2>&1
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_rank_save_op" 2019 'opentarget' > 2019_cv_rank_save_op.log 2>&1
 # disgenet
-python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_rank_save_auc_norm_correct" 2019 'disgenet' > 2019_cv_rank_save_auc_norm_correct.log 2>&1
+python main_occ.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm' "results/2019_occ" 2019 'disgenet' > 2019_occ.log 2>&1
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq' "results/2019_cv_rank_save_auc_norm_without_esm" 2019 'disgenet' > 2019_cv_rank_save_auc_norm_without_esm.log 2>&1
 
 # python main_reindex_time_fusion_weights_uniport_cv_filter.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm' "results/2019_cv_rank_save" 2019 > 2019_cv_rank_save.log 2>&1
