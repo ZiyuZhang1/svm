@@ -33,6 +33,8 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_emb_aligned.csv'))
     elif feature_name == 'ppi':
         feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_emb.csv'))
+    elif feature_name == 'ppi_2017_700':
+        feature_df = pd.read_csv(os.path.join(root,'data/ppi_full_2016_700_emb.csv'))
     elif feature_name == 'biograd':
         feature_df = pd.read_csv(os.path.join(root,'data/biograd/biograd_full_emb.csv'))
     elif feature_name == 'prose':
@@ -100,5 +102,7 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/expression_emb/gene2vec_emb.csv'))
     elif feature_name == 'uniport_bio':
         feature_df = pd.read_csv(os.path.join(root,'data/bioconcept/uniport_bio_emb.csv'))
+    elif feature_name == 'diffusion_2019':
+        feature_df = pd.read_csv(os.path.join(root,'data/diffusion_2019.csv'))
 
     return feature_df

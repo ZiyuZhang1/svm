@@ -3,8 +3,8 @@ import numpy as np
 from scipy.linalg import expm
 import pickle
 import os
-import mygene
 import pandas as pd
+import random
 
 # def normalize_kernel(K):
 #     diag = np.sqrt(np.diag(K))
@@ -20,34 +20,18 @@ def normalize_kernel(K):
     diag[diag == 0] = 1e-8  # Avoid division by zero
     return K / (diag[:, None] * diag[None, :])
 
-def get_map_df(ensembl_ids,input_type):
-    mg = mygene.MyGeneInfo()
-    # Query mygene for UniProt and Entrez gene ID mappings
-    results = mg.querymany(
-        ensembl_ids,
-        scopes=input_type,
-        fields='uniprot,entrezgene',
-        species='human'
-    )
-
-    results_df = pd.DataFrame(results)
-    results_df = results_df[~results_df['entrezgene'].isna()]
-    results_df['uniprot_ids'] = results_df['uniprot'].apply(
-        lambda x: list(x.values())[0] if isinstance(x, dict) and 'Swiss-Prot' in x else None)
-    results_df = results_df[~results_df['uniprot_ids'].isna()]
-    results_df[results_df['uniprot_ids'].apply(lambda x: isinstance(x, list) and len(x) > 1)]
-    return results_df
 
 def diffusion_kernel(G, beta, normalized=True):
-
+    nodes = list(G.nodes())
     if normalized:
-        L = nx.normalized_laplacian_matrix(G).toarray()
+        L = nx.normalized_laplacian_matrix(G, nodelist=nodes).todense()
     else:
-        L = nx.laplacian_matrix(G).toarray()
+        L = nx.laplacian_matrix(G, nodelist=nodes).todense()
     
     K = expm(-beta * L)
 
     return np.array(K)
+
 def process_kernel(args):
     K= args
 
@@ -114,83 +98,59 @@ def merge_similarity_matrix(sim_matrix, sample_names, merge_groups, delete_list)
     return new_matrix, final_samples
 
 
+debug = False
 
 # for setting in ['test']:
-for setting in ['2019','2017']:
+for setting in ['2019']:
     if setting == '2019':
         file_path = '/itf-fi-ml/shared/users/ziyuzh/svm/data/ppi_full_2019.txt'
     elif setting == '2017':
         file_path = '/itf-fi-ml/shared/users/ziyuzh/svm/data/ppi_full_2016.txt'
 
-    G = nx.read_edgelist(file_path, nodetype=str, create_using=nx.Graph())
-    ensps = list(G.nodes())
-    del G
+    if debug == True:
+        G = nx.read_edgelist(file_path, nodetype=str, create_using=nx.Graph())
+        center_node = random.choice(list(G.nodes()))
+        radius = 1  # you can adjust this
+        G = nx.ego_graph(G, center_node, radius=radius)
 
-    ppi_ids_map = get_map_df([s.split('.')[1] for s in ensps],'ensembl.protein')
-    ppi_set = set()
-    for values in ppi_ids_map['uniprot_ids']:
-        if isinstance(values, list) and len(values) > 1:
-            ppi_set.update(values)  # Add all elements in the list
-        else:
-            ppi_set.add(values)
 
-    string_ids = []
-    one2more = []
-    more2one = []  # to collect subdfs with multiple or zero matches
+    else:
+        G = nx.read_edgelist(file_path, nodetype=str, create_using=nx.Graph())
 
-    for uniport_ids in list(ppi_set):
-        subdf = ppi_ids_map[ppi_ids_map['uniprot_ids'].str.contains(uniport_ids, na=False)]
-        
-        if len(subdf) == 1:
-            if isinstance(subdf['uniprot_ids'], list) and len(values) > 1:
-                one2more.append(subdf)
-            else:
-                string_ids.append(uniport_ids)
-        else:
-            more2one.append(subdf)
-
-    more2one_df = pd.concat(more2one, ignore_index=True)
-    more2one_df['string_id'] = '9606.'+more2one_df['query']
-    merge_dict = more2one_df.groupby('uniprot_ids')['string_id'].apply(list).to_dict()
-    map_dict = dict()
-    merge_groups = []
-    for key in merge_dict:
-        merge_groups.append(merge_dict[key])
-        new_key = '_'.join(sorted(merge_dict[key]))
-        map_dict[new_key] = key
-    flat_set = {item for sublist in merge_groups for item in sublist}
-    unique_ids = ['9606.' + ensp_id for ensp_id in ppi_ids_map[ppi_ids_map['uniprot_ids'].isin(string_ids)]['query'].tolist()]
-    delete_list = list(set(ensps) - flat_set - set(unique_ids))
-    sample_names = ensps
-
+    nodes_order = list(G.nodes())
     save_dir = f'/itf-fi-ml/shared/users/ziyuzh/svm/results/df/{setting}'
+    os.makedirs(save_dir, exist_ok=True)
 
-    for file in os.listdir(save_dir):
-        if 'difussion_K' in file:
-            k_path = os.path.join(save_dir,file)
-            with open(k_path, 'rb') as f:
-                sim_matrix = pickle.load(f)
-            new_matrix, final_samples = merge_similarity_matrix(sim_matrix, sample_names, merge_groups, delete_list)
-            new_matrix.rename(index=map_dict, columns=map_dict, inplace=True)
-            kernel_ids = list(new_matrix.index)
 
-            K_full = new_matrix.to_numpy()
-            K_full = normalize_kernel(K_full)
-            K_full += np.eye(K_full.shape[0]) * 1e-6
-            K_full = 0.5 * (K_full + K_full.T)
+    with open('/itf-fi-ml/shared/users/ziyuzh/svm/results/df/2019_map.pkl', 'rb') as f:
+        map_info = pickle.load(f) #[merge_groups, delete_ensp, map_dict_aligned]
+
+    for beta in [0.1,0.2,0.5,0.8,1,2]:
+    # for beta in [0.1]:
+        print('calculate kernel')
+        K_full = diffusion_kernel(G, beta)
+        K_full = 0.5 * (K_full + K_full.T)
+        print('remap')
+        new_matrix, final_samples = merge_similarity_matrix(K_full, nodes_order, map_info[0], map_info[1])
+        uniport_id_order = pd.Series(final_samples).map(map_info[2]).tolist()
+        print('save k and calculate logmk')
+        K_full = new_matrix.to_numpy()
+        K_full = normalize_kernel(K_full)
+        K_full += np.eye(K_full.shape[0]) * 1e-6
+        K_full = 0.5 * (K_full + K_full.T)
+        
+        kernel_path = os.path.join(save_dir, f'uniport_ids_difussion_K_{beta}.pkl')
+        with open(kernel_path, 'wb') as f:
+            pickle.dump(uniport_id_order, f)
+
+        kernel_path = os.path.join(save_dir, f'uniport_difussion_K_{beta}.pkl')
+        with open(kernel_path, 'wb') as f:
+            pickle.dump(K_full, f)
             
-            kernel_path = os.path.join(save_dir, 'uniport_ids_'+file)
-            with open(kernel_path, 'wb') as f:
-                pickle.dump(kernel_ids, f)
-
-            kernel_path = os.path.join(save_dir, 'uniport_'+file)
-            with open(kernel_path, 'wb') as f:
-                pickle.dump(K_full, f)
-                
-            logm_k = process_kernel(K_full)
-            kernel_path2 = os.path.join(save_dir, 'uniport_difussion_logK_'+file.split('_')[-1])
-            with open(kernel_path2, 'wb') as f:
-                pickle.dump(logm_k, f)
+        logm_k = process_kernel(K_full)
+        kernel_path2 = os.path.join(save_dir, f'uniport_difussion_logK_{beta}.pkl')
+        with open(kernel_path2, 'wb') as f:
+            pickle.dump(logm_k, f)
 
 # # for setting in ['test']:
 # for setting in ['2019','2017']:

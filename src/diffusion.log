@@ -1,4 +1,18 @@
-Input sequence provided is already in string format. No operation performed
-Input sequence provided is already in string format. No operation performed
-1 input query terms found dup hits:	[('ENSP00000473163', 3)]
-1939 input query terms found no hit:	['ENSP00000415070', 'ENSP00000267197', 'ENSP00000415452', 'ENSP00000006101', 'ENSP00000262477', 'ENS
+calculate kernel
+remap
+save k and calculate logmk
+calculate kernel
+remap
+save k and calculate logmk
+calculate kernel
+remap
+save k and calculate logmk
+calculate kernel
+remap
+save k and calculate logmk
+calculate kernel
+remap
+save k and calculate logmk
+calculate kernel
+remap
+save k and calculate logmk
