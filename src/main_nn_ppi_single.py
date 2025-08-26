@@ -10,7 +10,7 @@ import torch
 import numpy as np
 from collections import defaultdict
 
-def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
+def one_fold_evaluate(disease,out_path_pred, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
@@ -128,28 +128,38 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             # Add results to the result dataframe
             result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_'+str(feature_name)+str(round(jac_sm, 3)), *results]
 
-        # Average fused predictions
-        valid_preds = [p for p in fused_preds_collection if p is not None]
-        if valid_preds:
-            final_y_score = np.mean(valid_preds, axis=0)
+            # Assuming y_test and final_y_score are numpy arrays or pandas Series
+            pred_df = pd.DataFrame({
+                'gene': test_df.index,
+                'true_label': y_test,
+                'score': final_y_score
+            })
 
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-            enrich_feature_test = enriched_set(enrich_test_genes,time)
-            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            # Save to CSV
+            pred_df.to_csv(os.path.join(out_path_pred,disease+'_score.csv'), index=False)
 
-            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
-            # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_later'+'-'+str(round(jac_sm, 3)), *results]
+        # # Average fused predictions
+        # valid_preds = [p for p in fused_preds_collection if p is not None]
+        # if valid_preds:
+        #     final_y_score = np.mean(valid_preds, axis=0)
 
-def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
+        #     enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+        #     enrich_feature_test = enriched_set(enrich_test_genes,time)
+        #     jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+
+        #     y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+        #     ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+        #     # Add results to the result dataframe
+        #     result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_later'+'-'+str(round(jac_sm, 3)), *results]
+
+def evaluate_disease(disease, out_path_pred,time, feature_list, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
     
     if time_spilt:
         test_idx = df[df['test']==1].index
         train_idx = df[y==1].index.difference(test_idx)
         df.drop(columns='test', inplace=True)
-        one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+        one_fold_evaluate(disease, out_path_pred,time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
         return result_df
 
 def main():
@@ -166,14 +176,16 @@ def main():
         # feature_list = ['ppi_2019','bioconcept']
         # feature_list = ['ppi_2019_short','bioconcept_short']
         out_path = os.path.join(root,'results/temp')
+        out_path_pred = out_path+'_pred'
         time = 2017
     else:
         feature_list = sys.argv[1].split(',')
         out_path = os.path.join(root,sys.argv[2])
         time = int(sys.argv[3])
+        out_path_pred = out_path+'_pred'
 
-    if not os.path.exists(out_path):
-        os.mkdir(out_path)
+    os.makedirs(out_path, exist_ok=True)
+    os.makedirs(out_path_pred, exist_ok=True)
 
     merged_df = None
     for feature in feature_list:
@@ -220,7 +232,7 @@ def main():
             df, y = read_data_timecut(disease, all_df, merged_df,time)
         else:
             df, y = read_data(disease, all_df, merged_df,time)
-        result_df = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+        result_df = evaluate_disease(disease, out_path_pred, time, feature_list, df, y, methods,time_spilt)
         result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
         # Calculate mean metrics
         mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()

@@ -9,14 +9,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.52
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.4629102431274626 0.7251731307541706
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.6113609680725917 0.8599347192619365
-nor_0.6_fused 3 0.6586989302088858 0.881912543227528
-nor_0.8_fused 1 0.6544007015506664 0.8956451437338288
-nor_1_fused 1 0.35548131651650133 0.5836734904013191
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15618 0.9633348585884491
+all+0.9+15618 0.9522327986196928
 ICD10_C18 50
 kernels existing
 uniport_ppi_2019 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7064095355742465 0.8373816081616593
@@ -27,16 +23,14 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.633
 uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.501226726999303 0.7070803237683032
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.6907599892454298 0.7798614429049212
-nor_0.6_fused 1 0.7513565659589019 0.8306696145570825
-nor_0.8_fused 3 0.6756489146296629 0.8276901061427915
-nor_1_fused 3 0.19792771140427404 0.507950170034569
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+15650 0.9040641102949238
+all+0.85+15650 0.8782377206446662
 ICD10_C43 47
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.8580470527655292 0.8961772328548645
 ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.8874068852338176 0.899554520771626
 diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.8955744382322884 0.8867122826004405
@@ -45,14 +39,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.702
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.6089695456986163 0.6879649407609932
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.8042848664019937 0.8689358339029392
-nor_0.6_fused 1 0.8799145966849347 0.897865402141718
-nor_0.8_fused 1 0.8977696996095995 0.9104045625427203
-nor_1_fused 1 0.41042995994327014 0.6709007366902103
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15655 0.9725605857151992
+all+0.9+15655 0.9686001342796853
 ICD10_C50 544
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.4617241390339477 0.6697529673495106
@@ -63,14 +53,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.34
 uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.32108461096477997 0.5982253771073647
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.422198492003012 0.7148129573190335
-nor_0.6_fused 1 0.4773840777741289 0.7070972056119235
-nor_0.8_fused 1 0.49772733705076533 0.7008680220670499
-nor_1_fused 1 0.36172305373078073 0.6437997505240282
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+4590 0.9211501033829369
+all+0.85+4590 0.8923092584130412
 ICD10_C67 191
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.746404901762935 0.836633509467824
@@ -81,14 +67,10 @@ uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.458
 uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.4929808380758278 0.7114866736065443
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.6811204147413502 0.8281867995028103
-nor_0.6_fused 1 0.7525070293897489 0.8450105845639465
-nor_0.8_fused 1 0.754642036332909 0.8493220981822637
-nor_1_fused 1 0.5999836741720573 0.7168818312747312
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.7+15553 0.9224226947513658
+all+0.85+15553 0.8946723637213339
 ICD10_C81 23
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7899869646188455 0.9191308243727598
@@ -99,16 +81,14 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.569
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.36426389582562163 0.6501536098310291
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.5692235181901785 0.8000672043010751
-nor_0.6_fused 1 0.7811042214197128 0.864975358422939
-nor_0.8_fused 1 0.7698613891092893 0.8942252304147466
-nor_1_fused 1 0.48833748925928494 0.7676171274961598
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+15670 0.9797156173329321
+all+0.6+4701 0.967101722895632
 ICD10_D57 22
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7236929820888632 0.9414965986394558
 ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7186458365471663 0.9156462585034012
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.878231730969994 0.9673469387755103
@@ -117,14 +97,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.440
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5338491750694381 0.7768707482993197
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.5691399461872354 0.8517006802721089
-nor_0.6_fused 9 0.7801880794136875 0.9414965986394558
-nor_0.8_fused 3 0.7672198739566886 0.942857142857143
-nor_1_fused 1 0.7992250265192214 0.9482993197278912
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15671 0.9706606595651538
+all+0.8+4701 0.9713887470207695
 ICD10_D66 15
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.94795671645382 0.9217391304347826
@@ -135,14 +111,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.372
 uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.51635229041093 0.8058574879227053
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.6046062745333435 0.8794384057971015
-nor_0.6_fused 3 0.8969517135479617 0.9159420289855073
-nor_0.8_fused 1 0.9458121167548347 0.9159420289855073
-nor_1_fused 1 0.7416786042921931 0.848762077294686
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15675 0.9849722417203752
+all+0.7+15675 0.970566651777168
 ICD10_D83 23
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.9043498827735849 0.9210884353741496
@@ -153,14 +125,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.733
 uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.658004833440426 0.8231292517006802
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.8461436534916099 0.9170068027210885
-nor_0.6_fused 9 0.8875163487613212 0.9346938775510204
-nor_0.8_fused 3 0.8240580082245511 0.9170068027210885
-nor_1_fused 1 0.7790752199736705 0.836734693877551
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15670 0.949500338985112
+all+0.8+4701 0.9528020235739062
 ICD10_E11 269
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.8091968263313886 0.8951915301329771
@@ -171,14 +139,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.45
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.4535824998841025 0.654793520204693
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7088672038828379 0.8738571498694561
-nor_0.6_fused 1 0.7803366094487325 0.9018717320553397
-nor_0.8_fused 1 0.8118847006738409 0.9135276036535087
-nor_1_fused 1 0.7345182787370986 0.8792659182220633
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.9+15504 0.9488831182774053
+all+0.85+15505 0.9346618549770914
 ICD10_E66 259
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.7757448355256811 0.8718094586512066
@@ -189,14 +153,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.469
 uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.4978056059510492 0.723666409781719
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7344274183192688 0.857363128020288
-nor_0.6_fused 1 0.7934721924649794 0.873501501608717
-nor_0.8_fused 1 0.7826562359131654 0.8787782023688641
-nor_1_fused 1 0.3319565180679254 0.5357390746119582
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15511 0.944123166865761
+all+0.9+15511 0.9259299558288343
 ICD10_F01 33
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.1263173881543471'} 0.41106195576428944 0.7754629629629629
@@ -207,14 +167,10 @@ uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.292
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.1337179529046262 0.7337962962962963
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.13378888122831153 0.7546296296296297
-nor_0.6_fused 9 0.12703792130560285 0.7754629629629629
-nor_0.8_fused 81 0.09113420828843621 0.7592592592592592
-nor_1_fused 1 0.40226900088677797 0.8217592592592592
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15654 0.9908643710470837
+all+0.9+15654 0.974829106241615
 ICD10_F20 834
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.708089214188984 0.804307217630854
@@ -225,16 +181,14 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.510
 uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.49325935391497416 0.7044857300275483
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.6720403694800474 0.8373412672176307
-nor_0.6_fused 1 0.7247239640734321 0.8428791184573002
-nor_0.8_fused 1 0.7220748495453474 0.8342003305785125
-nor_1_fused 1 0.624766182942929 0.7699252892561983
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.9+4538 0.9676990874203559
+all+0.9+4538 0.952110358278809
 ICD10_F31 441
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7341480787595333 0.8271578142970396
 ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7470325587481753 0.8338757780925254
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7295114147014404 0.8527842117093583
@@ -243,14 +197,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.613
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.5876367420180783 0.7381394399075564
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.726801253491742 0.8529489358644177
-nor_0.6_fused 1 0.764854990347439 0.857758495512571
-nor_0.8_fused 1 0.7622455763138953 0.8513516905499224
-nor_1_fused 1 0.7146125668425474 0.8327807717561266
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+4617 0.9406859239999844
+all+0.8+4617 0.9258794195553457
 ICD10_F72 31
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.4667003079785161 0.6707482993197278
@@ -261,14 +211,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.388
 uniport_esm {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.44198040027082613 0.617687074829932
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.44731166026602365 0.6081632653061224
-nor_0.6_fused 27 0.5307513363878716 0.6748299319727892
-nor_0.8_fused 27 0.5159593669020718 0.7020408163265306
-nor_1_fused 27 0.4375696624057814 0.6258503401360546
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+15662 0.6697662392967407
+all+0.85+15662 0.7409104044044957
 ICD10_F90 24
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.1263173881543471'} 0.5762355382262005 0.6497947454844007
@@ -279,14 +225,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.30
 uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5630566145924029 0.7850574712643678
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.5604323135493622 0.8216201423097974
-nor_0.6_fused 9 0.6380159839428048 0.8430350301039957
-nor_0.8_fused 27 0.6948629356394678 0.8444854953475643
-nor_1_fused 27 0.49822071840178833 0.5884783798576901
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+15668 0.7701496190354573
+all+0.6+15668 0.8354164006299749
 ICD10_G10 32
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8375935535679598 0.9094108505873212
@@ -297,16 +239,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.45
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5064047562444742 0.6311474473239179
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-2025-08-04 04:43:11,473 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
-2025-08-04 04:43:11,691 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.6195593823078297 0.7635780885780886
-nor_0.6_fused 9 0.741620560170939 0.8745417980712098
-nor_0.8_fused 27 0.771593968868614 0.8775149686914393
-nor_1_fused 1 0.48353648946758554 0.7544460441519266
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.75+15664 0.9607656190111153
+all+0.9+15664 0.9400344959754696
 ICD10_G20 137
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.7849771332045923 0.8542551440329218
@@ -317,14 +253,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.534
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.4683020482848041 0.6807572016460904
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7411313878332381 0.8419423868312758
-nor_0.6_fused 1 0.8130156771517981 0.8691358024691359
-nor_0.8_fused 1 0.819444173175803 0.8525102880658437
-nor_1_fused 1 0.5227119582920928 0.6860576131687243
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+15594 0.9094349285294041
+all+0.7+4678 0.9096107168973591
 ICD10_G24 22
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.1263173881543471'} 0.8524309201657728 0.8759259259259261
@@ -335,14 +267,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.119
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.4034758943742455 0.5351851851851852
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.47102948765568137 0.6148148148148148
-nor_0.6_fused 3 0.525764546789896 0.7074074074074076
-nor_0.8_fused 9 0.6280129600511541 0.7907407407407409
-nor_1_fused 1 0.6224638899004218 0.8129629629629629
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15670 0.8449771592327773
+all+0.9+4701 0.8602137952559302
 ICD10_G30 183
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8509890273433983 0.9237238394817977
@@ -353,14 +281,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.69
 uniport_esm {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.6372366336001453 0.7995966129739586
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.8263086891358733 0.9047603001785056
-nor_0.6_fused 1 0.8522834726328727 0.923636831528345
-nor_0.8_fused 1 0.865107966293554 0.9298155414420606
-nor_1_fused 1 0.7793925623280803 0.8722178249955412
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+15562 0.9638708527709782
+all+0.6+15562 0.9539848492965277
 ICD10_G40 120
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.697118489439148 0.8076667853136309
@@ -371,14 +295,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.589
 uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.49041791572377175 0.7243739380432638
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.6680310627910662 0.8303063139221587
-nor_0.6_fused 3 0.7260400249529378 0.8529032701848148
-nor_0.8_fused 3 0.7304169599812028 0.8512970703054097
-nor_1_fused 1 0.6594593388580318 0.7830449282407224
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.75+15606 0.9299779969163562
+all+0.8+15606 0.934717493254529
 ICD10_G43 23
 kernels existing
 uniport_ppi_2019 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.5992780146543161 0.792178699436764
@@ -389,14 +309,10 @@ uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.544
 uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.45696381315393125 0.6777233742959549
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.6619699300989454 0.7594566052227343
-nor_0.6_fused 1 0.71588332838912 0.8259728622631849
-nor_0.8_fused 1 0.6931022547454724 0.8496143753200204
-nor_1_fused 1 0.441459951441133 0.8130200332821301
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.9+4701 0.9751005554491475
+all+0.9+4701 0.9552129221732745
 ICD10_G91 22
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.34585390130848576 0.7084924879042527
@@ -407,14 +323,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.35
 uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.29792648601226085 0.5653170359052712
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.40584749034102313 0.6026228673287496
-nor_0.6_fused 27 0.3183293590602365 0.6213818860877685
-nor_0.8_fused 1 0.37830648626224367 0.5419531448943213
-nor_1_fused 3 0.15846376595765319 0.3826712503183091
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15671 0.6463387385086823
+all+0.9+15671 0.8153386290675616
 ICD10_I10 35
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8812734134668928 0.9484551396316103
@@ -425,14 +337,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.403
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.21661292131568388 0.7004074357015533
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.5792039570916973 0.8603471691706986
-nor_0.6_fused 9 0.6653848043804591 0.8926661573720397
-nor_0.8_fused 1 0.7509942054349938 0.9062261268143622
-nor_1_fused 3 0.7612085980732682 0.9003692386045327
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.7+15657 0.9674035737865525
+all+0.9+15657 0.9583626179370861
 ICD10_I25 138
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7753235402893485 0.8932599145831696
@@ -443,16 +351,14 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.45
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.5083541402760755 0.7227986331663075
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7027808850702738 0.8880608398618849
-nor_0.6_fused 3 0.7919799285498553 0.924411513577247
-nor_0.8_fused 1 0.8124554507102834 0.9334983479720322
-nor_1_fused 1 0.8108618376830693 0.929095568933195
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15586 0.9548482289141944
+all+0.9+15586 0.9573760544595344
 ICD10_I26 15
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.9091586096133644 0.9496074879227052
 ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12034508683354062'} 0.9089464489676956 0.9154589371980677
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.9180305505244521 0.8493961352657005
@@ -461,14 +367,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.564
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5355951762455818 0.7126811594202899
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.6816254664551025 0.7798913043478262
-nor_0.6_fused 9 0.7361095509482057 0.8852958937198068
-nor_0.8_fused 9 0.783963023998466 0.8864432367149758
-nor_1_fused 27 0.06143719939999956 0.4623188405797101
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15675 0.9873492438261757
+all+0.9+15675 0.9817816348669517
 ICD10_I42 154
 kernels existing
 uniport_ppi_2019 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8475532912759314 0.9080657439295688
@@ -479,14 +381,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.596
 uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.5031701441061899 0.7047802669299948
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7396125655102415 0.8716162813673186
-nor_0.6_fused 1 0.8386158607222877 0.9091355581931914
-nor_0.8_fused 1 0.860806507426799 0.9201553984132662
-nor_1_fused 1 0.7302771170849304 0.8249658257219421
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15580 0.9517967609880676
+all+0.85+15580 0.9436945365482016
 ICD10_I50 155
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.8349680400250085 0.9092482422931315
@@ -497,14 +395,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.48
 uniport_esm {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.5002195823582598 0.764990084730485
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.765803460348942 0.8936361997476113
-nor_0.6_fused 1 0.8502825781413964 0.9106183522624843
-nor_0.8_fused 1 0.8450881893381949 0.918081846042906
-nor_1_fused 3 0.31270174259280853 0.6145303767802416
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15574 0.9460840759091967
+all+0.85+15574 0.9306450864213058
 ICD10_I63 37
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8767553446729361 0.9274886503846176
@@ -515,14 +409,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.815
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.7539373428578736 0.8682684530872725
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.8162032982656013 0.9188746022468992
-nor_0.6_fused 1 0.8888651669821998 0.9448473631699815
-nor_0.8_fused 1 0.8920250574148844 0.9494632178004475
-nor_1_fused 1 0.7526060052430353 0.8914650597146214
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.7+15660 0.9606190346173732
+all+0.6+15660 0.9808207320827936
 ICD10_I70 65
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.8655674486370085 0.9367568785044513
@@ -533,14 +423,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.62
 uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.5389025417172367 0.7440199094325308
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7661995041787001 0.8990463150657325
-nor_0.6_fused 1 0.8341443412042026 0.9319372577260926
-nor_0.8_fused 1 0.8486310997135128 0.9407947769598254
-nor_1_fused 1 0.25772811363170717 0.5738287871783018
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.75+15641 0.968172652198963
+all+0.9+15641 0.9498991741885923
 ICD10_J45 187
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.876498030599171 0.9519597641345822
@@ -551,14 +437,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.712
 uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.684844002832083 0.8022199098161638
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.8376558948533722 0.9247138397502601
-nor_0.6_fused 1 0.8760868897012187 0.9470863683662852
-nor_0.8_fused 1 0.8799266257907266 0.9558446063128686
-nor_1_fused 1 0.7913839277590368 0.9133714880332985
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15561 0.9706854136271019
+all+0.8+4668 0.9611844538010429
 ICD10_J62 16
 kernels existing
 uniport_ppi_2019 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8894173712485288 0.837012987012987
@@ -569,16 +451,14 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.080
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.48871704836511065 0.7527417027417028
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.49140363240727963 0.8022005772005771
-nor_0.6_fused 3 0.6652929700845119 0.8598484848484848
-nor_0.8_fused 3 0.7653128522280275 0.8907647907647908
-nor_1_fused 1 0.5540628731997735 0.8079365079365081
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+15675 0.974773452456924
+all+0.9+15675 0.9611997447351628
 ICD10_J80 52
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7643645820329081 0.8754325259515571
 ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7679751642304061 0.8692041522491349
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7401941100641971 0.8546712802768166
@@ -587,14 +467,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.633
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.7031067810079955 0.7605536332179931
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7263473474136619 0.8115340253748559
-nor_0.6_fused 1 0.7485796683750428 0.8346020761245675
-nor_0.8_fused 1 0.7653379915220979 0.8505190311418686
-nor_1_fused 1 0.7539036416383619 0.8461361014994232
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15651 0.8435599134114437
+all+0.7+4695 0.8662442589930945
 ICD10_K44 60
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8403311430473241 0.9375870470043789
@@ -605,14 +481,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.62
 uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.6202262838903305 0.7415990024630705
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.7852345039412848 0.9087135305662922
-nor_0.6_fused 27 0.8914698858413962 0.9429777734965036
-nor_0.8_fused 1 0.853657628633072 0.9329937078645673
-nor_1_fused 1 0.7235099895390232 0.9027150637976776
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.7+15644 0.9696872733478391
+all+0.85+15645 0.9527550236784845
 ICD10_K51 74
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8304156046003722 0.8940771349862259
@@ -623,14 +495,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.548
 uniport_esm {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5724004782441767 0.7136363636363635
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.6640747589788351 0.827961432506887
-nor_0.6_fused 1 0.7489979492771064 0.8786501377410468
-nor_0.8_fused 1 0.7710038207494606 0.8962809917355372
-nor_1_fused 1 0.5425237857273272 0.7754820936639119
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15634 0.9498792692489849
+all+0.7+4690 0.9445473179139591
 ICD10_L20 58
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8640024776137191 0.9181902123730379
@@ -641,14 +509,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.704
 uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.7034148689540856 0.8112650046168053
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.8336562675848892 0.9144967682363804
-nor_0.6_fused 1 0.8802094988976563 0.9385041551246537
-nor_0.8_fused 3 0.867706783926335 0.939612188365651
-nor_1_fused 1 0.8345317351377536 0.9202216066481994
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.75+15647 0.9407451313207513
+all+0.8+4694 0.9410482310203457
 ICD10_L40 73
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8450641144076986 0.9130788276990973
@@ -659,14 +523,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.580
 uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5727067282897149 0.7742086886338914
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.680560648295014 0.8680758535298178
-nor_0.6_fused 1 0.796394218705546 0.9210547704711951
-nor_0.8_fused 1 0.8320525413823437 0.9240741801510582
-nor_1_fused 1 0.6626106742022838 0.8765626859930905
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15636 0.947941932447598
+all+0.75+15636 0.949114311095269
 ICD10_M32 97
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8478627720287166 0.9089424251324548
@@ -677,16 +537,14 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.548
 uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.5715032389611777 0.7515987500417077
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.737356239419264 0.8893156109565731
-nor_0.6_fused 1 0.8088849747360763 0.9258075162572287
-nor_0.8_fused 1 0.8382365511332427 0.9257185580896286
-nor_1_fused 1 0.729474769142343 0.8754121243671404
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15621 0.9625121562622856
+all+0.9+15621 0.9501676012332141
 ICD10_M34 38
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.7912122486094537 0.9290577951339453
 ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7879874420967047 0.9342352664668899
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.8447658752105566 0.9263922222674205
@@ -695,14 +553,10 @@ uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.496
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5778375885021237 0.6918359344985469
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.5693573732048601 0.7824236034838891
-nor_0.6_fused 3 0.6668942731980123 0.8539675114238837
-nor_0.8_fused 1 0.7028580509399611 0.8559031308899104
-nor_1_fused 1 0.4877211290184354 0.6843906358052312
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+15661 0.9798622581406324
+all+0.9+15661 0.9635883671543181
 ICD10_M41 27
 kernels existing
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.6550852047748348 0.7643728222996516
@@ -713,14 +567,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.590
 uniport_esm {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.4330606771191088 0.6682717124790295
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.5328894160478624 0.688588850174216
-nor_0.6_fused 81 0.6831350148552232 0.7401761517615176
-nor_0.8_fused 1 0.6905143231657663 0.7609368950832366
-nor_1_fused 1 0.48034851947361795 0.6731675054845786
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15668 0.8478049541974442
+all+0.85+15668 0.8277596838169032
 ICD10_N04 73
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7592800749360621 0.8436998114190768
@@ -731,14 +581,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.449
 uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.3978270816976836 0.6670010347390408
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.5677109311115438 0.8193769034286276
-nor_0.6_fused 1 0.6771103813899252 0.846367548063575
-nor_0.8_fused 1 0.7195980472518655 0.85639245014245
-nor_1_fused 1 0.6283467292742441 0.7907431166895185
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.75+4691 0.931245863489827
+all+0.85+15637 0.9454807959179317
 ICD10_N17 88
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.899136631903621 0.9549461190192083
@@ -749,14 +595,12 @@ uniport_seq {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.62
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.590509949864004 0.7969673950280769
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.7986487213900823 0.9198001157390167
-nor_0.6_fused 1 0.8688808165064877 0.9422711658140707
-nor_0.8_fused 1 0.8409625893792874 0.9291806720255266
-nor_1_fused 1 0.21220759373565065 0.47613841294114473
-fused kernels evaluation
+late fusion parameter choosen
+2025-08-25 23:48:28,443 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-08-25 23:48:28,660 [ERROR] Error fetching enrichment results: Reactome_2022
+late fusion evaluation
+ppi+0.7+15625 0.981563400815869
+all+0.9+15625 0.9701101280790985
 ICD10_N18 91
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.9400609910498168 0.968555167062457
@@ -767,14 +611,10 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.633
 uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.6781271770725271 0.7880638796630466
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.8457920201715504 0.931160656143299
-nor_0.6_fused 1 0.8986736470608473 0.955705427714222
-nor_0.8_fused 1 0.9103601920251121 0.963259846284609
-nor_1_fused 1 0.685817861920934 0.8785235594307568
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.6+15625 0.9777631719568238
+all+0.8+4687 0.9679273123938191
 ICD10_N46 86
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7162241083814836 0.8380585228549605
@@ -785,14 +625,12 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.500
 uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.4673028439293047 0.6721563353242742
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 27 0.7098027558271117 0.8451909978627535
-nor_0.6_fused 1 0.8180106247546094 0.8946395349067106
-nor_0.8_fused 1 0.8030845991439688 0.8963906699275657
-nor_1_fused 1 0.7177222027127298 0.8567490491790747
-fused kernels evaluation
+late fusion parameter choosen
+2025-08-26 00:19:47,041 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-08-26 00:19:47,255 [ERROR] Error fetching enrichment results: Reactome_2022
+late fusion evaluation
+ppi+0.75+15627 0.9076626305792972
+all+0.85+15627 0.9010624406457739
 ICD10_N80 151
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.6971738048801663 0.8284266666666666
@@ -803,14 +641,10 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.637
 uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.612873761986415 0.7770133333333332
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7112208130899863 0.83896
-nor_0.6_fused 1 0.7075300748862752 0.8470933333333334
-nor_0.8_fused 1 0.6807277202626425 0.8362666666666666
-nor_1_fused 1 0.6569700118812531 0.8287466666666665
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+15585 0.8929711404355757
+all+0.6+4675 0.8882512605943568
 ICD10_N97 29
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8964633593221487 0.9415637860082304
@@ -821,16 +655,14 @@ uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.670
 uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.6232718801319094 0.8337448559670783
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 1 0.7567635056258619 0.8567901234567902
-nor_0.6_fused 1 0.7680221391334284 0.8864197530864196
-nor_0.8_fused 1 0.7868128821531819 0.8798353909465021
-nor_1_fused 3 0.4341506326161266 0.6683127572016461
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.8+15666 0.9345955778861188
+all+0.8+4699 0.934858151246987
 ICD10_C23 18
 kernels existing
+/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py:689: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  self.results = pd.concat(self.results, ignore_index=True)
 uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.8241012205941157 0.9012999452654625
 ppi_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.8500227358317964 0.9303366174055828
 diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7641204696480872 0.9135194307608101
@@ -839,14 +671,10 @@ uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.16
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.09750728246272054 0.5018062397372742
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 9 0.43246911623509615 0.678639846743295
-nor_0.6_fused 27 0.6334847570813267 0.8193212917350848
-nor_0.8_fused 1 0.6083810155002564 0.8388478379857691
-nor_1_fused 1 0.4792290754789583 0.6884099616858238
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.9+15673 0.9719172836354352
+all+0.85+4701 0.9631159050293593
 ICD10_C53 15
 kernels existing
 uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.9766318800016243 0.9416666666666668
@@ -857,11 +685,7 @@ uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.711
 uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5765441469986562 0.6916666666666668
 collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
 evaluation
-middle fusion
-kernel fusion
-grid search C for fused kernels
-nor_0.4_fused 3 0.7062866624255526 0.7208333333333333
-nor_0.6_fused 9 0.8583926855625162 0.9083333333333333
-nor_0.8_fused 27 0.9593975499185542 0.9500000000000001
-nor_1_fused 1 0.37568053393160733 0.7458333333333335
-fused kernels evaluation
+late fusion parameter choosen
+late fusion evaluation
+ppi+0.85+4702 0.981558292387212
+all+0.85+4702 0.9595138578691
