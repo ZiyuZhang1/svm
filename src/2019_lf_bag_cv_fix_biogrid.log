@@ -1,0 +1,27 @@
+['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v'] 46 14173
+ICD10_C16 90
+kernels existing
+calculating kernels...
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_lf_bag_fix.py", line 131, in <module>
+    result_df, prediction_collection = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_lf_bag_fix.py", line 998, in evaluate_disease
+    predcition_collection = one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_lf_bag_fix.py", line 664, in one_fold_evaluate
+    kernel_results = pool.starmap(
+                     ^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 375, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 768, in get
+    self.wait(timeout)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 765, in wait
+    self._event.wait(timeout)
+  File "/usr/lib64/python3.11/threading.py", line 629, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt

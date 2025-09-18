@@ -1,0 +1,21 @@
+['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v'] 46 14173
+ICD10_C16 90
+calculating kernels...
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.6445012084047428 0.8279088393767293
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.40004400184211786 0.7269658504367985
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.3386660669252077 0.7268222489935029
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.5532726091678206 0.7545810882966846
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v']
+evaluation
+late fusion evaluation
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_biogrid.py", line 131, in <module>
+    result_df, prediction_collection = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_biogrid.py", line 998, in evaluate_disease
+    predcition_collection = one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_biogrid.py", line 825, in one_fold_evaluate
+    top_ranks = sort_dict[key][:cutoff]
+                ~~~~~~~~~^^^^^
+KeyError: 'uniport_ppi_2019'

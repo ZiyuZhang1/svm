@@ -1,0 +1,71 @@
+2025-09-07 21:29:21,562 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-07 21:29:21,775 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-07 21:29:59,936 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-07 21:30:00,157 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 06:17:43,491 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/bio_evidence.py", line 64, in <module>
+    enrich_predict_set = enriched_set(enrich_predict_genes,2019)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/bio_evidence.py", line 21, in enriched_set
+    enr = gp.enrichr(
+          ^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/__init__.py", line 554, in enrichr
+    enr.run()
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py", line 655, in run
+    shortID, res = self.get_results(genes_list)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py", line 329, in get_results
+    job_id = self.send_genes(payload, ADDLIST_URL)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/gseapy/enrichr.py", line 209, in send_genes
+    response = s.post(url, files=payload, verify=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 724, in send
+    history = [resp for resp in gen]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 724, in <listcomp>
+    history = [resp for resp in gen]
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 265, in resolve_redirects
+    resp = self.send(
+           ^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/.venv/lib64/python3.11/site-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/http/client.py", line 1395, in getresponse
+    response.begin()
+  File "/usr/lib64/python3.11/http/client.py", line 325, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/http/client.py", line 286, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

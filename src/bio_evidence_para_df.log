@@ -1,0 +1,81 @@
+Found 39 files (skipped first 9). Starting parallel processing with 5 workers...
+2025-09-09 11:02:11,497 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 11:02:11,713 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 11:39:55,378 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 11:39:55,591 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 12:26:25,659 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 12:26:25,874 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 13:33:00,800 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-09 13:33:01,013 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-09 14:33:24,354 [ERROR] Error fetching enrichment results: GO_Molecular_Function_2021
+2025-09-09 14:33:24,573 [ERROR] Error fetching enrichment results: GO_Molecular_Function_2021
+2025-09-09 14:59:52,004 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 14:59:52,225 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 15:16:26,124 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 15:16:26,343 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 15:23:24,290 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 15:23:24,505 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 15:46:24,438 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 15:46:24,656 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 16:24:07,447 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 16:24:07,665 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 16:30:38,448 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 16:30:38,667 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 16:52:30,970 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 16:52:31,186 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 16:58:38,404 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 16:58:38,622 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 17:23:20,338 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 17:23:20,555 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-09 17:47:52,835 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 17:47:53,054 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 17:48:59,119 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 17:48:59,334 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 18:22:12,133 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 18:22:12,350 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 18:32:04,453 [ERROR] Error fetching enrichment results: GO_Molecular_Function_2021
+2025-09-09 18:32:04,670 [ERROR] Error fetching enrichment results: GO_Molecular_Function_2021
+2025-09-09 18:47:03,573 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 18:47:03,791 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-09 19:11:57,256 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-09 19:11:57,473 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_E11_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_E11_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_E66_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_E66_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_F01_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_F01_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_D83_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_D83_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_D66_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_D66_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_F20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_F20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_F31_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_F31_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_F90_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_F90_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G10_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G10_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_F72_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_F72_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G24_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G24_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G40_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G40_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G43_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G43_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G30_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G30_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_G91_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_G91_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I10_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I10_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I42_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I42_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I26_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I26_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I25_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I25_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I50_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I50_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I70_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I70_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_J45_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_J45_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_I63_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_I63_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_J62_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_J62_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_J80_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_J80_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_K51_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_K51_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_K44_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_K44_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_L40_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_L40_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_L20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_L20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_M32_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_M32_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_M41_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_M41_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_M34_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_M34_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N17_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N17_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N04_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N04_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N18_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N18_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N80_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N80_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N46_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N46_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred/ICD10_N97_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim/ICD10_N97_pred.pkl
+Done. Completed: 39, Failed: 0

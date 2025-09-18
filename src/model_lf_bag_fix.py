@@ -745,55 +745,55 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
             rank_results_per_feature[feature_name] = rankdata(final_y_score, method='average')
             predcition_collection[feature_name] = final_y_score
-
+            # print(feature_name, 'saved in predcition_collection')
             bagging_predcition_collection[feature_name] = bagging_y_scores
-        ############################################ late fussion settings
+        # ############################################ late fussion settings
         if len(agg_feature)>1:
-            print('late fusion parameter choosen')
+        #     print('late fusion parameter choosen')
             fuse_feature_dict = {'ppi':['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019'],
                                  'all':['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']}
-            cv_record_merge = []
-            cv_record_merge_bag1 = []
-            cv_record_merge_bag2 = []
+        #     cv_record_merge = []
+        #     cv_record_merge_bag1 = []
+        #     cv_record_merge_bag2 = []
 
-            kf = KFold(n_splits=3, shuffle=True, random_state=42)
+        #     kf = KFold(n_splits=3, shuffle=True, random_state=42)
 
-            pos_idx = train_pos_df.index.to_numpy()
-            for cv_fold, (tr_i, va_i) in enumerate(kf.split(pos_idx)):
-                cv_train_pos_df = train_pos_df.iloc[tr_i]
-                cv_val_pos_df   = train_pos_df.iloc[va_i]
+        #     pos_idx = train_pos_df.index.to_numpy()
+        #     for cv_fold, (tr_i, va_i) in enumerate(kf.split(pos_idx)):
+        #         cv_train_pos_df = train_pos_df.iloc[tr_i]
+        #         cv_val_pos_df   = train_pos_df.iloc[va_i]
 
-                cv_val_df = pd.concat([cv_val_pos_df, neg_df], axis=0)
-                cv_test_index_loc = df.index.get_indexer(cv_val_df.index)
+        #         cv_val_df = pd.concat([cv_val_pos_df, neg_df], axis=0)
+        #         cv_test_index_loc = df.index.get_indexer(cv_val_df.index)
 
-                cv_feature_pred = dict()
-                cv_feature_pred['true_label'] = np.array([1] * len(cv_val_pos_df) + [0] * len(neg_df))
+        #         cv_feature_pred = dict()
+        #         cv_feature_pred['true_label'] = np.array([1] * len(cv_val_pos_df) + [0] * len(neg_df))
 
-                cv_feature_pred_bag = dict()
-                cv_feature_pred_bag['true_label'] = np.array([1] * len(cv_val_pos_df) + [0] * len(neg_df))
+        #         cv_feature_pred_bag = dict()
+        #         cv_feature_pred_bag['true_label'] = np.array([1] * len(cv_val_pos_df) + [0] * len(neg_df))
 
-                for feature_name in agg_feature:
-                    gamma = best_ratios_dict[feature_name]['gamma_ratio']
-                    X_path = kernels_all_dict[feature_name][gamma][0]
-                    C_num = best_ratios_dict[feature_name]['C_num']
+        #         for feature_name in agg_feature:
+        #             gamma = best_ratios_dict[feature_name]['gamma_ratio']
+        #             X_path = kernels_all_dict[feature_name][gamma][0]
+        #             C_num = best_ratios_dict[feature_name]['C_num']
 
-                    args_list = [
-                        (neg_df, neg_num, cv_train_pos_df, df, X_path, C_num, cv_test_index_loc, seed)
-                        for seed in seed_list]
+        #             args_list = [
+        #                 (neg_df, neg_num, cv_train_pos_df, df, X_path, C_num, cv_test_index_loc, seed)
+        #                 for seed in seed_list]
 
-                    # Step 2: Use Pool to parallelize
-                    with Pool(processes=num_processes) as pool:
-                        bagging_y_scores = pool.map(neg_bagging, args_list)
+        #             # Step 2: Use Pool to parallelize
+        #             with Pool(processes=num_processes) as pool:
+        #                 bagging_y_scores = pool.map(neg_bagging, args_list)
 
-                    final_y_score = np.mean(bagging_y_scores, axis=0)
-                    cv_feature_pred[feature_name] = final_y_score
-                    cv_feature_pred_bag[feature_name] = bagging_y_scores
+        #             final_y_score = np.mean(bagging_y_scores, axis=0)
+        #             cv_feature_pred[feature_name] = final_y_score
+        #             cv_feature_pred_bag[feature_name] = bagging_y_scores
 
-                cv_record_merge.append(cv_lf(fuse_feature_dict,cv_test_index_loc,cv_feature_pred))
-                cv_record_bag1, cv_record_bag2 = cv_lf_bag(fuse_feature_dict,cv_test_index_loc,cv_feature_pred_bag)
-                cv_record_merge_bag1.append(cv_record_bag1)
-                cv_record_merge_bag2.append(cv_record_bag2)    
-            print(cv_record_merge_bag1,cv_record_merge_bag2)           
+        #         cv_record_merge.append(cv_lf(fuse_feature_dict,cv_test_index_loc,cv_feature_pred))
+        #         cv_record_bag1, cv_record_bag2 = cv_lf_bag(fuse_feature_dict,cv_test_index_loc,cv_feature_pred_bag)
+        #         cv_record_merge_bag1.append(cv_record_bag1)
+        #         cv_record_merge_bag2.append(cv_record_bag2)    
+        #     print(cv_record_merge_bag1,cv_record_merge_bag2)           
             ##########################################################
             print('late fusion evaluation')
             sort_dict = dict()
@@ -804,42 +804,44 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             for fuse_key in ['ppi','all']:
                 fuse_features = fuse_feature_dict[fuse_key]
 
-                sub_dicts = [
-                    {k: v for k, v in d.items() if k.startswith(fuse_key)}
-                    for d in cv_record_merge]
+                # sub_dicts = [
+                #     {k: v for k, v in d.items() if k.startswith(fuse_key)}
+                #     for d in cv_record_merge]
 
-                later_fuse_para, best_auc_lf = best_param(sub_dicts)
+                # later_fuse_para, best_auc_lf = best_param(sub_dicts)
 
-                print(later_fuse_para, best_auc_lf)
-                orness = float(later_fuse_para.split('+')[1])
-                cutoff = int(later_fuse_para.split('+')[2])
-                weights = owa_weights(2, cutoff, orness)
+                # print(later_fuse_para, best_auc_lf)
+                # orness = float(later_fuse_para.split('+')[1])
+                # cutoff = int(later_fuse_para.split('+')[2])
+                for orness in [0.7,0.9]:
+                    cutoff = len(test_index_loc)
+                    weights = owa_weights(2, cutoff, orness)
 
-                fused_rank = []
-                for sample_index in range(len(predcition_collection['true_label'])):
-                    fused_sample_rank = 0
-                    # print('sample: ', sample_index)
-                    for key in fuse_features:
-                        top_ranks = sort_dict[key][:cutoff]
-                        # print(top_ranks)
-                        if sample_index in top_ranks:
-                            single_rank = np.where(top_ranks == sample_index)[0][0]
-                            single_weighted_rank = weights[single_rank]
-                            fused_sample_rank += single_weighted_rank
-                            # print(single_rank,single_weighted_rank,fused_rank)
-                        else:
-                            fused_sample_rank += 0
-                    fused_rank.append(fused_sample_rank)
-                final_y_score = np.array(fused_rank)
-                # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
-                # enrich_predict_set = enriched_set(enrich_predict_genes,time)
-                # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
-                # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
-                # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
+                    fused_rank = []
+                    for sample_index in range(len(predcition_collection['true_label'])):
+                        fused_sample_rank = 0
+                        # print('sample: ', sample_index)
+                        for key in fuse_features:
+                            top_ranks = sort_dict[key][:cutoff]
+                            # print(top_ranks)
+                            if sample_index in top_ranks:
+                                single_rank = np.where(top_ranks == sample_index)[0][0]
+                                single_weighted_rank = weights[single_rank]
+                                fused_sample_rank += single_weighted_rank
+                                # print(single_rank,single_weighted_rank,fused_rank)
+                            else:
+                                fused_sample_rank += 0
+                        fused_rank.append(fused_sample_rank)
+                    final_y_score = np.array(fused_rank)
+                    # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
+                    # enrich_predict_set = enriched_set(enrich_predict_genes,time)
+                    # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
+                    # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
+                    # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
 
-                ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
-                result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_'+fuse_key+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
-                predcition_collection['later_fused_'+fuse_key] = final_y_score
+                    ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
+                    result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_'+fuse_key+'-'+str(orness)+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
+                    predcition_collection['later_fused_'+fuse_key+'-'+str(orness)] = final_y_score
             ### rank aggregate 1, para 0.8, all
             print('late fusion bag 1 evaluation')
             sort_dict = dict()
@@ -853,24 +855,113 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             for fuse_key in ['ppi','all']:
                 fuse_features = fuse_feature_dict[fuse_key]
 
-                sub_dicts = [
-                    {k: v for k, v in d.items() if k.startswith(fuse_key)}
-                    for d in cv_record_merge_bag1]
+            #     sub_dicts = [
+            #         {k: v for k, v in d.items() if k.startswith(fuse_key)}
+            #         for d in cv_record_merge_bag1]
 
-                later_fuse_para, best_auc_lf = best_param(sub_dicts)
+            #     later_fuse_para, best_auc_lf = best_param(sub_dicts)
 
-                print(later_fuse_para, best_auc_lf)
-                orness = float(later_fuse_para.split('+')[1])
-                cutoff = int(later_fuse_para.split('+')[2])
-                weights = owa_weights(2, cutoff, orness)
+            #     print(later_fuse_para, best_auc_lf)
+            #     orness = float(later_fuse_para.split('+')[1])
+            #     cutoff = int(later_fuse_para.split('+')[2])
+                for orness in [0.7,0.9]:
+                    cutoff = len(test_index_loc)
+                    weights = owa_weights(2, cutoff, orness)
 
-                fused_rank = []
-                for sample_index in range(len(bagging_predcition_collection['true_label'])):
-                    fused_sample_rank = 0
-                    # print('sample: ', sample_index)
-                    for key in fuse_features:
-                        for single_pred in sort_dict[key]:
+                    fused_rank = []
+                    for sample_index in range(len(bagging_predcition_collection['true_label'])):
+                        fused_sample_rank = 0
+                        # print('sample: ', sample_index)
+                        for key in fuse_features:
+                            for single_pred in sort_dict[key]:
+                                top_ranks = single_pred[:cutoff]
+                                # print(top_ranks)
+                                if sample_index in top_ranks:
+                                    single_rank = np.where(top_ranks == sample_index)[0][0]
+                                    single_weighted_rank = weights[single_rank]
+                                    fused_sample_rank += single_weighted_rank
+                                    # print(single_rank,single_weighted_rank,fused_rank)
+                                else:
+                                    fused_sample_rank += 0
+                        fused_rank.append(fused_sample_rank)
+                    final_y_score = np.array(fused_rank)
+                    # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
+                    # enrich_predict_set = enriched_set(enrich_predict_genes,time)
+                    # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
+                    # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
+                    # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
+
+                    ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
+                    result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_1_'+fuse_key+'-'+str(orness)+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
+                    predcition_collection['later_fused_bag_1_'+fuse_key+'-'+str(orness)] = final_y_score
+
+            ### rank aggregate 2 
+            print('late fusion bag 2 evaluation')
+
+            feature_rank_aggreation_list_of_orness = []
+            
+            for orness in [0.7,0.9]:
+                feature_rank_aggreation = dict()
+                feature_rank_aggreation['true_label'] = y_test
+                # sub_dicts = [
+                #     {k: v for k, v in d.items() if k.startswith(feature)}
+                #     for d in cv_record_merge_bag2]
+                # print(sub_dicts)
+                
+                # later_fuse_para, best_auc_lf = best_param(sub_dicts)
+
+                # print(later_fuse_para, best_auc_lf)
+                # orness = float(later_fuse_para.split('+')[1])
+                # cutoff = int(later_fuse_para.split('+')[2])
+                # weights = owa_weights(2, cutoff, orness)
+                for feature in sort_dict.keys():
+                    cutoff = len(test_index_loc)
+                    weights = owa_weights(2, cutoff, orness)
+                    fused_rank = []
+                    for sample_index in range(len(bagging_predcition_collection['true_label'])):
+                        fused_sample_rank = 0
+                        for single_pred in sort_dict[feature]:
                             top_ranks = single_pred[:cutoff]
+                            if sample_index in top_ranks:
+                                single_rank = np.where(top_ranks == sample_index)[0][0]
+                                single_weighted_rank = weights[single_rank]
+                                fused_sample_rank += single_weighted_rank
+                                # print(single_rank,single_weighted_rank,fused_rank)
+                            else:
+                                fused_sample_rank += 0    
+                        fused_rank.append(fused_sample_rank)            
+                    final_y_score = np.array(fused_rank)
+
+                    # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
+                    # enrich_predict_set = enriched_set(enrich_predict_genes,time)
+                    # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
+                    # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
+                    # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
+
+                    ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
+                    result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_2_'+feature+'-'+str(orness)+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
+                    feature_rank_aggreation[feature] = final_y_score
+                    predcition_collection['later_fused_bag_2_'+fuse_key+'-'+str(orness)] = final_y_score
+                feature_rank_aggreation_list_of_orness.append(feature_rank_aggreation)
+
+
+            for inx, orness in enumerate([0.7,0.9]):
+                cutoff = len(y_test)
+                weights = owa_weights(2, cutoff, orness)
+                sort_dict = dict()
+                for key in list(feature_rank_aggreation_list_of_orness[inx].keys())[1:]:
+                    sorted_indices = np.argsort(feature_rank_aggreation_list_of_orness[inx][key])[::-1]
+                    sort_dict[key] = sorted_indices
+
+                for fuse_key in ['ppi','all']:
+                    fuse_features = fuse_feature_dict[fuse_key]
+
+                    fused_rank = []
+                    for sample_index in range(len(feature_rank_aggreation_list_of_orness[inx]['true_label'])):
+                        fused_sample_rank = 0
+                        # print('sample: ', sample_index)
+                        for key in fuse_features:
+                            top_ranks = sort_dict[key][:cutoff]
                             # print(top_ranks)
                             if sample_index in top_ranks:
                                 single_rank = np.where(top_ranks == sample_index)[0][0]
@@ -879,101 +970,17 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                                 # print(single_rank,single_weighted_rank,fused_rank)
                             else:
                                 fused_sample_rank += 0
-                    fused_rank.append(fused_sample_rank)
-                final_y_score = np.array(fused_rank)
-                # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
-                # enrich_predict_set = enriched_set(enrich_predict_genes,time)
-                # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
-                # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
-                # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
+                        fused_rank.append(fused_sample_rank)
+                    final_y_score = np.array(fused_rank)
+                    # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
+                    # enrich_predict_set = enriched_set(enrich_predict_genes,time)
+                    # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
+                    # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
+                    # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
 
-                ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
-                result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_1_'+fuse_key+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
-                predcition_collection['later_fused_bag_1_'+fuse_key] = final_y_score
-
-            ### rank aggregate 2 
-            print('late fusion bag 2 evaluation')
-
-            feature_rank_aggreation = dict()
-            feature_rank_aggreation['true_label'] = y_test
-
-            for feature in sort_dict.keys():
-
-                sub_dicts = [
-                    {k: v for k, v in d.items() if k.startswith(feature)}
-                    for d in cv_record_merge_bag2]
-                print(sub_dicts)
-                
-                later_fuse_para, best_auc_lf = best_param(sub_dicts)
-
-                print(later_fuse_para, best_auc_lf)
-                orness = float(later_fuse_para.split('+')[1])
-                cutoff = int(later_fuse_para.split('+')[2])
-                weights = owa_weights(2, cutoff, orness)
-
-                fused_rank = []
-                for sample_index in range(len(bagging_predcition_collection['true_label'])):
-                    fused_sample_rank = 0
-                    for single_pred in sort_dict[feature]:
-                        top_ranks = single_pred[:cutoff]
-                        if sample_index in top_ranks:
-                            single_rank = np.where(top_ranks == sample_index)[0][0]
-                            single_weighted_rank = weights[single_rank]
-                            fused_sample_rank += single_weighted_rank
-                            # print(single_rank,single_weighted_rank,fused_rank)
-                        else:
-                            fused_sample_rank += 0    
-                    fused_rank.append(fused_sample_rank)            
-                final_y_score = np.array(fused_rank)
-
-                # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
-                # enrich_predict_set = enriched_set(enrich_predict_genes,time)
-                # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
-                # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
-                # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
-
-                ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
-                result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_2_'+feature+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
-                feature_rank_aggreation[feature] = final_y_score
-                predcition_collection['later_fused_bag_2_'+fuse_key] = final_y_score
-
-
-            orness = 0.8
-            cutoff = len(y_test)
-            weights = owa_weights(2, cutoff, orness)
-            sort_dict = dict()
-            for key in list(feature_rank_aggreation.keys())[1:]:
-                sorted_indices = np.argsort(feature_rank_aggreation[key])[::-1]
-                sort_dict[key] = sorted_indices
-
-            for fuse_key in ['ppi','all']:
-                fuse_features = fuse_feature_dict[fuse_key]
-
-                fused_rank = []
-                for sample_index in range(len(feature_rank_aggreation['true_label'])):
-                    fused_sample_rank = 0
-                    # print('sample: ', sample_index)
-                    for key in fuse_features:
-                        top_ranks = sort_dict[key][:cutoff]
-                        # print(top_ranks)
-                        if sample_index in top_ranks:
-                            single_rank = np.where(top_ranks == sample_index)[0][0]
-                            single_weighted_rank = weights[single_rank]
-                            fused_sample_rank += single_weighted_rank
-                            # print(single_rank,single_weighted_rank,fused_rank)
-                        else:
-                            fused_sample_rank += 0
-                    fused_rank.append(fused_sample_rank)
-                final_y_score = np.array(fused_rank)
-                # enrich_predict_genes = test_indices[np.argsort(final_y_score)[::-1]][:int(0.2*len(y_test))]
-                # enrich_predict_set = enriched_set(enrich_predict_genes,time)
-                # jac_sm0 = calculate_jac_sim(enrich_train_set,enrich_predict_set)
-                # jac_sm1 = calculate_jac_sim(enrich_test_set,enrich_predict_set)
-                # jac_sm2 = calculate_jac_sim(enrich_all_pos_set,enrich_predict_set)
-
-                ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
-                result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_2_'+fuse_key+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
-                predcition_collection['later_fused_bag_2_'+fuse_key] = final_y_score
+                    ranked_predict_index, results = eval_bagging(final_y_score, predcition_collection['true_label'])
+                    result_df.loc[len(result_df.index)] = ["random_negative",fold,'later_fused_bag_2_'+fuse_key+'-'+str(orness)+'-'+str(round(jac_sm0, 3))+'-'+str(round(jac_sm1, 3))+'-'+str(round(jac_sm2, 3)), *results]
+                    predcition_collection['later_fused_bag_2_'+fuse_key+'-'+str(orness)] = final_y_score
 
         else:
             print('no valid features, no mid fusion')

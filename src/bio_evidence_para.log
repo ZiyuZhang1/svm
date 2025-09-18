@@ -1,0 +1,71 @@
+Found 39 files (skipped first 9). Starting parallel processing with 5 workers...
+2025-09-08 10:12:59,136 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 10:12:59,348 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 11:06:40,293 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 11:06:40,507 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 11:27:21,304 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 11:27:21,516 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 12:04:01,566 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 12:04:01,778 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 13:08:03,489 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 13:08:03,703 [ERROR] Error fetching enrichment results: Reactome_2022
+2025-09-08 16:33:52,176 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 16:33:52,390 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 16:40:59,241 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 16:40:59,454 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 17:28:49,022 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 17:28:49,234 [ERROR] Error fetching enrichment results: GO_Biological_Process_2021
+2025-09-08 17:34:04,437 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 17:34:04,649 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 17:35:46,501 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-08 17:35:46,713 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-08 18:20:23,086 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 18:20:23,298 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 18:47:30,493 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 18:47:30,706 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 19:06:32,149 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-08 19:06:32,361 [ERROR] Error fetching enrichment results: GO_Cellular_Component_2021
+2025-09-08 20:12:31,095 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 20:12:31,307 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 20:48:47,302 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+2025-09-08 20:48:47,515 [ERROR] Error fetching enrichment results: KEGG_2019_Human
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_E66_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_E66_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_E11_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_E11_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_F01_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_F01_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_D66_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_D66_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_D83_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_D83_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_F20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_F20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_F31_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_F31_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_F90_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_F90_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G10_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G10_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_F72_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_F72_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G24_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G24_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G30_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G30_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G43_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G43_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G40_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G40_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I10_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I10_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_G91_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_G91_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I25_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I25_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I42_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I42_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I26_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I26_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I63_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I63_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I50_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I50_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_I70_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_I70_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_J45_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_J45_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_J62_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_J62_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_J80_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_J80_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_K44_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_K44_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_K51_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_K51_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_L20_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_L20_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_L40_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_L40_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_M34_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_M34_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_M32_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_M32_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_M41_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_M41_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N04_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N04_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N17_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N17_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N18_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N18_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N46_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N46_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N80_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N80_pred.pkl
+[OK] /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred/ICD10_N97_pred.pkl -> /itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim/ICD10_N97_pred.pkl
+Done. Completed: 39, Failed: 0

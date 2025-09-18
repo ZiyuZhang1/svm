@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
-# from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
-from model_nn_ppi_single import enriched_set, neg_bagging_early, neg_bagging_mid, neg_bagging_later, calculate_jac_sim, eval_bagging
+from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
+# from model_nn_ppi_single import enriched_set, neg_bagging_early, neg_bagging_mid, neg_bagging_later, calculate_jac_sim, eval_bagging
 from sklearn.preprocessing import MinMaxScaler
 import sys
 import torch.multiprocessing as mp
