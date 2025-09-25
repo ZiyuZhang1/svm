@@ -1,0 +1,737 @@
+['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019'] 46 14173
+ICD10_C16 90
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.23071978036018848 0.5587401611866444
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.06428576047581656 0.4951269282309038
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.1427312896527925 0.44673691921398345
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.2852781077405208 0.5482059564628371
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.45051825850921995 0.6662970906090173
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5003584832815691 0.6946194874329431
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.38640728752928033 0.6531530537646745
+geo_fused 1 0.20761972361110628 0.5547770555415815
+fused kernels evaluation
+ICD10_C18 49
+kernels existing
+uniport_bio {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.2742972440901837'} 0.13995768343941709 0.4384500242709198
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.39175261928062693 0.6478964650606441
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.3915086598658229 0.6843065723662738
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.10977480086105862 0.49343484044976577
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5919809332291606 0.7337285434300359
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5892842364762394 0.8228827557185766
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4379119791406514 0.691794523884076
+geo_fused 1 0.4841941062528828 0.6681796644483211
+fused kernels evaluation
+ICD10_C43 47
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.07652540285683991 0.4681255696058328
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.1724771960275411 0.601926217057796
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.15330922421185803 0.6087909166856535
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.34553186467903335 0.6961247816510975
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.6407012982845242 0.7834743107769424
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.6177660504393764 0.7355975165185691
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.4052280837247347 0.689960934533303
+geo_fused 9 0.264117677667231 0.672514619883041
+fused kernels evaluation
+ICD10_C50 529
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.23381175764448336 0.5550231316474056
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.20984358839764042 0.5463062886348095
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.22503463667850776 0.5454435806656931
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.23105046166314655 0.5568797706134044
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3525497712074144 0.6339898369316002
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.39267606141756034 0.6762392380453547
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.34703055988689363 0.626265752295048
+geo_fused 1 0.281346602207609 0.6180749352383604
+fused kernels evaluation
+ICD10_C67 188
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.21568171839629557 0.5334717026533169
+uniport_seq {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.2769956378283346 0.5887071354467034
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.1871322600952164 0.5414321727503434
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.26131892301198917 0.5576345744348757
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5009255168006476 0.7102817483564037
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5108664077785836 0.6881563402208354
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4543582844979544 0.6917089272043085
+geo_fused 1 0.3780215820295529 0.6773575381754657
+fused kernels evaluation
+ICD10_C81 22
+kernels existing
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.3250167117262593 0.6444444444444445
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.09550279508870514 0.5333333333333333
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.0854494532096533 0.562962962962963
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.09389499503241083 0.4407407407407407
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.5458503332511064 0.7685185185185186
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.46403564605221587 0.5814814814814815
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.254567281236677 0.5833333333333334
+geo_fused 3 0.4572686020630096 0.6833333333333332
+fused kernels evaluation
+ICD10_D57 21
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.27321512632971307 0.6819667260843731
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.036059832166836316 0.47979797979797983
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.1377746279497347 0.6220397249809014
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2143060410077788 0.44115524997877936
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6729881448991747 0.6848315083609201
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6924301367716422 0.628299804770393
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.26640997741712447 0.6128087598675834
+geo_fused 3 0.1846535504622746 0.6511119599354893
+fused kernels evaluation
+ICD10_D66 15
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.16603418931269645 0.5943840579710146
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.2880709942964928 0.5526268115942029
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.04384864348255534 0.46171497584541066
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.26008699668105156 0.596195652173913
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.40934798122511035 0.5075483091787439
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6880222308680417 0.6766908212560386
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.30756723491423776 0.5219806763285023
+geo_fused 3 0.21024843772152216 0.5416666666666666
+fused kernels evaluation
+ICD10_D83 22
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.2742972440901837'} 0.28944500350557384 0.6022196757490875
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.2844969113102163 0.625222816399287
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.3196935778138476 0.5582505729564553
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.2582902596157993 0.6300611153552329
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5085575627693613 0.6477803242509125
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '1', 'gamma': '1'} 0.6282179293313376 0.7204396910279263
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4741925783582319 0.6507087683558271
+geo_fused 1 0.44706213784995225 0.689478821831763
+fused kernels evaluation
+ICD10_E11 260
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.18502372415393167 0.5495511842055626
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.24518923370683765 0.5491460386580962
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.19128374158285713 0.5238089010299891
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.3487395069571229 0.6228642117464713
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.4310367634567312 0.7016377811532953
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4254034592648035 0.6712504036636212
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4080023684452441 0.6969101836604702
+geo_fused 1 0.3721355577121946 0.6586904698050151
+fused kernels evaluation
+ICD10_E66 253
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.1468566149336941 0.482429107035798
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.2007651314619431 0.5422160306908603
+uniport_esm {'C_num': 81, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.19327979670439355 0.5172140390323186
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2303724055823534 0.5602983433057075
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.46505456052397304 0.7104647315091154
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4202797494149367 0.6570202530880893
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3484279876025544 0.6345430822739738
+geo_fused 1 0.3260742561258807 0.6226033836346576
+fused kernels evaluation
+ICD10_F20 788
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.21715391177110907 0.5897371794871794
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.22287417988534933 0.5855571992110453
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.22379328587612946 0.5801232741617357
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2361297725377133 0.5757702169625247
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.447953251824493 0.7074003944773176
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.45794618196738873 0.7147904339250494
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.40391522221519155 0.7067455621301776
+geo_fused 1 0.3495138858323601 0.6843333333333333
+fused kernels evaluation
+ICD10_F31 415
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.20946242678368152 0.5543716234908973
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.2278119740275429 0.5814522264181198
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.22162082569583716 0.560310132368444
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2434285585590222 0.5792197206204843
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.45104242503236897 0.6889502492318741
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4554842169066948 0.6800010982540572
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4128158296870597 0.707118369730361
+geo_fused 1 0.3265288098847368 0.6647357051180914
+fused kernels evaluation
+ICD10_F72 30
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.07879171561597165 0.5490196078431372
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.11399038709604886 0.5773703420762244
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.17290384458795452 0.6006069094304388
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.09729759472434403 0.5039470333587981
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.12145966918997991 0.7351243527714116
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.2', 'gamma': '0.2'} 0.35236377006982417 0.5581444699091758
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.12413218075983141 0.5335710041592394
+geo_fused 3 0.05112550720093809 0.578113063407181
+fused kernels evaluation
+ICD10_F90 24
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.0838020157919292 0.3639983579638752
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.18618369037191093 0.6591817186644773
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.09070638038947376 0.46628352490421454
+biograd_2019_n2v {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.016131087139340194 0.3788314176245211
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.24161296110339928 0.601464148877942
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.5', 'gamma': '0.5'} 0.3217136790956648 0.6081691297208538
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.12090475998746626 0.5504378762999452
+geo_fused 1 0.04326088842080649 0.4586343732895457
+fused kernels evaluation
+ICD10_G10 32
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.27614818657535406 0.5965492024315554
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.13321520941475673 0.47096302390420036
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.11681849668826677 0.5466234745646511
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.23847361990854243 0.6351044380456146
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6200732339961057 0.7250057132410074
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '1', 'gamma': '1'} 0.529913627167862 0.6411101969925498
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.34479698631565264 0.6356666209607386
+geo_fused 1 0.48359692581776775 0.6528337675396498
+fused kernels evaluation
+ICD10_G20 134
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.1964294005861659 0.5475206611570248
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.1491524811713069 0.5075413223140496
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.21499523938456175 0.5467286501377411
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2487242148293102 0.603133608815427
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5480590615511914 0.7233471074380166
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5464854790523992 0.7132920110192837
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.37294688776774637 0.7051652892561983
+geo_fused 81 0.339030678311014 0.6429063360881543
+fused kernels evaluation
+ICD10_G24 20
+kernels existing
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.06445750766585732 0.4549382716049383
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.09216059069652328 0.4637701804368471
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.11670803016832516 0.6222222222222222
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.22699768591352565 0.5212250712250712
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.1672006375710411 0.4749762583095916
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.2', 'gamma': '0.2'} 0.23107153408414038 0.47886989553656223
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.06597287242226656 0.46956315289648626
+geo_fused 1 0.07192204836744184 0.43338081671415
+fused kernels evaluation
+ICD10_G30 179
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.2280487591671084 0.5707397147840361
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.2213370103731215 0.5460141582025239
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.23937416418336496 0.5418077357135528
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.20393993941869168 0.5491330665845902
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5507389701987376 0.741848773981738
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5298732817163506 0.722027290448343
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.49605011908857694 0.7034985123627783
+geo_fused 81 0.42226581297544813 0.6932389453165076
+fused kernels evaluation
+ICD10_G40 117
+kernels existing
+uniport_bio {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.17406120288041985 0.5405063459301024
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.13202371180192787 0.5111044024807286
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.18828727964562741 0.5289178033434371
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.14047882017854843 0.5020062227238791
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.4533370615896474 0.5739914643258368
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '1', 'gamma': '1'} 0.35480837666224124 0.5709388719020333
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.24232113428929847 0.5650750395084233
+geo_fused 1 0.2700825693584156 0.5743708717819181
+fused kernels evaluation
+ICD10_G43 22
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.3611720515751708 0.663834485407066
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.14973168154277072 0.5726846518177163
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.3210628479065088 0.570084485407066
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.10239745229441577 0.3970654121863799
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.4562049014702299 0.6737951228878648
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.2871412987472408 0.5413706477214542
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.30919997704402963 0.5901817716333845
+geo_fused 1 0.4736522377634456 0.7331509216589862
+fused kernels evaluation
+ICD10_G91 21
+kernels existing
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.023403559560318574 0.509776625704045
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.45641274749255584 0.5794290834613415
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.22986510528673162 0.5572596646185356
+biograd_2019_n2v {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.0458143295175962 0.4603014592933947
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.08474922000413854 0.5937099974398361
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.1', 'gamma': '0.1'} 0.3624503325446775 0.6794594854070661
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3018143977305856 0.4664378520225294
+geo_fused 9 0.1908736431100838 0.4978878648233487
+fused kernels evaluation
+ICD10_I10 33
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.21136018782498678 0.47299027137736815
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.011361166261902535 0.28835445468509985
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.01679422142128929 0.3014432923707117
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.15777251596223987 0.5218013952892985
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3441433647907342 0.7089173707117254
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5580041864551094 0.7634088581669228
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.2784252639555886 0.48935931899641566
+geo_fused 1 0.25655425908596574 0.5566676267281107
+fused kernels evaluation
+ICD10_I25 133
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.20987558420932492 0.535467864197146
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.23984505408931858 0.5290817652696106
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05529740926594809'} 0.21290195254178515 0.5477146899798834
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2116188049460487 0.590705824821847
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3103381225449609 0.6617217363073716
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.3923321761687411 0.6556875351764854
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.38400964675212773 0.6599856565326179
+geo_fused 9 0.2915450313285021 0.6346126346126346
+fused kernels evaluation
+ICD10_I26 15
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.18564533794385904 0.47506038647342996
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.49198055751427155 0.5115640096618358
+uniport_esm {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.42484077969364603 0.563768115942029
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.004510727144568918 0.29378019323671495
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6912659419751925 0.8452898550724638
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7001126939822407 0.6935990338164251
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.6674166815800894 0.6853562801932368
+geo_fused 1 0.2949090352288452 0.482578502415459
+fused kernels evaluation
+ICD10_I42 150
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.14531823993779558 0.5421094298015371
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.15867542055942194 0.5540872151366173
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.21281872498989576 0.542973352457366
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.14949500976274824 0.5146787046504798
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5841669483945428 0.742346139156818
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6004787989654043 0.7543020989773296
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5441841605691103 0.7459362540278139
+geo_fused 81 0.345436683353858 0.6559236633845659
+fused kernels evaluation
+ICD10_I50 152
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.25978559192214723 0.581763283911894
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.22231988927961163 0.5436457969099395
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05529740926594809'} 0.14887048584582732 0.5149172066035079
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2693785394918643 0.5878615276107109
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5507953749423639 0.7651388333099466
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5579215681178171 0.7213448836526016
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4718823706344846 0.7526480787246713
+geo_fused 3 0.418407275197491 0.6893761070194776
+fused kernels evaluation
+ICD10_I63 37
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.19674705668493186 0.5521115597825125
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.12465031293087032 0.3968033638547957
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.3198933438805575 0.5215458205668609
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.06972878584755961 0.47104888747203183
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.656018828449429 0.7204282745632833
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5744141537692891 0.6345696887046975
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3242587931760032 0.6178433959702224
+geo_fused 1 0.3340110605027047 0.5236201878516314
+fused kernels evaluation
+ICD10_I70 63
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.2742972440901837'} 0.22429259188793593 0.5848333333333333
+uniport_seq {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.23961099998565996 0.5348333333333334
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.2514070103153308 0.5028333333333334
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.25847047603066536 0.5878333333333333
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.42884548220807006 0.7115
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.4482841640390367 0.6381666666666667
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4548463370028361 0.6733333333333333
+geo_fused 3 0.4360292209082635 0.6283333333333333
+fused kernels evaluation
+ICD10_J45 178
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.18567718330136684 0.5410418462127741
+uniport_seq {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.16043618134618295 0.5534808005362444
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.25891115374989165 0.587819592071244
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.24135442654605802 0.5824762999138179
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5169172334704696 0.7575026333429092
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5124164516562093 0.7115962845925501
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4527213044561444 0.7414153021162502
+geo_fused 27 0.3736562744464749 0.691985061763861
+fused kernels evaluation
+ICD10_J62 15
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.009543342037065741 0.3875
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.05038417957735824 0.4875
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.1441473194808084 0.6041666666666666
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.472615337587938 0.6166666666666666
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6226018627820683 0.7458333333333332
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.43079931105907643 0.7083333333333334
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.3041835494212373 0.6416666666666667
+geo_fused 1 0.00044308228510200263 0.2416666666666666
+fused kernels evaluation
+ICD10_J80 50
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.15722014722532263 0.5253041031227306
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.2666818743218376 0.5737083827809956
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.09390723973450589 0.48456088999887825
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.2686327273496009 0.588773683216135
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3857457194686478 0.7015785612649156
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.28238885487649285 0.5482157143194526
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.19310851862393166 0.6386161887218
+geo_fused 9 0.2851912894895317 0.6202897411599388
+fused kernels evaluation
+ICD10_K44 58
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.23968877987418344 0.5676954732510288
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.3335108960239496 0.6304526748971193
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.21227716420675535 0.5831275720164609
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.33966570967645254 0.6423868312757203
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.297170098280535 0.641358024691358
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.3148071924724734 0.5899176954732511
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.37352467133216005 0.6491769547325102
+geo_fused 3 0.42898038984079867 0.6878600823045268
+fused kernels evaluation
+ICD10_K51 71
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.28812723722936595 0.6030234315948602
+uniport_seq {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.1710608960983527 0.546787603930461
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.09927227635919544 0.510355253212396
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.18842784111276467 0.46198034769463336
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3565867330547838 0.6373393801965231
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.336833851513972 0.6069538926681783
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.24055704327340854 0.6290249433106575
+geo_fused 9 0.14402920982614306 0.6055933484504913
+fused kernels evaluation
+ICD10_L20 52
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.1351871066031722 0.5061130334486736
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.2578130986826294 0.5773933102652825
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.1571704350038989 0.4911188004613611
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.18256603877220343 0.5137254901960784
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6739570649843731 0.7529411764705882
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5840015850686385 0.6715109573241062
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.48777524282975887 0.6837370242214532
+geo_fused 1 0.49587121720495864 0.6782006920415226
+fused kernels evaluation
+ICD10_L40 67
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.121145609517272 0.5117756860876127
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.09044502055875246 0.46492723212906695
+uniport_esm {'C_num': 81, 'gamma_ratio': 4, 'gamma': '0.05529740926594809'} 0.16693287303814322 0.4741454886714825
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.22025718641787898 0.5719338425760444
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5234270677594308 0.6810656072888488
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.45708238784680216 0.6755572692117036
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.357452918185817 0.5946048514855854
+geo_fused 1 0.28862061165673686 0.6061484952922261
+fused kernels evaluation
+ICD10_M32 94
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.1543055028342821 0.45291174912643
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.23424358638800635 0.5507150968641428
+uniport_esm {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.05529740926594809'} 0.24680220429598096 0.5389770267011973
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.1840483471823665 0.53338427336589
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5500757302484097 0.7018080900642264
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4813280793035514 0.6801994906621393
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4369313700602935 0.6617362743003632
+geo_fused 1 0.3810755607569501 0.6165113792099705
+fused kernels evaluation
+ICD10_M34 35
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.18065859681189922 0.5806941596415282
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.10164841781230984 0.5000973076630971
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.19772944418736074 0.6112416457811195
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2657508156751857 0.5681770714665452
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.35457039568308263 0.7084164008506114
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.29626248355741824 0.6376523695602643
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.25441527837826666 0.6884920634920636
+geo_fused 3 0.24691779663701677 0.6037655692260956
+fused kernels evaluation
+ICD10_M41 24
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.2742972440901837'} 0.07820656237356129 0.4031129343629343
+uniport_seq {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.29572354798199224 0.5716386028886028
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.07545381775793862 0.5090849778349779
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.12651590799576184 0.522915772915773
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.23364707630354942 0.5571553696553696
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4219974946607323 0.6084700772200772
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.2543533295628406 0.45392714142714136
+geo_fused 3 0.1604413054456569 0.4769278206778207
+fused kernels evaluation
+ICD10_N04 70
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.20234721791164012 0.5527875595810379
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.1686379819480183 0.4713064101651058
+uniport_esm {'C_num': 81, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.12177335030910767 0.4361317662948097
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.245032301974102 0.5467741350893525
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.39100899083536395 0.6952607958042741
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.33383495426537624 0.5921355785486221
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3120525907094275 0.6243442588551283
+geo_fused 1 0.16514875790753322 0.508417702711181
+fused kernels evaluation
+ICD10_N17 86
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.32325601586783054 0.55546410608139
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11021022865730408'} 0.18594925386258812 0.5305898491083676
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.21133856580283505 0.5319615912208505
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.21273299019114442 0.5677183356195702
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6262132009183928 0.8089620484682213
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5950844639876682 0.798262459990855
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5300516241835921 0.7672610882487426
+geo_fused 3 0.2589367138714797 0.6663008687700045
+fused kernels evaluation
+ICD10_N18 88
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.1841549770470168 0.519590064309892
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.21509451706063118 0.5147628552800967
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.15983415371527965 0.5216030178314662
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.33211322515836444 0.6024409219452321
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.4332708381489621 0.7194233568155982
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.3675981055214638 0.6182795493140321
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.31831297858305785 0.6867874502572778
+geo_fused 3 0.25629032502624055 0.6508448049396325
+fused kernels evaluation
+ICD10_N46 77
+kernels existing
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.2762654276334902 0.5671312064496641
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.19601623173618624 0.5319524088190914
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.2003780748078292 0.5186298420129535
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.31199634656589514 0.5340638711883673
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.23352824545222015 0.6136055687320372
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '0.8', 'gamma': '0.8'} 0.3140540812320813 0.5817292773164289
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.3271957675141491 0.5788590491465562
+geo_fused 9 0.22510806782639303 0.5495544508641088
+fused kernels evaluation
+ICD10_N80 144
+kernels existing
+uniport_bio {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5485944881803674'} 0.08803707979532953 0.503931353098526
+uniport_seq {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.05510511432865204'} 0.25327683441377163 0.5899365291533392
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11059481853189618'} 0.2384096354522837 0.5587223728180848
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.31539120334409265 0.5992530116886661
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5165151780124985 0.7500271418546943
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5245609837908133 0.725518419814883
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4260025434806775 0.7303106741524469
+geo_fused 9 0.37647640814590905 0.6986818804645809
+fused kernels evaluation
+ICD10_N97 29
+kernels existing
+uniport_bio {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.13714862204509184'} 0.3599652541087362 0.6530864197530865
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.20047947087131693 0.5580246913580247
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.11760766879982908 0.516872427983539
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.09726048823431548 0.37695473251028805
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5226224912206727 0.6962962962962962
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5864560266638906 0.6724279835390946
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.4004466358010683 0.6427983539094649
+geo_fused 1 0.3909092726636087 0.5843621399176955
+fused kernels evaluation
+ICD10_C23 18
+kernels existing
+uniport_bio {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.2742972440901837'} 0.4103298197063516 0.7895046524356869
+uniport_seq {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.22042045731460816'} 0.24762610146516492 0.5626573617952927
+uniport_esm {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.027648704632974044'} 0.2310655781300669 0.49819376026272577
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.09114390603470186 0.6516830870279147
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6737463234756773 0.7062671045429666
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5546645595435331 0.8304734537493158
+collect valid feature:  ['uniport_bio', 'uniport_seq', 'uniport_esm', 'biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4154832985720134 0.7748905309250137
+geo_fused 1 0.31670808296463765 0.6826765188834155
+fused kernels evaluation

@@ -14,8 +14,8 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-test_bug = True
-# test_bug = False
+# test_bug = True
+test_bug = False
 
 
 
@@ -27,10 +27,12 @@ if test_bug:
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
 
     ppi_db ='biogrid'
+    # ppi_db ='string'
+
     if ppi_db == 'string':   
         feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
     elif ppi_db == 'biogrid':
-        feature_list = ['uniport_bio','uniport_seq','uniport_esm','biograd_2019_n2v']
+        feature_list = ['uniport_bio','uniport_seq','uniport_esm','biograd_2019_n2v','biograd_2019_dw_40','biogrid_diffusion_2019']
     elif ppi_db == 'all':
         feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019','biograd_2019_n2v','uniport_bio','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019']
@@ -63,7 +65,9 @@ elif time == 2019:
     if ppi_db == 'string':
         time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
     elif ppi_db == 'biogrid':
-        time_feature_list = ['biograd_2019_n2v','uniport_bio','uniport_seq','uniport_esm']
+        # time_feature_list = ['uniport_bio','uniport_seq','uniport_esm','biograd_2019_n2v','biograd_2019_dw_40','biogrid_diffusion_2019']
+        time_feature_list = ['uniport_bio','uniport_seq','uniport_esm','biograd_2019_n2v','biograd_2019_dw_40','biogrid_diffusion_2019']
+
 
 
 for feature in time_feature_list:

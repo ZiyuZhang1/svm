@@ -405,6 +405,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
     neg_df = df[y == 0]
+    neg_df_add_test_pos = pd.concat([neg_df, test_pos_df])
 
     if 'random_negative' in methods:
         # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc',str(time))
@@ -450,7 +451,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             with open(kernel_pkl_path, 'wb') as f:
                 pickle.dump(kernels_all_dict, f)
       ############################## cv get best gamma
-        args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
+        args_list = [(neg_df_add_test_pos, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
             for fname in feature_list]
 
         with Pool(processes=len(feature_list)) as pool:
@@ -493,7 +494,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             C_num = best_ratios_dict[feature_name]['C_num']
 
             args_list = [
-                (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
+                (neg_df_add_test_pos, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
                 for seed in seed_list]
 
             # Step 2: Use Pool to parallelize
@@ -512,14 +513,14 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             result_df.loc[len(result_df.index)] = ["random_negative",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
             rank_results_per_feature[feature_name] = rankdata(final_y_score, method='average')
             predcition_collection[feature_name] = final_y_score
-        # ################################# early fusion
+        # # ################################# early fusion for now remove early fusion because not sure how to merge diffusion kernels into this stage
         # if len(agg_feature) > 0:
         #     print('early fusion')
         #     for feature_name in agg_feature:
         #         select_columns = [col for col in df.columns if col.startswith(feature_name)]
 
         #     X_concat = df[select_columns].values
-        #     train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=42)
+        #     train_neg_df = neg_df_add_test_pos.sample(n=neg_num, replace=True, random_state=42)
         #     train_df = pd.concat([train_pos_df, train_neg_df])
         #     train_index_loc = df.index.get_indexer(train_df.index)
         #     y_train = np.array([1] * len(train_pos_df) + [0] * len(train_neg_df))
@@ -532,7 +533,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         #     feature_names, K_path = compute_kernels(X_concat, feature_names, early_dir, False)
 
         #     ## read corresponding file and cv get parametrs
-        #     args = neg_df, neg_num, train_pos_df, df, K_path, feature_names
+        #     args = neg_df_add_test_pos, neg_num, train_pos_df, df, K_path, feature_names
         #     feature_names, best_params, best_bedroc, best_auc = select_gamma_ratio(args)
         #     print(feature_names, best_params, best_bedroc, best_auc)
         #     ## evaluation
@@ -541,7 +542,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         #     C_num = best_params['C_num']
 
         #     args_list = [
-        #         (neg_df, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
+        #         (neg_df_add_test_pos, neg_num, train_pos_df, df, X_path, C_num, test_index_loc, seed)
         #         for seed in seed_list]
 
         #     # Step 2: Use Pool to parallelize
@@ -670,7 +671,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             fusion_methods = ['linear_fused','geo_fused']
 
 
-            args_list = [(neg_df, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
+            args_list = [(neg_df_add_test_pos, neg_num, train_pos_df, df, kernels_all_dict[fname], fname)
                 for fname in fusion_methods]
 
             with Pool(processes=len(fusion_methods)) as pool:
@@ -685,7 +686,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                 C_num = C_dict[fusion_method]
                 X_all = kernels_all_dict[fusion_method]
                 args_list = [
-                    (neg_df, neg_num, train_pos_df, df, X_all, C_num, test_index_loc, seed)
+                    (neg_df_add_test_pos, neg_num, train_pos_df, df, X_all, C_num, test_index_loc, seed)
                     for seed in seed_list]
 
                 # Step 2: Use Pool to parallelize

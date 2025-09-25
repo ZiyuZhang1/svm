@@ -6,7 +6,7 @@ source /itf-fi-ml/shared/users/ziyuzh/new_esm_env/bin/activate
 # Change to the directory containing the Python script
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 
-python main_nn_6_features.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_nn_6_features" 2017 > 2019_nn_6_features.log 2>&1
+python main_rf.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_rf" 2017 > 2019_rf.log 2>&1
 
 # python main_nn_ppi_single.py 'ppi_2017_700' "results/2017_nn_700" 2017 > 2017_nn_700.log 2>&1
 

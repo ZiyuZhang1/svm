@@ -2,13 +2,13 @@ import pandas as pd
 import os
 from features_reindex import get_feature, read_data, read_data_timecut
 # from model_nn_uniport import enriched_set, neg_bagging, calculate_jac_sim, eval_bagging
-from model_nn_uni_inductive import enriched_set, neg_bagging_early, neg_bagging_mid, neg_bagging_later, calculate_jac_sim, eval_bagging
+from model_rf_uni_inductive import neg_bagging_early, neg_bagging_later, eval_bagging
 from sklearn.preprocessing import MinMaxScaler
 import sys
-import torch.multiprocessing as mp
-import torch
+import multiprocessing as mp
 import numpy as np
 from collections import defaultdict
+import pickle
 
 def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
@@ -23,11 +23,16 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     test_neg_df = neg_df
     test_df = pd.concat([test_pos_df, test_neg_df])
     test_index_loc = df.index.get_indexer(test_df.index)
+    y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
 
+    predcition_collection = dict()
+    predcition_collection['true_label'] = y_test
+    predcition_collection["test_genes"] = test_df.index
+    predcition_collection["train_pos_genes"] = train_pos_df.index
 
     test_indices = test_df.index.values
-    enrich_train_genes = train_pos_df.index.values
-    enrich_train_set = enriched_set(enrich_train_genes,time)
+    # enrich_train_genes = train_pos_df.index.values
+    # enrich_train_set = enriched_set(enrich_train_genes,time)
 
     num_processes = 2
     base_seed = 42
@@ -54,57 +59,32 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         mean_auc = np.mean(all_aucs)
         print('early fusion validation auc:',mean_auc)
 
-        enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-        enrich_feature_test = enriched_set(enrich_test_genes,time)
-        jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+        # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+        # enrich_feature_test = enriched_set(enrich_test_genes,time)
+        # jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
 
-        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
         # Add results to the result dataframe
-        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_early'+'-'+str(round(jac_sm, 3)), *results]
-
-    if 'mid_fusion' in methods:
-        print('mid fusion')
-
-        # Step 2: Use Pool to parallelize
-        with mp.Pool(processes=num_processes) as pool:
-            bagging_y_scores = pool.map(neg_bagging_mid, args_list)
-
-        # Unzip the list of tuples into two lists
-        all_preds, all_aucs = zip(*bagging_y_scores)  # all_preds is a tuple of arrays, all_aucs is a tuple of scalars
-
-        # Compute mean predictions across all bags
-        final_y_score = np.mean(all_preds, axis=0)
-
-        # Compute mean AUC
-        mean_auc = np.mean(all_aucs)
-        print('early fusion validation auc:',mean_auc)
-
-        enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-        enrich_feature_test = enriched_set(enrich_test_genes,time)
-        jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
-
-        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
-        ranked_predict_index, results = eval_bagging(final_y_score, y_test)
-        # Add results to the result dataframe
-        result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_mid'+'-'+str(round(jac_sm, 3)), *results]
+        result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_early'+'-0-0-0', *results]
+        predcition_collection['RF_early'] = final_y_score
 
     if 'later_fusion' in methods:
         print('later fusion')
-        y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
         # Step 2: Use Pool to parallelize
         with mp.Pool(processes=num_processes) as pool:
             bagging_y_scores = pool.map(neg_bagging_later, args_list)
 
         feature_preds_collection = defaultdict(list)
         fused_preds_collection = []
+        lf_mpl_preds_collection = []
         dict_list = []
         # Collect predictions
-        for feature_preds, fused_preds , auc_records in bagging_y_scores:
+        for feature_preds, fused_preds , auc_records, lf_mpl_preds in bagging_y_scores:
             dict_list.append(auc_records)
             for feature_name, preds in feature_preds.items():
                 feature_preds_collection[feature_name].append(preds)
             fused_preds_collection.append(fused_preds)
+            lf_mpl_preds_collection.append(lf_mpl_preds)
 
         aggregated = defaultdict(list)
 
@@ -120,27 +100,41 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         for feature_name, preds_list in feature_preds_collection.items():
             final_y_score = np.mean(preds_list, axis=0)
             aggregated_feature_preds[feature_name] = final_y_score
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-            enrich_feature_test = enriched_set(enrich_test_genes,time)
-            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            # enrich_feature_test = enriched_set(enrich_test_genes,time)
+            # jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
 
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_'+str(feature_name)+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_'+str(feature_name)+'-0-0-0', *results]
+            predcition_collection['RF_'+str(feature_name)] = final_y_score
 
         # Average fused predictions
         valid_preds = [p for p in fused_preds_collection if p is not None]
         if valid_preds:
             final_y_score = np.mean(valid_preds, axis=0)
 
-            enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
-            enrich_feature_test = enriched_set(enrich_test_genes,time)
-            jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
+            # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
+            # enrich_feature_test = enriched_set(enrich_test_genes,time)
+            # jac_sm = calculate_jac_sim(enrich_train_set,enrich_feature_test)
 
             y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'DL_later'+'-'+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_later_avg'+'-0-0-0', *results]
+            predcition_collection['RF_later_avg'] = final_y_score
+
+        valid_preds = [p for p in lf_mpl_preds_collection if p is not None]
+        if valid_preds:
+            final_y_score = np.mean(valid_preds, axis=0)
+
+            y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
+            ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+            # Add results to the result dataframe
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_later_mlp'+'-0-0-0', *results]
+            predcition_collection['RF_later_mlp'] = final_y_score
+    return predcition_collection
+
 
 def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
     result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
@@ -149,11 +143,10 @@ def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):
         test_idx = df[df['test']==1].index
         train_idx = df[y==1].index.difference(test_idx)
         df.drop(columns='test', inplace=True)
-        one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
-        return result_df
+        predcition_collection = one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+        return result_df, predcition_collection
 
 def main():
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 
     time_spilt = True
@@ -162,18 +155,20 @@ def main():
 
     if test_bug:
         # feature_list = ['uniport_ppi_2017','uniport_exp','uniport_seq','uniport_esm']
-        feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
+        # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
         # feature_list = ['ppi_2019','bioconcept']
         # feature_list = ['ppi_2019_short','bioconcept_short']
+        feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019_2']
         out_path = os.path.join(root,'results/temp')
-        time = 2017
+        time = 2019
     else:
         feature_list = sys.argv[1].split(',')
         out_path = os.path.join(root,sys.argv[2])
+        out_path_pred = out_path+'_pred'
         time = int(sys.argv[3])
 
-    if not os.path.exists(out_path):
-        os.mkdir(out_path)
+    os.makedirs(out_path, exist_ok=True)
+    os.makedirs(out_path_pred, exist_ok=True)
 
     merged_df = None
     for feature in feature_list:
@@ -198,7 +193,10 @@ def main():
 
     all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
     all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
-    methods = ['early_fusion','mid_fusion','later_fusion']
+    
+    methods = ['early_fusion','later_fusion']
+    # methods = ['later_fusion']
+
 
     if time_spilt:
         selected_diseases = []
@@ -218,8 +216,11 @@ def main():
             df, y = read_data_timecut(disease, all_df, merged_df,time)
         else:
             df, y = read_data(disease, all_df, merged_df,time)
-        result_df = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+        result_df, predcition_collection = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
         result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
+        with open(out_path_pred+f'/{disease}_pred.pkl', 'wb') as f:
+            pickle.dump(predcition_collection, f)
+
         # Calculate mean metrics
         mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()
         # Add disease information

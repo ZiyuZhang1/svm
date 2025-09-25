@@ -188,26 +188,35 @@ def calculate_jac_sim(enrich_1, enrich_2):
     return len(intersection) / len(union)
 
 
-def stratified_tensor_split(features, labels, val_ratio=0.2, random_state=42):
+def stratified_tensor_split(features, labels, val_ratio=0.2, random_state=42, max_tries=50):
     indices = np.arange(len(labels))
+    labels_np = labels.cpu().numpy() if torch.is_tensor(labels) else np.array(labels)
 
-    # Move labels to CPU and numpy for stratification
-    labels_np = labels.cpu().numpy()
+    # Try stratified split until val has both classes
+    for attempt in range(max_tries):
+        stratify = labels_np if len(np.unique(labels_np)) > 1 else None
+        train_idx, val_idx = train_test_split(
+            indices,
+            test_size=val_ratio,
+            stratify=stratify,
+            random_state=random_state + attempt
+        )
+        if len(np.unique(labels_np[val_idx])) > 1:
+            break
+    else:
+        # Fallback: if we cannot get both classes, just do a random split
+        print("⚠️ Only one class available for validation — falling back to random split.")
+        train_idx, val_idx = train_test_split(
+            indices, test_size=val_ratio, random_state=random_state
+        )
 
-    # Stratified split
-    train_idx, val_idx = train_test_split(
-        indices,
-        test_size=val_ratio,
-        stratify=labels_np,
-        random_state=random_state
-    )
-
-    if isinstance(features, list):  # Case 1: list of feature arrays
+    # Build datasets
+    if isinstance(features, list):
         train_features = [f[train_idx] for f in features]
         val_features = [f[val_idx] for f in features]
         train_dataset = TensorDataset(*train_features, labels[train_idx])
         val_dataset = TensorDataset(*val_features, labels[val_idx])
-    else:  # Case 2: single feature array
+    else:
         train_dataset = TensorDataset(features[train_idx], labels[train_idx])
         val_dataset = TensorDataset(features[val_idx], labels[val_idx])
 
@@ -532,6 +541,95 @@ def neg_bagging_mid(args):
     return preds.cpu().numpy(), best_val_auc
 
 
+class FusionHead(nn.Module):
+    """Trainable late-fusion head that ingests per-feature probabilities."""
+    def __init__(self, num_sources):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(num_sources, 3),
+            nn.ReLU(),
+            nn.Dropout(p=0.3),
+            nn.Linear(3, 1),
+            nn.Sigmoid()
+        )
+    def forward(self, x):  # x: [B, num_sources] probabilities
+        return self.net(x).squeeze(1)
+
+def safe_train_val_split(X, Y, test_size=0.2, max_tries=100, random_state=42):
+    rng = np.random.RandomState(random_state)
+    for attempt in range(max_tries):
+        X_train, X_val, y_train, y_val = train_test_split(
+            X, Y, test_size=test_size, random_state=rng.randint(0, 1e6), stratify=Y
+        )
+        if len(np.unique(y_val)) > 1:  # at least one pos & one neg
+            return X_train, X_val, y_train, y_val
+    raise ValueError("Could not create a validation split with both classes after many tries")
+
+
+# ---- training function ----
+def later_fusion_train(X, Y, num_epochs=50, lr=1e-3, batch_size=32):
+    """
+    Train a FusionHead on (X, Y).
+    X: numpy array of shape [N, num_sources]
+    Y: numpy array of shape [N] (binary labels: 0/1)
+    """
+    print('train later fusion mlp')
+    # 1. Train/val split
+    X_train, X_val, y_train, y_val = safe_train_val_split(X, Y)
+
+    # Convert to torch tensors
+    X_train = torch.tensor(X_train, dtype=torch.float32)
+    y_train = torch.tensor(y_train, dtype=torch.float32)
+    X_val   = torch.tensor(X_val, dtype=torch.float32)
+    y_val   = torch.tensor(y_val, dtype=torch.float32)
+
+    # 2. Model, loss, optimizer
+    num_sources = X.shape[1]
+    model = FusionHead(num_sources)
+    criterion = nn.BCELoss()
+    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
+
+    # 3. Training loop
+    best_val_auc = 0.0
+    best_model_state = None
+
+    for epoch in range(num_epochs):
+        model.train()
+        # mini-batch training
+        permutation = torch.randperm(X_train.size(0))
+        for i in range(0, X_train.size(0), batch_size):
+            idx = permutation[i:i+batch_size]
+            xb, yb = X_train[idx], y_train[idx]
+
+            # forward
+            preds = model(xb)
+            loss = criterion(preds, yb)
+
+            # backward
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        # validation
+        model.eval()
+        with torch.no_grad():
+            val_probs = model(X_val).numpy()   # probabilities
+            val_auc = roc_auc_score(y_val.numpy(), val_probs)
+
+        # track best
+        if val_auc > best_val_auc:
+            best_val_auc = val_auc
+            best_model_state = model.state_dict()
+
+        print(f"Epoch {epoch+1}/{num_epochs} - Val AUC: {val_auc:.4f}")
+
+    # 4. Return best model
+    best_model = FusionHead(num_sources)
+    best_model.load_state_dict(best_model_state)
+    print(f"Best Val AUC: {best_val_auc:.4f}")
+    return best_model
+
+
 def neg_bagging_later(args):
     neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed = args
     np.random.seed(seed)
@@ -545,6 +643,7 @@ def neg_bagging_later(args):
     train_labels = torch.from_numpy(y_train).to(device).float()
 
     feature_preds = {}
+    train_preds = []
     fusion_candidates = {}
     auc_records = {}
     # Loop through each feature source
@@ -643,12 +742,13 @@ def neg_bagging_later(args):
         model.eval()
         with torch.no_grad():
             preds = model(test_features).squeeze(dim=1).cpu().numpy()
+            train_preds.append(model(train_features).squeeze(dim=1).cpu().numpy())
 
         # Always save individual feature predictions
         feature_preds[feature_name] = preds
 
         # Only include features with val AUC > 0.7 in fusion
-        if best_val_auc >= 0.7:
+        if best_val_auc >= 0:
             fusion_candidates[feature_name] = preds
         else:
             print(f"Feature {feature_name} excluded from fusion due to low Val AUC: {best_val_auc:.4f}")
@@ -661,4 +761,218 @@ def neg_bagging_later(args):
         fused_preds = None
         print("No features passed the AUC threshold. Fusion result is None.")
 
-    return feature_preds, fused_preds, auc_records
+    lf_mlp = later_fusion_train(np.array(train_preds).T,y_train)
+
+    lf_mlp.eval()  # set to evaluation mode
+    with torch.no_grad():
+        X_new = torch.tensor(all_preds.T, dtype=torch.float32)
+        probs = lf_mlp(X_new).numpy() 
+
+    return feature_preds, fused_preds, auc_records, probs
+
+
+# def neg_bagging_later(args):
+#     """
+#     Train per-feature models; then train a small classifier to fuse their DECISIONS (probabilities).
+#     Model selection uses validation AUC of the fused outputs (not train).
+#     """
+#     (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed) = args
+
+#     np.random.seed(seed); torch.manual_seed(seed)
+#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+#     # 1) Prepare training frame and labels
+#     train_neg_df = neg_df.sample(n=neg_num, replace=True, random_state=seed)
+#     train_df = pd.concat([train_pos_df, train_neg_df])
+#     y_train_np = np.array([1]*len(train_pos_df) + [0]*len(train_neg_df), dtype=np.int64)
+#     y_train = torch.from_numpy(y_train_np).float().to(device)
+
+#     # 2) Train each per-feature base model and collect VAL predictions
+#     feature_models = {}
+#     feature_val_preds = {}   # dict[name] -> np.array shape [N_val]
+#     feature_test_preds = {}  # dict[name] -> np.array shape [N_test]
+#     feature_val_auc = {}     # dict[name] -> float
+
+#     # We’ll build a single stratified split once, and reuse indices across features
+#     from sklearn.model_selection import StratifiedShuffleSplit
+#     sss = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=seed)
+#     idx = np.arange(len(train_df))
+#     (train_idx, val_idx), = sss.split(idx, y_train_np)
+
+#     # For convenience, keep validation labels on CPU for roc_auc_score
+#     y_val_np = y_train_np[val_idx]
+#     y_val_t = torch.from_numpy(y_val_np).float().to(device)
+
+#     # Define your per-feature model (same as your SimpleModel)
+#     class SimpleModel(nn.Module):
+#         def __init__(self, input_size):
+#             super().__init__()
+#             self.net = nn.Sequential(
+#                 nn.Linear(input_size, 128),
+#                 nn.ReLU(),
+#                 nn.Linear(128, 1),
+#                 nn.Sigmoid()
+#             )
+#         def forward(self, x):
+#             return self.net(x).squeeze(1)
+
+#     auc_threshold = 0
+#     kept_feature_names = []
+
+#     for feature_name in feature_list:
+#         cols = [c for c in train_df.columns if c.startswith(feature_name)]
+#         if not cols:
+#             continue
+
+#         X = train_df[cols].values.astype(np.float32)
+#         X_train = torch.from_numpy(X[train_idx]).to(device)
+#         X_val   = torch.from_numpy(X[val_idx]).to(device)
+
+#         # Dataloaders
+#         batch_size = 32
+#         train_dataset = torch.utils.data.TensorDataset(X_train, y_train[train_idx])
+#         val_dataset   = torch.utils.data.TensorDataset(X_val,   y_val_t)
+#         train_loader  = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+#         val_loader    = DataLoader(val_dataset,   batch_size=batch_size, shuffle=False)
+
+#         # Train base model with early stopping on val loss
+#         model = SimpleModel(input_size=X.shape[1]).to(device)
+#         crit = nn.BCELoss()
+#         opt  = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-4)
+#         best_state = None
+#         best_val_loss = float('inf')
+#         best_val_auc  = 0.0
+#         patience = 5
+#         wait = 0
+#         max_epochs = 100
+
+#         for epoch in range(max_epochs):
+#             model.train()
+#             for xb, yb in train_loader:
+#                 opt.zero_grad()
+#                 p = model(xb)
+#                 loss = crit(p, yb)
+#                 loss.backward()
+#                 opt.step()
+
+#             # validate
+#             model.eval()
+#             val_losses, val_probs = [], []
+#             with torch.no_grad():
+#                 for xb, yb in val_loader:
+#                     p = model(xb)
+#                     val_losses.append(crit(p, yb).item() * xb.size(0))
+#                     val_probs.append(p.detach().cpu().numpy())
+#             val_loss = np.sum(val_losses) / len(val_dataset)
+#             val_probs = np.concatenate(val_probs, axis=0)
+#             val_auc = roc_auc_score(y_val_np, val_probs)
+
+#             if val_loss < best_val_loss:
+#                 best_val_loss = val_loss
+#                 best_val_auc  = val_auc
+#                 best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+#                 wait = 0
+#             else:
+#                 wait += 1
+#                 if wait >= patience:
+#                     break
+
+#         # restore best
+#         model.load_state_dict({k: v.to(device) for k, v in best_state.items()})
+#         feature_models[feature_name] = model
+#         feature_val_auc[feature_name] = best_val_auc
+
+#         # Store validation predictions (will be used to train fusion head)
+#         model.eval()
+#         with torch.no_grad():
+#             val_probs = model(X_val).detach().cpu().numpy()
+#         feature_val_preds[feature_name] = val_probs
+
+#         # Also pre-compute TEST predictions per feature
+#         test_df_local = df.iloc[test_index_loc]
+#         test_cols = [c for c in test_df_local.columns if c.startswith(feature_name)]
+#         if not test_cols:
+#             continue
+#         X_test = torch.from_numpy(test_df_local[test_cols].values.astype(np.float32)).to(device)
+#         with torch.no_grad():
+#             test_probs = model(X_test).detach().cpu().numpy()
+#         feature_test_preds[feature_name] = test_probs
+
+#     # 3) Choose which feature streams to include in fusion (based on their *validation* AUC)
+#     kept_feature_names = [n for n in feature_val_preds.keys() if feature_val_auc.get(n, 0) >= auc_threshold]
+
+#     # Edge case: if none pass, fall back to best single feature
+#     if not kept_feature_names:
+#         if not feature_val_auc:
+#             # no features available at all
+#             return feature_test_preds, None, feature_val_auc, None
+#         best_name = max(feature_val_auc, key=feature_val_auc.get)
+#         kept_feature_names = [best_name]
+
+#     # 4) Build the matrix of validation decisions for the fusion head
+#     Z_val = np.column_stack([feature_val_preds[n] for n in kept_feature_names]).astype(np.float32)  # [N_val, K]
+#     y_val = torch.from_numpy(y_val_np).float().to(device)
+#     Z_val_t = torch.from_numpy(Z_val).to(device)
+
+#     # Optional: split Z_val again to early-stop the fusion head (simple 80/20 split here)
+#     N = Z_val.shape[0]
+#     perm = np.random.RandomState(seed).permutation(N)
+#     cut = int(0.8 * N)
+#     tr_idx, fu_val_idx = perm[:cut], perm[cut:]
+
+#     Ztr = Z_val_t[tr_idx]; ytr = y_val[tr_idx]
+#     Zvl = Z_val_t[fu_val_idx]; yvl = y_val[fu_val_idx]
+
+#     # 5) Train the trainable late-fusion head on decision-level inputs
+#     fusion = FusionHead(num_sources=Z_val.shape[1]).to(device)
+#     crit = nn.BCELoss()
+#     opt  = torch.optim.Adam(fusion.parameters(), lr=5e-3, weight_decay=1e-4)
+#     patience, wait = 10, 0
+#     best_state = None
+#     best_auc  = 0.0
+#     max_epochs = 200
+#     batch_size = 64
+
+#     def batches(X, y, bs):
+#         for i in range(0, X.size(0), bs):
+#             yield X[i:i+bs], y[i:i+bs]
+
+#     for epoch in range(max_epochs):
+#         fusion.train()
+#         for xb, yb in batches(Ztr, ytr, batch_size):
+#             opt.zero_grad()
+#             p = fusion(xb)
+#             loss = crit(p, yb)
+#             loss.backward()
+#             opt.step()
+
+#         # meta-validation for the fusion head
+#         fusion.eval()
+#         with torch.no_grad():
+#             pv = fusion(Zvl).detach().cpu().numpy()
+#         val_auc = roc_auc_score(yvl.detach().cpu().numpy(), pv)
+
+#         if val_auc > best_auc:
+#             best_auc = val_auc
+#             best_state = {k: v.cpu().clone() for k, v in fusion.state_dict().items()}
+#             wait = 0
+#         else:
+#             wait += 1
+#             if wait >= patience:
+#                 break
+
+#     fusion.load_state_dict({k: v.to(device) for k, v in best_state.items()})
+
+#     # 6) Produce fused TEST predictions (decision-level inputs from base models → fusion head)
+#     Z_test = np.column_stack([feature_test_preds[n] for n in kept_feature_names]).astype(np.float32)
+#     Z_test_t = torch.from_numpy(Z_test).to(device)
+#     fusion.eval()
+#     with torch.no_grad():
+#         fused_test_probs = fusion(Z_test_t).detach().cpu().numpy()
+
+#     # # Also return the raw per-feature test preds for analysis
+#     # return feature_test_preds, fused_test_probs, feature_val_auc, {
+#     #     "kept_features": kept_feature_names,
+#     #     "fusion_val_auc": float(best_auc)
+#     # }
+#     return fused_test_probs, best_auc

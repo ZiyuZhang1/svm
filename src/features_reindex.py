@@ -40,7 +40,10 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/biograd/biograd_full_emb.csv'))
     elif feature_name == 'biograd_2019_n2v':
         feature_df = pd.read_csv(os.path.join(root,'data/biograd/uniport_biogrid_emb_2019.csv'))
-
+    elif feature_name == 'biograd_2019_dw_40':
+        feature_df = pd.read_csv(os.path.join(root,'data/biograd/biograd_entrz_2019_dw_emb_40.txt'))
+    elif feature_name == 'biogrid_diffusion_2019':
+        feature_df = pd.read_csv(os.path.join(root,'data/biogrid_diffusion_2019.csv'))
     elif feature_name == 'prose':
         feature_df = pd.read_csv(os.path.join(root, 'data/prose/data/prose_emb_full.csv'))
     # elif feature_name == 'ppi_400':
@@ -108,5 +111,6 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/bioconcept/uniport_bio_emb.csv'))
     elif feature_name == 'diffusion_2019':
         feature_df = pd.read_csv(os.path.join(root,'data/diffusion_2019.csv'))
-
+    elif feature_name == 'diffusion_2019_2':
+        feature_df = pd.read_csv(os.path.join(root,'data/diffusion_2019_2.csv'))
     return feature_df
