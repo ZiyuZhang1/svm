@@ -14,12 +14,14 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
+    neg_df = df[y == 0]
+    neg_df_add_test_pos = pd.concat([neg_df, test_pos_df])
+
 
     ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
     print('train test split')
 
     # Work with DataFrames to maintain indices
-    neg_df = df[y == 0]
     test_neg_df = neg_df
     test_df = pd.concat([test_pos_df, test_neg_df])
     test_index_loc = df.index.get_indexer(test_df.index)
@@ -39,7 +41,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     seed_list = [base_seed + i for i in range(num_processes)]
 
     args_list = [
-        (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
+        (neg_df_add_test_pos, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
         for seed in seed_list]
     
     if 'early_fusion' in methods:
@@ -81,7 +83,9 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # Collect predictions
         for feature_preds, fused_preds , auc_records, lf_mpl_preds in bagging_y_scores:
             dict_list.append(auc_records)
-            for feature_name, preds in feature_preds.items():
+            for feature_name, preds_path in feature_preds.items():
+                with open(preds_path, "rb") as f:  # 'rb' = read binary
+                    preds = pickle.load(f)
                 feature_preds_collection[feature_name].append(preds)
             fused_preds_collection.append(fused_preds)
             lf_mpl_preds_collection.append(lf_mpl_preds)
@@ -131,8 +135,8 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_later_mlp'+'-0-0-0', *results]
-            predcition_collection['RF_later_mlp'] = final_y_score
+            result_df.loc[len(result_df.index)] = ["random_negative",fold,'RF_later_rf'+'-0-0-0', *results]
+            predcition_collection['RF_later_rf'] = final_y_score
     return predcition_collection
 
 
@@ -160,6 +164,7 @@ def main():
         # feature_list = ['ppi_2019_short','bioconcept_short']
         feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019_2']
         out_path = os.path.join(root,'results/temp')
+        out_path_pred = out_path+'_pred'
         time = 2019
     else:
         feature_list = sys.argv[1].split(',')
@@ -194,8 +199,8 @@ def main():
     all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
     all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
     
-    methods = ['early_fusion','later_fusion']
-    # methods = ['later_fusion']
+    # methods = ['early_fusion','later_fusion']
+    methods = ['later_fusion']
 
 
     if time_spilt:
@@ -210,7 +215,7 @@ def main():
                     selected_diseases.append(disease_id)
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases:
+    for disease in selected_diseases[10:]:
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:
             df, y = read_data_timecut(disease, all_df, merged_df,time)

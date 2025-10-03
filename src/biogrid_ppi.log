@@ -1,0 +1,599 @@
+['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019'] 46 14173
+ICD10_C16 90
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.2852781077405208 0.5482059564628371
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.45051825850921995 0.6662970906090173
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5003584832815691 0.6946194874329431
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.48760622804218645 0.6884528994620737
+geo_fused 1 0.3799617738569146 0.6050688183715706
+fused kernels evaluation
+ICD10_C18 49
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.10977480086105862 0.49343484044976577
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5919809332291606 0.7337285434300359
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5892842364762394 0.8228827557185766
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.45432431386907424 0.7251086392877437
+geo_fused 1 0.4678274826813305 0.7046527270407866
+fused kernels evaluation
+ICD10_C43 47
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.34553186467903335 0.6961247816510975
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.6407012982845242 0.7834743107769424
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.6177660504393764 0.7355975165185691
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.7199768477499875 0.8014852472089314
+geo_fused 1 0.6706253941946191 0.8143979741019214
+fused kernels evaluation
+ICD10_C50 529
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.23105046166314655 0.5568797706134044
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3525497712074144 0.6339898369316002
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.3926759967715922 0.6762392380453547
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.41587558866948915 0.6441230493143121
+geo_fused 1 0.3820201875252726 0.6498143297971417
+fused kernels evaluation
+ICD10_C67 188
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.26131892301198917 0.5576345744348757
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5009255168006476 0.7102817483564037
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5108664077785836 0.6881563402208354
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5139943216187065 0.720272712079788
+geo_fused 1 0.5507805873474565 0.7046183721715636
+fused kernels evaluation
+ICD10_C81 22
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.09389499503241083 0.4407407407407407
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.5458503332511064 0.7685185185185186
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.46403564605221587 0.5814814814814815
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4162012438000582 0.6462962962962964
+geo_fused 3 0.5951909070675667 0.7037037037037036
+fused kernels evaluation
+ICD10_D57 21
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2143060410077788 0.44115524997877936
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6729881448991747 0.6848315083609201
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6924301367716422 0.628299804770393
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.44177354594822726 0.6120448179271709
+geo_fused 1 0.6305213685261758 0.67167473049826
+fused kernels evaluation
+ICD10_D66 15
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.26008699668105156 0.596195652173913
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.40934798122511035 0.5075483091787439
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6880222308680417 0.6766908212560386
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.35826172575216136 0.5516002415458937
+geo_fused 1 0.3223098915458039 0.6680857487922705
+fused kernels evaluation
+ICD10_D83 22
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.2582902596157993 0.6300611153552329
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5085575627693613 0.6477803242509125
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '1', 'gamma': '1'} 0.6282179293313376 0.7204396910279263
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.6569290368492947 0.6868262456497751
+geo_fused 3 0.6446858040189011 0.7321110262286732
+fused kernels evaluation
+ICD10_E11 260
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.3487395069571229 0.6228642117464713
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.4310367634567312 0.7016377811532953
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4254034592648035 0.6712504036636212
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4639353367137638 0.7245308365266157
+geo_fused 1 0.4780749748143965 0.7354191018791744
+fused kernels evaluation
+ICD10_E66 253
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2303724055823534 0.5602983433057075
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.46505456052397304 0.7104647315091154
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4202802686219885 0.6570202530880893
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.44463591034722844 0.6957630667085196
+geo_fused 1 0.47363831727511846 0.6868609932239796
+fused kernels evaluation
+ICD10_F20 788
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2361297725377133 0.5757702169625247
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.447953251824493 0.7074003944773176
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.45794645087957425 0.7147904339250494
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4510290493255899 0.7314773175542406
+geo_fused 1 0.45437224849334656 0.7292909270216962
+fused kernels evaluation
+ICD10_F31 415
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2434285585590222 0.5792197206204843
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.45104242503236897 0.6889502492318741
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4555178536856201 0.6800010982540572
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.4548835099346314 0.7163251166926896
+geo_fused 1 0.4480646752844775 0.7138647891842872
+fused kernels evaluation
+ICD10_F72 30
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.09729759472434403 0.5039470333587981
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.12145966918997991 0.7351243527714116
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.2', 'gamma': '0.2'} 0.35236377006982417 0.5581444699091758
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.2453205289698568 0.5920337832102538
+geo_fused 1 0.11087576951029876 0.5744206773618538
+fused kernels evaluation
+ICD10_F90 24
+kernels existing
+biograd_2019_n2v {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.016131087139340194 0.3788314176245211
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.24161296110339928 0.601464148877942
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.5', 'gamma': '0.5'} 0.3217136790956648 0.6081691297208538
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.06469038090527895 0.5265051997810618
+geo_fused 1 0.09477131615538614 0.4196496989600438
+fused kernels evaluation
+ICD10_G10 32
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.23847361990854243 0.6351044380456146
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6200732339961057 0.7250057132410074
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '1', 'gamma': '1'} 0.529913627167862 0.6411101969925498
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.6197454327578048 0.740281777046483
+geo_fused 1 0.45164045209736764 0.6479100964395083
+fused kernels evaluation
+ICD10_G20 134
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2487242148293102 0.603133608815427
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5480590615511914 0.7233471074380166
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5464854790523992 0.7132920110192837
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5323985361196997 0.7394283746556475
+geo_fused 1 0.5542062140344971 0.7370867768595041
+fused kernels evaluation
+ICD10_G24 20
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.22699768591352565 0.5212250712250712
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.1672006375710411 0.4749762583095916
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.2', 'gamma': '0.2'} 0.23107153408414038 0.47886989553656223
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.04992975674615521 0.4432573599240266
+geo_fused 1 0.08182242386298812 0.45607787274453937
+fused kernels evaluation
+ICD10_G30 179
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.20393993941869168 0.5491330665845902
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5507389701987376 0.741848773981738
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5298732817163506 0.722027290448343
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5361683518494971 0.7294962552580282
+geo_fused 1 0.5251274796424383 0.7460551964707088
+fused kernels evaluation
+ICD10_G40 117
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.14047882017854843 0.5020062227238791
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.4533370615896474 0.5739914643258368
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '1', 'gamma': '1'} 0.35480837666224124 0.5709388719020333
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3280962083629298 0.5389376561789762
+geo_fused 1 0.4009011824641286 0.5752976232533273
+fused kernels evaluation
+ICD10_G43 22
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.10239745229441577 0.3970654121863799
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.20265685061368052'} 0.4562049014702299 0.6737951228878648
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.2871412987472408 0.5413706477214542
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.28298087629816576 0.5577316948284691
+geo_fused 3 0.44607632448605933 0.6234399001536098
+fused kernels evaluation
+ICD10_G91 21
+kernels existing
+biograd_2019_n2v {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.0458143295175962 0.4603014592933947
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.10132842530684026'} 0.08474922000413854 0.5937099974398361
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '0.1', 'gamma': '0.1'} 0.3624503325446775 0.6794594854070661
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.02695664457016099 0.45221294162826425
+geo_fused 3 0.08982219608722077 0.4175547235023041
+fused kernels evaluation
+ICD10_I10 33
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.24238308477356854'} 0.15777251596223987 0.5218013952892985
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3441433647907342 0.7089173707117254
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5580041864551094 0.7634088581669228
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.40234030826332284 0.7165978622631849
+geo_fused 1 0.3586234535520205 0.6956285202252944
+fused kernels evaluation
+ICD10_I25 133
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2116188049460487 0.590705824821847
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3103381225449609 0.6617217363073716
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.3923321761687411 0.6556875351764854
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.35160360475725216 0.6743937489793844
+geo_fused 3 0.3524291409230271 0.6854096066803249
+fused kernels evaluation
+ICD10_I26 15
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.004510727144568918 0.29378019323671495
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6912659419751925 0.8452898550724638
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7001126939822407 0.6935990338164251
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.622932637334975 0.6547101449275362
+geo_fused 1 0.6319002182229184 0.6240942028985508
+fused kernels evaluation
+ICD10_I42 150
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.14949500976274824 0.5146787046504798
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5841669483945428 0.742346139156818
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.6004787989654043 0.7543020989773296
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5386981577067119 0.7331778301082926
+geo_fused 1 0.5473208165342742 0.7307997841730817
+fused kernels evaluation
+ICD10_I50 152
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2693785394918643 0.5878615276107109
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5507953749423639 0.7651388333099466
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5579215681178171 0.7213448836526016
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5413843292521124 0.7647963688226213
+geo_fused 1 0.5895970371166824 0.7678968320811524
+fused kernels evaluation
+ICD10_I63 37
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.06972878584755961 0.47104888747203183
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.656018828449429 0.7204282745632833
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5744141537692891 0.6345696887046975
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5296744980501865 0.7191863107994027
+geo_fused 1 0.49504325659603615 0.6770754004097078
+fused kernels evaluation
+ICD10_I70 63
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.25847047603066536 0.5878333333333333
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.42884548220807006 0.7115
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.4482841640390367 0.6381666666666667
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.42370736134613524 0.711
+geo_fused 3 0.5209284047241233 0.7316666666666668
+fused kernels evaluation
+ICD10_J45 178
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.24135442654605802 0.5824762999138179
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5169172334704696 0.7575026333429092
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5124116624247522 0.7115962845925501
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5348307776901672 0.7571770564014172
+geo_fused 1 0.5693659928560443 0.7578665134539883
+fused kernels evaluation
+ICD10_J62 15
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.472615337587938 0.6166666666666666
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6226018627820683 0.7458333333333332
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.43079931105907643 0.7083333333333334
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4565157858741367 0.7916666666666666
+geo_fused 1 0.35557947108594185 0.6875
+fused kernels evaluation
+ICD10_J80 50
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.2686327273496009 0.588773683216135
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3857457194686478 0.7015785612649156
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.28238885487649285 0.5482157143194526
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.44057600870300934 0.700619129012641
+geo_fused 1 0.4228128116256893 0.634862041022371
+fused kernels evaluation
+ICD10_K44 58
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.33966570967645254 0.6423868312757203
+biograd_2019_dw_40 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.297170098280535 0.641358024691358
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.3148071924724734 0.5899176954732511
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.3295917044411094 0.6981481481481482
+geo_fused 3 0.44624477440550875 0.7267489711934156
+fused kernels evaluation
+ICD10_K51 71
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.18842784111276467 0.46198034769463336
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.3565867330547838 0.6373393801965231
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.336833851513972 0.6069538926681783
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.32475123373478465 0.616175359032502
+geo_fused 1 0.2676618365414228 0.5596371882086167
+fused kernels evaluation
+ICD10_L20 52
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.18256603877220343 0.5137254901960784
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6739570649843731 0.7529411764705882
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5840015850686385 0.6715109573241062
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.6287909554233839 0.7471741637831603
+geo_fused 3 0.6238533858649324 0.7681660899653978
+fused kernels evaluation
+ICD10_L40 67
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.22025718641787898 0.5719338425760444
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5234270677594308 0.6810656072888488
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.45708238784680216 0.6755572692117036
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.5150927195661725 0.6932299917773923
+geo_fused 1 0.45927836663706767 0.6814971470934775
+fused kernels evaluation
+ICD10_M32 94
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.1840483471823665 0.53338427336589
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5500757302484097 0.7018080900642264
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4813280793035514 0.6801994906621393
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4753440559969066 0.6792782443897253
+geo_fused 1 0.4773599878798276 0.6688647087704308
+fused kernels evaluation
+ICD10_M34 35
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.2657508156751857 0.5681770714665452
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.35457039568308263 0.7084164008506114
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.29626248355741824 0.6376523695602643
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.3038519870094936 0.7056443191311611
+geo_fused 3 0.28131043965601205 0.7012203804966964
+fused kernels evaluation
+ICD10_M41 24
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.12651590799576184 0.522915772915773
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.23364707630354942 0.5571553696553696
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.4219974946607323 0.6084700772200772
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.2976676950377051 0.5652572215072215
+geo_fused 1 0.3227517959839556 0.57258151008151
+fused kernels evaluation
+ICD10_N04 70
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.245032301974102 0.5467741350893525
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.39100899083536395 0.6952607958042741
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.33383495426537624 0.5921355785486221
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 9 0.5107085869823925 0.6880295738991391
+geo_fused 1 0.3694007380784512 0.6158168155450764
+fused kernels evaluation
+ICD10_N17 86
+kernels existing
+biograd_2019_n2v {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.21273299019114442 0.5677183356195702
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6262132009183928 0.8089620484682213
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.5950844639876682 0.798262459990855
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.6070052954693721 0.8129858253315043
+geo_fused 1 0.563180165361869 0.8155464106081389
+fused kernels evaluation
+ICD10_N18 88
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.33211322515836444 0.6024409219452321
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.4332708381489621 0.7194233568155982
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.3675981055214638 0.6182795493140321
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4230948311645512 0.7493308096756373
+geo_fused 1 0.4283136633911299 0.7466461938444696
+fused kernels evaluation
+ICD10_N46 77
+kernels existing
+biograd_2019_n2v {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.31199634656589514 0.5340638711883673
+biograd_2019_dw_40 {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.23352824545222015 0.6136055687320372
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '0.8', 'gamma': '0.8'} 0.3140540812320813 0.5817292773164289
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.3277516562249774 0.6187977217416075
+geo_fused 3 0.24825142796715138 0.5333763203144191
+fused kernels evaluation
+ICD10_N80 144
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.31539120334409265 0.5992530116886661
+biograd_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5165151780124985 0.7500271418546943
+biogrid_diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.524560912864084 0.725518419814883
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.557472303894326 0.7639916299912648
+geo_fused 1 0.5804957065036128 0.7456476948920759
+fused kernels evaluation
+ICD10_N97 29
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.12119154238678427'} 0.09726048823431548 0.37695473251028805
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.5226224912206727 0.6962962962962962
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5864560266638906 0.6724279835390946
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 1 0.4443902218836025 0.637037037037037
+geo_fused 1 0.41324043624097384 0.5670781893004114
+fused kernels evaluation
+ICD10_C23 18
+kernels existing
+biograd_2019_n2v {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.4847661695471371'} 0.09114390603470186 0.6516830870279147
+biograd_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.40531370122736105'} 0.6737463234756773 0.7062671045429666
+biogrid_diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5546645595435331 0.8304734537493158
+collect valid feature:  ['biograd_2019_n2v', 'biograd_2019_dw_40', 'biogrid_diffusion_2019']
+evaluation
+middle fusion
+kernel fusion
+grid search C for fused kernels
+linear_fused 3 0.6278433868625907 0.7797071702244116
+geo_fused 3 0.5426028721446734 0.7180760810071155
+fused kernels evaluation

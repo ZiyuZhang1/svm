@@ -1,26 +1,126 @@
-['uniport_ppi_2019', 'ppi_2019_dw_40', 'uniport_bio', 'uniport_seq', 'uniport_esm', 'diffusion_2019_2'] 54 15686
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'uniport_bio', 'uniport_seq', 'uniport_esm', 'diffusion_2019_2'] 48 15686
 ICD10_C16 90
 train test split
 early fusion
-early fusion validation auc: 0.8940527065527066
+early fusion validation auc: 0.8656166293780974
 later fusion
 ICD10_C18 50
 train test split
 early fusion
-early fusion validation auc: 0.88390625
+early fusion validation auc: 0.8606481611596701
 later fusion
 ICD10_C43 47
 train test split
 early fusion
-early fusion validation auc: 0.8846913580246915
-later fusion
-ICD10_C45 38
-train test split
-early fusion
-early fusion validation auc: 0.8265444015444015
+early fusion validation auc: 0.8642617433735855
 later fusion
 ICD10_C50 544
 train test split
 early fusion
-early fusion validation auc: 0.7816491988179037
+early fusion validation auc: 0.7621715983179662
 later fusion
+ICD10_C67 191
+train test split
+early fusion
+early fusion validation auc: 0.837954010525499
+later fusion
+ICD10_C81 23
+train test split
+early fusion
+early fusion validation auc: 0.9035058243727598
+later fusion
+ICD10_D57 22
+train test split
+early fusion
+early fusion validation auc: 0.9302721088435373
+later fusion
+ICD10_D66 15
+train test split
+early fusion
+early fusion validation auc: 0.9240640096618358
+later fusion
+ICD10_D83 23
+train test split
+early fusion
+early fusion validation auc: 0.9193877551020408
+later fusion
+ICD10_E11 269
+train test split
+early fusion
+early fusion validation auc: 0.9067037874621651
+later fusion
+ICD10_E66 259
+train test split
+early fusion
+early fusion validation auc: 0.8826056686111707
+later fusion
+Process SpawnPoolWorker-43:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 204, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 424, in _send_bytes
+    self._send(header)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 388, in _send
+    n = write(self._handle, buf)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 204, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 431, in _send_bytes
+    self._send(header + buf)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 388, in _send
+    n = write(self._handle, buf)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-44:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 204, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 424, in _send_bytes
+    self._send(header)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 388, in _send
+    n = write(self._handle, buf)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 204, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 431, in _send_bytes
+    self._send(header + buf)
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 388, in _send
+    n = write(self._handle, buf)
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+/usr/lib64/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

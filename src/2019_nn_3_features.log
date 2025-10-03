@@ -1,0 +1,91 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019_2', 'string_id'] 48 15686
+ICD10_N18 91
+train test split
+early fusion
+early fusion validation auc: 0.969725343320849
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.9734706616729089
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+ICD10_N46 86
+train test split
+early fusion
+early fusion validation auc: 0.9331487341772152
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.8837025316455696
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+ICD10_N80 151
+train test split
+early fusion
+early fusion validation auc: 0.9124444444444444
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.8836666666666666
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+ICD10_N97 29
+train test split
+early fusion
+early fusion validation auc: 0.8035714285714286
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.7964285714285715
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+ICD10_C23 18
+train test split
+early fusion
+early fusion validation auc: 0.9074074074074074
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.9074074074074074
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+ICD10_C53 15
+train test split
+early fusion
+early fusion validation auc: 1.0
+mid fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+early fusion validation auc: 0.9807692307692308
+later fusion
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")
+/itf-fi-ml/shared/users/ziyuzh/new_esm_env/lib64/python3.11/site-packages/torch/nn/init.py:511: UserWarning: Initializing zero-element tensors is a no-op
+  warnings.warn("Initializing zero-element tensors is a no-op")

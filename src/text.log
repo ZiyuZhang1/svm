@@ -1,0 +1,189 @@
+['text'] 47 12684
+ICD10_C16 87
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.7797659054122631 0.8967925724229727
+collect valid feature:  ['text']
+ICD10_C18 48
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.7204181770023125 0.8564102564102564
+collect valid feature:  ['text']
+ICD10_C43 44
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.6865334804919753 0.8078265891646174
+collect valid feature:  ['text']
+ICD10_C50 514
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.37254621842219793 0.6695220361837938
+collect valid feature:  ['text']
+ICD10_C67 184
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.7165033883020762 0.8287045087056858
+collect valid feature:  ['text']
+ICD10_C81 23
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.7351988895292697 0.9074420762928828
+collect valid feature:  ['text']
+ICD10_D57 22
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.7612872667577942 0.8993197278911564
+collect valid feature:  ['text']
+ICD10_D83 23
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.7863808755507886 0.8870748299319727
+collect valid feature:  ['text']
+ICD10_E11 264
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8234197704910087 0.8816173826925965
+collect valid feature:  ['text']
+ICD10_E66 254
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.7002205063920074 0.8537765519910968
+collect valid feature:  ['text']
+ICD10_F01 33
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.1359190335582485 0.8009259259259259
+collect valid feature:  ['text']
+ICD10_F20 803
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.7365448257068228 0.8238110834223331
+collect valid feature:  ['text']
+ICD10_F31 423
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.7593635272552421 0.8537478867051761
+collect valid feature:  ['text']
+ICD10_F72 29
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.532640956034757 0.8099270011034716
+collect valid feature:  ['text']
+ICD10_F90 21
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.5782339463722133 0.6906666666666667
+collect valid feature:  ['text']
+ICD10_G10 32
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8260149576187993 0.9452145893322363
+collect valid feature:  ['text']
+ICD10_G20 131
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.813500590958658 0.8833964305029746
+collect valid feature:  ['text']
+ICD10_G24 18
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.4443039973079068 0.6266146688560482
+collect valid feature:  ['text']
+ICD10_G30 180
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.840724823887053 0.9217595147390197
+collect valid feature:  ['text']
+ICD10_G40 116
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.5740763400914664 0.7574792243767313
+collect valid feature:  ['text']
+ICD10_G43 23
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.4348782885256579 0.772689452124936
+collect valid feature:  ['text']
+ICD10_G91 19
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.3033477145026042 0.6302681992337166
+collect valid feature:  ['text']
+ICD10_I10 35
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.82059849397812 0.9461420932009168
+collect valid feature:  ['text']
+ICD10_I25 132
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.8243595926291555 0.9203189300411522
+collect valid feature:  ['text']
+ICD10_I26 15
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.9777440630452018 0.9565217391304349
+collect valid feature:  ['text']
+ICD10_I42 150
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.7359519250159487 0.8640712237814999
+collect valid feature:  ['text']
+ICD10_I50 151
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.7697159968848118 0.8949254799850284
+collect valid feature:  ['text']
+ICD10_I63 36
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.9083076618597493 0.9624724690514164
+collect valid feature:  ['text']
+ICD10_I70 64
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8659703312681177 0.9519663310868903
+collect valid feature:  ['text']
+ICD10_J45 185
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.8712212810660146 0.9545309296929475
+collect valid feature:  ['text']
+ICD10_J62 16
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.41768383103565815 0.7756854256854258
+collect valid feature:  ['text']
+ICD10_J80 50
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.5317533673742459 0.8109774548181212
+collect valid feature:  ['text']
+ICD10_K44 59
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8323486090961513 0.9148613008738867
+collect valid feature:  ['text']
+ICD10_K51 74
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.8404541529928288 0.9188705234159781
+collect valid feature:  ['text']
+ICD10_L20 56
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.9433634346968987 0.9426010678871091
+collect valid feature:  ['text']
+ICD10_L40 72
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.7514556656192978 0.877726201002063
+collect valid feature:  ['text']
+ICD10_M32 92
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.8324527489868933 0.9056296296296296
+collect valid feature:  ['text']
+ICD10_M34 35
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8113375089001734 0.9066249905065694
+collect valid feature:  ['text']
+ICD10_M41 25
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.7470100297394029 0.8169180965233597
+collect valid feature:  ['text']
+ICD10_N04 67
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.630531886303693 0.7955639601292925
+collect valid feature:  ['text']
+ICD10_N17 86
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8657825254166188 0.9502514860539552
+collect valid feature:  ['text']
+ICD10_N18 91
+kernels existing
+text {'C_num': 1, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8709706526396944 0.9558252072947745
+collect valid feature:  ['text']
+ICD10_N46 74
+kernels existing
+text {'C_num': 3, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.6913874825955433 0.7796864321716998
+collect valid feature:  ['text']
+ICD10_N80 146
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.5042342633506245 0.7777541993387093
+collect valid feature:  ['text']
+ICD10_N97 27
+kernels existing
+text {'C_num': 27, 'gamma_ratio': 2, 'gamma': '10.903780249103585'} 0.8512148313259923 0.9276196928635952
+collect valid feature:  ['text']
+ICD10_C23 18
+kernels existing
+text {'C_num': 9, 'gamma_ratio': 8, 'gamma': '2.7259450622758963'} 0.8986595109571622 0.9653256704980843
+collect valid feature:  ['text']
+ICD10_C53 15
+kernels existing
+text {'C_num': 81, 'gamma_ratio': 4, 'gamma': '5.451890124551793'} 0.6543571261185911 0.9291666666666667
+collect valid feature:  ['text']

@@ -1,0 +1,88 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'uniport_bio', 'uniport_seq', 'uniport_esm', 'diffusion_2019_2'] 48 15686
+ICD10_E66 259
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_F01 33
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_F20 834
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_F31 441
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_F72 31
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_F90 24
+train test split
+later fusion
+ICD10_G10 32
+train test split
+later fusion
+ICD10_G20 137
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_G24 22
+train test split
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_bio.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_seq.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_esm.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_G30 183
+train test split
+later fusion
+ICD10_G40 120
+train test split
+later fusion
+ICD10_G43 23
+train test split
+later fusion
+ICD10_G91 22
+train test split
+later fusion
+ICD10_I10 35
+train test split
+later fusion
+ICD10_I25 138
+train test split
+later fusion

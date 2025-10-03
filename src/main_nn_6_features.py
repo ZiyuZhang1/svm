@@ -15,11 +15,14 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
     neg_num = 5*len(train_pos_df)
+    neg_df = df[y == 0]
+    neg_df_add_test_pos = pd.concat([neg_df, test_pos_df])
+
     ######################### using precalculated kernels to train svm and evaluate, get weights for kernels
     print('train test split')
 
     # Work with DataFrames to maintain indices
-    neg_df = df[y == 0]
+    
     test_neg_df = neg_df
     test_df = pd.concat([test_pos_df, test_neg_df])
     test_index_loc = df.index.get_indexer(test_df.index)
@@ -39,7 +42,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     seed_list = [base_seed + i for i in range(num_processes)]
 
     args_list = [
-        (neg_df, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
+        (neg_df_add_test_pos, neg_num, train_pos_df, df, y, feature_list, test_index_loc, seed)
         for seed in seed_list]
 
     if 'early_fusion' in methods:
@@ -182,6 +185,7 @@ def main():
         # feature_list = ['ppi_2019_short','bioconcept_short']
         feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019_2']
         out_path = os.path.join(root,'results/temp')
+        out_path_pred = out_path+'_pred'
         time = 2019
     else:
         feature_list = sys.argv[1].split(',')
@@ -230,9 +234,12 @@ def main():
                 # print(type(time),type(sub_df['first_pub_year'].max()))
                 if sub_df['first_pub_year'].max() > time and sub_df['first_pub_year'].min() <= time and len(sub_df[sub_df['first_pub_year']<time]) >=5:
                     selected_diseases.append(disease_id)
+    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019_2','string_id']
+    merged_df = merged_df[[c for c in merged_df.columns if any(c.startswith(f) for f in feature_list)]]
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases:
+    for disease in selected_diseases[42:]:
+        # disease = 'ICD10_N97'
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:
             df, y = read_data_timecut(disease, all_df, merged_df,time)
@@ -250,6 +257,7 @@ def main():
         mean_df['disease'] = disease
         # Append to all_results list
         all_results.append(mean_df)
+        # break
 
     # Concatenate all results into a single DataFrame
     final_result = pd.concat(all_results, ignore_index=True)

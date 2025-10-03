@@ -664,7 +664,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         else:
             add_feature_list = list(add_feature_list)
         ####### calculate full kernels for each feature and their logm
-            print('calculating kernels...')
+            print('calculating kernels...',add_feature_list)
             X_all = []
             
             for feature_name in add_feature_list:
@@ -679,7 +679,6 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                     args_list)
             del X_all
 
-            kernels_all_dict = dict()
             for fname, K_s_path_dict in kernel_results:
                 kernels_all_dict[fname] = K_s_path_dict
                 
