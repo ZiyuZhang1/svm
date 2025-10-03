@@ -11,6 +11,7 @@ data/prose/
 *.pt
 *.pptx
 *.gaf
+data/pre_processed_features/text_minning_2015
 data/disgent_2020/gene_info
 codes/OMIM_process.ipynb
-results
+resultsdata/pre_processed_features/text_minning_2015/text.csv.bak.bak
