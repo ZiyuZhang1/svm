@@ -1,0 +1,153 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'uniport_bio', 'uniport_seq', 'uniport_esm', 'diffusion_2019_2'] 48 15686
+ICD10_E66 259
+train test split
+early fusion
+early fusion validation auc: 0.8826056686111707
+ICD10_F01 33
+train test split
+early fusion
+early fusion validation auc: 0.7766203703703703
+ICD10_F20 834
+train test split
+early fusion
+early fusion validation auc: 0.852940606060606
+ICD10_F31 441
+train test split
+early fusion
+early fusion validation auc: 0.8576041089146502
+ICD10_F72 31
+train test split
+early fusion
+early fusion validation auc: 0.7360544217687075
+ICD10_F90 24
+train test split
+early fusion
+early fusion validation auc: 0.7144567597153805
+ICD10_G10 32
+train test split
+early fusion
+early fusion validation auc: 0.894609557109557
+ICD10_G20 137
+train test split
+early fusion
+early fusion validation auc: 0.8812181069958847
+ICD10_G24 22
+train test split
+early fusion
+early fusion validation auc: 0.798148148148148
+ICD10_G30 183
+train test split
+early fusion
+early fusion validation auc: 0.9115053791478728
+ICD10_G40 120
+train test split
+early fusion
+early fusion validation auc: 0.855585381930333
+ICD10_G43 23
+train test split
+early fusion
+early fusion validation auc: 0.8240527393753201
+ICD10_G91 22
+train test split
+early fusion
+early fusion validation auc: 0.6834839996604702
+ICD10_I10 35
+train test split
+early fusion
+early fusion validation auc: 0.952487055428232
+ICD10_I25 138
+train test split
+early fusion
+early fusion validation auc: 0.9295401524544862
+ICD10_I26 15
+train test split
+early fusion
+early fusion validation auc: 0.9126358695652175
+ICD10_I42 154
+train test split
+early fusion
+early fusion validation auc: 0.9226530976018199
+ICD10_I50 155
+train test split
+early fusion
+early fusion validation auc: 0.9232828555976204
+ICD10_I63 37
+train test split
+early fusion
+early fusion validation auc: 0.9403796512760569
+ICD10_I70 65
+train test split
+early fusion
+early fusion validation auc: 0.94600218416966
+ICD10_J45 187
+train test split
+early fusion
+early fusion validation auc: 0.9505636489767604
+ICD10_J62 16
+train test split
+early fusion
+early fusion validation auc: 0.850487012987013
+ICD10_J80 52
+train test split
+early fusion
+early fusion validation auc: 0.8617070357554786
+ICD10_K44 60
+train test split
+early fusion
+early fusion validation auc: 0.9410808846450756
+ICD10_K51 74
+train test split
+early fusion
+early fusion validation auc: 0.9170454545454545
+ICD10_L20 58
+train test split
+early fusion
+early fusion validation auc: 0.912927054478301
+ICD10_L40 73
+train test split
+early fusion
+early fusion validation auc: 0.8982766374788678
+ICD10_M32 97
+train test split
+early fusion
+early fusion validation auc: 0.9151875450553089
+ICD10_M34 38
+train test split
+early fusion
+early fusion validation auc: 0.9111623547437931
+ICD10_M41 27
+train test split
+early fusion
+early fusion validation auc: 0.814871273712737
+ICD10_N04 73
+train test split
+early fusion
+early fusion validation auc: 0.852946089722233
+ICD10_N17 88
+train test split
+early fusion
+early fusion validation auc: 0.9474721465063973
+ICD10_N18 91
+train test split
+early fusion
+early fusion validation auc: 0.9577281024370818
+ICD10_N46 86
+train test split
+early fusion
+early fusion validation auc: 0.8759453838970379
+ICD10_N80 151
+train test split
+early fusion
+early fusion validation auc: 0.8525666666666667
+ICD10_N97 29
+train test split
+early fusion
+early fusion validation auc: 0.9047325102880659
+ICD10_C23 18
+train test split
+early fusion
+early fusion validation auc: 0.9530275041050904
+ICD10_C53 15
+train test split
+early fusion
+early fusion validation auc: 0.925

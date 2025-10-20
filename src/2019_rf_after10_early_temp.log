@@ -1,0 +1,9 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'uniport_bio', 'uniport_seq', 'uniport_esm', 'diffusion_2019_2'] 48 15686
+ICD10_C23 18
+train test split
+early fusion
+early fusion validation auc: 0.9530275041050904
+ICD10_C53 15
+train test split
+early fusion
+early fusion validation auc: 0.925

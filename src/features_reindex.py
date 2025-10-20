@@ -115,4 +115,9 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/diffusion_2019_2.csv'))
     elif feature_name == 'text':
         feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/text_mining_processed.csv'))
+    elif feature_name == 'text_2':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/text_mining_processed_14300.csv'))
+    elif feature_name == 'text_3':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/text_mining_processed_14164.csv'))
+  
     return feature_df

@@ -33,7 +33,7 @@ merged_df = None
 if time == 2017:
     time_feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
 elif time == 2019:
-    time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019','text']
+    time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019','text_3']
 
 for feature in time_feature_list:
     feature_df = get_feature(root, feature)
@@ -59,14 +59,14 @@ for feature in time_feature_list:
         merged_df = pd.merge(merged_df, feature_df, on='string_id', how='inner')
     del feature_df  # Free memory
 
-feature_list = ['text']
+feature_list = ['text_3']
 selected_merged_df = merged_df[[col for col in merged_df.columns if any(item in col for item in feature_list)]]
 
 X_concat = selected_merged_df.values
 
 kernel_path_dict = dict()
-early_dir = '/itf-fi-ml/shared/users/ziyuzh/svm/results/text_kernel'
-feature_names, K_path = compute_kernels(X_concat, 'text', early_dir, True)
+early_dir = '/itf-fi-ml/shared/users/ziyuzh/svm/results/text_3_kernel'
+feature_names, K_path = compute_kernels(X_concat, 'text_3', early_dir, True)
 kernel_path_dict[feature_names] = K_path
 
 save_path_dict = early_dir+'/kernel_dict.pkl'

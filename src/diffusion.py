@@ -118,11 +118,13 @@ for setting in ['2019']:
         G = nx.read_edgelist(file_path, nodetype=str, create_using=nx.Graph())
 
     nodes_order = list(G.nodes())
-    save_dir = f'/itf-fi-ml/shared/users/ziyuzh/svm/results/df/{setting}'
+    # save_dir = f'/itf-fi-ml/shared/users/ziyuzh/svm/results/df/{setting}'
+    save_dir = f'/itf-fi-ml/shared/users/ziyuzh/svm/results/df_align_text/{setting}'
     os.makedirs(save_dir, exist_ok=True)
 
 
-    with open('/itf-fi-ml/shared/users/ziyuzh/svm/results/df/2019_map.pkl', 'rb') as f:
+    with open('/itf-fi-ml/shared/users/ziyuzh/svm/results/df_align_text/2019_map.pkl', 'rb') as f:
+    # with open('/itf-fi-ml/shared/users/ziyuzh/svm/results/df/2019_map.pkl', 'rb') as f:
         map_info = pickle.load(f) #[merge_groups, delete_ensp, map_dict_aligned]
 
     for beta in [0.1,0.2,0.5,0.8,1,2]:

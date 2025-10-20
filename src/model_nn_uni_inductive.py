@@ -393,7 +393,11 @@ def neg_bagging_early(args):
     with torch.no_grad():
         preds = model(test_features).squeeze(dim=1)
 
-    return preds.cpu().numpy(), best_val_auc
+    train_index_loc = df.index.get_indexer(train_df.index)
+    overlap = set(train_index_loc)&set(test_index_loc)
+    mask_loc = [np.where(test_index_loc == i)[0][0] for i in overlap]
+
+    return (preds.cpu().numpy(), mask_loc), best_val_auc
 
 
 
@@ -540,8 +544,11 @@ def neg_bagging_mid(args):
     with torch.no_grad():
         preds = model(test_features).squeeze(dim=1)
 
-    return preds.cpu().numpy(), best_val_auc
+    train_index_loc = df.index.get_indexer(train_df.index)
+    overlap = set(train_index_loc)&set(test_index_loc)
+    mask_loc = [np.where(test_index_loc == i)[0][0] for i in overlap]
 
+    return (preds.cpu().numpy(), mask_loc), best_val_auc
 
 class FusionHead(nn.Module):
     """Trainable late-fusion head that ingests per-feature probabilities."""
@@ -776,7 +783,11 @@ def neg_bagging_later(args):
         X_new = torch.tensor(all_preds.T, dtype=torch.float32)
         probs = lf_mlp(X_new).numpy() 
 
-    return feature_preds, fused_preds, auc_records, probs
+    train_index_loc = df.index.get_indexer(train_df.index)
+    overlap = set(train_index_loc)&set(test_index_loc)
+    mask_loc = [np.where(test_index_loc == i)[0][0] for i in overlap]
+
+    return feature_preds, fused_preds, auc_records, probs, mask_loc
 
 
 # def neg_bagging_later(args):

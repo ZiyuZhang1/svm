@@ -1,0 +1,99 @@
+Running GNN pipeline on device: cuda
+Loaded 8,260,362 edges after filtering.
+['uniport_ppi_2019'] 48 15686
+ICD10_C16 90
+gcn validation auc: 0.8655
+ICD10_C18 50
+gcn validation auc: 0.8453
+ICD10_C43 47
+gcn validation auc: 0.8987
+ICD10_C50 544
+gcn validation auc: 0.7261
+ICD10_C67 191
+gcn validation auc: 0.8291
+ICD10_C81 23
+gcn validation auc: 0.9461
+ICD10_D57 22
+gcn validation auc: 0.8714
+ICD10_D66 15
+gcn validation auc: 0.9810
+ICD10_D83 23
+gcn validation auc: 0.9494
+ICD10_E11 269
+gcn validation auc: 0.8398
+ICD10_E66 259
+gcn validation auc: 0.8422
+ICD10_F01 33
+gcn validation auc: 0.7700
+ICD10_F20 834
+gcn validation auc: 0.7600
+ICD10_F31 441
+gcn validation auc: 0.7931
+ICD10_F72 31
+gcn validation auc: 0.6333
+ICD10_F90 24
+gcn validation auc: 0.6402
+ICD10_G10 32
+gcn validation auc: 0.8664
+ICD10_G20 137
+gcn validation auc: 0.8080
+ICD10_G24 22
+gcn validation auc: 0.6147
+ICD10_G30 183
+gcn validation auc: 0.8555
+ICD10_G40 120
+gcn validation auc: 0.8006
+ICD10_G43 23
+gcn validation auc: 0.8454
+ICD10_G91 22
+gcn validation auc: 0.6487
+ICD10_I10 35
+gcn validation auc: 0.8400
+ICD10_I25 138
+gcn validation auc: 0.8543
+ICD10_I26 15
+gcn validation auc: 0.8845
+ICD10_I42 154
+gcn validation auc: 0.8223
+ICD10_I50 155
+gcn validation auc: 0.9043
+ICD10_I63 37
+gcn validation auc: 0.9468
+ICD10_I70 65
+gcn validation auc: 0.9347
+ICD10_J45 187
+gcn validation auc: 0.9263
+ICD10_J62 16
+gcn validation auc: 0.9641
+ICD10_J80 52
+gcn validation auc: 0.8769
+ICD10_K44 60
+gcn validation auc: 0.9125
+ICD10_K51 74
+gcn validation auc: 0.9054
+ICD10_L20 58
+gcn validation auc: 0.9489
+ICD10_L40 73
+gcn validation auc: 0.8901
+ICD10_M32 97
+gcn validation auc: 0.8871
+ICD10_M34 38
+gcn validation auc: 0.9380
+ICD10_M41 27
+gcn validation auc: 0.7844
+ICD10_N04 73
+gcn validation auc: 0.8440
+ICD10_N17 88
+gcn validation auc: 0.9297
+ICD10_N18 91
+gcn validation auc: 0.9394
+ICD10_N46 86
+gcn validation auc: 0.8481
+ICD10_N80 151
+gcn validation auc: 0.8089
+ICD10_N97 29
+gcn validation auc: 0.9256
+ICD10_C23 18
+gcn validation auc: 0.9716
+ICD10_C53 15
+gcn validation auc: 0.8938

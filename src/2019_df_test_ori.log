@@ -1,0 +1,204 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm'] 48 15686
+ICD10_C16 90
+kernels existing
+uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7183005053156061 0.8637985358168844
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7181693220750089 0.8717225406827854
+diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.7177387828981919 0.8828655346239445
+uniport_bio {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.13568965917980907'} 0.5464803304826745 0.8091873298295317
+uniport_seq {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.5277660633941801 0.7882928601583036
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.4629102431274626 0.7251731307541706
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_C18 50
+kernels existing
+uniport_ppi_2019 {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7064095355742465 0.8373816081616593
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7437456742489269 0.8504374994144815
+diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5466015489102789 0.8064322719054178
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.6462648014853456 0.7718345699483807
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.6333428200801157 0.7066177641625212
+uniport_esm {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.501226726999303 0.7070803237683032
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_C43 47
+kernels existing
+uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.2526347763086942'} 0.8580470527655292 0.8961772328548645
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.8874068852338176 0.899554520771626
+diffusion_2019 {'C_num': 3, 'gamma_ratio': '2', 'gamma': '2'} 0.8955744382322884 0.8867122826004405
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.8309335613321642 0.8313057739044581
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.7027329103499614 0.7447584396597554
+uniport_esm {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.6089695456986163 0.6879649407609932
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_C50 544
+kernels existing
+uniport_ppi_2019 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.4617241390339477 0.6697529673495106
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.5260671622551726 0.6787701091778867
+diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.5535520519735594 0.7521623394159175
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.40861628354822205 0.6485076450239832
+uniport_seq {'C_num': 27, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.3401891701163067 0.6195697182464669
+uniport_esm {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.11355235622105712'} 0.32108461096477997 0.5982253771073647
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_C67 191
+kernels existing
+uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.746404901762935 0.836633509467824
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.24069017366708123'} 0.7451055668958225 0.8482307878970267
+diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7509125874936283 0.8629885120854975
+uniport_bio {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.6775325916492623 0.8097653076073685
+uniport_seq {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.22444018226022353'} 0.45836484719639464 0.6588350907106163
+uniport_esm {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.05677617811052856'} 0.4929808380758278 0.7114866736065443
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_C81 23
+kernels existing
+uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7899869646188455 0.9191308243727598
+ppi_2019_dw_40 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7716536493164113 0.9200668842805939
+diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.7920964502625326 0.9171306963645675
+uniport_bio {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.13568965917980907'} 0.4483015692869406 0.7774257552483359
+uniport_seq {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.05611004556505588'} 0.5696233275393379 0.7432315668202766
+uniport_esm {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.36426389582562163 0.6501536098310291
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_D57 22
+kernels existing
+uniport_ppi_2019 {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.5052695526173884'} 0.7236929820888632 0.9414965986394558
+ppi_2019_dw_40 {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.48138034733416246'} 0.7186458365471663 0.9156462585034012
+diffusion_2019 {'C_num': 1, 'gamma_ratio': '2', 'gamma': '2'} 0.878231730969994 0.9673469387755103
+uniport_bio {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.5427586367192363'} 0.7739036656200263 0.9482993197278912
+uniport_seq {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.11222009113011176'} 0.44050397063976243 0.7605442176870749
+uniport_esm {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.02838808905526428'} 0.5338491750694381 0.7768707482993197
+collect valid feature:  ['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019', 'uniport_bio', 'uniport_seq', 'uniport_esm']
+ICD10_D66 15
+kernels existing
+Process ForkPoolWorker-673:
+Process ForkPoolWorker-676:
+Process ForkPoolWorker-677:
+Process ForkPoolWorker-678:
+Process ForkPoolWorker-674:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+KeyboardInterrupt
+  File "/usr/lib64/python3.11/multiprocessing/queues.py", line 365, in get
+    res = self._reader.recv_bytes()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 220, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 434, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/connection.py", line 399, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Process ForkPoolWorker-675:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib64/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_diff_ori.py", line 288, in select_gamma_ratio
+    with open(pre_kernel_path, 'rb') as f:
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_diff_ori.py", line 460, in one_fold_evaluate
+    best_ratios = pool.map(select_gamma_ratio, args_list)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 768, in get
+    self.wait(timeout)
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 765, in wait
+    self._event.wait(timeout)
+  File "/usr/lib64/python3.11/threading.py", line 629, in wait
+    signaled = self._cond.wait(timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/main_diff_ori.py", line 122, in <module>
+    result_df, prediction_collection = evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_diff_ori.py", line 764, in evaluate_disease
+    predcition_collection = one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,1)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/itf-fi-ml/shared/users/ziyuzh/svm/src/model_diff_ori.py", line 459, in one_fold_evaluate
+    with Pool(processes=len(feature_list)) as pool:
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 739, in __exit__
+    self.terminate()
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 657, in terminate
+    self._terminate()
+  File "/usr/lib64/python3.11/multiprocessing/util.py", line 227, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 695, in _terminate_pool
+    cls._help_stuff_finish(inqueue, task_handler, len(pool))
+  File "/usr/lib64/python3.11/multiprocessing/pool.py", line 675, in _help_stuff_finish
+    inqueue._rlock.acquire()
+KeyboardInterrupt

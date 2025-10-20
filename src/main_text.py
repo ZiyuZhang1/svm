@@ -23,7 +23,7 @@ if test_bug:
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
-    feature_list = ['text']
+    feature_list = ['text_3']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
 
@@ -31,7 +31,7 @@ if test_bug:
     # dga = 'opentarget'
     dga = 'disgenet'
 
-    out_path = os.path.join(root,'results/temp_text')
+    out_path = os.path.join(root,'results/temp_text_3')
     out_path_pred = out_path+'_pred/pred.pkl'
     time = 2019
 else:

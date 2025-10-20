@@ -18,4 +18,9 @@ cd /itf-fi-ml/shared/users/ziyuzh/svm/src
 # python main_diffusion.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_test_pos_to_neg_mid" 2019 'disgenet' > 2019_df_test_pos_to_neg_mid.log 2>&1
 # python main_diffusion.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019' "results/2019_df_test_pos_to_neg_ppi_mid" 2019 'disgenet' > 2019_df_test_pos_to_neg_ppi_mid.log 2>&1
 
-python main_diffusion_ori.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_test_pos_to_neg_mid_ori" 2019 'disgenet' > 2019_df_test_pos_to_neg_mid_ori.log 2>&1
+# python main_diffusion_ori.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_test_pos_to_neg_mid_ori" 2019 'disgenet' > 2019_df_test_pos_to_neg_mid_ori.log 2>&1
+# python main_diffusion.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_test" 2019 'disgenet' > 2019_df_test.log 2>&1
+# python main_diff_ori.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_test_ori" 2019 'disgenet' > 2019_df_test_ori.log 2>&1
+
+python main_diffusion.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019,uniport_bio,uniport_seq,uniport_esm' "results/2019_df_oob_mid" 2019 'disgenet' > 2019_df_oob_mid.log 2>&1
+python main_diffusion.py 'uniport_ppi_2019,ppi_2019_dw_40,diffusion_2019' "results/2019_df_oob_ppi_mid" 2019 'disgenet' > 2019_df_oob_ppi_mid.log 2>&1

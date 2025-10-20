@@ -411,7 +411,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc',str(time))
         # kernel_dir_path = os.path.join('/itf-fi-ml/shared/users/ziyuzh/svm/results/dw_auc_norm_test',str(time))
 
-        kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/text_kernel'
+        kernel_dir_path = '/itf-fi-ml/shared/users/ziyuzh/svm/results/text_3_kernel'
         
         os.makedirs(kernel_dir_path, exist_ok=True)
         kernel_pkl_path = os.path.join(kernel_dir_path,'kernel_dict.pkl')

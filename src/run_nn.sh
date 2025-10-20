@@ -5,8 +5,9 @@ source /itf-fi-ml/shared/users/ziyuzh/new_esm_env/bin/activate
 
 # Change to the directory containing the Python script
 cd /itf-fi-ml/shared/users/ziyuzh/svm/src
+python main_nn_non_para.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_nn_oob" 2019 > 2019_nn_oob.log 2>&1
 
-python main_nn_6_features.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_nn_3_features" 2019 > 2019_nn_3_features.log 2>&1
+# python main_nn_6_features.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_nn_3_features" 2019 > 2019_nn_3_features.log 2>&1
 
 # python main_biogrid.py 'biograd_2019_n2v,biograd_2019_dw_40,biogrid_diffusion_2019' "results/biogrid_ppi" 2019 'disgenet' 'biogrid'> biogrid_ppi.log 2>&1
 # python main_nn_6_features.py 'uniport_ppi_2019,ppi_2019_dw_40,uniport_bio,uniport_seq,uniport_esm,diffusion_2019_2' "results/2019_nn_6_features" 2019 > 2019_nn_6_features.log 2>&1

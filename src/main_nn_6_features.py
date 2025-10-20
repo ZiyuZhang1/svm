@@ -11,6 +11,24 @@ import torch
 import numpy as np
 from collections import defaultdict
 
+def mask_mean(all_preds):
+    arrays = np.stack([arr for arr, _ in all_preds])          # shape: (n, d)
+
+    # Build mask matrix (True = masked / skip)
+    mask = np.zeros_like(arrays, dtype=bool)
+    for i, (_, m) in enumerate(all_preds):
+        mask[i, m] = True
+
+    # Invert mask: True where we keep
+    keep = ~mask
+
+    # Compute sum and count efficiently
+    sum_arr = np.where(keep, arrays, 0).sum(axis=0)
+    count_arr = keep.sum(axis=0)
+
+    final_y_score = np.array(sum_arr / count_arr)
+    return final_y_score
+
 def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,methods,result_df,fold):
     train_pos_df = df.loc[train_idx]
     test_pos_df = df.loc[test_idx]
@@ -37,7 +55,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
     # enrich_train_genes = train_pos_df.index.values
     # enrich_train_set = enriched_set(enrich_train_genes,time)
 
-    num_processes = 2
+    num_processes = 20
     base_seed = 42
     seed_list = [base_seed + i for i in range(num_processes)]
 
@@ -55,8 +73,10 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # Unzip the list of tuples into two lists
         all_preds, all_aucs = zip(*bagging_y_scores)  # all_preds is a tuple of arrays, all_aucs is a tuple of scalars
 
-        # Compute mean predictions across all bags
-        final_y_score = np.mean(all_preds, axis=0)
+        final_y_score = mask_mean(all_preds)
+
+        # # Compute mean predictions across all bags
+        # final_y_score = np.mean(all_preds, axis=0)
 
         # Compute mean AUC
         mean_auc = np.mean(all_aucs)
@@ -80,8 +100,10 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # Unzip the list of tuples into two lists
         all_preds, all_aucs = zip(*bagging_y_scores)  # all_preds is a tuple of arrays, all_aucs is a tuple of scalars
 
-        # Compute mean predictions across all bags
-        final_y_score = np.mean(all_preds, axis=0)
+        final_y_score = mask_mean(all_preds)
+
+        # # Compute mean predictions across all bags
+        # final_y_score = np.mean(all_preds, axis=0)
 
         # Compute mean AUC
         mean_auc = np.mean(all_aucs)
@@ -106,13 +128,15 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         fused_preds_collection = []
         lf_mpl_preds_collection = []
         dict_list = []
+        # mask_loc_bag = []
         # Collect predictions
-        for feature_preds, fused_preds , auc_records, lf_mpl_preds in bagging_y_scores:
+        for feature_preds, fused_preds , auc_records, lf_mpl_preds , mask_loc in bagging_y_scores:
             dict_list.append(auc_records)
             for feature_name, preds in feature_preds.items():
-                feature_preds_collection[feature_name].append(preds)
-            fused_preds_collection.append(fused_preds)
-            lf_mpl_preds_collection.append(lf_mpl_preds)
+                feature_preds_collection[feature_name].append([preds,mask_loc])
+            fused_preds_collection.append([fused_preds,mask_loc])
+            lf_mpl_preds_collection.append([lf_mpl_preds,mask_loc])
+            # mask_loc_bag.append(mask_loc)
 
         aggregated = defaultdict(list)
 
@@ -126,7 +150,8 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # Average predictions per feature
         aggregated_feature_preds = {}
         for feature_name, preds_list in feature_preds_collection.items():
-            final_y_score = np.mean(preds_list, axis=0)
+            final_y_score = mask_mean(preds_list)
+            # final_y_score = np.mean(preds_list, axis=0)
             aggregated_feature_preds[feature_name] = final_y_score
             # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
             # enrich_feature_test = enriched_set(enrich_test_genes,time)
@@ -140,7 +165,9 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # Average fused predictions
         valid_preds = [p for p in fused_preds_collection if p is not None]
         if valid_preds:
-            final_y_score = np.mean(valid_preds, axis=0)
+            final_y_score = mask_mean(valid_preds)
+
+            # final_y_score = np.mean(valid_preds, axis=0)
 
             # enrich_test_genes = test_indices[np.argsort(final_y_score)[::-1]][:200]
             # enrich_feature_test = enriched_set(enrich_test_genes,time)
@@ -154,7 +181,9 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
 
         valid_preds = [p for p in lf_mpl_preds_collection if p is not None]
         if valid_preds:
-            final_y_score = np.mean(valid_preds, axis=0)
+            final_y_score = mask_mean(valid_preds)
+
+            # final_y_score = np.mean(valid_preds, axis=0)
 
             y_test = np.array([1] * len(test_pos_df) + [0] * len(test_neg_df))
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
@@ -234,11 +263,12 @@ def main():
                 # print(type(time),type(sub_df['first_pub_year'].max()))
                 if sub_df['first_pub_year'].max() > time and sub_df['first_pub_year'].min() <= time and len(sub_df[sub_df['first_pub_year']<time]) >=5:
                     selected_diseases.append(disease_id)
-    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019_2','string_id']
-    merged_df = merged_df[[c for c in merged_df.columns if any(c.startswith(f) for f in feature_list)]]
+
+    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019_2','string_id']
+    # merged_df = merged_df[[c for c in merged_df.columns if any(c.startswith(f) for f in feature_list)]]
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases[42:]:
+    for disease in selected_diseases:
         # disease = 'ICD10_N97'
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:

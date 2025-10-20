@@ -200,7 +200,7 @@ def main():
     all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
     
     # methods = ['early_fusion','later_fusion']
-    methods = ['later_fusion']
+    methods = ['early_fusion']
 
 
     if time_spilt:
@@ -215,7 +215,8 @@ def main():
                     selected_diseases.append(disease_id)
     print(feature_list, len(selected_diseases),len(merged_df))
     all_results = []
-    for disease in selected_diseases[10:]:
+    # for disease in selected_diseases[10:]:
+    for disease in ['ICD10_C23','ICD10_C53']:
         print(disease,len(all_df[all_df['disease_id']==disease]))
         if time_spilt:
             df, y = read_data_timecut(disease, all_df, merged_df,time)
