@@ -8,7 +8,7 @@ import torch
 from sklearn.preprocessing import MinMaxScaler
 
 from features_reindex import get_feature, read_data_timecut
-from model_gnn import neg_bagging_gcn, eval_bagging
+from model_gnn import neg_bagging_gcn, neg_bagging_sage, eval_bagging
 
 
 METRIC_COLUMNS = [
@@ -96,7 +96,7 @@ def evaluate_disease(disease, time, feature_list, df, y, edge_index, methods, ti
         'train_pos_genes': train_pos_idx.to_numpy(),
     }
 
-    num_iterations = 20
+    num_iterations = 15
     base_seed = 42
     seed_list = [base_seed + i for i in range(num_iterations)]
 
@@ -118,6 +118,7 @@ def evaluate_disease(disease, time, feature_list, df, y, edge_index, methods, ti
     result_df = pd.DataFrame(columns=RESULT_COLUMNS)
 
     if 'gcn' in methods:
+        print('GCN model')
         bagging_y_scores = [neg_bagging_gcn(args) for args in args_list]
 
         all_preds, all_aucs = zip(*bagging_y_scores)
@@ -128,6 +129,29 @@ def evaluate_disease(disease, time, feature_list, df, y, edge_index, methods, ti
         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
         result_df.loc[len(result_df.index)] = ['random_negative', 1, 'gcn-0-0-0', *results]
         predcition_collection['gcn'] = final_y_score
+    # if 'gat' in methods:
+    #     bagging_y_scores = [neg_bagging_gat(args) for args in args_list]
+
+    #     all_preds, all_aucs = zip(*bagging_y_scores)
+    #     final_y_score = mask_mean(all_preds)
+    #     mean_auc = float(np.mean(all_aucs))
+    #     print(f'gat validation auc: {mean_auc:.4f}')
+
+    #     ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+    #     result_df.loc[len(result_df.index)] = ['random_negative', 1, 'gat-0-0-0', *results]
+    #     predcition_collection['gat'] = final_y_score
+    if 'sage' in methods:
+        print('graphsage model')
+        bagging_y_scores = [neg_bagging_sage(args) for args in args_list]
+
+        all_preds, all_aucs = zip(*bagging_y_scores)
+        final_y_score = mask_mean(all_preds)
+        mean_auc = float(np.mean(all_aucs))
+        print(f'gat validation auc: {mean_auc:.4f}')
+
+        ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+        result_df.loc[len(result_df.index)] = ['random_negative', 1, 'sage-0-0-0', *results]
+        predcition_collection['sage'] = final_y_score
 
     return result_df, predcition_collection
 
@@ -143,7 +167,8 @@ def main():
 
     if test_bug:
         feature_list = ['uniport_ppi_2019']
-        out_path = os.path.join(root, 'results/2019_gnn')
+        # out_path = os.path.join(root, 'results/2019_gnn')
+        out_path = os.path.join(root, 'results/2019_gnn_improved_sage')
         out_path_pred = out_path + '_pred'
         time = 2019
     else:
@@ -218,9 +243,13 @@ def main():
     print(feature_list, len(selected_diseases), len(merged_df))
 
     all_results = []
-    methods = ['gcn']
+    # methods = ['gcn']
+    # methods = ['gcn','sage']
+    methods = ['sage']
 
-    for disease in selected_diseases:
+
+    for disease in selected_diseases[:1]:
+        # disease = 'ICD10_C50'
         print(disease, len(all_df[all_df['disease_id'] == disease]))
         df, y = read_data_timecut(disease, all_df, merged_df, time)
         result_df, predcition_collection = evaluate_disease(
@@ -241,7 +270,7 @@ def main():
         mean_df = result_df.groupby(['method'])[METRIC_COLUMNS].mean().reset_index()
         mean_df['disease'] = disease
         all_results.append(mean_df)
-
+        # break
     if all_results:
         final_result = pd.concat(all_results, ignore_index=True)
         final_result.to_csv(os.path.join(out_path, 'all_disease.csv'), index=False)

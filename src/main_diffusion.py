@@ -14,8 +14,8 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-# test_bug = True
-test_bug = False
+test_bug = True
+# test_bug = False
 
 if test_bug:
     # feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']
@@ -23,8 +23,8 @@ if test_bug:
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
-    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
-    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','diffusion_2019']
+    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
+    feature_list = ['uniport_ppi_2019']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
 
 
@@ -78,7 +78,8 @@ for feature in time_feature_list:
 name_list = feature_list + ['string_id']
 
 merged_df = merged_df[[col for col in merged_df.columns if any(item in col for item in name_list)]]
-
+# merged_df.columns = merged_df.columns.str.replace('uniport_ppi_2019_', '', regex=False)
+# merged_df.to_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/input_deep_svd/node2vec_features.csv',index=False)
 if dga == 'disgenet':
     all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
 elif dga == 'opentarget':

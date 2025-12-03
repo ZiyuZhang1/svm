@@ -15,23 +15,23 @@ root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 # feature = 'ppi_'+str(time)
 
 time_spilt = True
-# test_bug = True
-test_bug = False
+test_bug = True
+# test_bug = False
 
 if test_bug:
     # feature_list = ['uniport_ppi_2019','uniport_bio','uniport_seq','uniport_esm']
     # feature_list = ['ppi_2019','bioconcept']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq']
-    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
-    # feature_list = ['uniport_bio']
+    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
+    feature_list = ['uniport_ppi_2019']
 
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq']
 
     # dga = 'opentarget'
     dga = 'disgenet'
 
-    out_path = os.path.join(root,'results/temp')
+    out_path = os.path.join(root,'results/2019_occ_val_unlabled')
     out_path_pred = out_path+'_pred/pred.pkl'
     time = 2019
 else:
@@ -50,7 +50,7 @@ merged_df = None
 if time == 2017:
     time_feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
 elif time == 2019:
-    time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
+    time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
 
 for feature in time_feature_list:
     feature_df = get_feature(root, feature)

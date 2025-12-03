@@ -1,0 +1,92 @@
+['uniport_ppi_2019', 'ppi_2019_dw_40', 'diffusion_2019_2'] 48 15686
+ICD10_C16 90
+train test split
+early fusion
+early fusion validation auc: 0.8523535375599596
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_C18 50
+train test split
+early fusion
+early fusion validation auc: 0.8521176447167497
+later fusion
+ICD10_C43 47
+train test split
+early fusion
+early fusion validation auc: 0.8642576493316625
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_C50 544
+train test split
+early fusion
+early fusion validation auc: 0.7427928449262502
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_C67 191
+train test split
+early fusion
+early fusion validation auc: 0.8377875822184396
+later fusion
+ICD10_C81 23
+train test split
+early fusion
+early fusion validation auc: 0.8852586565540195
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/43diffusion_2019_2.pkl
+ICD10_D57 22
+train test split
+early fusion
+early fusion validation auc: 0.9278911564625851
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_D66 15
+train test split
+early fusion
+early fusion validation auc: 0.9065217391304348
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_D83 23
+train test split
+early fusion
+early fusion validation auc: 0.9166666666666667
+later fusion
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42uniport_ppi_2019.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42ppi_2019_dw_40.pkl
+save file: /itf-fi-ml/shared/users/ziyuzh/svm/results/temp_pred/42diffusion_2019_2.pkl
+ICD10_E11 269
+train test split
+early fusion
+early fusion validation auc: 0.9044668732431043
+later fusion
+ICD10_E66 259
+train test split
+early fusion
+early fusion validation auc: 0.8804805789794394
+later fusion
+ICD10_F01 33
+train test split
+early fusion
+early fusion validation auc: 0.7534722222222222
+later fusion
+ICD10_F20 834
+train test split
+early fusion
+early fusion validation auc: 0.8443691460055096
+later fusion
+ICD10_F31 441
+train test split
+early fusion
+early fusion validation auc: 0.8520228246293757
+later fusion

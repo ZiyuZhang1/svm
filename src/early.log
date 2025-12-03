@@ -1,0 +1,193 @@
+['df_early'] 48 15686
+ICD10_C16 90
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6164496828059678 0.877742769180078
+collect valid feature:  ['df_early']
+ICD10_C18 50
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6860155077490274 0.793510269213594
+collect valid feature:  ['df_early']
+ICD10_C43 47
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7862283781798425 0.8262123110807321
+collect valid feature:  ['df_early']
+ICD10_C50 544
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.4246467574559987 0.7011535048802129
+collect valid feature:  ['df_early']
+ICD10_C67 191
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6945198785087415 0.8168431947259799
+collect valid feature:  ['df_early']
+ICD10_C81 23
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.601571327897256 0.8295810931899642
+collect valid feature:  ['df_early']
+ICD10_D57 22
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.5289918720507646 0.8585034013605443
+collect valid feature:  ['df_early']
+ICD10_D66 15
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6774180633223379 0.8823369565217392
+collect valid feature:  ['df_early']
+ICD10_D83 23
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.8976400821194885 0.9292517006802722
+collect valid feature:  ['df_early']
+ICD10_E11 269
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7648260628383016 0.8862389380844014
+collect valid feature:  ['df_early']
+ICD10_E66 259
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.719734704646967 0.8569134450470495
+collect valid feature:  ['df_early']
+ICD10_F01 33
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.07870269081687704 0.6921296296296297
+collect valid feature:  ['df_early']
+ICD10_F20 834
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.6717494904384406 0.8327784022038568
+collect valid feature:  ['df_early']
+ICD10_F31 441
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.7180534219754056 0.8498331141340714
+collect valid feature:  ['df_early']
+ICD10_F72 31
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.4789251722279037 0.6585034013605442
+collect valid feature:  ['df_early']
+ICD10_F90 24
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6264191866026282 0.7686781609195402
+collect valid feature:  ['df_early']
+ICD10_G10 32
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6727992838890741 0.8401606563371269
+collect valid feature:  ['df_early']
+ICD10_G20 137
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.7669721818570818 0.8467489711934157
+collect valid feature:  ['df_early']
+ICD10_G24 22
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.42844802739623256 0.6666666666666666
+collect valid feature:  ['df_early']
+ICD10_G30 183
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.8404787576986751 0.9066808500899562
+collect valid feature:  ['df_early']
+ICD10_G40 120
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6920896653665872 0.8289647178017373
+collect valid feature:  ['df_early']
+ICD10_G43 23
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.5492987119142909 0.8036674347158218
+collect valid feature:  ['df_early']
+ICD10_G91 22
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.37097360875915714 0.6254138018843901
+collect valid feature:  ['df_early']
+ICD10_I10 35
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.635107308072991 0.8905440964264493
+collect valid feature:  ['df_early']
+ICD10_I25 138
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7784759271676066 0.8900181309662458
+collect valid feature:  ['df_early']
+ICD10_I26 15
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6974132905763875 0.8546195652173912
+collect valid feature:  ['df_early']
+ICD10_I42 154
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7816564876937454 0.8840533964577452
+collect valid feature:  ['df_early']
+ICD10_I50 155
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.7763531290133395 0.8940328105282135
+collect valid feature:  ['df_early']
+ICD10_I63 37
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.8521322068730207 0.9347485669081227
+collect valid feature:  ['df_early']
+ICD10_I70 65
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7589272091504267 0.8878283663477838
+collect valid feature:  ['df_early']
+ICD10_J45 187
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.8769572917741645 0.9359868192854665
+collect valid feature:  ['df_early']
+ICD10_J62 16
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6633760522648512 0.8155122655122655
+collect valid feature:  ['df_early']
+ICD10_J80 52
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6695420368033905 0.8004613610149942
+collect valid feature:  ['df_early']
+ICD10_K44 60
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7538513525559942 0.8942083722996196
+collect valid feature:  ['df_early']
+ICD10_K51 74
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6686134599637578 0.8538567493112947
+collect valid feature:  ['df_early']
+ICD10_L20 58
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.791924947798682 0.8891966759002771
+collect valid feature:  ['df_early']
+ICD10_L40 73
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7025021208393513 0.8817505385843848
+collect valid feature:  ['df_early']
+ICD10_M32 97
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.739336247483131 0.8920106702605546
+collect valid feature:  ['df_early']
+ICD10_M34 38
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6206065272022271 0.8241936613829792
+collect valid feature:  ['df_early']
+ICD10_M41 27
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.6542452768667298 0.7335301329203769
+collect valid feature:  ['df_early']
+ICD10_N04 73
+kernels existing
+df_early {'C_num': 3, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.5170464103195243 0.7846864495102875
+collect valid feature:  ['df_early']
+ICD10_N17 88
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7802775856670471 0.9089198620399745
+collect valid feature:  ['df_early']
+ICD10_N18 91
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.8860045330864281 0.9433062778121792
+collect valid feature:  ['df_early']
+ICD10_N46 86
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 4, 'gamma': '0.016068084264174283'} 0.6941744625573651 0.8178008143020866
+collect valid feature:  ['df_early']
+ICD10_N80 151
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.681122398910282 0.8347199999999999
+collect valid feature:  ['df_early']
+ICD10_N97 29
+kernels existing
+df_early {'C_num': 1, 'gamma_ratio': 2, 'gamma': '0.032136168528348566'} 0.7744717953793719 0.8567901234567902
+collect valid feature:  ['df_early']
+ICD10_C23 18
+kernels existing
+df_early {'C_num': 27, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.4686101440078687 0.7556102900930487
+collect valid feature:  ['df_early']
+ICD10_C53 15
+kernels existing
+df_early {'C_num': 9, 'gamma_ratio': 8, 'gamma': '0.008034042132087141'} 0.7525116907416524 0.8416666666666667
+collect valid feature:  ['df_early']

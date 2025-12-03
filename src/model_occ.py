@@ -272,6 +272,8 @@ def select_gamma_ratio_occ(args):
     train_pos_df, df, X_dict, fname = args
 
     train_index_loc = df.index.get_indexer(train_pos_df.index)
+    unlabeled_index = df.index.difference(train_pos_df.index)
+    unlabeled_index_loc = df.index.get_indexer(unlabeled_index)
 
     nu_values = [0.1, 0.2, 0.5, 0.7, 0.9]  # You can tune this as needed
     gamma_ratios = [2, 4, 8]
@@ -292,7 +294,8 @@ def select_gamma_ratio_occ(args):
 
             for train_idx, val_idx in kf.split(train_index_loc):
                 X_feature_train = pre_kernel[np.ix_(train_index_loc[train_idx], train_index_loc[train_idx])]
-                X_feature_val = pre_kernel[np.ix_(train_index_loc[val_idx], train_index_loc[train_idx])]
+                val_row_idx = np.concatenate([train_index_loc[val_idx], unlabeled_index_loc])
+                X_feature_val = pre_kernel[np.ix_(val_row_idx, train_index_loc[train_idx])]
 
                 clf = OneClassSVM(nu=nu_val, kernel='precomputed')
                 clf.fit(X_feature_train)
@@ -402,7 +405,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         else:
             add_feature_list = list(add_feature_list)
         ####### calculate full kernels for each feature and their logm
-            print('calculating kernels...')
+            print('calculating kernels...', add_feature_list)
             X_all = []
             
             for feature_name in add_feature_list:
@@ -416,8 +419,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
                     compute_kernels,
                     args_list)
             del X_all
-
-            kernels_all_dict = dict()
+            
             for fname, K_s_path_dict in kernel_results:
                 kernels_all_dict[fname] = K_s_path_dict
                 
@@ -475,7 +477,7 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             jac_sm = 0
             ranked_predict_index, results = eval_bagging(final_y_score, y_test)
             # Add results to the result dataframe
-            result_df.loc[len(result_df.index)] = ["occ",fold,feature_name+'-'+str(round(jac_sm, 3)), *results]
+            result_df.loc[len(result_df.index)] = ["occ",fold,feature_name+'-0-0-0', *results]
             rank_results_per_feature[feature_name] = rankdata(final_y_score, method='average')
             predcition_collection[feature_name] = final_y_score
         ################################# early fusion
@@ -553,37 +555,37 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
         # else:
         #     print('no valid features, no later fusion')
         ############################################ kernel fusion
-        if len(agg_feature) > 0:
-            print('middle fusion')
-            print('kernel fusion')
-            ks = []
-            logks = []
-            for fname in agg_feature:
-                gamma = best_ratios_dict[fname]['gamma_ratio']
-                X_k_path = kernels_all_dict[fname][gamma][0]
-                with open(X_k_path, 'rb') as f:
-                    X_k = pickle.load(f)
-                ks.append(X_k)
-                X_logk_path = kernels_all_dict[fname][gamma][1]
-                with open(X_logk_path, 'rb') as f:
-                    X_logk = pickle.load(f)
-                logks.append(X_logk)  
-                # print(X_k_path,X_logk_path)          
+        # if len(agg_feature) > 0:
+        #     print('middle fusion')
+        #     print('kernel fusion')
+        #     ks = []
+        #     logks = []
+        #     for fname in agg_feature:
+        #         gamma = best_ratios_dict[fname]['gamma_ratio']
+        #         X_k_path = kernels_all_dict[fname][gamma][0]
+        #         with open(X_k_path, 'rb') as f:
+        #             X_k = pickle.load(f)
+        #         ks.append(X_k)
+        #         X_logk_path = kernels_all_dict[fname][gamma][1]
+        #         with open(X_logk_path, 'rb') as f:
+        #             X_logk = pickle.load(f)
+        #         logks.append(X_logk)  
+        #         # print(X_k_path,X_logk_path)          
 
-            K_linear_fused = np.mean(ks, axis=0)
-            K_linear_fused = 0.5 * (K_linear_fused + K_linear_fused.T)
-            K_linear_fused = normalize_kernel(K_linear_fused)
-            kernels_all_dict['linear_fused'] = K_linear_fused
-            del K_linear_fused
+        #     K_linear_fused = np.mean(ks, axis=0)
+        #     K_linear_fused = 0.5 * (K_linear_fused + K_linear_fused.T)
+        #     K_linear_fused = normalize_kernel(K_linear_fused)
+        #     kernels_all_dict['linear_fused'] = K_linear_fused
+        #     del K_linear_fused
 
-            logk_avg = np.mean(logks, axis=0)
-            eigenvalues, eigenvectors = np.linalg.eigh(logk_avg)
-            eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
-            K_geo_mean = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
-            K_geo_mean = 0.5 * (K_geo_mean + K_geo_mean.T)  # Enforce symmetry
-            K_geo_mean = normalize_kernel(K_geo_mean)
-            kernels_all_dict['geo_fused'] = K_geo_mean
-            del K_geo_mean
+        #     logk_avg = np.mean(logks, axis=0)
+        #     eigenvalues, eigenvectors = np.linalg.eigh(logk_avg)
+        #     eigenvalues = np.clip(eigenvalues, -50, 50)  # Prevent overflow
+        #     K_geo_mean = eigenvectors @ np.diag(np.exp(eigenvalues)) @ eigenvectors.T
+        #     K_geo_mean = 0.5 * (K_geo_mean + K_geo_mean.T)  # Enforce symmetry
+        #     K_geo_mean = normalize_kernel(K_geo_mean)
+        #     kernels_all_dict['geo_fused'] = K_geo_mean
+        #     del K_geo_mean
 
             # ######################### weighted kernels
             # pathway_overlap = []
@@ -619,35 +621,35 @@ def one_fold_evaluate(disease, time, feature_list, df,y,train_idx,test_idx,metho
             # kernels_all_dict['weighted_geo_fused'] = K_weight_geo_all
             # del K_weight_geo_all
             #################################### cv choose best C for all kernels
-            print('grid search C for fused kernels')
-            # fusion_methods = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
-            fusion_methods = ['linear_fused','geo_fused']
+        #     print('grid search C for fused kernels')
+        #     # fusion_methods = ['linear_fused','geo_fused','weighted_linear_fused','weighted_geo_fused']
+        #     fusion_methods = ['linear_fused','geo_fused']
 
-            args_list = [(train_pos_df, df, kernels_all_dict[fname], fname)
-                for fname in fusion_methods]
+        #     args_list = [(train_pos_df, df, kernels_all_dict[fname], fname)
+        #         for fname in fusion_methods]
 
-            with Pool(processes=len(fusion_methods)) as pool:
-                best_Cs = pool.map(select_nu, args_list)
-            C_dict = dict()
-            for fname, best_params, best_fp_rate in best_Cs:
-                print(fname, best_params, best_fp_rate)
-                C_dict[fname] = best_params
-            ###########################################################
-            print('fused kernels evaluation')
-            for fusion_method in fusion_methods:
-                nu = C_dict[fusion_method]
-                X_all = kernels_all_dict[fusion_method]
+        #     with Pool(processes=len(fusion_methods)) as pool:
+        #         best_Cs = pool.map(select_nu, args_list)
+        #     C_dict = dict()
+        #     for fname, best_params, best_fp_rate in best_Cs:
+        #         print(fname, best_params, best_fp_rate)
+        #         C_dict[fname] = best_params
+        #     ###########################################################
+        #     print('fused kernels evaluation')
+        #     for fusion_method in fusion_methods:
+        #         nu = C_dict[fusion_method]
+        #         X_all = kernels_all_dict[fusion_method]
 
-                args = [train_pos_df, df, X_all, test_index_loc, nu]
-                final_y_score = one_class_svm(args)
+        #         args = [train_pos_df, df, X_all, test_index_loc, nu]
+        #         final_y_score = one_class_svm(args)
 
-                predcition_collection[fusion_method] = final_y_score
-                ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+        #         predcition_collection[fusion_method] = final_y_score
+        #         ranked_predict_index, results = eval_bagging(final_y_score, y_test)
 
-                # Add results to the result dataframe
-                result_df.loc[len(result_df.index)] = ["occ",fold, fusion_method+'-'+str(round(jac_sm, 3)), *results]
-        else:
-            print('no valid features, no mid fusion')
+        #         # Add results to the result dataframe
+        #         result_df.loc[len(result_df.index)] = ["occ",fold, fusion_method+'-'+str(round(jac_sm, 3)), *results]
+        # else:
+        #     print('no valid features, no mid fusion')
         
         return predcition_collection
 def evaluate_disease(disease, time, feature_list, df, y, methods,time_spilt):

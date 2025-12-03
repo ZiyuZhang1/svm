@@ -119,5 +119,8 @@ def get_feature(root, feature_name):
         feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/text_mining_processed_14300.csv'))
     elif feature_name == 'text_3':
         feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/text_mining_processed_14164.csv'))
-  
+    elif feature_name == 'df_early':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/df_early.csv'))  
+    elif feature_name == 'df_early_ppi':
+        feature_df = pd.read_csv(os.path.join(root,'data/pre_processed_features/df_early_ppi.csv'))  
     return feature_df
