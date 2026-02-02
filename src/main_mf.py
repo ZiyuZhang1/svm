@@ -1,320 +1,259 @@
+import smurff
+import pandas as pd
 import os
+from features_reindex import get_feature
 import pickle
 import sys
-
-import numpy as np
-import pandas as pd
-from scipy import sparse
 from sklearn.preprocessing import MinMaxScaler
+from scipy.sparse import coo_matrix
+import numpy as np
+from model_diffusion import eval_bagging
 
-import macau
-from features_reindex import get_feature, read_data, read_data_timecut
-from model_nn_non_para import eval_bagging
+root = '/itf-fi-ml/shared/users/ziyuzh/svm'
 
+time_spilt = True
+test_bug = True
+# test_bug = False
 
-def extract_macau_predictions(preds, test_mask, num_rows):
-    """Normalize different Macau prediction shapes to a full matrix."""
-    if hasattr(preds, "predictions"):
-        preds = preds.predictions
+if test_bug:
+    feature_list = ['uniport_ppi_2019']
+    # dga = 'opentarget'
+    dga = 'disgenet'
 
-    if isinstance(preds, dict):
-        if "test" in preds:
-            preds = preds["test"]
-        elif "pred" in preds:
-            preds = preds["pred"]
+    out_path = os.path.join(root,'results/2019_mf3')
+    out_path_pred = out_path+'_pred/pred.pkl'
+    time = 2019
+else:
+    feature_list = sys.argv[1].split(',')
+    out_path = os.path.join(root,sys.argv[2])
+    out_path_pred = out_path+'_pred'
+    time = int(sys.argv[3])
+    dga = sys.argv[4]
 
-    try:
-        preds_arr = np.asarray(preds)
-    except Exception:
-        print("Macau predictions could not be converted to an array; returning zeros.")
-        return np.zeros_like(test_mask, dtype=float)
-
-    if preds_arr.shape == test_mask.shape:
-        return preds_arr
-
-    flat_mask = test_mask.reshape(-1)
-    flat_preds = preds_arr.reshape(-1)
-    if flat_preds.shape[0] == flat_mask.sum():
-        full = np.zeros_like(test_mask, dtype=float)
-        full[test_mask] = flat_preds
-        return full
-
-    if preds_arr.ndim == 2 and preds_arr.shape[0] == num_rows and preds_arr.shape[1] == 1:
-        full = np.zeros_like(test_mask, dtype=float)
-        full[:, 0] = preds_arr[:, 0]
-        return full
-
-    print("Unexpected Macau prediction shape; returning zeros.")
-    return np.zeros_like(test_mask, dtype=float)
+os.makedirs(out_path, exist_ok=True)
+os.makedirs(out_path_pred, exist_ok=True)
 
 
-def run_macau_iteration(
-    num_rows,
-    num_diseases,
-    side_info,
-    disease_training,
-    disease_tests,
-    num_latent=32,
-    precision=5.0,
-    burnin=400,
-    nsamples=1600,
-    seed=None,
-):
-    """Train a single Macau model and return predictions for all disease test sets."""
-    Y = np.full((num_rows, num_diseases), np.nan)
-    Ytest_mask = np.zeros_like(Y, dtype=bool)
+merged_df = None
 
-    for col, info in enumerate(disease_training):
-        Y[info["train_rows"], col] = info["train_labels"]
-    for col, info in enumerate(disease_tests):
-        Ytest_mask[info["test_rows"], col] = True
+if time == 2017:
+    time_feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
+elif time == 2019:
+    time_feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
 
-    if seed is not None:
-        np.random.seed(seed)
+for feature in time_feature_list:
+    feature_df = get_feature(root, feature)
 
-    result = macau.macau(
-        Y=Y,
-        Ytest=Ytest_mask,
-        side=[side_info, None],
-        num_latent=num_latent,
-        precision=precision,
-        burnin=burnin,
-        nsamples=nsamples,
-    )
-    return extract_macau_predictions(result, Ytest_mask, num_rows)
-
-
-def prepare_disease_metadata(disease_id, all_df, merged_df, base_index, time):
-    """Build consistent train/test splits and labels for a single disease."""
-    df, y = read_data_timecut(disease_id, all_df, merged_df, time)
-    df = df.loc[base_index]
-    y_series = pd.Series(y, index=df.index).loc[base_index]
-
-    test_idx = df[df["test"] == 1].index
-    train_pos_idx = y_series.index[y_series == 1].difference(test_idx)
-    test_pos_idx = test_idx
-    all_neg_idx = y_series.index[y_series == 0]
-
-    test_rows = np.concatenate([test_pos_idx, all_neg_idx])
-    y_test = np.concatenate(
-        [np.ones(len(test_pos_idx), dtype=float), np.zeros(len(all_neg_idx), dtype=float)]
-    )
-
-    return {
-        "train_pos_idx": train_pos_idx,
-        "test_pos_idx": test_pos_idx,
-        "all_neg_idx": all_neg_idx,
-        "test_rows": test_rows,
-        "y_test": y_test,
-    }
-
-
-def bagged_macau_for_all(disease_meta, features, seed_list, neg_multiplier=5):
-    """Run Macau jointly over all diseases for each bag and aggregate predictions."""
-    index_to_pos = {idx: pos for pos, idx in enumerate(features.index)}
-    num_rows = len(features)
-    num_diseases = len(disease_meta)
-    disease_ids = list(disease_meta.keys())
-    side_info = sparse.csr_matrix(features.values)
-
-    # Prepare constant test row positions per disease
-    disease_tests = []
-    for disease_id in disease_ids:
-        meta = disease_meta[disease_id]
-        test_rows = np.array([index_to_pos[idx] for idx in meta["test_rows"]])
-        disease_tests.append({"test_rows": test_rows})
-
-    bagged_scores = {disease_id: np.zeros(len(disease_meta[disease_id]["test_rows"])) for disease_id in disease_ids}
-
-    for seed in seed_list:
-        disease_training = []
-        for disease_id in disease_ids:
-            meta = disease_meta[disease_id]
-            train_pos = np.array([index_to_pos[idx] for idx in meta["train_pos_idx"]])
-            neg_num = neg_multiplier * len(train_pos)
-            all_neg_idx = meta["all_neg_idx"]
-            sampled_neg_ids = all_neg_idx.to_series().sample(
-                n=neg_num,
-                replace=neg_num > len(all_neg_idx),
-                random_state=seed,
-            ).index
-            train_neg = np.array([index_to_pos[idx] for idx in sampled_neg_ids])
-            train_rows = np.concatenate([train_pos, train_neg])
-            train_labels = np.concatenate(
-                [np.ones(len(train_pos), dtype=float), np.zeros(len(train_neg), dtype=float)]
-            )
-            disease_training.append({"train_rows": train_rows, "train_labels": train_labels})
-
-        preds_matrix = run_macau_iteration(
-            num_rows=num_rows,
-            num_diseases=num_diseases,
-            side_info=side_info,
-            disease_training=disease_training,
-            disease_tests=disease_tests,
-            seed=seed,
-        )
-
-        for col, disease_id in enumerate(disease_ids):
-            test_rows = disease_tests[col]["test_rows"]
-            bagged_scores[disease_id] += preds_matrix[test_rows, col]
-
-    final_scores = {
-        disease_id: bagged_scores[disease_id] / len(seed_list) for disease_id in disease_ids
-    }
-    return disease_ids, final_scores
-
-
-def main():
-    root = "/itf-fi-ml/shared/users/ziyuzh/svm"
-    time_spilt = True
-    # test_bug = True
-    test_bug = False
-
-    if test_bug:
-        feature_list = ["uniport_ppi_2019"]
-        out_path = os.path.join(root, "results/temp")
-        out_path_pred = out_path + "_pred"
-        time = 2019
+    if 'diffusion' in feature:
+        pass
     else:
-        if len(sys.argv) < 4:
-            raise ValueError("Usage: python main_mf.py <features> <out_dir> <time>")
-        _requested_features = sys.argv[1].split(",")
-        feature_list = ["uniport_ppi_2019"]
-        if set(_requested_features) != set(feature_list):
-            print(
-                "Using uniport_ppi_2019 only for Macau MF; overriding provided feature list."
-            )
-        out_path = os.path.join(root, sys.argv[2])
-        out_path_pred = out_path + "_pred"
-        time = int(sys.argv[3])
-
-    os.makedirs(out_path, exist_ok=True)
-    os.makedirs(out_path_pred, exist_ok=True)
-
-    merged_df = None
-    for feature in feature_list:
-        feature_df = get_feature(root, feature)
-
-        feature_cols = [col for col in feature_df.columns if col.startswith("feature")]
+        feature_cols = [col for col in feature_df.columns if col.startswith('feature')]
         if feature_cols:
             scaler = MinMaxScaler()
             feature_df[feature_cols] = scaler.fit_transform(feature_df[feature_cols])
 
-        feature_df.rename(
-            columns={
-                col: f"{feature}_{col}" if col.startswith("feature") else col
-                for col in feature_df.columns
-            },
-            inplace=True,
-        )
+    # Rename columns starting with 'feature'
+    feature_df.rename(columns={
+        col: f"{feature}_{col}" if col.startswith('feature') else col
+        for col in feature_df.columns
+    }, inplace=True)
 
-        if merged_df is None:
-            merged_df = feature_df
-        else:
-            merged_df = pd.merge(merged_df, feature_df, on="string_id", how="inner")
-        del feature_df
+    # Merge iteratively to avoid keeping all DataFrames
+    if merged_df is None:
+        merged_df = feature_df
+    else:
+        merged_df = pd.merge(merged_df, feature_df, on='string_id', how='inner')
+    del feature_df  # Free memory
+name_list = feature_list + ['string_id']
 
-    all_df = pd.read_csv(
-        "/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv"
-    )
-    all_df = all_df[all_df["string_id"].isin(merged_df["string_id"])]
+merged_df = merged_df[[col for col in merged_df.columns if any(item in col for item in name_list)]]
+# merged_df.columns = merged_df.columns.str.replace('uniport_ppi_2019_', '', regex=False)
+# merged_df.to_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/input_deep_svd/node2vec_features.csv',index=False)
+if dga == 'disgenet':
+    all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/dga_time_uniport.csv')
+elif dga == 'opentarget':
+    all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/opentarget/ot_dga_time_uni.csv')
+    all_df = all_df[all_df['score']>=0.4]
 
+all_df = all_df[all_df['string_id'].isin(merged_df['string_id'])]
+# all_df = pd.read_csv('/itf-fi-ml/shared/users/ziyuzh/svm/data/disgent_2020/timecut/align_disgent_with_time.csv')
+
+# methods = ['ooc','random_negative','pseudo_labeling','pseudo_labeling_mask']
+# methods = ['random_negative','pseudo_labeling','pseudo_labeling_mask','pseudo_labeling_cluster_all_mask']
+# methods = ['random_negative','random_negative_bagging','random_pos_negative_bagging']
+methods = ['random_negative']
+
+if time_spilt:
     selected_diseases = []
-    if time_spilt:
-        for disease_id in all_df["disease_id"].unique():
-            sub_df = all_df[all_df["disease_id"] == disease_id]
-            if len(sub_df) < 15:
-                continue
-            if (
-                sub_df["first_pub_year"].max() > time
-                and sub_df["first_pub_year"].min() <= time
-                and len(sub_df[sub_df["first_pub_year"] < time]) >= 5
-            ):
+    for disease_id in all_df['disease_id'].unique():
+        sub_df = all_df[all_df['disease_id']==disease_id]
+        if len(sub_df) < 15:
+            continue
+        else:
+            # print(type(time),type(sub_df['first_pub_year'].max()))
+            if sub_df['first_pub_year'].max() > time and sub_df['first_pub_year'].min() <= time and len(sub_df[sub_df['first_pub_year']<time]) >=5:
                 selected_diseases.append(disease_id)
+else:
+    selected_diseases = (
+        all_df.groupby('disease_id')
+        .filter(lambda x: (len(x) > 15))
+        ['disease_id']
+        .unique()
+        .tolist())
+print(feature_list, len(selected_diseases),len(merged_df))
 
-    print(feature_list, len(selected_diseases), len(merged_df))
-    base_features = merged_df.set_index("string_id")
-    base_index = base_features.index
+all_df = all_df[all_df['string_id'].isin(merged_df['string_id'].unique())]
+all_df = all_df[all_df['disease_id'].isin(selected_diseases)]
 
-    disease_meta = {}
-    for disease in selected_diseases:
-        print(disease, len(all_df[all_df["disease_id"] == disease]))
-        disease_meta[disease] = prepare_disease_metadata(
-            disease_id=disease,
-            all_df=all_df,
-            merged_df=merged_df,
-            base_index=base_index,
-            time=time,
-        )
+all_df_train = all_df[all_df['first_pub_year']<=2019][['disease_id','string_id']]
+all_df_test = all_df[all_df['first_pub_year']>2019][['disease_id','string_id']]
 
-    num_iterations = 20
-    base_seed = 42
-    seed_list = [base_seed + i for i in range(num_iterations)]
+# 1) Define the STRING universe from merged_df (side-info)
+string_ids = merged_df["string_id"].unique()
+string2idx = {s: i for i, s in enumerate(string_ids)}
+string_list = list(string2idx.keys())
 
-    disease_ids, final_scores = bagged_macau_for_all(
-        disease_meta=disease_meta, features=base_features, seed_list=seed_list
-    )
+# 2) Define DISEASE universe from training data (you can expand this if you want)
+disease_ids = all_df_train["disease_id"].unique()
+disease2idx = {d: i for i, d in enumerate(disease_ids)}
 
-    columns = [
-        "method",
-        "fold",
-        "para",
-        "top_recall_25",
-        "top_recall_300",
-        "top_recall_10%",
-        "top_precision_10%",
-        "max_precision_10%",
-        "top_recall_30%",
-        "top_precision_30%",
-        "max_precision_30%",
-        "pm_0.5%",
-        "pm_1%",
-        "pm_5%",
-        "pm_10%",
-        "pm_15%",
-        "pm_20%",
-        "pm_25%",
-        "pm_30%",
-        "auroc",
-        "rank_ratio",
-        "bedroc_1",
-        "bedroc_5",
-        "bedroc_10",
-        "bedroc_30",
-    ]
-    all_results = []
-    prediction_collection = {
-        "true_label": {},
-        "test_genes": {},
-        "train_pos_genes": {},
-        "macau_mf": {},
-    }
+# 3) Keep only training interactions whose string_id exists in merged_df
+df = all_df_train[all_df_train["string_id"].isin(string2idx)].copy()
 
-    for disease in disease_ids:
-        meta = disease_meta[disease]
-        y_test = meta["y_test"]
-        scores = final_scores[disease]
-        ranked_predict_index, results = eval_bagging(scores, y_test)
+rows = df["disease_id"].map(disease2idx).to_numpy()
+cols = df["string_id"].map(string2idx).to_numpy()
+data = np.ones(len(df), dtype=np.float32)
 
-        df_row = ["random_negative", 1, "macau_mf", *results]
-        result_df = pd.DataFrame([df_row], columns=columns)
-        result_df.to_csv(os.path.join(out_path, f"{disease}.csv"), index=False)
+Y_train = coo_matrix(
+    (data, (rows, cols)),
+    shape=(len(disease_ids), len(string_ids))
+).tocsr()
 
-        prediction_collection["true_label"][disease] = y_test
-        prediction_collection["test_genes"][disease] = meta["test_rows"]
-        prediction_collection["train_pos_genes"][disease] = meta["train_pos_idx"]
-        prediction_collection["macau_mf"][disease] = scores
+# 4) Side info aligned to merged_df string universe order (same as Y_train columns)
+side_info_string = (
+    merged_df
+    .drop_duplicates("string_id")
+    .set_index("string_id")
+    .loc[string_ids]     # exact order used in Y_train columns
+    .to_numpy()
+)
 
-        mean_df = result_df.copy()
-        mean_df["disease"] = disease
-        all_results.append(mean_df)
+side_info = [None, side_info_string]
 
-    final_result = pd.concat(all_results, ignore_index=True)
-    final_result.to_csv(os.path.join(out_path, "all_disease.csv"), index=False)
 
-    with open(os.path.join(out_path_pred, "all_disease_pred.pkl"), "wb") as f:
+
+# Sanity checks
+assert Y_train.shape[1] == side_info_string.shape[0]
+
+
+Y = Y_train.tocsr()          # shape: (n_genes, n_diseases)
+n_genes, n_dis = Y.shape
+
+# all possible pairs (gene, disease)
+rows_all = np.repeat(np.arange(n_genes, dtype=np.int32), n_dis)
+cols_all = np.tile(np.arange(n_dis, dtype=np.int32), n_genes)
+
+# mark observed (train) pairs so we can exclude them
+obs = Y.tocoo()
+obs_lin = (obs.row.astype(np.int64) * n_dis + obs.col.astype(np.int64))
+
+all_lin = (rows_all.astype(np.int64) * n_dis + cols_all.astype(np.int64))
+
+# keep only those not observed in train
+mask = ~np.isin(all_lin, obs_lin, assume_unique=False)
+
+rows_q = rows_all[mask]
+cols_q = cols_all[mask]
+vals_q = np.ones(rows_q.shape[0], dtype=np.float32)
+
+Y_query = coo_matrix((vals_q, (rows_q, cols_q)), shape=Y.shape).tocsr()
+
+predictions = smurff.MacauSession(
+                       Ytrain     = Y_train,
+                       Ytest      = Y_query,
+                       side_info  = [None, side_info_string],
+                       direct     = True,
+                       num_latent = 16,
+                       burnin     = 40,
+                       nsamples   = 100).run()
+
+# predictions = smurff.MacauSession(
+#                        Ytrain     = Y_train,
+#                        Ytest      = Y_query,
+#                        side_info  = [None, side_info_string],
+#                        direct     = True,
+#                        num_latent = 32,
+#                        burnin     = 60,
+#                        nsamples   = 100).run()
+
+# predictions = smurff.MacauSession(
+#                        Ytrain     = Y_train,
+#                        Ytest      = Y_query,
+#                        side_info  = [None, side_info_string],
+#                        direct     = True,
+#                        num_latent = 16,
+#                        burnin     = 40,
+#                        nsamples   = 150).run()
+
+S = np.empty((n_genes, n_dis), dtype=np.float32)
+
+for p in predictions:
+    r, c = p.coords   # <-- indices live here
+    S[r, c] = p.pred_avg
+
+# 3) Keep only training interactions whose string_id exists in merged_df
+df = all_df_test[all_df_test["string_id"].isin(string2idx)].copy()
+
+rows = df["disease_id"].map(disease2idx).to_numpy()
+cols = df["string_id"].map(string2idx).to_numpy()
+data = np.ones(len(df), dtype=np.float32)
+
+Y_test = coo_matrix(
+    (data, (rows, cols)),
+    shape=(len(disease_ids), len(string_ids))
+).tocsr()
+
+all_results = []
+
+for disease in selected_diseases:
+    print(disease,len(all_df[all_df['disease_id']==disease]))
+    disease_idx = disease2idx[disease]
+
+    train_genes_idx = Y_train[disease_idx,:].nonzero()[1]
+    train_genes  = np.array(string_list)[train_genes_idx]
+
+    all_genes_idx = np.arange(len(string_ids))
+    test_genes_idx = np.setdiff1d(all_genes_idx, train_genes_idx)
+    test_genes  = np.array(string_list)[test_genes_idx]
+
+    final_y_score = S[disease_idx, test_genes_idx]
+    y_test = Y_test[disease_idx, test_genes_idx].toarray().ravel()
+
+    result_df = pd.DataFrame(columns=['method',"fold","para", 'top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30'])
+
+    prediction_collection = dict()
+    prediction_collection['true_label'] = y_test
+    prediction_collection["test_genes"] = test_genes
+    prediction_collection["train_pos_genes"] = train_genes
+
+    feature_name = feature_list[0]
+
+    ranked_predict_index, results = eval_bagging(final_y_score, y_test)
+    # Add results to the result dataframe
+    result_df.loc[len(result_df.index)] = ["random_negative",'0',feature_name+'-0-0-0', *results]
+    prediction_collection[feature_name] = final_y_score
+    
+    with open(out_path_pred+f'/{disease}_pred.pkl', 'wb') as f:
         pickle.dump(prediction_collection, f)
 
+    result_df.to_csv(os.path.join(out_path, f"{disease}.csv"),index = False)
+    # Calculate mean metrics
+    mean_df = result_df.groupby(['method'])[['top_recall_25','top_recall_300','top_recall_10%', 'top_precision_10%', 'max_precision_10%','top_recall_30%', 'top_precision_30%', 'max_precision_30%','pm_0.5%','pm_1%','pm_5%','pm_10%','pm_15%','pm_20%','pm_25%','pm_30%','auroc',"rank_ratio",'bedroc_1','bedroc_5','bedroc_10','bedroc_30']].mean().reset_index()
+    # Add disease information
+    mean_df['disease'] = disease
+    # Append to all_results list
+    all_results.append(mean_df)
 
-if __name__ == "__main__":
-    main()
+# Concatenate all results into a single DataFrame
+final_result = pd.concat(all_results, ignore_index=True)
+final_result.to_csv(os.path.join(out_path,'all_disease.csv'),index=False)

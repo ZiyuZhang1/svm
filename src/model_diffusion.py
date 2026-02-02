@@ -6,7 +6,7 @@ from rdkit.ML.Scoring.Scoring import CalcBEDROC
 from sklearn.metrics import roc_auc_score
 import os
 import pickle
-import gseapy as gp
+# import gseapy as gp
 # from concurrent.futures import ProcessPoolExecutor
 # import functools
 from multiprocessing import Pool
@@ -16,7 +16,7 @@ from sklearn.neighbors import NearestNeighbors
 from scipy.linalg import eigh
 from sklearn.model_selection import StratifiedKFold
 from scipy.stats import rankdata
-import glob
+# import glob
 
 def merge_results(results_list):
     merged = defaultdict(list)
@@ -195,34 +195,34 @@ def process_kernel(args):
 
     return K_log
 
-def enriched_set(input_ids,time):
-    gene_names = set()
-    for unid in input_ids:
-        gene_list = uni2name_dict.get(unid, [])
-        gene_names.update(gene_list)
-    gene_names = list(gene_names) 
+# def enriched_set(input_ids,time):
+#     gene_names = set()
+#     for unid in input_ids:
+#         gene_list = uni2name_dict.get(unid, [])
+#         gene_names.update(gene_list)
+#     gene_names = list(gene_names) 
     
-    if time == 2019:
-        enrich_db = ['GO_Biological_Process_2021','GO_Cellular_Component_2021','GO_Molecular_Function_2021','KEGG_2019_Human']
-    elif time == 2017:
-        enrich_db = ['GO_Biological_Process_2021','GO_Cellular_Component_2021','GO_Molecular_Function_2021','KEGG_2016']
-    try:
-        enr = gp.enrichr(
-            gene_list=gene_names,
-            gene_sets=enrich_db,
-            organism='human', 
-            outdir=None
-        )
-        enr_df = enr.results
-        if enr_df is None or enr_df.empty:
-            return set()
+#     if time == 2019:
+#         enrich_db = ['GO_Biological_Process_2021','GO_Cellular_Component_2021','GO_Molecular_Function_2021','KEGG_2019_Human']
+#     elif time == 2017:
+#         enrich_db = ['GO_Biological_Process_2021','GO_Cellular_Component_2021','GO_Molecular_Function_2021','KEGG_2016']
+#     try:
+#         enr = gp.enrichr(
+#             gene_list=gene_names,
+#             gene_sets=enrich_db,
+#             organism='human', 
+#             outdir=None
+#         )
+#         enr_df = enr.results
+#         if enr_df is None or enr_df.empty:
+#             return set()
         
-        result_terms = enr_df.loc[enr_df['Adjusted P-value'] < 0.01, ['Gene_set', 'Term']]
-        return set(map(tuple, result_terms.values))
+#         result_terms = enr_df.loc[enr_df['Adjusted P-value'] < 0.01, ['Gene_set', 'Term']]
+#         return set(map(tuple, result_terms.values))
     
-    except Exception as e:
-        # Optionally log the error: print(f"Enrichment failed: {e}")
-        return set()
+#     except Exception as e:
+#         # Optionally log the error: print(f"Enrichment failed: {e}")
+#         return set()
 
 def calculate_jac_sim(enrich_1, enrich_2):
     intersection = enrich_1 & enrich_2
