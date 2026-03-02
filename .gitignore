@@ -15,3 +15,7 @@ data/pre_processed_features/text_minning_2015
 data/disgent_2020/gene_info
 codes/OMIM_process.ipynb
 resultsdata/pre_processed_features/text_minning_2015/text.csv.bak.bak
+*.log
+*.html
+*.xlsx
+*.tsv
