@@ -6,18 +6,27 @@ import numpy as np
 import gseapy as gp
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from functools import lru_cache
+import sys
 
 # -------- Paths / constants --------
 UNI2NAME_PATH = '/itf-fi-ml/shared/users/ziyuzh/svm/data/uniport_id/uni2name.pkl'
+
+root = '/itf-fi-ml/shared/users/ziyuzh/svm/results'
+IN_ROOT = os.path.join(root,sys.argv[1])
+OUT_ROOT = os.path.join(root,sys.argv[2])
+
 # IN_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_all_save_pred'
 # OUT_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_lf_bag_cv_pred_sim'
 
-IN_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred'
-OUT_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim'
+# IN_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred'
+# OUT_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_df_pred_sim'
+
+# IN_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_mf_bag_2_pred'
+# OUT_ROOT = '/itf-fi-ml/shared/users/ziyuzh/svm/results/2019_mf_bag_2_pred_sim'
 
 TIME_FLAG = 2019                 # change to 2017 if needed
 PVALUE_CUTOFF = 0.01
-RATIOS = np.linspace(0, 0.5, 10) # inclusive of 0 and 0.5
+RATIOS = [100,200,300,0.01] # inclusive of 0 and 0.5
 MAX_WORKERS = 5  # leave headroom
 
 # Ensure output dir exists (once in parent)
@@ -158,7 +167,10 @@ def _process_single_file(file_path: str, out_root: str, time_flag: int):
         sim_scores = []
         n = len(final_y_score)
         for ratio in RATIOS:
-            k = int(math.floor(ratio * n))
+            if ratio > 1:
+                k = ratio
+            else:
+                k = int(math.floor(ratio * n))
             if k <= 0:
                 sim_scores.append(calculate_jac_sim(enrich_train_set, set()))
                 continue
@@ -183,7 +195,7 @@ def _collect_pkl_files(root_dir: str):
     in the directory listing (sorted for stability).
     """
     files = sorted(fn for fn in os.listdir(root_dir) if fn.endswith('.pkl'))
-    return [os.path.join(root_dir, fn) for fn in files[9:]]
+    return [os.path.join(root_dir, fn) for fn in files]
 
 def main():
     files = _collect_pkl_files(IN_ROOT)

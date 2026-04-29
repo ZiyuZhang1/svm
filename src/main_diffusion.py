@@ -23,8 +23,8 @@ if test_bug:
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq','uniport_esm']
     # feature_list = ['uniport_ppi_2017','ppi_2017_dw_80','uniport_exp','uniport_seq']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
-    # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
-    feature_list = ['uniport_ppi_2019']
+    feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm','diffusion_2019']
+    # feature_list = ['uniport_ppi_2019']
     # feature_list = ['uniport_ppi_2019','ppi_2019_dw_40','uniport_bio','uniport_seq','uniport_esm']
 
 
@@ -115,6 +115,7 @@ print(feature_list, len(selected_diseases),len(merged_df))
 all_results = []
 
 for disease in selected_diseases:
+    disease = 'ICD10_M41'
     print(disease,len(all_df[all_df['disease_id']==disease]))
     if time_spilt:
         df, y = read_data_timecut(disease, all_df, merged_df,time)

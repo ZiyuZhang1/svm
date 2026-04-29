@@ -7,8 +7,7 @@ import torch.optim as optim
 from rdkit.ML.Scoring.Scoring import CalcBEDROC
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split
-from torch_geometric.nn import GCNConv, SAGEConv, BatchNorm, global_mean_pool
-from torch_geometric.utils import add_self_loops, to_undirected
+from torch_geometric.nn import GCNConv, SAGEConv, BatchNorm, global_mean_pool, PairNorm
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -109,8 +108,8 @@ def eval_bagging(y_scores, y_test):
 class SimpleGCN(nn.Module):
     def __init__(self, in_channels, hidden_channels=128, dropout=0.5):
         super().__init__()
-        self.conv1 = GCNConv(in_channels, hidden_channels)
-        self.conv2 = GCNConv(hidden_channels, hidden_channels)
+        self.conv1 = GCNConv(in_channels, hidden_channels,cached=True)
+        self.conv2 = GCNConv(hidden_channels, hidden_channels,cached=True)
         self.output = nn.Linear(hidden_channels, 2)
         self.dropout = dropout
 
@@ -137,12 +136,12 @@ class ImprovedGCN(nn.Module):
         self.bns = nn.ModuleList()
 
         # First layer
-        self.convs.append(GCNConv(in_channels, hidden_channels))
+        self.convs.append(GCNConv(in_channels, hidden_channels,cached=True))
         self.bns.append(BatchNorm(hidden_channels))
 
         # Hidden layers
         for _ in range(num_layers - 1):
-            self.convs.append(GCNConv(hidden_channels, hidden_channels))
+            self.convs.append(GCNConv(hidden_channels, hidden_channels,cached=True))
             self.bns.append(BatchNorm(hidden_channels))
 
         # MLP output head for better feature interaction
@@ -167,6 +166,112 @@ class ImprovedGCN(nn.Module):
         # For graph-level tasks: pool node features
         if batch is not None:
             x = global_mean_pool(x, batch)
+
+        return self.output(x)
+
+class ImprovedGCN_deoversmooth(nn.Module):
+    def __init__(self, in_channels, hidden_channels=128, num_layers=2, dropout=0.5, num_classes=2):
+        super().__init__()
+        self.convs = nn.ModuleList()
+        self.bns = nn.ModuleList()
+
+        self.input_proj = nn.Linear(in_channels, hidden_channels)
+
+        for _ in range(num_layers):
+            self.convs.append(GCNConv(hidden_channels, hidden_channels, cached=True))
+            self.bns.append(BatchNorm(hidden_channels))
+
+        self.output = nn.Sequential(
+            nn.Linear(hidden_channels, hidden_channels // 2),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_channels // 2, num_classes)
+        )
+
+        self.dropout = dropout
+        self.alpha = 0.2  # keep some original input every layer
+
+    def forward(self, x, edge_index):
+        x0 = self.input_proj(x)
+        x = x0
+
+        for conv, bn in zip(self.convs, self.bns):
+            h = conv(x, edge_index)
+            h = bn(h)
+            h = F.relu(h)
+            h = F.dropout(h, p=self.dropout, training=self.training)
+
+            # residual + initial residual
+            x = h + x + self.alpha * x0
+
+        return self.output(x)
+
+
+class ImprovedGCN_deoversmooth_less_smooth(nn.Module):
+    def __init__(
+        self,
+        in_channels,
+        hidden_channels=128,
+        num_layers=2,
+        dropout=0.5,
+        num_classes=2,
+        alpha=0.15,          # initial feature injection strength
+        beta=0.5,            # smoothed message strength
+        use_pairnorm=True
+    ):
+        super().__init__()
+
+        self.convs = nn.ModuleList()
+        self.bns = nn.ModuleList()
+        self.use_pairnorm = use_pairnorm
+
+        if use_pairnorm:
+            self.pairnorms = nn.ModuleList()
+
+        self.input_proj = nn.Linear(in_channels, hidden_channels)
+
+        for _ in range(num_layers):
+            self.convs.append(GCNConv(hidden_channels, hidden_channels, cached=True))
+            self.bns.append(BatchNorm(hidden_channels))
+            if use_pairnorm:
+                self.pairnorms.append(PairNorm())
+
+        self.output = nn.Sequential(
+            nn.Linear(hidden_channels, hidden_channels // 2),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_channels // 2, num_classes)
+        )
+
+        self.dropout = dropout
+        self.alpha = alpha
+        self.beta = beta
+
+    def forward(self, x, edge_index):
+        x0 = self.input_proj(x)
+        x = x0
+        xs = []
+
+        for i, (conv, bn) in enumerate(zip(self.convs, self.bns)):
+            h = conv(x, edge_index)
+            h = bn(h)
+            h = F.relu(h)
+
+            if self.use_pairnorm:
+                h = self.pairnorms[i](h)
+
+            h = F.dropout(h, p=self.dropout, training=self.training)
+
+            # Controlled residual update:
+            # x keeps previous representation
+            # beta controls how much new smoothed info is added
+            # alpha keeps raw projected input alive
+            x = (1 - self.beta) * x + self.beta * h + self.alpha * x0
+
+            xs.append(x)
+
+        # Use mean of all layers to avoid relying only on the most smoothed one
+        x = torch.stack(xs, dim=0).mean(dim=0)
 
         return self.output(x)
 
@@ -195,13 +300,11 @@ def neg_bagging_gcn(args):
 
     labels = torch.from_numpy(np.asarray(y, dtype=np.int64)).to(device)
 
-    if edge_index.size(0) != 2:
-        raise ValueError('edge_index must have shape [2, num_edges].')
+    # if edge_index.size(0) != 2:
+    #     raise ValueError('edge_index must have shape [2, num_edges].')
 
     num_nodes = x.size(0)
-    edge_index = edge_index.to(device)
-    edge_index = to_undirected(edge_index, num_nodes=num_nodes)
-    edge_index, _ = add_self_loops(edge_index, num_nodes=num_nodes)
+    edge_index = edge_index.to(device, non_blocking=True)
 
     node_to_idx = {sid: idx for idx, sid in enumerate(df.index)}
     if len(node_to_idx) != num_nodes:
@@ -273,10 +376,15 @@ def neg_bagging_gcn(args):
 
     criterion = nn.CrossEntropyLoss()
     fold_num = 0
+    validate_every = 5
     for train_split, val_split, train_split_labels, val_split_labels in splits:
         fold_num += 1
         # model = SimpleGCN(x.size(1)).to(device)
-        model = ImprovedGCN(x.size(1)).to(device)
+        # model = ImprovedGCN(x.size(1)).to(device)
+        # model = ImprovedGCN_deoversmooth(x.size(1)).to(device)
+        model = ImprovedGCN_deoversmooth_less_smooth(x.size(1)).to(device)
+
+        
         optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=5e-4)
         # optimizer = optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
 
@@ -305,20 +413,23 @@ def neg_bagging_gcn(args):
             loss = criterion(logits[train_split_tensor], train_targets[train_split_tensor])
             loss.backward()
             optimizer.step()
+            if epoch % validate_every == 0:
+                model.eval()
+                with torch.no_grad():
+                    logits = model(x, edge_index)
+                    probs = torch.softmax(logits, dim=1)[:, 1]
 
-            model.eval()
-            with torch.no_grad():
-                logits = model(x, edge_index)
-                probs = torch.softmax(logits, dim=1)[:, 1]
-
-            # --- Validation ---
-            if val_split.size > 0:
-                val_scores = probs[val_split_tensor].detach().cpu().numpy()
-                val_auc = _safe_roc_auc(val_split_labels, val_scores)
-                compare_metric = val_auc if np.isfinite(val_auc) else float('-inf')
+                # --- Validation ---
+                if val_split.size > 0:
+                    val_scores = probs[val_split_tensor].detach().cpu().numpy()
+                    val_auc = _safe_roc_auc(val_split_labels, val_scores)
+                    compare_metric = val_auc if np.isfinite(val_auc) else float('-inf')
+                else:
+                    val_auc = float('nan')
+                    compare_metric = -loss.item()
             else:
-                val_auc = float('nan')
-                compare_metric = -loss.item()
+                val_auc = best_split_auc if np.isfinite(best_split_auc) else float('nan')
+                compare_metric = best_split_metric if np.isfinite(best_split_metric) else -loss.item()
 
             # --- Scheduler step ---
             scheduler.step(compare_metric if np.isfinite(compare_metric) else 0.0)
@@ -355,6 +466,12 @@ def neg_bagging_gcn(args):
             best_val_auc = best_split_auc
             best_preds = test_preds
 
+        del model, optimizer, logits
+        if 'final_logits' in locals():
+            del final_logits
+        if 'probs' in locals():
+            del probs
+        torch.cuda.empty_cache()
     test_index_list = test_index.tolist()
     test_lookup = {gene: idx for idx, gene in enumerate(test_index_list)}
     overlap = set(train_neg_idx.tolist()) & set(test_index_list)
@@ -363,6 +480,9 @@ def neg_bagging_gcn(args):
     if best_preds is None:
         best_preds = np.zeros(len(test_index_list), dtype=float)
 
+    del x, labels, train_targets, edge_index
+    torch.cuda.empty_cache()
+    
     return (best_preds, mask_loc), float(best_val_auc) if np.isfinite(best_val_auc) else float('nan')
 
 class ImprovedGraphSAGE(nn.Module):
@@ -403,7 +523,8 @@ class ImprovedGraphSAGE(nn.Module):
 
 
 class SimpleGraphSAGE(nn.Module):
-    def __init__(self, in_channels, hidden_channels=128, dropout=0.5):
+    # def __init__(self, in_channels, hidden_channels=128, dropout=0.5):
+    def __init__(self, in_channels, hidden_channels=64, dropout=0.5):
         super().__init__()
         self.conv1 = SAGEConv(in_channels, hidden_channels)
         self.conv2 = SAGEConv(hidden_channels, hidden_channels)
@@ -444,13 +565,11 @@ def neg_bagging_sage(args):
 
     labels = torch.from_numpy(np.asarray(y, dtype=np.int64)).to(device)
 
-    if edge_index.size(0) != 2:
-        raise ValueError('edge_index must have shape [2, num_edges].')
+    # if edge_index.size(0) != 2:
+    #     raise ValueError('edge_index must have shape [2, num_edges].')
 
     num_nodes = x.size(0)
-    edge_index = edge_index.to(device)
-    edge_index = to_undirected(edge_index, num_nodes=num_nodes)
-    edge_index, _ = add_self_loops(edge_index, num_nodes=num_nodes)
+    edge_index = edge_index.to(device, non_blocking=True)
 
     node_to_idx = {sid: idx for idx, sid in enumerate(df.index)}
     if len(node_to_idx) != num_nodes:
@@ -522,6 +641,7 @@ def neg_bagging_sage(args):
 
     criterion = nn.CrossEntropyLoss()
     fold_num = 0
+    validate_every = 5
     for train_split, val_split, train_split_labels, val_split_labels in splits:
         fold_num += 1
         
@@ -529,6 +649,7 @@ def neg_bagging_sage(args):
         # model = SimpleGraphSAGE(x.size(1)).to(device)
         # optimizer = optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
         optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=5e-4)
+        # optimizer = optim.Adam(model.parameters(), lr=1e-05, weight_decay=1e-03)
 
         train_split_tensor = torch.from_numpy(train_split).to(device)
         val_split_tensor = torch.from_numpy(val_split).to(device) if val_split.size > 0 else None
@@ -556,19 +677,23 @@ def neg_bagging_sage(args):
             loss.backward()
             optimizer.step()
 
-            model.eval()
-            with torch.no_grad():
-                logits = model(x, edge_index)
-                probs = torch.softmax(logits, dim=1)[:, 1]
+            if epoch % validate_every == 0:
+                model.eval()
+                with torch.no_grad():
+                    logits = model(x, edge_index)
+                    probs = torch.softmax(logits, dim=1)[:, 1]
 
-            # --- Validation ---
-            if val_split.size > 0:
-                val_scores = probs[val_split_tensor].detach().cpu().numpy()
-                val_auc = _safe_roc_auc(val_split_labels, val_scores)
-                compare_metric = val_auc if np.isfinite(val_auc) else float('-inf')
+                # --- Validation ---
+                if val_split.size > 0:
+                    val_scores = probs[val_split_tensor].detach().cpu().numpy()
+                    val_auc = _safe_roc_auc(val_split_labels, val_scores)
+                    compare_metric = val_auc if np.isfinite(val_auc) else float('-inf')
+                else:
+                    val_auc = float('nan')
+                    compare_metric = -loss.item()
             else:
-                val_auc = float('nan')
-                compare_metric = -loss.item()
+                val_auc = best_split_auc if np.isfinite(best_split_auc) else float('nan')
+                compare_metric = best_split_metric if np.isfinite(best_split_metric) else -loss.item()
 
             # --- Scheduler step ---
             scheduler.step(compare_metric if np.isfinite(compare_metric) else 0.0)
@@ -604,6 +729,12 @@ def neg_bagging_sage(args):
             best_val_auc = best_split_auc
             best_preds = test_preds
 
+        del model, optimizer, logits
+        if 'final_logits' in locals():
+            del final_logits
+        if 'probs' in locals():
+            del probs
+        torch.cuda.empty_cache()
     test_index_list = test_index.tolist()
     test_lookup = {gene: idx for idx, gene in enumerate(test_index_list)}
     overlap = set(train_neg_idx.tolist()) & set(test_index_list)
@@ -611,6 +742,9 @@ def neg_bagging_sage(args):
 
     if best_preds is None:
         best_preds = np.zeros(len(test_index_list), dtype=float)
+
+    del x, labels, train_targets, edge_index
+    torch.cuda.empty_cache()
 
     return (best_preds, mask_loc), float(best_val_auc) if np.isfinite(best_val_auc) else float('nan')
 
